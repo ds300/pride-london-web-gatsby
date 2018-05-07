@@ -44,6 +44,22 @@ yarn test:watch
 
 Styling will be done via [Styled-Components](https://www.styled-components.com/).
 
+## Linting
+
+This project uses **ESlint** with **Prettier**
+
+To run the linter...
+
+```sh
+yarn lint
+```
+
+To apply Prettier formatting to all `.js` files...
+
+```sh
+yarn format
+```
+
 ## ToDo
 
 1.  Small tidy up removing rest of boilerplate.
