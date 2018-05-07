@@ -1,14 +1,24 @@
 # pride-london-web-gatsby
 
-For an overview of the project structure please refer to the [Gatsby documentation - Building with Components](https://www.gatsbyjs.org/docs/building-with-components/).
+This project is a community effort to release a brand new web platform to supplant and improve upon the product currently available at prideinlondon.org.
+
+## Contributing
+
+Want to help out? That's amazing! The [Contribution Guide](https://github.com/MarcelCutts/pride-london-web/blob/master/CONTRIBUTING.md) should hopefully get you on your way.
 
 ## Install
 
-Make sure that you have the Gatsby CLI program installed:
+1.  Make sure that you have the Gatsby CLI program installed:
 
 ```sh
 npm install --global gatsby-cli
 ```
+
+2.  Pull the repo.
+3.  Ensure you have [yarn](https://yarnpkg.com/en/docs/install) installed.
+4.  Run yarn in the root directory to pull in dependencies.
+
+## Running 🏃
 
 Then you can run it by:
 
