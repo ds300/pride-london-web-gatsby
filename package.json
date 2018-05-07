@@ -18,10 +18,10 @@
   "scripts": {
     "build": "gatsby build",
     "develop": "gatsby develop",
-    "format": "prettier --write '**/*.js'",
+    "format": "prettier --write 'src/**/*.js'",
     "test": "yarn run jest",
     "test:watch": "yarn run jest --watch",
-    "lint": "eslint '**/*.js'"
+    "lint": "eslint 'src/**/*.js'"
   },
   "devDependencies": {
     "babel-plugin-styled-components": "^1.5.1",
