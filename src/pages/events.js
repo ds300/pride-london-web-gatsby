@@ -1,14 +1,10 @@
-import React, { Component } from 'react';
+import React, { Component } from 'react'
 import Link from 'gatsby-link'
 import EventListingCard from '../components/EventListingCard'
 
-class Events extends Component {
+export default class Events extends Component {
   state = {
     events: this.props.data.allContentfulEvent.edges
-  }
-
-  componentWillMount() {
-    console.log("MOUNTED")
   }
 
   render() {
@@ -19,6 +15,7 @@ class Events extends Component {
         {this.state.events.map((event, index) => (
           <EventListingCard
             title={event.node.title}
+            id={event.node.id}
             key={index}
           />
         ))}
@@ -26,8 +23,6 @@ class Events extends Component {
     )
   }
 }
-
-export default Events
 
 export const EventsQuery = graphql`
 query EventsQuery {

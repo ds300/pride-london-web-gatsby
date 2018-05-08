@@ -1,7 +1,42 @@
-/**
- * Implement Gatsby's Node APIs in this file.
- *
- * See: https://www.gatsbyjs.org/docs/node-apis/
- */
+const path = require('path');
 
-// You can delete this file if you're not using it
+exports.createPages = ({ graphql, boundActionCreators }) => {
+    const { createPage } = boundActionCreators;
+
+    return new Promise((resolve, reject) =>{
+        graphql(
+            `
+                {
+                    allContentfulEvent(filter: {}) {
+                        edges {
+                            node {
+                                id
+                            }
+                        }
+                    }
+                }
+            `
+        ).then(result => {
+            if (result.errors) {
+                reject(result.errors);
+            }
+
+            const eventTemplate = path.resolve(`./src/templates/Event.js`);
+
+            result.data.allContentfulEvent.edges.forEach((edge) => {
+                createPage({
+                  // Each page is required to have a `path` as well
+                  // as a template component. The `context` is
+                  // optional but is often necessary so the template
+                  // can query data specific to each page.
+                  path: `/events/${edge.node.id}/`,
+                  component: eventTemplate,
+                  context: {
+                    id: edge.node.id,
+                  },
+                })
+            })
+            resolve();
+        })
+    });
+}
