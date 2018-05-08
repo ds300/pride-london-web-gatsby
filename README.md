@@ -6,6 +6,8 @@ This project is a community effort to release a brand new web platform to suppla
 
 Want to help out? That's amazing! The [Contribution Guide](https://github.com/MarcelCutts/pride-london-web/blob/master/CONTRIBUTING.md) should hopefully get you on your way.
 
+Check the [issues](https://github.com/kiraarghy/pride-london-web-gatsby/issues) section of the repo for tickets to pick up.
+
 ## Install
 
 1.  Make sure that you have the Gatsby CLI program installed:
@@ -44,8 +46,18 @@ yarn test:watch
 
 Styling will be done via [Styled-Components](https://www.styled-components.com/).
 
-## ToDo
+## Linting
 
-1.  Small tidy up removing rest of boilerplate.
-2.  Implement EsLint.
-3.  Start implementing features.
+This project uses **ESlint** with **Prettier**
+
+To run the linter...
+
+```sh
+yarn lint
+```
+
+To apply Prettier formatting to all `.js` files...
+
+```sh
+yarn format
+```
