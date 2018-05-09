@@ -18,8 +18,11 @@ const BackgroundImage = styled.div`
 
 const ImageBanner = ({ titleText, subtitleText, imageSrc }) => (
   <BackgroundImage imageSrc={imageSrc}>
-    <BannerTitle>{titleText}</BannerTitle>
-    <BannerSubtitle>{subtitleText}</BannerSubtitle>
+    <div>
+      <BannerTitle>{titleText}</BannerTitle>
+      <br />
+      <BannerSubtitle>{subtitleText}</BannerSubtitle>
+    </div>
   </BackgroundImage>
 )
 
@@ -36,3 +39,5 @@ ImageBanner.defaultProps = {
 }
 
 export default ImageBanner
+
+export { BackgroundImage }
