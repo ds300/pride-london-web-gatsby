@@ -12,17 +12,26 @@ const BackgroundImage = styled.div`
   background-repeat: no-repeat;
   display: flex;
   flex-direction: column;
-  padding-left: 15px;
-  height: 400px;
+  padding-left: 10px;
+  height: 210px;
+
+  @media (min-width: 768px) {
+    height: 250px;
+    padding-left: 90px;
+  }
+`
+
+const Container = styled.div`
+  line-height: 0;
 `
 
 const ImageBanner = ({ titleText, subtitleText, imageSrc }) => (
   <BackgroundImage imageSrc={imageSrc}>
-    <div>
+    <Container>
       <BannerTitle>{titleText}</BannerTitle>
       <br />
       <BannerSubtitle>{subtitleText}</BannerSubtitle>
-    </div>
+    </Container>
   </BackgroundImage>
 )
 
