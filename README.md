@@ -20,6 +20,12 @@ npm install --global gatsby-cli
 3.  Ensure you have [yarn](https://yarnpkg.com/en/docs/install) installed.
 4.  Run yarn in the root directory to pull in dependencies.
 
+## ENVIRONMENT VARIABLES
+
+1.  Create a `.env.development` file in the root of the project.
+2.  In the file, add the contentful space ID for space Pride Web Test after the equal sign, for example `CONTENTFUL_ID=123456`
+3.  Do the same for the access token by defining the`CONTENTFUL_TOKEN`
+
 ## Running 🏃
 
 Then you can run it by:
