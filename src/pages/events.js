@@ -14,7 +14,7 @@ export default class Events extends Component {
         <Link to="/">Go back to the homepage</Link>
         {this.state.events.map((event, index) => (
           <EventListingCard
-            name={event.node.name}
+            event={event.node}
             id={event.node.id}
             key={index}
           />
@@ -31,6 +31,16 @@ query EventsQuery {
       node {
         id
         name
+        startTime
+        endTime
+        eventsListPicture {
+          title
+          resolutions {
+            src
+            width
+            height
+          }
+        }
       }
     }
   }
