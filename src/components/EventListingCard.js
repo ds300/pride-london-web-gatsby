@@ -3,7 +3,7 @@ import Link from 'gatsby-link'
 
 const EventListingCard = (props) => (
   <div>
-    <h2><Link to={`/events/${props.id}`}>{props.title}</Link></h2>
+    <h2><Link to={`/events/${props.id}`}>{props.name}</Link></h2>
   </div>
 )
 
