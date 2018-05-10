@@ -15,7 +15,6 @@ export default class Events extends Component {
         {this.state.events.map((event, index) => (
           <EventListingCard
             event={event.node}
-            id={event.node.id}
             key={index}
           />
         ))}

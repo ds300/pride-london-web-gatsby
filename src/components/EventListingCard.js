@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types'
 import Link from 'gatsby-link'
 import moment from 'moment'
 
@@ -55,4 +56,8 @@ export default class EventListingCard extends Component {
       </div>
     )   
   }
+}
+
+EventListingCard.propTypes = {
+  event: PropTypes.object
 }
