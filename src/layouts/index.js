@@ -27,8 +27,7 @@ const Layout = ({ children, data }) => (
 )
 
 Layout.propTypes = {
-  children: PropTypes.oneOf([PropTypes.node, PropTypes.arrayOf(PropTypes.node)])
-    .isRequired,
+  children: PropTypes.func,
   data: PropTypes.objectOf(PropTypes.object).isRequired,
 }
 

@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import PropTypes from 'prop-types'
 import ReactMarkdown from 'react-markdown'
 
 export default class Event extends Component {
@@ -21,7 +22,7 @@ export default class Event extends Component {
 }
 
 Event.propTypes = {
-  data: PropTypes.objectOf(object).isRequired,
+  data: PropTypes.object.isRequired,
 }
 
 export const eventPageQuery = graphql`
