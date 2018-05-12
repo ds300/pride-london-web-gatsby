@@ -31,6 +31,7 @@ const selectTagStyle = value =>
   knownValueStyles[value] || tagStyles[hash(value) % tagStyles.length]
 
 const EventTagSpan = styled.span`
+  ${({ style }) => style};
   display: inline-block;
   border-radius: 4px;
   padding: 0px 6px;
@@ -38,7 +39,6 @@ const EventTagSpan = styled.span`
   line-height: 22px;
   font-weight: 600;
   font-family: Poppins, sans-serif;
-  ${({ style }) => style};
   margin-right: 5px;
 `
 
