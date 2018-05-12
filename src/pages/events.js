@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import Link from 'gatsby-link'
 import PropTypes from 'prop-types'
-import EventListingCard from '../components/EventListingCard'
+import EventListingCard from '../templates/events/EventListingCard'
 
 export default class Events extends Component {
   constructor(props) {
