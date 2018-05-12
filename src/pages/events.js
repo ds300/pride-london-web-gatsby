@@ -1,14 +1,14 @@
 import React, { Component } from 'react'
 import Link from 'gatsby-link'
 import PropTypes from 'prop-types'
-import EventListingCard from '../templates/events/EventListingCard'
+import { EventListingCard } from '../templates/events'
 
 export default class Events extends Component {
   constructor(props) {
     super(props)
 
     this.state = {
-      events: props.data.allContenfulEvents.edges,
+      events: props.data.allContentfulEvent.edges,
     }
   }
 
@@ -30,7 +30,7 @@ export default class Events extends Component {
 }
 
 Events.propTypes = {
-  data: PropTypes.objectOf(PropTypes.object).isRequired,
+  data: PropTypes.object,
 }
 
 export const EventsQuery = graphql`
@@ -40,6 +40,16 @@ export const EventsQuery = graphql`
         node {
           id
           name
+          startTime
+          endTime
+          eventsListPicture {
+            title
+            resolutions {
+              src
+              width
+              height
+            }
+          }
         }
       }
     }
