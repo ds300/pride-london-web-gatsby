@@ -30,7 +30,7 @@ query EventsQuery {
     edges {
       node {
         id
-        title
+        name
       }
     }
   }
