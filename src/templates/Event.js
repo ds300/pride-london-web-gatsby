@@ -2,17 +2,26 @@ import React, { Component } from 'react'
 import ReactMarkdown from 'react-markdown'
 
 export default class Event extends Component {
-  state = {
-    event: this.props.data.contentfulEvent
+  constructor(props) {
+    super(props)
+
+    this.state = {
+      event: props.data.contentfulEvent,
+    }
   }
+
   render() {
     return (
       <div>
         <h1>{this.state.event.title}</h1>
-        <ReactMarkdown source={this.state.event.content.content}/>
+        <ReactMarkdown source={this.state.event.content.content} />
       </div>
     )
   }
+}
+
+Event.propTypes = {
+  data: PropTypes.objectOf(object).isRequired,
 }
 
 export const eventPageQuery = graphql`

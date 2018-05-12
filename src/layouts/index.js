@@ -27,7 +27,9 @@ const Layout = ({ children, data }) => (
 )
 
 Layout.propTypes = {
-  children: PropTypes.func,
+  children: PropTypes.oneOf([PropTypes.node, PropTypes.arrayOf(PropTypes.node)])
+    .isRequired,
+  data: PropTypes.objectOf(PropTypes.object).isRequired,
 }
 
 export default Layout
