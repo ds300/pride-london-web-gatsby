@@ -25,7 +25,9 @@ const theme = {
   fonts: {
     title: 'Poppins',
     body: 'Roboto'
-  }
+  },
+  space: [0, 5, 10, 15, 20],
+  breakpoints: [ '375px', '768px', '1280px', '1440px' ]
 }
 
 export default theme
