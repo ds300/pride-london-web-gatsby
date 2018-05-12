@@ -30,7 +30,7 @@ const knownValueStyles = {
 const selectTagStyle = value =>
   knownValueStyles[value] || tagStyles[hash(value) % tagStyles.length]
 
-const EventTagSpan = styled.span`
+const EventTagListItem = styled.li`
   ${({ tagStyle }) => tagStyle};
   display: inline-block;
   border-radius: 4px;
@@ -39,17 +39,26 @@ const EventTagSpan = styled.span`
   line-height: 22px;
   font-weight: 600;
   font-family: Poppins, sans-serif;
-  margin-right: 5px;
+  margin-right: 10px;
 `
 
-const EventTag = ({ value }) => (
-  <span>
-    <EventTagSpan tagStyle={selectTagStyle(value)}>{value}</EventTagSpan>{' '}
-  </span>
+const EventTagUl = styled.ul`
+  margin: 0;
+  list-style-type: none;
+`
+
+const EventTagList = ({ values }) => (
+  <EventTagUl>
+    {values.map(value => (
+      <EventTagListItem tagStyle={selectTagStyle(value)} key={value}>
+        {value}
+      </EventTagListItem>
+    ))}
+  </EventTagUl>
 )
 
-EventTag.propTypes = {
-  value: PropTypes.string.isRequired,
+EventTagList.propTypes = {
+  values: PropTypes.arrayOf(PropTypes.string).isRequired,
 }
 
-export default EventTag
+export default EventTagList

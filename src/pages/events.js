@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import Link from 'gatsby-link'
 import EventListingCard from '../components/EventListingCard'
+import EventTagList from '../components/EventTagList'
 
 export default class Events extends Component {
   state = {
@@ -12,6 +13,7 @@ export default class Events extends Component {
       <div>
         <h1>Hi from the events page</h1>
         <Link to="/">Go back to the homepage</Link>
+        <EventTagList values={['Golf', 'Fancy Cheeses', 'Lifestyle', 'Music']}></EventTagList>
         {this.state.events.map((event, index) => (
           <EventListingCard
             title={event.node.title}
@@ -30,7 +32,7 @@ query EventsQuery {
     edges {
       node {
         id
-        title
+        name
       }
     }
   }
