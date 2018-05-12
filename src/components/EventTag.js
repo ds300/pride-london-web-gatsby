@@ -31,7 +31,7 @@ const selectTagStyle = value =>
   knownValueStyles[value] || tagStyles[hash(value) % tagStyles.length]
 
 const EventTagSpan = styled.span`
-  ${({ style }) => style};
+  ${({ tagStyle }) => tagStyle};
   display: inline-block;
   border-radius: 4px;
   padding: 0px 6px;
@@ -44,7 +44,7 @@ const EventTagSpan = styled.span`
 
 const EventTag = ({ value }) => (
   <span>
-    <EventTagSpan style={selectTagStyle(value)}>{value}</EventTagSpan>{' '}
+    <EventTagSpan tagStyle={selectTagStyle(value)}>{value}</EventTagSpan>{' '}
   </span>
 )
 
