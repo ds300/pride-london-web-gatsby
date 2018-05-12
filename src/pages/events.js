@@ -1,6 +1,8 @@
 import React, { Component } from 'react'
 import Link from 'gatsby-link'
 import EventListingCard from '../components/EventListingCard'
+import { ThemeProvider } from 'styled-components'
+import theme from '../theme/theme.js'
 
 export default class Events extends Component {
   state = {
@@ -9,17 +11,19 @@ export default class Events extends Component {
 
   render() {
     return (
-      <div>
-        <h1>Hi from the events page</h1>
-        <Link to="/">Go back to the homepage</Link>
-        {this.state.events.map((event, index) => (
-          <EventListingCard
-            title={event.node.title}
-            id={event.node.id}
-            key={index}
-          />
-        ))}
-      </div>
+      <ThemeProvider theme={theme}>
+        <div>
+          <h1>Hi from the events page</h1>
+          <Link to="/">Go back to the homepage</Link>
+          {this.state.events.map((event, index) => (
+            <EventListingCard
+              title={event.node.title}
+              id={event.node.id}
+              key={index}
+            />
+          ))}
+        </div>
+      </ThemeProvider>
     )
   }
 }
@@ -30,7 +34,7 @@ query EventsQuery {
     edges {
       node {
         id
-        title
+        name
       }
     }
   }

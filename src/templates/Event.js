@@ -19,9 +19,9 @@ export const eventPageQuery = graphql`
   query eventQuery($id: String!) {
     contentfulEvent(id: { eq: $id }) {
       id
-      title
-      content {
-        content
+      name
+      eventDescription {
+        eventDescription
       }
     }
   }
