@@ -15,7 +15,9 @@
     "node": true
   },
   "rules": {
+    "arrow-parens": "off",
     "import/no-extraneous-dependencies": "off",
+    "import/no-named-as-default": "off",
     "jsx-a11y/anchor-is-valid": "off",
     "no-undef": "off", // throw error on graphql queries
     "prettier/prettier": "error",

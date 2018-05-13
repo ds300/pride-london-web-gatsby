@@ -8,7 +8,7 @@ export default class Events extends Component {
     super(props)
 
     this.state = {
-      events: props.data.allContenfulEvents.edges,
+      events: props.data.allContentfulEvent.edges,
     }
   }
 
@@ -18,11 +18,7 @@ export default class Events extends Component {
         <h1>Hi from the events page</h1>
         <Link to="/">Go back to the homepage</Link>
         {this.state.events.map(event => (
-          <EventListingCard
-            title={event.node.title}
-            id={event.node.id}
-            key={event.node.id}
-          />
+          <EventListingCard event={event.node} key={event.node.id} />
         ))}
       </div>
     )
@@ -40,6 +36,16 @@ export const EventsQuery = graphql`
         node {
           id
           name
+          startTime
+          endTime
+          eventsListPicture {
+            title
+            resolutions {
+              src
+              width
+              height
+            }
+          }
         }
       }
     }
