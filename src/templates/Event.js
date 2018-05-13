@@ -5,11 +5,12 @@ export default class Event extends Component {
   state = {
     event: this.props.data.contentfulEvent
   }
+  
   render() {
     return (
       <div>
-        <h1>{this.state.event.title}</h1>
-        <ReactMarkdown source={this.state.event.content.content}/>
+        <h1>{this.state.event.name}</h1>
+        <ReactMarkdown source={this.state.event.eventDescription.eventDescription}/>
       </div>
     )
   }

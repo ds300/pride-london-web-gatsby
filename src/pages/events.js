@@ -1,7 +1,14 @@
 import React, { Component } from 'react'
 import Link from 'gatsby-link'
+import styled from 'styled-components'
+
 import EventListingCard from '../components/EventListingCard'
 import EventTagList from '../components/EventTagList'
+import {Container, Row, Column} from '../components/grid/grid'
+
+const FlexColumn = styled(Column)`
+  display: flex;
+`
 
 export default class Events extends Component {
   state = {
@@ -9,19 +16,35 @@ export default class Events extends Component {
   }
 
   render() {
-    return (
-      <div>
-        <h1>Hi from the events page</h1>
-        <Link to="/">Go back to the homepage</Link>
-        <EventTagList values={['Golf', 'Fancy Cheeses', 'Lifestyle', 'Music']}></EventTagList>
-        {this.state.events.map((event, index) => (
-          <EventListingCard
-            title={event.node.title}
-            id={event.node.id}
-            key={index}
-          />
-        ))}
-      </div>
+    return (  
+      <Container>
+        <Row>
+          <Column width={1}>
+            <h1>Hi from the events page</h1>
+            <Link to="/">Go back to the homepage</Link>
+          </Column>
+        </Row>
+        <Row>
+          <EventTagList values={['Golf', 'Fancy Cheeses', 'Lifestyle', 'Music']}></EventTagList>
+        </Row>
+        <Row>
+          {this.state.events.map((event, index) => (
+            <FlexColumn 
+              width={[
+                1, // 100% between 0px screen width and first breakpoint (375px)
+                1, // 100% between first breakpoint(375px) and second breakpoint (768px)
+                1/2, // 50% between second breakpoint(768px) and third breakpoint (1280px)
+                1/3,  // 33% between third breakpoint(1280px) and fourth breakpoint (1440px)
+              ]}
+              key={index}
+            >
+              <EventListingCard
+                event={event.node}
+              />
+            </FlexColumn>
+          ))}
+        </Row>
+      </Container>
     )
   }
 }
@@ -33,6 +56,15 @@ query EventsQuery {
       node {
         id
         name
+        startTime
+        endTime
+        eventPriceLow
+        eventsListPicture {
+          title
+          file {
+            url
+          }
+        }
       }
     }
   }
