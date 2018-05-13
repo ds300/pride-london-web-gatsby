@@ -3,7 +3,6 @@ import Link from 'gatsby-link'
 import styled from 'styled-components'
 
 import EventListingCard from '../components/EventListingCard'
-import EventTagList from '../components/EventTagList'
 import {Container, Row, Column} from '../components/grid/grid'
 
 const FlexColumn = styled(Column)`
@@ -23,9 +22,6 @@ export default class Events extends Component {
             <h1>Hi from the events page</h1>
             <Link to="/">Go back to the homepage</Link>
           </Column>
-        </Row>
-        <Row>
-          <EventTagList values={['Golf', 'Fancy Cheeses', 'Lifestyle', 'Music']}></EventTagList>
         </Row>
         <Row>
           {this.state.events.map((event, index) => (
