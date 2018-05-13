@@ -2,9 +2,13 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types'
 import Link from 'gatsby-link'
 import moment from 'moment'
+import styled from 'styled-components'
+
+// const Card = styled.div`
+  
+// `
 
 export default class EventListingCard extends Component {
-
   formatDate = () => {
     const year = moment(this.props.event.startTime).year()
 
@@ -46,10 +50,10 @@ export default class EventListingCard extends Component {
     return (
       <div>
         <img 
-            src={event.eventsListPicture.resolutions.src} 
+            src={`${event.eventsListPicture.file.url}?fit=fill&w=400&h=225&f=faces`} 
             alt={event.eventsListPicture.title}
-            width={event.eventsListPicture.resolutions.width}
-            height={event.eventsListPicture.resolutions.height}
+            width="400"
+            height="225"
         />   
         <h2><Link to={`/events/${event.id}`}>{event.name}</Link></h2>
         <p>{this.formatDate()}</p>

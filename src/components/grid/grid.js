@@ -26,15 +26,15 @@ Container.defaultProps = {
 const Row = props => (
   <Flex
     {...props}
-    mx={[-1,-2,-3]}
-    flexWrap
+    mx={[1, -2,-3]}
+    flexWrap="wrap"
   />
 )
 
 const Column = props => (
   <Box
     {...props}
-    px={[1,2,3]}
+    px={[1,2,2,3]}
     py={2}
     flex='1 1 auto'
   />

@@ -27,7 +27,10 @@ export default class Events extends Component {
             {this.state.events.map((event, index) => (
               <Column 
                 width={[
-                  1, 1/2, 1/3, 1/4
+                  1, 
+                  1, 
+                  1/2,
+                  1/3
                 ]}
                 key={index}
               >
@@ -54,10 +57,8 @@ query EventsQuery {
         endTime
         eventsListPicture {
           title
-          resolutions {
-            src
-            width
-            height
+          file {
+            url
           }
         }
       }
