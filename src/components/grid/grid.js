@@ -18,6 +18,7 @@ const Container = styled(Box)`
 
   @media (min-width: 1440px) {
     min-width: 1260px;
+    max-width: 1440px;
   }  
 `
 Container.defaultProps = {
@@ -27,12 +28,12 @@ Container.defaultProps = {
 const Row = props => (
   <Flex
     {...props}
-    {/* Margin right/left. 0-4 represent index on the spacing scale. Numbers 5+ represents px value */} 
+    // Margin right/left. 0-4 represent index on the spacing scale. Numbers 5+ represents px value 
     mx={[
-      1, {/* Margin between 0px and 1st breakpoint (375px). 1 = 5px on spacing scale */} 
-      10, {/* Margin between 1st breakpoint(375px) and 2nd breakpoint (768px). */} 
-      40, {/* Margin between 2nd breakpoint(768px) and 3rd breakpoint (1280px). */} 
-      75 {/* Margin between 3rd breakpoint(1280px) and 4th breakpoint (1440px). */}
+      1, // Margin between 0px and 1st breakpoint (375px). 1 = 5px on spacing scale 
+      10, // Margin between 1st breakpoint(375px) and 2nd breakpoint (768px)
+      40, // Margin between 2nd breakpoint(768px) and 3rd breakpoint (1280px)
+      75 // Margin between 3rd breakpoint(1280px) and 4th breakpoint (1440px)
     ]}
     flexWrap="wrap"
   />
@@ -41,15 +42,16 @@ const Row = props => (
 const Column = props => (
   <Box
     {...props}
-    {/* Padding right/left. 0-4 represent index on the spacing scale. Numbers 5+ represents px value */} 
+    // Padding right/left. 0-4 represent index on the spacing scale. Numbers 5+ represents px value
     px={[
-      1, {/* Padding between 0px and 1st breakpoint (375px). 1 = 5px on spacing scale */}
-      2, {/* Padding between 1st breakpoint(375px) and 2nd breakpoint (768px). 2 = 10px on spacing scale */} 
-      2, {/* Padding between 2nd breakpoint(768px) and 3rd breakpoint (1280px). 2 = 10px on spacing scale */} 
-      3 {/* Padding between 3rd breakpoint(1280px) and 4th breakpoint (1440px). 3 = 15px on spacing scale */}
+      1, // Padding between 0px and 1st breakpoint (375px). 1 = 5px on spacing scale
+      2, // Padding between 1st breakpoint(375px) and 2nd breakpoint (768px). 2 = 10px on spacing scale
+      2, // Padding between 2nd breakpoint(768px) and 3rd breakpoint (1280px). 2 = 10px on spacing scale
+      3 // Padding between 3rd breakpoint(1280px) and 4th breakpoint (1440px). 3 = 15px on spacing scale
     ]}
-  {/* Padding top/bottom. 0-4 represent index on the spacing scale. Numbers 5+ represents px value */} 
-    py={2} {/* Global padding. 2 = 10px on spacing scale */}
+
+    // Padding top/bottom. 0-4 represent index on the spacing scale. Numbers 5+ represents px value
+    py={2} // Global padding. 2 = 10px on spacing scale
   />
 )
 
