@@ -2,9 +2,56 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types'
 import Link from 'gatsby-link'
 import moment from 'moment'
+import styled from 'styled-components'
+
+const Card = styled(Link)`
+  display: block;
+  border-radius: 5px;
+  text-decoration: none;
+  color: ${props => props.theme.colors.black};
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  width: 100%;
+`
+
+const CardImage = styled.img`
+  display: block;
+  width: 100%;
+`
+
+const CardBody = styled.div`
+  padding: 20px;
+  background-color: ${props => props.theme.colors.white};
+  flex-grow: 1;
+
+  @media (min-width: 375px) {
+    padding: 30px;
+  }
+`
+
+const CardDate = styled.span`
+  display: block;
+  color: ${props => props.theme.colors.darkGrey};
+  font-size: 0.875rem;
+  font-weight: bold;
+  margin-bottom: 0.625rem;
+`
+
+const CardPrice = styled.div`
+  position: absolute;
+  top: 0;
+  left: 0;
+  background-color: ${props => props.theme.colors.indigo};
+  color: ${props => props.theme.colors.white};
+  font-family: ${props => props.theme.fonts.title};
+  font-weight: 600;
+  padding: 5px 10px;
+  border-radius: 5px;
+`
 
 export default class EventListingCard extends Component {
-
   formatDate = () => {
     const year = moment(this.props.event.startTime).year()
 
@@ -44,16 +91,19 @@ export default class EventListingCard extends Component {
     const event = this.props.event
 
     return (
-      <div>
-        <img 
-            src={event.eventsListPicture.resolutions.src} 
+      <Card to={`/events/${event.id}`}>
+        <CardImage 
+            src={`${event.eventsListPicture.file.url}?fit=fill&w=400&h=225&f=faces`} 
             alt={event.eventsListPicture.title}
-            width={event.eventsListPicture.resolutions.width}
-            height={event.eventsListPicture.resolutions.height}
-        />   
-        <h2><Link to={`/events/${event.id}`}>{event.name}</Link></h2>
-        <p>{this.formatDate()}</p>
-      </div>
+            width="400"
+            height="225"
+        />
+        <CardBody>
+          <CardDate>{this.formatDate()}</CardDate>
+          <h2>{event.name}</h2>
+        </CardBody>
+        <CardPrice>from £{event.eventPriceLow}</CardPrice>   
+      </Card>
     )   
   }
 }

@@ -48,6 +48,9 @@ or to watch:
 yarn test:watch
 ```
 
+## Layout
+Grid layout will be done via [Grid-Styled](http://jxnblk.com/grid-styled/). Breakpoints and spacing configuration can be found in `src/theme/theme.js`. See `src/grid/grid.js` to see how the Container, Column and Row components are made. Example of usage can be found on the events page on `src/pages/events.js`. Please see [Official Documentation](https://github.com/jxnblk/grid-styled) on how to set widths for your columns and set alignment.
+
 ## Styling
 
 Styling will be done via [Styled-Components](https://www.styled-components.com/).
