@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import Link from 'gatsby-link'
 import PropTypes from 'prop-types'
 import styled from 'styled-components'
-import EventListingCard from '../components/EventListingCard'
+import { EventListingCard } from '../templates/events'
 import { Container, Row, Column } from '../components/grid/grid'
 
 const FlexColumn = styled(Column)`
@@ -42,7 +42,7 @@ export default class Events extends Component {
 }
 
 Events.propTypes = {
-  data: PropTypes.objectOf(PropTypes.object).isRequired,
+  data: PropTypes.object,
 }
 
 export const EventsQuery = graphql`

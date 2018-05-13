@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import ReactMarkdown from 'react-markdown'
-import EventTagList from '../components/EventTagList'
+import { EventTagList, EventSchedule } from './events'
 
 export default class Event extends Component {
   state = { event: this.props.data.contentfulEvent }
@@ -16,6 +16,7 @@ export default class Event extends Component {
         <ReactMarkdown
           source={this.state.event.eventDescription.eventDescription}
         />
+        <EventSchedule />
       </div>
     )
   }

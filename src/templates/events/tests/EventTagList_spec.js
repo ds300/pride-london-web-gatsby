@@ -1,6 +1,6 @@
 import React from 'react'
 import { mount } from 'enzyme'
-import EventTagList from './EventTagList'
+import EventTagList from '../EventTagList'
 
 describe('The EventTag component', () => {
   it('renders', () => {
