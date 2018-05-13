@@ -1,7 +1,8 @@
 import React, { Component } from 'react'
 import Link from 'gatsby-link'
-import EventListingCard from '../components/EventListingCard'
 import styled from 'styled-components'
+
+import EventListingCard from '../components/EventListingCard'
 import {Container, Row, Column} from '../components/grid/grid'
 
 const FlexColumn = styled(Column)`
