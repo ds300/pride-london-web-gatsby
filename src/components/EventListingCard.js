@@ -1,8 +1,8 @@
-import React, { Component } from 'react';
+import React from 'react'
 import PropTypes from 'prop-types'
 import Link from 'gatsby-link'
-import moment from 'moment'
 import styled from 'styled-components'
+import formatDate from './helpers'
 
 const Card = styled(Link)`
   display: block;
@@ -26,7 +26,7 @@ const CardBody = styled.div`
   background-color: ${props => props.theme.colors.white};
   flex-grow: 1;
 
-  @media (min-width: 375px) {
+  @media (min-width: ${props => props.theme.breakpoints[0]}) {
     padding: 30px;
   }
 `
@@ -51,63 +51,28 @@ const CardPrice = styled.div`
   border-radius: 5px;
 `
 
-export default class EventListingCard extends Component {
-  formatDate = () => {
-    const year = moment(this.props.event.startTime).year()
+export const EventListingCard = props => {
+  const { event } = props
 
-    const startDate = moment(this.props.event.startTime).format('L')
-    const endDate = moment(this.props.event.endTime).format('L')
-
-    const startMonth = moment(this.props.event.startTime).format('MMM')
-    const endMonth = moment(this.props.event.endTime).format('MMM')
-
-    const startDay = moment(this.props.event.startTime).date()
-    const endDay = moment(this.props.event.endTime).date()
-
-    const startTime = this.formatTime(this.props.event.startTime);
-    const endTime = this.formatTime(this.props.event.endTime);
-
-    if(startDate === endDate) {
-      return `${startDay} ${startMonth} ${year} • ${startTime} - ${endTime}`
-    }
-    else if (startMonth === endMonth) {
-      return `${startDay} - ${endDay} ${startMonth} ${year} • ${startTime} - ${endTime}`
-    }
-    else {
-      return `${startDay} ${startMonth} - ${endDay} ${endMonth} ${year} • ${startTime} - ${endTime}`
-    }
-  }
-
-  formatTime = (time) => {
-    if(moment(time).format('mm') === '00') {
-      return moment(time).format('ha')
-    } 
-    else {
-      return moment(time).format('h:mma')
-    }
-  }
-
-  render() {
-    const event = this.props.event
-
-    return (
-      <Card to={`/events/${event.id}`}>
-        <CardImage 
-            src={`${event.eventsListPicture.file.url}?fit=fill&w=400&h=225&f=faces`} 
-            alt={event.eventsListPicture.title}
-            width="400"
-            height="225"
-        />
-        <CardBody>
-          <CardDate>{this.formatDate()}</CardDate>
-          <h2>{event.name}</h2>
-        </CardBody>
-        <CardPrice>from £{event.eventPriceLow}</CardPrice>   
-      </Card>
-    )   
-  }
+  return (
+    <Card to={`/events/${event.id}`}>
+      <CardImage
+        src={`${event.eventsListPicture.file.url}?fit=fill&w=400&h=225&f=faces`}
+        alt={event.eventsListPicture.title}
+        width="400"
+        height="225"
+      />
+      <CardBody>
+        <CardDate>{formatDate(event)}</CardDate>
+        <h2>{event.name}</h2>
+      </CardBody>
+      <CardPrice>from £{event.eventPriceLow}</CardPrice>
+    </Card>
+  )
 }
 
 EventListingCard.propTypes = {
-  event: PropTypes.object
+  event: PropTypes.object,
 }
+
+export default EventListingCard

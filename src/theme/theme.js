@@ -20,14 +20,14 @@ const theme = {
     lemonGreen: '#C3D30E',
     green: '#34C30A',
     amber: '#FFCA00',
-    red: '#D0021B'
+    red: '#D0021B',
   },
   fonts: {
     title: 'Poppins, sans-serif',
-    body: 'Roboto, sans-serif'
+    body: 'Roboto, sans-serif',
   },
   space: [0, 5, 10, 15, 20],
-  breakpoints: ['375px', '768px', '1280px', '1440px']
+  breakpoints: ['375px', '768px', '1280px', '1440px'],
 }
 
 export default theme

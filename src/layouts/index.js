@@ -2,7 +2,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import Helmet from 'react-helmet'
 import { ThemeProvider } from 'styled-components'
-import theme from '../theme/theme.js'
+import theme from '../theme/theme'
 
 import './index.css'
 import './fonts.css'
@@ -17,15 +17,14 @@ const Layout = ({ children, data }) => (
           { name: 'keywords', content: 'sample, something' },
         ]}
       />
-      <div>
-        {children()}
-      </div>
+      <div>{children()}</div>
     </div>
   </ThemeProvider>
 )
 
 Layout.propTypes = {
   children: PropTypes.func,
+  data: PropTypes.objectOf(PropTypes.object).isRequired,
 }
 
 export default Layout
