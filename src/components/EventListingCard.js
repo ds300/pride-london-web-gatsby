@@ -13,14 +13,12 @@ const Card = styled(Link)`
   display: flex;
   flex-direction: column;
   position: relative;
-
-  img {
-    display: block;
-  }
+  width: 100%;
 `
 
 const CardImage = styled.img`
   display: block;
+  width: 100%;
 `
 
 const CardBody = styled.div`
