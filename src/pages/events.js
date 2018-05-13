@@ -29,10 +29,9 @@ export default class Events extends Component {
                 1, // 100% between 0px screen width and first breakpoint (375px)
                 1, // 100% between first breakpoint(375px) and second breakpoint (768px)
                 1/2, // 50% between second breakpoint(768px) and third breakpoint (1280px)
-                1/3,  // 33% between third breakpoint(1280px) and fourth breakpoint (1280px)
+                1/3,  // 33% between third breakpoint(1280px) and fourth breakpoint (1440px)
               ]}
               key={index}
-              display="flex"
             >
               <EventListingCard
                 event={event.node}

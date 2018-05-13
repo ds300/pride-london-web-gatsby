@@ -22,9 +22,13 @@ const CardImage = styled.img`
 `
 
 const CardBody = styled.div`
-  padding: 30px;
+  padding: 20px;
   background-color: ${props => props.theme.colors.white};
   flex-grow: 1;
+
+  @media (min-width: 375px) {
+    padding: 30px;
+  }
 `
 
 const CardDate = styled.span`
@@ -41,7 +45,8 @@ const CardPrice = styled.div`
   left: 0;
   background-color: ${props => props.theme.colors.indigo};
   color: ${props => props.theme.colors.white};
-  font-weight: 700;
+  font-family: ${props => props.theme.fonts.title};
+  font-weight: 600;
   padding: 5px 10px;
   border-radius: 5px;
 `

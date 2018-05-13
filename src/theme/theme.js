@@ -23,8 +23,8 @@ const theme = {
     red: '#D0021B'
   },
   fonts: {
-    title: 'Poppins',
-    body: 'Roboto'
+    title: 'Poppins, sans-serif',
+    body: 'Roboto, sans-serif'
   },
   space: [0, 5, 10, 15, 20],
   breakpoints: ['375px', '768px', '1280px', '1440px']
