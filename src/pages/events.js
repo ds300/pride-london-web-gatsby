@@ -4,13 +4,7 @@ import PropTypes from 'prop-types'
 import EventListingCard from '../components/EventListingCard'
 
 export default class Events extends Component {
-  constructor(props) {
-    super(props)
-
-    this.state = {
-      events: props.data.allContentfulEvent.edges,
-    }
-  }
+  state = { events: this.props.data.allContentfulEvent.edges }
 
   render() {
     return (

@@ -3,13 +3,7 @@ import PropTypes from 'prop-types'
 import ReactMarkdown from 'react-markdown'
 
 export default class Event extends Component {
-  constructor(props) {
-    super(props)
-
-    this.state = {
-      event: props.data.contentfulEvent,
-    }
-  }
+  state = { event: this.props.data.contentfulEvent }
 
   render() {
     return (

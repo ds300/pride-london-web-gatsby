@@ -27,6 +27,7 @@
     "test:watch": "yarn run jest --watch"
   },
   "devDependencies": {
+    "babel-eslint": "^8.2.3",
     "babel-plugin-styled-components": "^1.5.1",
     "dotenv": "^5.0.1",
     "enzyme": "^3.3.0",
