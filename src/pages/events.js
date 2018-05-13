@@ -22,7 +22,7 @@ export default class Events extends Component {
           </Column>
         </Row>
         <Row>
-          {this.state.events.map((event) => (
+          {this.state.events.map(event => (
             <FlexColumn
               width={[
                 1, // 100% between 0px screen width and first breakpoint (375px)
