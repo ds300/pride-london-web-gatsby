@@ -1,28 +1,31 @@
 import React from 'react'
-import Table from '../../components/Table'
+import EventScheduleItem from './EventScheduleItem'
 
-const tempData = {
-  scheduleItem: {
+const tempData = [
+  {
+    id: 1234,
     time: '8:00',
     act: 'KY Kelly',
   },
-  scheduleItem2: {
+  {
+    id: 3294,
     time: '9:00',
     act: 'KY Kelly',
   },
-  scheduleItem3: {
+  {
+    id: 9932,
     time: '10:00',
     act: 'KY Kelly',
   },
-}
+]
 
 const EventSchedule = () => (
-  <React.Fragment>
+  <div>
     <h2>Schedule</h2>
-    <Table title="Morning" data={tempData} />
-    <Table title="Afternoon" data={tempData} />
-    <Table title="Evening" data={tempData} />
-  </React.Fragment>
+    <EventScheduleItem title="Morning" data={tempData} />
+    <EventScheduleItem title="Afternoon" data={tempData} />
+    <EventScheduleItem title="Evening" data={tempData} />
+  </div>
 )
 
 export default EventSchedule

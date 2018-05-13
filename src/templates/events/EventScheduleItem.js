@@ -1,7 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 
-const Table = props => (
+const EventScheduleItem = props => (
   <table>
     <th colSpan="2">{props.title}</th>
     {props.data.map(item => (
@@ -13,9 +13,15 @@ const Table = props => (
   </table>
 )
 
-Table.propTypes = {
+EventScheduleItem.propTypes = {
   data: PropTypes.object,
   title: PropTypes.string,
 }
 
-export default Table
+export default EventScheduleItem
+
+// make a table header in here using style components
+// small left column for time
+// large right column for act name
+
+// then get data from contentful
