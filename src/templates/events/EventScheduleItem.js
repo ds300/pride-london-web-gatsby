@@ -5,16 +5,18 @@ import styled from 'styled-components'
 const fontStyles = `
   font-size: 0.8em;
   letter-spacing: 0.4px;
-  padding: 8px;
+  padding: 8px 12px
 `
 
 const ShowMore = styled.p`
   border-bottom: 2px solid ${props => props.theme.colors.eucalyptusGreen};
   color: ${props => props.theme.colors.indigo};
-  font-size: 0.8em;
-  font-weight: bold;
+  cursor: pointer;
+  font-size: 0.9em;
+  font-weight: 300;
   letter-spacing: 0.4px;
   margin: 15px auto;
+  user-select: none;
   width: fit-content;
 `
 
@@ -32,6 +34,8 @@ const TableHeader = styled.th`
   ${fontStyles}
   background: ${props => props.theme.colors.mediumGrey};
   color: ${props => props.theme.colors.indigo};
+  font-family: ${props => props.theme.fonts.title};
+  font-weight: 300;
 `
 
 const TableItem = styled.td`
@@ -41,7 +45,7 @@ const TableItem = styled.td`
 
 const TableItemTime = styled(TableItem)`
   font-weight: bold;
-  width: 20%;
+  width: 60px;
 `
 
 const EventScheduleItem = props => (
@@ -53,8 +57,8 @@ const EventScheduleItem = props => (
         </tr>
         {props.data.map(item => (
           <tr key={item.id}>
-            <TableItemTime>{item.time}</TableItemTime>
-            <TableItem>{item.act}</TableItem>
+            <TableItemTime>{item.startTime}</TableItemTime>
+            <TableItem>{item.title}</TableItem>
           </tr>
         ))}
       </tbody>

@@ -28,7 +28,7 @@
     "develop": "gatsby develop",
     "format": "prettier --write 'src/**/*.js'",
     "lint": "eslint 'src/**/*.js'",
-    "precommit": "yarn format && yarn lint",
+    "precommit": "yarn format && yarn lint --fix",
     "test": "yarn run jest",
     "test:watch": "yarn run jest --watch"
   },

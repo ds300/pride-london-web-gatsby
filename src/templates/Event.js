@@ -16,7 +16,7 @@ export default class Event extends Component {
         <ReactMarkdown
           source={this.state.event.eventDescription.eventDescription}
         />
-        <EventSchedule />
+        <EventSchedule schedule={this.state.event.performances} />
       </div>
     )
   }
@@ -31,6 +31,10 @@ export const eventPageQuery = graphql`
     contentfulEvent(id: { eq: $id }) {
       id
       name
+      performances {
+        id
+        ...eventScheduleFragment
+      }
       eventDescription {
         eventDescription
       }
