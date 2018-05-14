@@ -1,31 +1,58 @@
+/* eslint-disable prettier/prettier */
 import React from 'react'
+import PropTypes from 'prop-types'
 import EventScheduleItem from './EventScheduleItem'
 
-const tempData = [
-  {
-    id: 1234,
-    time: '8:00',
-    act: 'KY Kelly',
-  },
-  {
-    id: 3294,
-    time: '9:00',
-    act: 'KY Kelly',
-  },
-  {
-    id: 9932,
-    time: '10:00',
-    act: 'KY Kelly',
-  },
-]
+const splitIntoArray = schedule =>
+  schedule.reduce(
+    (acc, item) => {
+      if (item.startTime < '12:00') {
+        return {
+          ...acc,
+          morning: [...acc.morning, item],
+        }
+      } else if (item.startTime < '17:00') {
+        return {
+          ...acc,
+          afternoon: [...acc.afternoon, item],
+        }
+      }
+      return {
+        ...acc,
+        evening: [...acc.evening, item],
+      }
+    },
+    {
+      morning: [],
+      afternoon: [],
+      evening: [],
+    },
+  )
 
-const EventSchedule = () => (
-  <div>
-    <h2>Schedule</h2>
-    <EventScheduleItem title="Morning" data={tempData} />
-    <EventScheduleItem title="Afternoon" data={tempData} />
-    <EventScheduleItem title="Evening" data={tempData} />
-  </div>
-)
+const EventSchedule = props => {
+  if (!props.schedule) return null
+
+  const { morning, afternoon, evening } = splitIntoArray(props.schedule)
+  return (
+    <div>
+      <h2>Schedule</h2>
+      <EventScheduleItem title="Morning" data={morning} />
+      <EventScheduleItem title="Afternoon" data={afternoon} />
+      <EventScheduleItem title="Evening" data={evening} />
+    </div>
+  )
+}
+
+EventSchedule.propTypes = {
+  schedule: PropTypes.object,
+}
 
 export default EventSchedule
+
+export const query = graphql`
+  fragment eventScheduleFragment on ContentfulPerformance {
+    id
+    title
+    startTime(formatString: "HH:MM")
+  }
+`
