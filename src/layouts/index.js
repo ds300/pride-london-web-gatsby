@@ -9,7 +9,7 @@ import './index.css'
 import './fonts.css'
 
 const Layout = props => (
-  <Provider value={props.data.allContentfulEvent.edges}>
+  <Provider events={props.data.allContentfulEvent.edges}>
     <ThemeProvider theme={theme}>
       <div>
         <Helmet

@@ -6,7 +6,7 @@ const { Consumer } = AppContext
 
 class Provider extends Component {
   state = {
-    events: this.props.value,
+    events: this.props.events,
   }
 
   render() {
@@ -23,7 +23,7 @@ Provider.propTypes = {
     PropTypes.arrayOf(PropTypes.node),
     PropTypes.node,
   ]),
-  value: PropTypes.array,
+  events: PropTypes.array,
 }
 
 module.exports = {
