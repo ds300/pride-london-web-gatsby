@@ -1,26 +1,33 @@
-import React from 'react'
+import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import Helmet from 'react-helmet'
 import { ThemeProvider } from 'styled-components'
+import { Provider } from '../components/AppContext'
 import theme from '../theme/theme'
 
 import './index.css'
 import './fonts.css'
 
-const Layout = ({ children, data }) => (
-  <ThemeProvider theme={theme}>
-    <div>
-      <Helmet
-        title={data.site.siteMetadata.title}
-        meta={[
-          { name: 'description', content: 'Sample' },
-          { name: 'keywords', content: 'sample, something' },
-        ]}
-      />
-      <div>{children()}</div>
-    </div>
-  </ThemeProvider>
-)
+class Layout extends Component {
+  render() {
+    return (
+      <Provider value={this.props.data.allContentfulEvent.edges}>
+        <ThemeProvider theme={theme}>
+          <div>
+            <Helmet
+              title={this.props.data.site.siteMetadata.title}
+              meta={[
+                { name: 'description', content: 'Sample' },
+                { name: 'keywords', content: 'sample, something' },
+              ]}
+            />
+            <div>{this.props.children()}</div>
+          </div>
+        </ThemeProvider>
+      </Provider>
+    )
+  }
+}
 
 Layout.propTypes = {
   children: PropTypes.func,
@@ -30,11 +37,30 @@ Layout.propTypes = {
 export default Layout
 
 export const query = graphql`
-  query SiteTitleQuery {
+  query rootQuery {
     site {
       siteMetadata {
         title
       }
     }
+
+    allContentfulEvent(filter: {}) {
+      edges {
+        node {
+          id
+          name
+          startTime
+          endTime
+          eventPriceLow
+          eventsListPicture {
+            title
+            file {
+              url
+            }
+          }
+        }
+      }
+    }
   }
 `
+

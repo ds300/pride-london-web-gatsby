@@ -2,10 +2,11 @@ import React from 'react'
 import Link from 'gatsby-link'
 
 const Home = () => (
-  <div>
+  <React.Fragment>
     <h1>Pride!!!!</h1>
+    <p>{React.version}</p>
     <Link to="/events/">Events</Link>
-  </div>
+  </React.Fragment>
 )
 
 export default Home
