@@ -1,6 +1,5 @@
 import React from 'react'
 import Link from 'gatsby-link'
-import PropTypes from 'prop-types'
 import styled from 'styled-components'
 import { EventListingCard } from '../templates/events'
 import { Container, Row, Column } from '../components/grid/grid'
@@ -10,7 +9,7 @@ const FlexColumn = styled(Column)`
   display: flex;
 `
 
-export default (Events = () => (
+export const Events = () => (
   <Consumer>
     {context => (
       <Container>
@@ -42,8 +41,6 @@ export default (Events = () => (
       </Container>
     )}
   </Consumer>
-))
+)
 
-Events.propTypes = {
-  data: PropTypes.object,
-}
+export default Events

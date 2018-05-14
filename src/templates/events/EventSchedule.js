@@ -44,7 +44,7 @@ const EventSchedule = props => {
 }
 
 EventSchedule.propTypes = {
-  schedule: PropTypes.object,
+  schedule: PropTypes.array,
 }
 
 export default EventSchedule
