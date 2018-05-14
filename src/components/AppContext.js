@@ -5,8 +5,21 @@ const AppContext = React.createContext()
 const { Consumer } = AppContext
 
 class Provider extends Component {
-  state = {
-    events: this.props.events,
+  constructor(props) {
+    super()
+    this.state = {
+      events: props.events,
+      filters: {
+        date: '',
+      },
+      actions: {
+        getFilterDate: this.getFilterDate,
+      },
+    }
+  }
+
+  getFilterDate = e => {
+    this.setState({filters: {date: e.target.value}})
   }
 
   render() {

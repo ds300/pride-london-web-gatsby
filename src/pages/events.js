@@ -2,13 +2,14 @@ import React from 'react'
 import Link from 'gatsby-link'
 import styled from 'styled-components'
 import { EventListingCard } from '../templates/events'
+import EventsFilter from '../templates/events/EventsFilter'
 import { Container, Row, Column } from '../components/grid/grid'
 import { Consumer } from '../components/AppContext'
+import moment from 'moment'
 
 const FlexColumn = styled(Column)`
   display: flex;
 `
-
 export const Events = () => (
   <Consumer>
     {context => (
@@ -17,11 +18,14 @@ export const Events = () => (
           <Column width={1}>
             <h1>Hi from the events page</h1>
             <Link to="/">Go back to the homepage</Link>
-            <p>{context.state.count}</p>
+            <EventsFilter />
           </Column>
         </Row>
         <Row>
-          {context.state.events.map(event => (
+          {context.state.events.filter(event => {
+            if(!context.state.filters.date) return true
+            return moment(event.node.startTime).format('L') === moment(context.state.filters.date).format('L')
+          }).map(event => (
             <FlexColumn
               width={[
                 1, // 100% between 0px screen width and first breakpoint (375px)
@@ -33,7 +37,9 @@ export const Events = () => (
             >
               <EventListingCard event={event.node} />
             </FlexColumn>
-          ))}
+          ))
+
+          }
         </Row>
       </Container>
     )}
