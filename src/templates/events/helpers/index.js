@@ -7,7 +7,7 @@ const formatTime = time => {
   return moment(time).format('h:mma')
 }
 
-export default event => {
+const formatDate = event => {
   const year = moment(event.startTime).year()
 
   const startDate = moment(event.startTime).format('L')
@@ -28,4 +28,17 @@ export default event => {
     return `${startDay} - ${endDay} ${startMonth} ${year} • ${startTime} - ${endTime}`
   }
   return `${startDay} ${startMonth} - ${endDay} ${endMonth} ${year} • ${startTime} - ${endTime}`
+}
+
+function filterByDate(event) { 
+  if (!this) return true
+  const startDate = moment(event.node.startTime).format('YYYY-MM-DD')
+  const endDate = moment(event.node.endTime).format('YYYY-MM-DD')
+  const filterDate = moment(this).format('YYYY-MM-DD')
+  return moment(filterDate).isBetween(startDate, endDate, null, '[]')
+}
+
+module.exports = {
+  formatDate,
+  filterByDate
 }

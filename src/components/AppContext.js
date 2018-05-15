@@ -8,7 +8,7 @@ class Provider extends Component {
   state = {
     filters: {
       date: '',
-    }
+    },
   }
 
   getFilterDate = e => {
@@ -17,13 +17,15 @@ class Provider extends Component {
 
   render() {
     return (
-      <AppContext.Provider value={{ 
-        state: this.state,
-        events: this.props.events,
-        actions: {
-          getFilterDate: this.getFilterDate
-        }
-      }}>
+      <AppContext.Provider
+        value={{
+          state: this.state,
+          events: this.props.events,
+          actions: {
+            getFilterDate: this.getFilterDate,
+          },
+        }}
+      >
         {this.props.children}
       </AppContext.Provider>
     )

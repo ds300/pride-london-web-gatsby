@@ -5,6 +5,7 @@ import { EventListingCard } from '../templates/events'
 import EventsFilter from '../templates/events/EventsFilter'
 import { Container, Row, Column } from '../components/grid/grid'
 import { Consumer } from '../components/AppContext'
+import { filterByDate } from '../templates/events/helpers/index.js'
 import moment from 'moment'
 
 const FlexColumn = styled(Column)`
@@ -23,13 +24,7 @@ export const Events = () => (
         </Row>
         <Row>
           {context.events
-            .filter(event => {
-              if (!context.state.filters.date) return true
-              const startDate = moment(event.node.startTime).format('YYYY-MM-DD')
-              const endDate = moment(event.node.endTime).format('YYYY-MM-DD')
-              const filterDate = moment(context.state.filters.date).format('YYYY-MM-DD')
-              return moment(filterDate).isBetween(startDate, endDate, null, '[]')
-            })
+            .filter(filterByDate, context.state.filters.date)
             .map(event => (
               <FlexColumn
                 width={[
