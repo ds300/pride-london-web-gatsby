@@ -3,10 +3,13 @@ import Link from 'gatsby-link'
 import styled from 'styled-components'
 import { EventListingCard } from '../templates/events'
 import EventDateFilter from '../templates/events/filters/EventDateFilter'
-import EventPriceFilter from '../templates/events/filters/EventPriceFilter'
+import EventFreeFilter from '../templates/events/filters/EventFreeFilter'
 import { Container, Row, Column } from '../components/grid/grid'
 import { Consumer } from '../components/AppContext'
-import { filterByDate, filterByFree } from '../templates/events/helpers/index.js'
+import {
+  filterByDate,
+  filterByFree,
+} from '../templates/events/helpers/index.js'
 import moment from 'moment'
 
 const FlexColumn = styled(Column)`
@@ -21,7 +24,7 @@ export const Events = () => (
             <h1>Hi from the events page</h1>
             <Link to="/">Go back to the homepage</Link>
             <EventDateFilter />
-            <EventPriceFilter />
+            <EventFreeFilter />
           </Column>
         </Row>
         <Row>

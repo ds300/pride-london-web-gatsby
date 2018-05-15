@@ -21,7 +21,7 @@ class EventCategoryFilter extends Component {
             checked={false}
             label="Show only free events"
             name="free"
-            handleChange={(e)=> context.actions.getCheckboxBool(e, 'free')}
+            handleChange={e => context.actions.getCheckboxBool(e, 'free')}
           />
         )}
       </Consumer>

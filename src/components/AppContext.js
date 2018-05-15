@@ -13,15 +13,15 @@ class Provider extends Component {
   }
 
   getInputValue = (e, name) => {
-    let state = this.state;
+    let state = this.state
     state.filters[name] = e.target.value
-    this.setState(state);
+    this.setState(state)
   }
 
   getCheckboxBool = (e, name) => {
-    let state = this.state;
+    let state = this.state
     state.filters[name] = e.target.checked
-    this.setState(state);
+    this.setState(state)
   }
 
   render() {
@@ -32,7 +32,7 @@ class Provider extends Component {
           events: this.props.events,
           actions: {
             getInputValue: this.getInputValue,
-            getCheckboxBool: this.getCheckboxBool
+            getCheckboxBool: this.getCheckboxBool,
           },
         }}
       >

@@ -5,10 +5,10 @@ import Checkbox from '../../../components/Checkbox'
 // WORK IN PROGRESS
 class EventCategoryFilter extends Component {
   state = {
-    checked: false
+    checked: false,
   }
 
-  handleChange = (e) => {
+  handleChange = e => {
     console.log(e.target.checked)
   }
 

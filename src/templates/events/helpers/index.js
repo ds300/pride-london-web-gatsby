@@ -39,7 +39,7 @@ function filterByDate(event) {
 }
 
 function filterByFree(event) {
-  if(!this) return true
+  if (!this) return true
   return event.node.isFree
 }
 

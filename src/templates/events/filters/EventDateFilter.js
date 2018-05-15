@@ -7,7 +7,10 @@ class EventDateFilter extends Component {
       <Consumer>
         {context => (
           <div>
-            <input type="date" onChange={(e)=> context.actions.getInputValue(e, 'date')} />
+            <input
+              type="date"
+              onChange={e => context.actions.getInputValue(e, 'date')}
+            />
           </div>
         )}
       </Consumer>
