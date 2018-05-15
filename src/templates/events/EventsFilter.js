@@ -7,7 +7,7 @@ class EventsFilter extends Component {
       <Consumer>
         {context => (
           <div>
-            <input type="date" onChange={context.state.actions.getFilterDate} />
+            <input type="date" onChange={context.actions.getFilterDate} />
           </div>
         )}
       </Consumer>
