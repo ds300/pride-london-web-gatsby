@@ -30,7 +30,7 @@ const formatDate = event => {
   return `${startDay} ${startMonth} - ${endDay} ${endMonth} ${year} • ${startTime} - ${endTime}`
 }
 
-function filterByDate(event) { 
+function filterByDate(event) {
   if (!this) return true
   const startDate = moment(event.node.startTime).format('YYYY-MM-DD')
   const endDate = moment(event.node.endTime).format('YYYY-MM-DD')
@@ -40,5 +40,5 @@ function filterByDate(event) {
 
 module.exports = {
   formatDate,
-  filterByDate
+  filterByDate,
 }

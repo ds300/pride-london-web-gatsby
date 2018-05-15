@@ -2,7 +2,8 @@ import React from 'react'
 import Link from 'gatsby-link'
 import styled from 'styled-components'
 import { EventListingCard } from '../templates/events'
-import EventsFilter from '../templates/events/EventsFilter'
+import EventDateFilter from '../templates/events/filters/EventDateFilter'
+import EventCategoryFilter from '../templates/events/filters/EventCategoryFilter'
 import { Container, Row, Column } from '../components/grid/grid'
 import { Consumer } from '../components/AppContext'
 import { filterByDate } from '../templates/events/helpers/index.js'
@@ -19,7 +20,8 @@ export const Events = () => (
           <Column width={1}>
             <h1>Hi from the events page</h1>
             <Link to="/">Go back to the homepage</Link>
-            <EventsFilter />
+            <EventDateFilter />
+            <EventCategoryFilter/>
           </Column>
         </Row>
         <Row>

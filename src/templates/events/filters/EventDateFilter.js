@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
-import { Consumer } from '../../components/AppContext'
+import { Consumer } from '../../../components/AppContext'
 
-class EventsFilter extends Component {
+class EventDateFilter extends Component {
   render() {
     return (
       <Consumer>
@@ -15,4 +15,4 @@ class EventsFilter extends Component {
   }
 }
 
-export default EventsFilter
+export default EventDateFilter
