@@ -38,7 +38,13 @@ function filterByDate(event) {
   return moment(filterDate).isBetween(startDate, endDate, null, '[]')
 }
 
+function filterByFree(event) {
+  if(!this) return true
+  return event.node.isFree
+}
+
 module.exports = {
   formatDate,
   filterByDate,
+  filterByFree,
 }

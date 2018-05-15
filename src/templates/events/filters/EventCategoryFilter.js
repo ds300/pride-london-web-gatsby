@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import { Consumer } from '../../../components/AppContext'
 import Checkbox from '../../../components/Checkbox'
 
+// WORK IN PROGRESS
 class EventCategoryFilter extends Component {
   state = {
     checked: false

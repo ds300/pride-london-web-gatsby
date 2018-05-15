@@ -6,6 +6,7 @@ const Wrapper = styled.div`
   display: flex;
   align-items: center;
   justify-content: space-between;
+  max-width: 200px;
 `
 
 const Input = styled.input`
@@ -36,21 +37,21 @@ class Checkbox extends Component {
   }
 
   toggleCheckbox = () => {
-    let checked = !this.state.checked;
-    this.setState({checked})
+    let checked = !this.state.checked
+    this.setState({ checked })
   }
 
   render() {
     return (
       <Wrapper>
-        <Input 
-          type="checkbox" 
+        <Input
+          type="checkbox"
           id={this.props.id}
-          value={this.props.value} 
+          value={this.props.value}
           name={this.props.name}
-          onChange={(e)=> {
+          onChange={e => {
             this.toggleCheckbox(e)
-            if(this.props.handleChange) {
+            if (this.props.handleChange) {
               this.props.handleChange(e)
             }
           }}

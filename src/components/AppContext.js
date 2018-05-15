@@ -8,11 +8,20 @@ class Provider extends Component {
   state = {
     filters: {
       date: '',
+      free: false,
     },
   }
 
-  getFilterDate = e => {
-    this.setState({ filters: { date: e.target.value } })
+  getInputValue = (e, name) => {
+    let state = this.state;
+    state.filters[name] = e.target.value
+    this.setState(state);
+  }
+
+  getCheckboxBool = (e, name) => {
+    let state = this.state;
+    state.filters[name] = e.target.checked
+    this.setState(state);
   }
 
   render() {
@@ -22,7 +31,8 @@ class Provider extends Component {
           state: this.state,
           events: this.props.events,
           actions: {
-            getFilterDate: this.getFilterDate,
+            getInputValue: this.getInputValue,
+            getCheckboxBool: this.getCheckboxBool
           },
         }}
       >
