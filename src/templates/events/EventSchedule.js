@@ -26,7 +26,7 @@ const splitIntoArray = schedule =>
       morning: [],
       afternoon: [],
       evening: [],
-    },
+    }
   )
 
 const EventSchedule = props => {
