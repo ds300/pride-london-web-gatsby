@@ -4,7 +4,6 @@ import Helmet from 'react-helmet'
 import { ThemeProvider } from 'styled-components'
 import { Provider } from '../components/AppContext'
 import theme from '../theme/theme'
-import Navigation from '../components/navigation/Navigation'
 
 import './index.css'
 import './fonts.css'
