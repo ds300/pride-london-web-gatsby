@@ -36,9 +36,13 @@ class Checkbox extends Component {
     checked: this.props.checked,
   }
 
-  toggleCheckbox = () => {
+  toggleCheckbox = (e) => {
     let checked = !this.state.checked
     this.setState({ checked })
+
+    if (this.props.handleChange) {
+      this.props.handleChange(e)
+    }
   }
 
   render() {
@@ -49,12 +53,7 @@ class Checkbox extends Component {
           id={this.props.id}
           value={this.props.value}
           name={this.props.name}
-          onChange={e => {
-            this.toggleCheckbox(e)
-            if (this.props.handleChange) {
-              this.props.handleChange(e)
-            }
-          }}
+          onChange={this.toggleCheckbox}
         />
         <Label htmlFor={this.props.id}>{this.props.label}</Label>
       </Wrapper>
