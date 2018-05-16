@@ -2,6 +2,7 @@ import React, { Fragment } from 'react'
 import Link from 'gatsby-link'
 import styled from 'styled-components'
 import { EventListingCard } from '../templates/events'
+import ImageBanner from '../components/ImageBanner/ImageBanner'
 import EventsFilters from '../templates/events/EventsFilters'
 import { Container, Row, Column } from '../components/grid/grid'
 import { Consumer } from '../components/AppContext'
@@ -19,19 +20,26 @@ const FlexColumn = styled(Column)`
 `
 export const Events = () => (
   <Consumer>
+    {' '}
     {context => (
       <Fragment>
         <Container>
           <EventsFilters />
-        </Container>
+        </Container>{' '}
         <Container>
           <Row>
             <Column width={1}>
-              <h1>Hi from the events page</h1>
-              <Link to="/">Go back to the homepage</Link>
-            </Column>
-          </Row>
+              <ImageBanner
+                titleText="Celebrate Pride"
+                subtitleText="Events, shows, talks"
+                imageSrc=""
+              />
+              <h1> Hi from the events page </h1>{' '}
+              <Link to="/"> Go back to the homepage </Link>{' '}
+            </Column>{' '}
+          </Row>{' '}
           <Row>
+            {' '}
             {context.events
               .filter(filterByDate, context.state.filters.date)
               .filter(filterByFree, context.state.filters.free)
@@ -63,13 +71,13 @@ export const Events = () => (
                   ]}
                   key={event.node.id}
                 >
-                  <EventListingCard event={event.node} />
+                  <EventListingCard event={event.node} />{' '}
                 </FlexColumn>
-              ))}
-          </Row>
-        </Container>
+              ))}{' '}
+          </Row>{' '}
+        </Container>{' '}
       </Fragment>
-    )}
+    )}{' '}
   </Consumer>
 )
 
