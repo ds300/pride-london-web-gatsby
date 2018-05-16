@@ -21,7 +21,7 @@ ShallowWrapper {
     "key": undefined,
     "nodeType": "class",
     "props": Object {
-      "children": <div>
+      "children": <styled.div>
         <styled.h1>
           
         </styled.h1>
@@ -29,14 +29,14 @@ ShallowWrapper {
         <styled.h3>
           
         </styled.h3>
-      </div>,
+      </styled.div>,
       "imageSrc": "",
     },
     "ref": null,
     "rendered": Object {
       "instance": null,
       "key": undefined,
-      "nodeType": "host",
+      "nodeType": "class",
       "props": Object {
         "children": Array [
           <styled.h1>
@@ -82,7 +82,7 @@ ShallowWrapper {
           "type": [Function],
         },
       ],
-      "type": "div",
+      "type": [Function],
     },
     "type": [Function],
   },
@@ -92,7 +92,7 @@ ShallowWrapper {
       "key": undefined,
       "nodeType": "class",
       "props": Object {
-        "children": <div>
+        "children": <styled.div>
           <styled.h1>
             
           </styled.h1>
@@ -100,14 +100,14 @@ ShallowWrapper {
           <styled.h3>
             
           </styled.h3>
-        </div>,
+        </styled.div>,
         "imageSrc": "",
       },
       "ref": null,
       "rendered": Object {
         "instance": null,
         "key": undefined,
-        "nodeType": "host",
+        "nodeType": "class",
         "props": Object {
           "children": Array [
             <styled.h1>
@@ -153,7 +153,7 @@ ShallowWrapper {
             "type": [Function],
           },
         ],
-        "type": "div",
+        "type": [Function],
       },
       "type": [Function],
     },

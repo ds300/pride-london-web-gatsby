@@ -1,10 +1,11 @@
 import styled from 'styled-components'
 
 const BannerTitle = styled.h3`
-  background-color: purple;
+  background-color: #2d2f7f;
+  color: #ffffff;
   display: inline-block;
-  color: white;
-  padding: 0 5px;
+  font-size: 16px;
+  padding: 0 10px;
 `
 
 export default BannerTitle
