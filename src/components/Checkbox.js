@@ -7,7 +7,6 @@ const Wrapper = styled.div`
   display: flex;
   align-items: center;
   justify-content: space-between;
-  max-width: 200px;
 `
 
 const Input = styled.input`
@@ -17,11 +16,12 @@ const Input = styled.input`
   border-radius: 2px;
   border: solid 2.5px ${props => props.theme.colors.eucalyptusGreen};
   order: 1;
+  flex-shrink: 0;
 
   &:checked {
     background-image: url(${checkmark});
     background-repeat: no-repeat;
-    background-position: center center; 
+    background-position: center center;
 
     & + label {
       font-weight: 700;

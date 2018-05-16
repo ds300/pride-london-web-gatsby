@@ -7,7 +7,7 @@ const { Consumer } = AppContext
 class Provider extends Component {
   state = {
     filters: {
-      date: '',
+      date: null,
       free: false,
     },
   }
@@ -15,6 +15,12 @@ class Provider extends Component {
   getInputValue = (e, name) => {
     let state = this.state
     state.filters[name] = e.target.value
+    this.setState(state)
+  }
+
+  getDatepickerValue = date => {
+    let state = this.state
+    state.filters.date = date
     this.setState(state)
   }
 
@@ -33,6 +39,7 @@ class Provider extends Component {
           actions: {
             getInputValue: this.getInputValue,
             getCheckboxBool: this.getCheckboxBool,
+            getDatepickerValue: this.getDatepickerValue,
           },
         }}
       >
