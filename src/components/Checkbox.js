@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import styled from 'styled-components'
+import checkmark from '../theme/assets/images/icon-check.svg'
 
 const Wrapper = styled.div`
   display: flex;
@@ -18,7 +19,9 @@ const Input = styled.input`
   order: 1;
 
   &:checked {
-    background-color: ${props => props.theme.colors.indigo};
+    background-image: url(${checkmark});
+    background-repeat: no-repeat;
+    background-position: center center; 
 
     & + label {
       font-weight: 700;
