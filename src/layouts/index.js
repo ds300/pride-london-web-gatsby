@@ -4,49 +4,26 @@ import Helmet from 'react-helmet'
 import { ThemeProvider } from 'styled-components'
 import { Provider } from '../components/AppContext'
 import theme from '../theme/theme'
-import Navigation from '../components/navigation/Navigation'
 
 import './index.css'
 import './fonts.css'
 
-class Layout extends Component {
-  render() {
-    return (
-      <Provider value={this.props.data.allContentfulEvent.edges}>
-        <ThemeProvider theme={theme}>
-          <div>
-            <Helmet
-              title={this.props.data.site.siteMetadata.title}
-              meta={[
-                { name: 'description', content: 'Sample' },
-                { name: 'keywords', content: 'sample, something' },
-              ]}
-            />
-            <div>
-              <Navigation
-                items={{
-                  logo: 'http://via.placeholder.com/164x64',
-
-                  listItems: [
-                    'Learn',
-                    'Attend',
-                    'Support us',
-                    'Take part',
-                    'Plan',
-                    'Help',
-                  ],
-
-                  cta: 'dontate',
-                }}
-              />
-              {this.props.children()}
-            </div>
-          </div>
-        </ThemeProvider>
-      </Provider>
-    )
-  }
-}
+const Layout = props => (
+  <Provider value={props.data.allContentfulEvent.edges}>
+    <ThemeProvider theme={theme}>
+      <div>
+        <Helmet
+          title={props.data.site.siteMetadata.title}
+          meta={[
+            { name: 'description', content: 'Sample' },
+            { name: 'keywords', content: 'sample, something' },
+          ]}
+        />
+        <div>{props.children()}</div>
+      </div>
+    </ThemeProvider>
+  </Provider>
+)
 
 Layout.propTypes = {
   children: PropTypes.func,
