@@ -31,10 +31,12 @@ const formatDate = event => {
 }
 
 function filterByDate(event) {
+  const dateFormat = 'YYYY-MM-DD'
+
   if (!this) return true
-  const startDate = moment(event.node.startTime).format('YYYY-MM-DD')
-  const endDate = moment(event.node.endTime).format('YYYY-MM-DD')
-  const filterDate = moment(this).format('YYYY-MM-DD')
+  const startDate = moment(event.node.startTime).format(dateFormat)
+  const endDate = moment(event.node.endTime).format(dateFormat)
+  const filterDate = moment(this).format(dateFormat)
   return moment(filterDate).isBetween(startDate, endDate, null, '[]')
 }
 

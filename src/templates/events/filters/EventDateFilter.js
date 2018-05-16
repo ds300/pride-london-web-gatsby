@@ -58,6 +58,7 @@ class EventDateFilter extends Component {
               }
               onChange={context.actions.getDatepickerValue}
               placeholderText="Date"
+              locale="en-GB"
             />
           </DatePickerWrapper>
         )}
