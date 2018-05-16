@@ -9,8 +9,8 @@ import BannerSubtitle from '../BannerSubtitle/BannerSubtitle'
 
 describe('ImageBanner', () => {
   it('should render', () => {
-    const wrapper = shallow(<ImageBanner />)
-    expect(wrapper).toMatchSnapshot()
+    const tree = renderer.create(<ImageBanner />)
+    expect(tree).toMatchSnapshot()
   })
 
   it('should render a <BannerTitle />', () => {
