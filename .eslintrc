@@ -25,6 +25,7 @@
     "react/forbid-prop-types": "off",
     "react/jsx-filename-extension": "off",
     "react/require-default-props": "true",
+    "react/no-unused-state": "off",
     "semi": "off"
   }
 }
