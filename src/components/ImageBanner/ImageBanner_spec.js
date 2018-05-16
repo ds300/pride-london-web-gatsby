@@ -25,14 +25,24 @@ describe('ImageBanner', () => {
 
   it('should render the titleText from props to BannerTitle ', () => {
     const titleText = 'Here is a test title!'
-    const wrapper = mount(<ImageBanner titleText={titleText} />)
-    expect(wrapper.find(BannerTitle).text()).toBe(titleText)
+    const wrapper = shallow(<ImageBanner titleText={titleText} />)
+    expect(
+      wrapper
+        .find(BannerTitle)
+        .dive()
+        .text()
+    ).toBe(titleText)
   })
 
   it('should render the subtitleText from props to BannerTitle ', () => {
     const subtitleText = 'And here is a test subtitle!'
-    const wrapper = mount(<ImageBanner subtitleText={subtitleText} />)
-    expect(wrapper.find(BannerSubtitle).text()).toBe(subtitleText)
+    const wrapper = shallow(<ImageBanner subtitleText={subtitleText} />)
+    expect(
+      wrapper
+        .find(BannerSubtitle)
+        .dive()
+        .text()
+    ).toBe(subtitleText)
   })
 
   it('should pass the imageSrc prop to the BackgroundImage component', () => {
