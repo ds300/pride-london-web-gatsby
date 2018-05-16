@@ -4,6 +4,7 @@ import Helmet from 'react-helmet'
 import { ThemeProvider } from 'styled-components'
 import { Provider } from '../components/AppContext'
 import theme from '../theme/theme'
+import Navigation from '../components/navigation/Navigation'
 
 import './index.css'
 import './fonts.css'
@@ -21,7 +22,25 @@ class Layout extends Component {
                 { name: 'keywords', content: 'sample, something' },
               ]}
             />
-            <div>{this.props.children()}</div>
+            <div>
+              <Navigation
+                items={{
+                  logo: 'http://via.placeholder.com/164x64',
+
+                  listItems: [
+                    'Learn',
+                    'Attend',
+                    'Support us',
+                    'Take part',
+                    'Plan',
+                    'Help',
+                  ],
+
+                  cta: 'dontate',
+                }}
+              />
+              {this.props.children()}
+            </div>
           </div>
         </ThemeProvider>
       </Provider>
@@ -63,4 +82,3 @@ export const query = graphql`
     }
   }
 `
-

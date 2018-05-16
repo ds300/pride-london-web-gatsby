@@ -1,16 +1,16 @@
 import React, { Component } from 'react'
 
 const AppContext = React.createContext()
-const { Consumer } = AppContext;
+const { Consumer } = AppContext
 
 class Provider extends Component {
   state = {
-    events: this.props.value
+    events: this.props.value,
   }
 
   render() {
-    return(
-      <AppContext.Provider value={{state: this.state}}>
+    return (
+      <AppContext.Provider value={{ state: this.state }}>
         {this.props.children}
       </AppContext.Provider>
     )
@@ -19,5 +19,5 @@ class Provider extends Component {
 
 module.exports = {
   Provider,
-  Consumer
+  Consumer,
 }
