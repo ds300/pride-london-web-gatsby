@@ -7,6 +7,7 @@ import Helmet from 'react-helmet'
 import { media } from '../theme/media'
 
 const PageWrapper = styled.div`
+  position: relative;
   margin: 0 auto;
   max-width: ${props => props.theme.breakpoints[3]};
   background-color: white;
@@ -50,6 +51,22 @@ const HeroImage = styled.div`
   `};
 `
 
+const InfoPlaceholder = styled.div`
+  background-color: ${props => props.theme.colors.indigo};
+  height: 500px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  ${media.desktop`
+    position: absolute;
+    width: 400px;
+    height: 565px;
+    right: 90px;
+    top: 270px;
+ `};
+`
+
 export default class Event extends Component {
   render() {
     const {
@@ -70,6 +87,7 @@ export default class Event extends Component {
             />
           </TitleWrapper>
         </HeroImageAndTitle>
+        <InfoPlaceholder>put things inside me plz</InfoPlaceholder>
         <ContentWrapper>
           <ReactMarkdown source={eventDescription.eventDescription} />
           <EventSchedule schedule={performances} />
