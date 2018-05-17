@@ -74,7 +74,9 @@ export default class Event extends Component {
       eventDescription,
       name,
       performances,
+      eventCategories,
     } = this.props.data.contentfulEvent
+
     return (
       <PageWrapper>
         <Helmet title={name} />
@@ -82,9 +84,7 @@ export default class Event extends Component {
           <HeroImage src={individualEventPicture.file.url} />
           <TitleWrapper>
             <Title>{name}</Title>
-            <EventTagList
-              values={['Golf', 'Fancy Cheeses', 'Lifestyle', 'Music']}
-            />
+            <EventTagList values={eventCategories} />
           </TitleWrapper>
         </HeroImageAndTitle>
         <InfoPlaceholder>put things inside me plz</InfoPlaceholder>
@@ -113,6 +113,7 @@ export const eventPageQuery = graphql`
         title
         description
       }
+      eventCategories
       performances {
         id
         ...eventScheduleFragment
