@@ -4,6 +4,7 @@ import { Column } from '../../components/grid/grid'
 import { Flex } from 'grid-styled'
 import EventDateFilter from './filters/EventDateFilter'
 import EventFreeFilter from './filters/EventFreeFilter'
+import EventCategoryFilter from './filters/EventCategoryFilter'
 
 const FilterWrapper = styled(Flex)`
   background-color: ${props => props.theme.colors.white};
@@ -44,6 +45,9 @@ const EventsFilters = props => {
       </FlexColumn>
       <FlexColumn width={[1, 1 / 2, 1 / 2, 1 / 4]}>
         <EventFreeFilter />
+      </FlexColumn>
+      <FlexColumn width={[1, 1 / 2, 1 / 2, 1 / 4]}>
+        <EventCategoryFilter />
       </FlexColumn>
     </FilterWrapper>
   )

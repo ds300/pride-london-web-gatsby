@@ -11,9 +11,6 @@ const Wrapper = styled.div`
 `
 
 class EventCategoryFilter extends Component {
-  state = {
-    checked: false,
-  }
 
   render() {
     return (

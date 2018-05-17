@@ -1,27 +1,25 @@
 import React, { Component } from 'react'
+import styled from 'styled-components'
 import { Consumer } from '../../../components/AppContext'
-import Checkbox from '../../../components/Checkbox'
+import CheckboxSet from '../../../components/CheckboxSet'
+import constants from '../../../constants/constants'
 
-// WORK IN PROGRESS
+const Wrapper = styled.div`
+  border: 2px solid ${props => props.theme.colors.mediumGrey};
+  background-color: transparent;
+  border-radius: 4px;
+  padding: 9px 20px;
+  font-sizeL 0.875rem;
+  position: relative;
+`
+
 class EventCategoryFilter extends Component {
-  state = {
-    checked: false,
-  }
-
-  handleChange = e => {
-    console.log(e.target.checked)
-  }
-
   render() {
     return (
-      <Checkbox
-        id="test"
-        value="test"
-        checked={false}
-        label="test"
-        name="test"
-        handleChange={this.handleChange}
-      />
+    <Wrapper>
+      Category <span>1</span>
+      <CheckboxSet options={constants.eventCategories} />
+    </Wrapper>
     )
   }
 }

@@ -64,8 +64,6 @@ class Checkbox extends Component {
   }
 }
 
-export default Checkbox
-
 Checkbox.propTypes = {
   checked: PropTypes.bool,
   handleChange: PropTypes.func,
@@ -74,3 +72,5 @@ Checkbox.propTypes = {
   value: PropTypes.string,
   name: PropTypes.string,
 }
+
+export default Checkbox
