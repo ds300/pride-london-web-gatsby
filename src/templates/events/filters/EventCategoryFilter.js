@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Consumer } from '../../../components/AppContext'
+// import { Consumer } from '../../../components/AppContext'
 import Checkbox from '../../../components/Checkbox'
 
 // WORK IN PROGRESS
@@ -8,9 +8,9 @@ class EventCategoryFilter extends Component {
     checked: false,
   }
 
-  handleChange = e => {
-    console.log(e.target.checked)
-  }
+  // handleChange = e => {
+  //   console.log(e.target.checked)
+  // }
 
   render() {
     return (

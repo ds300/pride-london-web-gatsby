@@ -13,19 +13,19 @@ class Provider extends Component {
   }
 
   getInputValue = (e, name) => {
-    let state = this.state
+    const { state } = this
     state.filters[name] = e.target.value
     this.setState(state)
   }
 
   getDatepickerValue = date => {
-    let state = this.state
+    const { state } = this
     state.filters.date = date
     this.setState(state)
   }
 
   getCheckboxBool = (e, name) => {
-    let state = this.state
+    const { state } = this
     state.filters[name] = e.target.checked
     this.setState(state)
   }
