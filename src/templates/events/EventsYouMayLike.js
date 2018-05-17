@@ -49,7 +49,7 @@ const EventsYouMayLike = ({ eventId }) => (
               <h2>You may also like</h2>
             </Column>
             <Column width={0.3}>
-              <ViewAll href="../events/">View all events</ViewAll>
+              <ViewAll href="../events/">View all events {'>'}</ViewAll>
             </Column>
           </Row>
           <Row>
