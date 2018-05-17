@@ -37,7 +37,7 @@ const ContentWrapper = styled.div`
 
 const TitleWrapper = ContentWrapper.extend`
   ${media.desktop`
-    padding: 60px 0px;
+    padding: 60px 0px 50px;
   `};
 `
 
