@@ -5,11 +5,7 @@ import { EventListingCard } from '../templates/events'
 import EventsFilters from '../templates/events/EventsFilters'
 import { Container, Row, Column } from '../components/grid/grid'
 import { Consumer } from '../components/AppContext'
-import {
-  filterByDate,
-  filterByFree,
-} from '../templates/events/helpers/index.js'
-import moment from 'moment'
+import { filterByDate, filterByFree } from '../templates/events/helpers/index'
 
 const FlexColumn = styled(Column)`
   display: flex;

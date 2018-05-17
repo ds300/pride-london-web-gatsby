@@ -34,8 +34,8 @@ const NavItems = props => {
       <Column flex={3} alignItems="center" justifyContent="center">
         <img src={logo} alt="" />
       </Column>
-      {listItems.map((items, index) => (
-        <Column key={index}>
+      {listItems.map(items => (
+        <Column key={items.id}>
           <StyledLink to="#"> {items}</StyledLink>
         </Column>
       ))}
@@ -44,6 +44,10 @@ const NavItems = props => {
       </Column>
     </Fragment>
   )
+}
+
+NavItems.propTypes = {
+  items: PropTypes.object,
 }
 
 export default NavItems
