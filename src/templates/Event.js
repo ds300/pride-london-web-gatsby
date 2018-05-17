@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import ReactMarkdown from 'react-markdown'
-import { EventTagList, EventSchedule, EventYouMayAlsoLike } from './events'
+import { EventTagList, EventSchedule, EventsYouMayLike } from './events'
 
 export default class Event extends Component {
   state = { event: this.props.data.contentfulEvent }
@@ -17,7 +17,7 @@ export default class Event extends Component {
           source={this.state.event.eventDescription.eventDescription}
         />{' '}
         <EventSchedule schedule={this.state.event.performances} />
-        <EventYouMayAlsoLike />
+        <EventsYouMayLike eventId={this.state.event.id} />
       </div>
     )
   }
@@ -33,7 +33,6 @@ export const eventPageQuery = graphql`
       id
       name
       performances {
-        id
         ...eventScheduleFragment
       }
       eventDescription {
