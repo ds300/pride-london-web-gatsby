@@ -23,7 +23,6 @@ const FlexColumn = styled(Column)`
 `
 
 const filterEventsYouMayLike = (events, eventId) => {
-  console.log(events)
   const filteredEvents = events.filter(event => {
     if (event.node.id === eventId) return false
 
