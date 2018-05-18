@@ -27,7 +27,7 @@ const DatePickerWrapper = styled.div`
       border: none;
       appearance: none;
       padding: 14px 20px;
-      font-size: 0.875em;
+      font-size: 0.875rem;
       line-height: 1.214;
       box-sizing: border-box;
       display: block;

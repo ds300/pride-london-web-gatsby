@@ -10,7 +10,7 @@ const ViewAll = styled.a`
   color: ${props => props.theme.colors.indigo};
   display: block;
   font-family: ${props => props.theme.fonts.title};
-  font-size: 0.8em;
+  font-size: 0.875rem;
   letter-spacing: 0.1px;
   padding-top: 5px;
   text-align: right;
