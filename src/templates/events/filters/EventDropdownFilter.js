@@ -15,28 +15,34 @@ const Wrapper = styled.div`
 const Button = styled.button`
   font-size: 0.875rem;
   width: 100%;
-  border: 2px solid ${props => props.theme.colors.mediumGrey};
-  background-color: transparent;
-  border-radius: 4px;
-  padding: 11px 20px;
+  background-color: ${props => props.theme.colors.lightGrey};
+  border-color: ${props => props.theme.colors.lightGrey};
+  padding: 11px 10px;
   display: flex;
   align-items: center;
   min-height: 48px;
   box-sizing: border-box;
 
-  &:focus {
-    border-color: ${props => props.theme.colors.eucalyptusGreen};
-    outline: none;
+  @media (min-width: ${props => props.theme.breakpoints[0]}) {
+    padding: 11px 20px;
   }
 
   @media (min-width: ${props => props.theme.breakpoints[1]}) {
     background-image: url(${props => (props.isOpen ? iconUp : iconDown)});
     background-repeat: no-repeat;
     background-position: right 20px center;
+    background-color: transparent;
+    border-radius: 4px;
+    border: 2px solid;
     border-color: ${props =>
       props.isOpen
         ? props.theme.colors.eucalyptusGreen
         : props.theme.colors.mediumGrey};
+
+    &:focus {
+      border-color: ${props => props.theme.colors.eucalyptusGreen};
+      outline: none;
+    }
   }
 `
 
@@ -44,14 +50,14 @@ const DropDown = styled.fieldset`
   padding: 0;
   margin: 0;
   border: none;
-  position: absolute;
-  top: 100%;
-  left: 0;
-  width: 100%;
-  z-index: 1;
 
   @media (min-width: ${props => props.theme.breakpoints[1]}) {
     display: ${props => (props.isOpen ? 'block' : 'none')};
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    z-index: 1;
   }
 `
 
@@ -62,10 +68,14 @@ const Badge = styled.span`
   margin-left: 10px;
   border-radius: 50%;
   color: ${props => props.theme.colors.white};
-  background-color: ${props => props.theme.colors.indigo};
+  background-color: ${props => props.theme.colors.eucalyptusGreen};
   height: 22px;
   width: 22px;
   line-height: 1;
+
+  @media (min-width: ${props => props.theme.breakpoints[1]}) {
+    background-color: ${props => props.theme.colors.indigo};
+  }
 `
 
 class EventDropdownFilter extends Component {
@@ -87,6 +97,7 @@ class EventDropdownFilter extends Component {
             <Button
               aria-controls={this.props.filterName}
               aria-expanded={this.state.isOpen}
+              type="button"
               id={`button_${this.props.filterName}`}
               onClick={this.toggleMenu}
               isOpen={this.state.isOpen}

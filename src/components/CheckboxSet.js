@@ -5,15 +5,23 @@ import { rgba } from 'polished'
 import { Consumer } from './AppContext'
 import Checkbox from './Checkbox'
 import constants from '../constants/constants'
+import theme from '../theme/theme'
 
 const List = styled.ul`
   list-style: none;
-  padding: 20px;
+  padding: 20px 10px;
   margin: 0;
   border-top: 2px solid transparent;
   box-sizing: border-box;
-  box-shadow: 0 2px 4px 0 ${props => rgba(props.theme.colors.black, 0.2)};
   background-color: ${props => props.theme.colors.white};
+
+  @media (min-width: ${props => props.theme.breakpoints[0]}) {
+    padding: 20px;
+  }
+
+  @media (min-width: ${props => props.theme.breakpoints[1]}) {
+    box-shadow: 0 2px 4px 0 ${props => rgba(props.theme.colors.black, 0.2)};
+  }
 `
 const ListItem = styled.li`
   margin-bottom: 10px;

@@ -14,7 +14,7 @@ class Provider extends Component {
       audience: [],
       accessibilityOptions: [],
       area: [],
-      timeOfDay: []
+      timeOfDay: [],
     },
   }
 

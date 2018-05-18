@@ -94,11 +94,11 @@ function filterByTime(event) {
   if (this.length === 0) return true
   const format = 'HH:MM'
   const startTime = moment(event.node.startTime).format(format)
-  const afternoonStart =  '12:00'
+  const afternoonStart = '12:00'
   const afternoonEnd = '17:59'
 
   let timeOfDay
-  
+
   switch (true) {
     case startTime < afternoonStart:
       timeOfDay = 'Morning'

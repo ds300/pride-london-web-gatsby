@@ -10,7 +10,7 @@ import {
   filterByFree,
   filterByCategory,
   filterByArea,
-  filterByTime
+  filterByTime,
 } from '../templates/events/helpers/index.js'
 import moment from 'moment'
 
