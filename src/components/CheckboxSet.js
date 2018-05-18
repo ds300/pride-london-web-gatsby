@@ -10,11 +10,6 @@ const List = styled.ul`
   list-style: none;
   padding: 20px;
   margin: 0;
-  position: absolute;
-  top: 100%;
-  left: 0;
-  width: 100%;
-  z-index: 1;
   border-top: 2px solid transparent;
   box-sizing: border-box;
   box-shadow: 0 2px 4px 0 ${props => rgba(props.theme.colors.black, 0.2)};
@@ -29,6 +24,14 @@ const ListItem = styled.li`
 `
 
 class CheckboxSet extends Component {
+  makeId = string => {
+    const id = string
+      .replace(/[^a-zA-Z0-9 ]/g, '')
+      .replace(/ /g, '_')
+      .toLowerCase()
+    return `${this.props.filterName}_${id}`
+  }
+
   render() {
     return (
       <Consumer>
@@ -39,15 +42,21 @@ class CheckboxSet extends Component {
                 <ListItem key={index}>
                   <Checkbox
                     checked={
-                      context.state.filters[this.props.filterName].indexOf(option) !=
-                      -1
+                      context.state.filters[this.props.filterName].indexOf(
+                        option
+                      ) != -1
                         ? true
                         : false
                     }
                     label={option}
                     value={option}
+                    id={`${this.makeId(option)}`}
+                    name={`${this.makeId(option)}`}
                     handleChange={e =>
-                      context.actions.getCheckboxSetValues(e, this.props.filterName)
+                      context.actions.getCheckboxSetValues(
+                        e,
+                        this.props.filterName
+                      )
                     }
                   />
                 </ListItem>

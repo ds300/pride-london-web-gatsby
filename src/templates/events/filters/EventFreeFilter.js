@@ -12,9 +12,13 @@ const Wrapper = styled.div`
   align-items: center;
   min-height: 48px;
   box-sizing: border-box;
+
+  &:focus-within {
+    border-color: ${props => props.theme.colors.eucalyptusGreen};
+  }
 `
 
-class EventCategoryFilter extends Component {
+class EventFreeFilter extends Component {
   render() {
     return (
       <Consumer>
@@ -35,4 +39,4 @@ class EventCategoryFilter extends Component {
   }
 }
 
-export default EventCategoryFilter
+export default EventFreeFilter

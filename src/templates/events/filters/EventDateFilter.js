@@ -9,7 +9,7 @@ import 'react-datepicker/dist/react-datepicker.css'
 
 const DatePickerWrapper = styled.div`
   display: flex;
-  align-items: center;  
+  align-items: center;
   flex-grow: 1;
   min-height: 48px;
   box-sizing: border-box;

@@ -68,6 +68,7 @@ export const query = graphql`
           venueDetails
           audience
           accessibilityOptions
+          postcode
           eventsListPicture {
             title
             file {

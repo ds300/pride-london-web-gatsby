@@ -25,6 +25,7 @@ const constants = {
   venueDetails: ['Gender neutral toilets', 'Outdoors', 'Indoors'],
   area: ['Central', 'North', 'East', 'South', 'West'],
   audience: ['Youth', '16+', '18+', 'Families'],
+  timeOfDay: ['Morning', 'Afternoon', 'Evening']
 }
 
 export default constants

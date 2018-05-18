@@ -47,17 +47,72 @@ function filterByFree(event) {
 
 function filterByCategory(event) {
   const { key } = this
-  console.log(event, key)
   if (this.array.length === 0) return true
 
   return this.array.some(function(category) {
-    if(Array.isArray(event.node[key])) {
+    if (Array.isArray(event.node[key])) {
       return event.node[key].indexOf(category) >= 0
-    }
-    else {
+    } else {
       return false
     }
   })
+}
+
+function filterByArea(event) {
+  if (this.length === 0) return true
+
+  if (typeof event.node.postcode === 'string') {
+    let area
+    const postcode = event.node.postcode.toLowerCase()
+    switch (true) {
+      case postcode.lastIndexOf('wc', 0) === 0 ||
+        postcode.lastIndexOf('ec', 0) === 0:
+        area = 'Central'
+        break
+      case postcode.lastIndexOf('w', 0) === 0:
+        area = 'West'
+        break
+      case postcode.lastIndexOf('e', 0) === 0:
+        area = 'East'
+        break
+      case postcode.lastIndexOf('s', 0) === 0:
+        area = 'South'
+        break
+      case postcode.lastIndexOf('n', 0) === 0:
+        area = 'North'
+        break
+      default:
+        return false
+    }
+    return this.indexOf(area) !== -1
+  } else {
+    return false
+  }
+}
+
+function filterByTime(event) {
+  if (this.length === 0) return true
+  const format = 'HH:MM'
+  const startTime = moment(event.node.startTime).format(format)
+  const afternoonStart =  '12:00'
+  const afternoonEnd = '17:59'
+
+  let timeOfDay
+  
+  switch (true) {
+    case startTime < afternoonStart:
+      timeOfDay = 'Morning'
+      break
+    case startTime >= afternoonStart && startTime <= afternoonEnd:
+      timeOfDay = 'Afternoon'
+      break
+    case startTime > afternoonEnd:
+      timeOfDay = 'Evening'
+      break
+    default:
+      return false
+  }
+  return this.indexOf(timeOfDay) !== -1
 }
 
 module.exports = {
@@ -65,4 +120,6 @@ module.exports = {
   filterByDate,
   filterByFree,
   filterByCategory,
+  filterByArea,
+  filterByTime,
 }

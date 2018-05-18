@@ -9,11 +9,12 @@ import iconUp from '../../../theme/assets/images/icon-chevron-up.svg'
 
 const Wrapper = styled.div`
   position: relative;
-  font-size: 0.875rem;
   line-height: 1.214;
 `
 
-const Header = styled.div`
+const Button = styled.button`
+  font-size: 0.875rem;
+  width: 100%;
   border: 2px solid ${props => props.theme.colors.mediumGrey};
   background-color: transparent;
   border-radius: 4px;
@@ -22,6 +23,11 @@ const Header = styled.div`
   align-items: center;
   min-height: 48px;
   box-sizing: border-box;
+
+  &:focus {
+    border-color: ${props => props.theme.colors.eucalyptusGreen};
+    outline: none;
+  }
 
   @media (min-width: ${props => props.theme.breakpoints[1]}) {
     background-image: url(${props => (props.isOpen ? iconUp : iconDown)});
@@ -34,7 +40,16 @@ const Header = styled.div`
   }
 `
 
-const DropDown = styled.div`
+const DropDown = styled.fieldset`
+  padding: 0;
+  margin: 0;
+  border: none;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  width: 100%;
+  z-index: 1;
+
   @media (min-width: ${props => props.theme.breakpoints[1]}) {
     display: ${props => (props.isOpen ? 'block' : 'none')};
   }
@@ -45,12 +60,12 @@ const Badge = styled.span`
   align-items: center;
   justify-content: center;
   margin-left: 10px;
-
   border-radius: 50%;
   color: ${props => props.theme.colors.white};
   background-color: ${props => props.theme.colors.indigo};
   height: 22px;
   width: 22px;
+  line-height: 1;
 `
 
 class EventDropdownFilter extends Component {
@@ -67,18 +82,32 @@ class EventDropdownFilter extends Component {
   render() {
     return (
       <Consumer>
-      {context => (
-        <Wrapper onMouseEnter={this.toggleMenu} onMouseLeave={this.toggleMenu}>
-          <Header onTouchStart={this.toggleMenu} isOpen={this.state.isOpen}>
-            {this.props.heading}
-            {context.state.filters[this.props.filterName].length > 0 ? <Badge>{context.state.filters[this.props.filterName].length}</Badge> : null}
-            
-          </Header>
-          <DropDown isOpen={this.state.isOpen}>
-            <CheckboxSet filterName={this.props.filterName} />
-          </DropDown>
-        </Wrapper>
-      )}
+        {context => (
+          <Wrapper>
+            <Button
+              aria-controls={this.props.filterName}
+              aria-expanded={this.state.isOpen}
+              id={`button_${this.props.filterName}`}
+              onClick={this.toggleMenu}
+              isOpen={this.state.isOpen}
+            >
+              {this.props.heading}
+              {context.state.filters[this.props.filterName].length > 0 ? (
+                <Badge>
+                  {context.state.filters[this.props.filterName].length}
+                </Badge>
+              ) : null}
+            </Button>
+            <DropDown
+              isOpen={this.state.isOpen}
+              id={this.props.filterName}
+              aria-hidden={!this.state.isOpen}
+              aria-labelledby={`button_${this.props.filterName}`}
+            >
+              <CheckboxSet filterName={this.props.filterName} />
+            </DropDown>
+          </Wrapper>
+        )}
       </Consumer>
     )
   }

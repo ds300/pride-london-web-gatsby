@@ -12,14 +12,10 @@ class Provider extends Component {
       eventCategories: [],
       venueDetails: [],
       audience: [],
-      accessibilityOptions: []
+      accessibilityOptions: [],
+      area: [],
+      timeOfDay: []
     },
-  }
-
-  getInputValue = (e, name) => {
-    let state = this.state
-    state.filters[name] = e.target.value
-    this.setState(state)
   }
 
   getDatepickerValue = date => {
@@ -38,8 +34,8 @@ class Provider extends Component {
     let state = this.state
 
     if (
-      e.target.checked && 
-      state.filters[name].indexOf(e.target.value) === -1 
+      e.target.checked &&
+      state.filters[name].indexOf(e.target.value) === -1
     ) {
       state.filters[name].push(e.target.value)
     } else {
@@ -59,7 +55,6 @@ class Provider extends Component {
           state: this.state,
           events: this.props.events,
           actions: {
-            getInputValue: this.getInputValue,
             getCheckboxBool: this.getCheckboxBool,
             getDatepickerValue: this.getDatepickerValue,
             getCheckboxSetValues: this.getCheckboxSetValues,

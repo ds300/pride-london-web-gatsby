@@ -9,6 +9,8 @@ import {
   filterByDate,
   filterByFree,
   filterByCategory,
+  filterByArea,
+  filterByTime
 } from '../templates/events/helpers/index.js'
 import moment from 'moment'
 
@@ -49,6 +51,8 @@ export const Events = () => (
                 array: context.state.filters.audience,
                 key: 'audience',
               })
+              .filter(filterByArea, context.state.filters.area)
+              .filter(filterByTime, context.state.filters.timeOfDay)
               .map(event => (
                 <FlexColumn
                   width={[
