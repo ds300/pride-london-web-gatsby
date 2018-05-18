@@ -9,6 +9,7 @@ class Provider extends Component {
     filters: {
       date: null,
       free: false,
+      eventCategories: []
     },
   }
 
@@ -30,6 +31,22 @@ class Provider extends Component {
     this.setState(state)
   }
 
+  getCheckboxSetValues = (e, name) => {
+    let state = this.state
+
+    if(e.target.checked) {
+      state.filters[name].push(e.target.value)
+    } 
+    else {
+      const index = state.filters[name].indexOf(e.target.value)
+      if (index > -1) {
+        this.state.filters[name].splice(index, 1);
+      }
+    }
+
+    this.setState(state);
+  }
+
   render() {
     return (
       <AppContext.Provider
@@ -40,6 +57,7 @@ class Provider extends Component {
             getInputValue: this.getInputValue,
             getCheckboxBool: this.getCheckboxBool,
             getDatepickerValue: this.getDatepickerValue,
+            getCheckboxSetValues: this.getCheckboxSetValues,
           },
         }}
       >

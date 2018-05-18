@@ -11,7 +11,6 @@ const Wrapper = styled.div`
 `
 
 class EventCategoryFilter extends Component {
-
   render() {
     return (
       <Consumer>
