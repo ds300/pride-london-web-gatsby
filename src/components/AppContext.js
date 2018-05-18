@@ -6,12 +6,43 @@ const { Consumer } = AppContext
 
 class Provider extends Component {
   state = {
-    events: this.props.value,
+    filters: {
+      date: null,
+      free: false,
+    },
+  }
+
+  getInputValue = (e, name) => {
+    const { state } = this
+    state.filters[name] = e.target.value
+    this.setState(state)
+  }
+
+  getDatepickerValue = date => {
+    const { state } = this
+    state.filters.date = date
+    this.setState(state)
+  }
+
+  getCheckboxBool = (e, name) => {
+    const { state } = this
+    state.filters[name] = e.target.checked
+    this.setState(state)
   }
 
   render() {
     return (
-      <AppContext.Provider value={{ state: this.state }}>
+      <AppContext.Provider
+        value={{
+          state: this.state,
+          events: this.props.events,
+          actions: {
+            getInputValue: this.getInputValue,
+            getCheckboxBool: this.getCheckboxBool,
+            getDatepickerValue: this.getDatepickerValue,
+          },
+        }}
+      >
         {this.props.children}
       </AppContext.Provider>
     )
@@ -23,7 +54,7 @@ Provider.propTypes = {
     PropTypes.arrayOf(PropTypes.node),
     PropTypes.node,
   ]),
-  value: PropTypes.array,
+  events: PropTypes.array,
 }
 
 module.exports = {

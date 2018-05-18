@@ -23,6 +23,7 @@ const FlexColumn = styled(Column)`
 `
 
 const filterEventsYouMayLike = (events, eventId) => {
+  console.log(events)
   const filteredEvents = events.filter(event => {
     if (event.node.id === eventId) return false
 
@@ -34,7 +35,7 @@ const filterEventsYouMayLike = (events, eventId) => {
 
 const EventsYouMayLike = ({ eventId }) => (
   <Consumer>
-    {({ state: { events } }) => {
+    {({ events }) => {
       const eventsYouMayLike = filterEventsYouMayLike(events, eventId)
 
       if (eventsYouMayLike.length === 0) return null

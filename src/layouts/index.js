@@ -3,13 +3,14 @@ import PropTypes from 'prop-types'
 import Helmet from 'react-helmet'
 import { ThemeProvider } from 'styled-components'
 import { Provider } from '../components/AppContext'
+import Navigation from '../components/navigation/Navigation'
 import theme from '../theme/theme'
 
 import './index.css'
 import './fonts.css'
 
 const Layout = props => (
-  <Provider value={props.data.allContentfulEvent.edges}>
+  <Provider events={props.data.allContentfulEvent.edges}>
     <ThemeProvider theme={theme}>
       <div>
         <Helmet
@@ -18,6 +19,20 @@ const Layout = props => (
             { name: 'description', content: 'Sample' },
             { name: 'keywords', content: 'sample, something' },
           ]}
+        />
+        <Navigation
+          items={{
+            logo: 'http://via.placeholder.com/164x64',
+            listItems: [
+              'Learn',
+              'Attend',
+              'Support us',
+              'Take part',
+              'Plan',
+              'Help',
+            ],
+            cta: 'donate',
+          }}
         />
         <div>{props.children()}</div>
       </div>
@@ -47,6 +62,7 @@ export const query = graphql`
           name
           startTime
           endTime
+          isFree
           eventPriceLow
           eventsListPicture {
             title
