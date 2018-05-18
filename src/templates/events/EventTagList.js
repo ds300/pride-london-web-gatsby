@@ -40,6 +40,7 @@ const EventTagListItem = styled.li`
   font-weight: 600;
   font-family: Poppins, sans-serif;
   margin-right: 10px;
+  margin-bottom: 6px;
 `
 
 const EventTagUl = styled.ul`
