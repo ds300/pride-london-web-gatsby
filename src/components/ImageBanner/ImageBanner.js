@@ -29,7 +29,6 @@ const ImageBanner = ({ titleText, subtitleText, imageSrc }) => (
   <BackgroundImage imageSrc={imageSrc}>
     <Container>
       <BannerTitle>{titleText}</BannerTitle>
-      <br />
       <BannerSubtitle>{subtitleText}</BannerSubtitle>
     </Container>
   </BackgroundImage>

@@ -2,12 +2,15 @@
 
 exports[`ImageBanner should render 1`] = `
 .c2 {
-  background-color: #ffffff;
-  display: inline-block;
+  display: block;
   color: #2d2f7f;
   font-size: 28px;
   margin-bottom: 0;
   padding: 0 10px;
+}
+
+.c2 span {
+  background-color: #ffffff;
 }
 
 .c3 {
@@ -57,13 +60,16 @@ exports[`ImageBanner should render 1`] = `
     <h1
       className="c2"
     >
-      
+      <span>
+        
+      </span>
     </h1>
-    <br />
     <h3
       className="c3"
     >
-      
+      <span>
+        
+      </span>
     </h3>
   </div>
 </div>

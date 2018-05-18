@@ -20,12 +20,11 @@ const FlexColumn = styled(Column)`
 `
 export const Events = () => (
   <Consumer>
-    {' '}
     {context => (
       <Fragment>
         <Container>
           <EventsFilters />
-        </Container>{' '}
+        </Container>
         <Container>
           <Row>
             <Column width={1}>
@@ -36,10 +35,9 @@ export const Events = () => (
               />
               <h1> Hi from the events page </h1>{' '}
               <Link to="/"> Go back to the homepage </Link>{' '}
-            </Column>{' '}
-          </Row>{' '}
+            </Column>
+          </Row>
           <Row>
-            {' '}
             {context.events
               .filter(filterByDate, context.state.filters.date)
               .filter(filterByFree, context.state.filters.free)
@@ -71,13 +69,13 @@ export const Events = () => (
                   ]}
                   key={event.node.id}
                 >
-                  <EventListingCard event={event.node} />{' '}
+                  <EventListingCard event={event.node} />
                 </FlexColumn>
-              ))}{' '}
-          </Row>{' '}
-        </Container>{' '}
+              ))}
+          </Row>
+        </Container>
       </Fragment>
-    )}{' '}
+    )}
   </Consumer>
 )
 

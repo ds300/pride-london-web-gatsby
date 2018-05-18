@@ -1,7 +1,7 @@
 import React from 'react'
 import renderer from 'react-test-renderer'
 import 'jest-styled-components'
-import { shallow, mount } from 'enzyme'
+import { shallow } from 'enzyme'
 
 import ImageBanner, { BackgroundImage } from './ImageBanner'
 import BannerTitle from '../BannerTitle/BannerTitle'
@@ -30,6 +30,7 @@ describe('ImageBanner', () => {
       wrapper
         .find(BannerTitle)
         .dive()
+        .find('span')
         .text()
     ).toBe(titleText)
   })
@@ -41,6 +42,7 @@ describe('ImageBanner', () => {
       wrapper
         .find(BannerSubtitle)
         .dive()
+        .find('span')
         .text()
     ).toBe(subtitleText)
   })
