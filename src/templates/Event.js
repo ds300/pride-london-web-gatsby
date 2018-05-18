@@ -30,8 +30,11 @@ const ContentWrapper = styled.div`
   width: 100vw;
   ${media.desktop`
     padding: 0;
-    max-width: 830px;
     margin-left: 80px;
+    max-width: 45vw;
+  `};
+  ${media.desktopHD`
+    max-width: 830px;
   `};
 `
 
@@ -81,7 +84,10 @@ export default class Event extends Component {
       <PageWrapper>
         <Helmet title={name} />
         <HeroImageAndTitle>
-          <HeroImage src={individualEventPicture.file.url} />
+          <HeroImage
+            src={individualEventPicture.file.url}
+            role="presentation"
+          />
           <TitleWrapper>
             <Title>{name}</Title>
             <EventTagList values={eventCategories} />
