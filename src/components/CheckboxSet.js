@@ -4,6 +4,7 @@ import styled from 'styled-components'
 import { rgba } from 'polished'
 import { Consumer } from './AppContext'
 import Checkbox from './Checkbox'
+import constants from '../constants/constants'
 
 const List = styled.ul`
   list-style: none;
@@ -33,15 +34,20 @@ class CheckboxSet extends Component {
       <Consumer>
         {context => (
           <List>
-            {this.props.options.map((option, index) => {
+            {constants[this.props.filterName].map((option, index) => {
               return (
                 <ListItem key={index}>
                   <Checkbox
-                    checked={context.state.filters.eventCategories.indexOf(option) != -1 ? true : false}
+                    checked={
+                      context.state.filters[this.props.filterName].indexOf(option) !=
+                      -1
+                        ? true
+                        : false
+                    }
                     label={option}
                     value={option}
                     handleChange={e =>
-                      context.actions.getCheckboxSetValues(e, 'eventCategories')
+                      context.actions.getCheckboxSetValues(e, this.props.filterName)
                     }
                   />
                 </ListItem>
@@ -55,7 +61,7 @@ class CheckboxSet extends Component {
 }
 
 CheckboxSet.propTypes = {
-  options: PropTypes.array.isRequired,
+  filterName: PropTypes.string.isRequired,
 }
 
 export default CheckboxSet

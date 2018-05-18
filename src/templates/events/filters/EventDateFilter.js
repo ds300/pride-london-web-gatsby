@@ -8,11 +8,11 @@ import iconCalendar from '../../../theme/assets/images/icon-calendar.svg'
 import 'react-datepicker/dist/react-datepicker.css'
 
 const DatePickerWrapper = styled.div`
-  border: 2px solid ${props => props.theme.colors.mediumGrey};
-  border-radius: 4px;
   display: flex;
-  align-items: center;
+  align-items: center;  
   flex-grow: 1;
+  min-height: 48px;
+  box-sizing: border-box;
 
   & > div {
     flex-basis: 100%;
@@ -26,7 +26,8 @@ const DatePickerWrapper = styled.div`
     }
 
     input[type='text'] {
-      border: none;
+      border: 2px solid ${props => props.theme.colors.mediumGrey};
+      border-radius: 4px;
       appearance: none;
       padding: 14px 20px;
       font-size: 0.875em;
@@ -41,6 +42,11 @@ const DatePickerWrapper = styled.div`
 
       &::placeholder {
         color: ${props => props.theme.colors.black};
+      }
+
+      &:focus {
+        border-color: ${props => props.theme.colors.eucalyptusGreen};
+        outline: none;
       }
     }
   }

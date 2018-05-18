@@ -1,8 +1,8 @@
 import React, { Component } from 'react'
+import PropTypes from 'prop-types'
 import styled from 'styled-components'
 import { Consumer } from '../../../components/AppContext'
 import CheckboxSet from '../../../components/CheckboxSet'
-import constants from '../../../constants/constants'
 import theme from '../../../theme/theme'
 import iconDown from '../../../theme/assets/images/icon-chevron-down.svg'
 import iconUp from '../../../theme/assets/images/icon-chevron-up.svg'
@@ -17,7 +17,11 @@ const Header = styled.div`
   border: 2px solid ${props => props.theme.colors.mediumGrey};
   background-color: transparent;
   border-radius: 4px;
-  padding: 14px 20px;
+  padding: 11px 20px;
+  display: flex;
+  align-items: center;
+  min-height: 48px;
+  box-sizing: border-box;
 
   @media (min-width: ${props => props.theme.breakpoints[1]}) {
     background-image: url(${props => (props.isOpen ? iconUp : iconDown)});
@@ -36,7 +40,20 @@ const DropDown = styled.div`
   }
 `
 
-class EventCategoryFilter extends Component {
+const Badge = styled.span`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-left: 10px;
+
+  border-radius: 50%;
+  color: ${props => props.theme.colors.white};
+  background-color: ${props => props.theme.colors.indigo};
+  height: 22px;
+  width: 22px;
+`
+
+class EventDropdownFilter extends Component {
   state = {
     isOpen: false,
   }
@@ -49,16 +66,27 @@ class EventCategoryFilter extends Component {
 
   render() {
     return (
-      <Wrapper onMouseEnter={this.toggleMenu} onMouseLeave={this.toggleMenu}>
-        <Header onTouchStart={this.toggleMenu} isOpen={this.state.isOpen}>
-          Category <span>1</span>
-        </Header>
-        <DropDown isOpen={this.state.isOpen}>
-          <CheckboxSet options={constants.eventCategories} />
-        </DropDown>
-      </Wrapper>
+      <Consumer>
+      {context => (
+        <Wrapper onMouseEnter={this.toggleMenu} onMouseLeave={this.toggleMenu}>
+          <Header onTouchStart={this.toggleMenu} isOpen={this.state.isOpen}>
+            {this.props.heading}
+            {context.state.filters[this.props.filterName].length > 0 ? <Badge>{context.state.filters[this.props.filterName].length}</Badge> : null}
+            
+          </Header>
+          <DropDown isOpen={this.state.isOpen}>
+            <CheckboxSet filterName={this.props.filterName} />
+          </DropDown>
+        </Wrapper>
+      )}
+      </Consumer>
     )
   }
 }
 
-export default EventCategoryFilter
+EventDropdownFilter.propTypes = {
+  heading: PropTypes.string.isRequired,
+  filterName: PropTypes.string.isRequired,
+}
+
+export default EventDropdownFilter

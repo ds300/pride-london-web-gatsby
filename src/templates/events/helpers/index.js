@@ -47,10 +47,16 @@ function filterByFree(event) {
 
 function filterByCategory(event) {
   const { key } = this
+  console.log(event, key)
   if (this.array.length === 0) return true
 
-  return this.array.some(function(e) {
-    return event.node[key].indexOf(e) >= 0
+  return this.array.some(function(category) {
+    if(Array.isArray(event.node[key])) {
+      return event.node[key].indexOf(category) >= 0
+    }
+    else {
+      return false
+    }
   })
 }
 

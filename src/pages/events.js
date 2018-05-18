@@ -33,7 +33,22 @@ export const Events = () => (
             {context.events
               .filter(filterByDate, context.state.filters.date)
               .filter(filterByFree, context.state.filters.free)
-              .filter(filterByCategory, {array: context.state.filters.eventCategories, key: 'eventCategories'})
+              .filter(filterByCategory, {
+                array: context.state.filters.eventCategories,
+                key: 'eventCategories',
+              })
+              .filter(filterByCategory, {
+                array: context.state.filters.venueDetails,
+                key: 'venueDetails',
+              })
+              .filter(filterByCategory, {
+                array: context.state.filters.accessibilityOptions,
+                key: 'accessibilityOptions',
+              })
+              .filter(filterByCategory, {
+                array: context.state.filters.audience,
+                key: 'audience',
+              })
               .map(event => (
                 <FlexColumn
                   width={[

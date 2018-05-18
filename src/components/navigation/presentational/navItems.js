@@ -40,7 +40,7 @@ const NavItems = props => {
         </Column>
       ))}
       <Column>
-        <StyledButton>Donate</StyledButton>
+        <StyledButton to="/">Donate</StyledButton>
       </Column>
     </Fragment>
   )

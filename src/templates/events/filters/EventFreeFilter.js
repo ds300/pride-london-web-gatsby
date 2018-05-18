@@ -8,6 +8,10 @@ const Wrapper = styled.div`
   background-color: transparent;
   border-radius: 4px;
   padding: 9px 20px;
+  display: flex;
+  align-items: center;
+  min-height: 48px;
+  box-sizing: border-box;
 `
 
 class EventCategoryFilter extends Component {
