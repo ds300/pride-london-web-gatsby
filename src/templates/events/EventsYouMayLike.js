@@ -26,22 +26,19 @@ const filterEventsYouMayLike = (events, eventId) => {
   const filteredEvents = events.filter(event => {
     if (event.node.id === eventId) return false
 
-    const timeNow = moment().format('LLLL')
-    const eventStartTime = moment(event.node.startTime).format('LLLL')
-    return moment(eventStartTime).diff(timeNow, 'days') > 0
+    return moment(event.node.startTime).diff(moment(), 'hours') > 0
   })
 
-  return [
-    filteredEvents[0].node,
-    filteredEvents[1].node,
-    filteredEvents[2].node,
-  ]
+  return filteredEvents.splice(0, 3)
 }
 
 const EventsYouMayLike = ({ eventId }) => (
   <Consumer>
     {({ state: { events } }) => {
       const eventsYouMayLike = filterEventsYouMayLike(events, eventId)
+
+      if (eventsYouMayLike.length === 0) return null
+
       return (
         <Container>
           <Row>
@@ -49,14 +46,13 @@ const EventsYouMayLike = ({ eventId }) => (
               <h2>You may also like</h2>
             </Column>
             <Column width={0.3}>
-              <ViewAll href="../events/">View all events {'>'}</ViewAll>
+              <ViewAll href="/events">View all events {'>'}</ViewAll>
             </Column>
           </Row>
           <Row>
             {eventsYouMayLike.map(event => (
-              <FlexColumn width={[1, 1 / 2, 1 / 3, 1 / 3]} key={event.id}>
-                {' '}
-                <EventListingCard event={event} />{' '}
+              <FlexColumn width={[1, 1 / 2, 1 / 3, 1 / 3]} key={event.node.id}>
+                <EventListingCard event={event.node} />
               </FlexColumn>
             ))}
           </Row>

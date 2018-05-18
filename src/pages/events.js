@@ -13,15 +13,13 @@ export const Events = () => (
   <Consumer>
     {context => (
       <Container>
-        {' '}
         <Row>
-          {' '}
           <Column width={1}>
             <h1>Hi from the events page</h1>
             <Link to="/">Go back to the homepage</Link>
             <p>{context.state.count}</p>
-          </Column>{' '}
-        </Row>{' '}
+          </Column>
+        </Row>
         <Row>
           {context.state.events.map(event => (
             <FlexColumn
@@ -33,11 +31,10 @@ export const Events = () => (
               ]}
               key={event.node.id}
             >
-              {' '}
-              <EventListingCard event={event.node} />{' '}
+              <EventListingCard event={event.node} />
             </FlexColumn>
           ))}
-        </Row>{' '}
+        </Row>
       </Container>
     )}
   </Consumer>
