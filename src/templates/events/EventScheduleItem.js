@@ -28,6 +28,7 @@ const ShowMoreWrapper = styled.div`
 const Table = styled.table`
   text-align: left;
   width: 100%;
+  margin-bottom: 18px;
 `
 
 const TableHeader = styled.th`
