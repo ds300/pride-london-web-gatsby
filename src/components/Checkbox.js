@@ -40,7 +40,7 @@ class Checkbox extends Component {
   }
 
   toggleCheckbox = e => {
-    let checked = !this.state.checked
+    const checked = !this.state.checked
     this.setState({ checked })
 
     if (this.props.handleChange) {

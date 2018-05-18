@@ -2,9 +2,9 @@ import React, { Component } from 'react'
 import styled, { css } from 'styled-components'
 import PropTypes from 'prop-types'
 import ReactMarkdown from 'react-markdown'
-import { EventTagList, EventSchedule } from './events'
 import Helmet from 'react-helmet'
 import { media } from '../theme/media'
+import { EventTagList, EventSchedule, EventsYouMayLike } from './events'
 
 const PageWrapper = styled.div`
   position: relative;
@@ -97,6 +97,7 @@ export default class Event extends Component {
         <ContentWrapper>
           <ReactMarkdown source={eventDescription.eventDescription} />
           <EventSchedule schedule={performances} />
+          <EventsYouMayLike eventId={this.state.event.id} />
         </ContentWrapper>
       </PageWrapper>
     )
@@ -121,7 +122,6 @@ export const eventPageQuery = graphql`
       }
       eventCategories
       performances {
-        id
         ...eventScheduleFragment
       }
       eventDescription {
