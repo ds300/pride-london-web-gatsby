@@ -23,7 +23,10 @@ const Header = styled.div`
     background-image: url(${props => (props.isOpen ? iconUp : iconDown)});
     background-repeat: no-repeat;
     background-position: right 20px center;
-    border-color: ${props => (props.isOpen ? props.theme.colors.eucalyptusGreen : props.theme.colors.mediumGrey)}
+    border-color: ${props =>
+      props.isOpen
+        ? props.theme.colors.eucalyptusGreen
+        : props.theme.colors.mediumGrey};
   }
 `
 

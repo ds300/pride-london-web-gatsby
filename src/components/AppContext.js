@@ -34,7 +34,7 @@ class Provider extends Component {
   getCheckboxSetValues = (e, name) => {
     let state = this.state
 
-    if (e.target.checked) {
+    if (e.target.checked && state.filters[name].indexOf(e.target.value) === -1) {
       state.filters[name].push(e.target.value)
     } else {
       const index = state.filters[name].indexOf(e.target.value)

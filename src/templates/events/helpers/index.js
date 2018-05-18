@@ -45,17 +45,18 @@ function filterByFree(event) {
   return event.node.isFree
 }
 
-function filterByCategory(event) { 
-  if(this.length === 0) return true
+function filterByCategory(event) {
+  const { key } = this
+  if (this.array.length === 0) return true
 
-  return this.some(function (e) {
-    return event.node.eventCategories.indexOf(e) >= 0;
-  });
+  return this.array.some(function(e) {
+    return event.node[key].indexOf(e) >= 0
+  })
 }
 
 module.exports = {
   formatDate,
   filterByDate,
   filterByFree,
-  filterByCategory
+  filterByCategory,
 }

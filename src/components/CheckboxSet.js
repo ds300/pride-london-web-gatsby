@@ -10,10 +10,11 @@ const List = styled.ul`
   padding: 20px;
   margin: 0;
   position: absolute;
-  top: calc(100% + 2px);
+  top: 100%;
   left: 0;
   width: 100%;
   z-index: 1;
+  border-top: 2px solid transparent;
   box-sizing: border-box;
   box-shadow: 0 2px 4px 0 ${props => rgba(props.theme.colors.black, 0.2)};
   background-color: ${props => props.theme.colors.white};
@@ -36,6 +37,7 @@ class CheckboxSet extends Component {
               return (
                 <ListItem key={index}>
                   <Checkbox
+                    checked={context.state.filters.eventCategories.indexOf(option) != -1 ? true : false}
                     label={option}
                     value={option}
                     handleChange={e =>
