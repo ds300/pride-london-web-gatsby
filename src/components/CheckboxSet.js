@@ -35,10 +35,12 @@ class CheckboxSet extends Component {
             {this.props.options.map((option, index) => {
               return (
                 <ListItem key={index}>
-                  <Checkbox 
-                    label={option} 
+                  <Checkbox
+                    label={option}
                     value={option}
-                    handleChange={e => context.actions.getCheckboxSetValues(e, 'eventCategories')}
+                    handleChange={e =>
+                      context.actions.getCheckboxSetValues(e, 'eventCategories')
+                    }
                   />
                 </ListItem>
               )

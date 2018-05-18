@@ -45,8 +45,17 @@ function filterByFree(event) {
   return event.node.isFree
 }
 
+function filterByCategory(event) { 
+  if(this.length === 0) return true
+
+  return this.some(function (e) {
+    return event.node.eventCategories.indexOf(e) >= 0;
+  });
+}
+
 module.exports = {
   formatDate,
   filterByDate,
   filterByFree,
+  filterByCategory
 }

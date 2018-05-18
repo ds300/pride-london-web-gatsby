@@ -9,7 +9,7 @@ class Provider extends Component {
     filters: {
       date: null,
       free: false,
-      eventCategories: []
+      eventCategories: [],
     },
   }
 
@@ -34,17 +34,16 @@ class Provider extends Component {
   getCheckboxSetValues = (e, name) => {
     let state = this.state
 
-    if(e.target.checked) {
+    if (e.target.checked) {
       state.filters[name].push(e.target.value)
-    } 
-    else {
+    } else {
       const index = state.filters[name].indexOf(e.target.value)
       if (index > -1) {
-        this.state.filters[name].splice(index, 1);
+        this.state.filters[name].splice(index, 1)
       }
     }
 
-    this.setState(state);
+    this.setState(state)
   }
 
   render() {

@@ -20,15 +20,16 @@ const Header = styled.div`
   padding: 14px 20px;
 
   @media (min-width: ${props => props.theme.breakpoints[1]}) {
-    background-image: url(${props => props.isOpen ? iconUp : iconDown}); 
+    background-image: url(${props => (props.isOpen ? iconUp : iconDown)});
     background-repeat: no-repeat;
     background-position: right 20px center;
+    border-color: ${props => (props.isOpen ? props.theme.colors.eucalyptusGreen : props.theme.colors.mediumGrey)}
   }
 `
 
 const DropDown = styled.div`
   @media (min-width: ${props => props.theme.breakpoints[1]}) {
-    display: ${props => props.isOpen ? 'block': 'none'};
+    display: ${props => (props.isOpen ? 'block' : 'none')};
   }
 `
 
@@ -37,20 +38,20 @@ class EventCategoryFilter extends Component {
     isOpen: false,
   }
 
-  toggleMenu = (e) => {
+  toggleMenu = e => {
     let isOpen = this.state.isOpen
     isOpen = !isOpen
-    this.setState({isOpen})
+    this.setState({ isOpen })
   }
 
   render() {
     return (
       <Wrapper onMouseEnter={this.toggleMenu} onMouseLeave={this.toggleMenu}>
         <Header onTouchStart={this.toggleMenu} isOpen={this.state.isOpen}>
-        Category <span>1</span>
+          Category <span>1</span>
         </Header>
         <DropDown isOpen={this.state.isOpen}>
-          <CheckboxSet options={constants.eventCategories}/>
+          <CheckboxSet options={constants.eventCategories} />
         </DropDown>
       </Wrapper>
     )

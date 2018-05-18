@@ -8,6 +8,7 @@ import { Consumer } from '../components/AppContext'
 import {
   filterByDate,
   filterByFree,
+  filterByCategory
 } from '../templates/events/helpers/index.js'
 import moment from 'moment'
 
@@ -32,6 +33,7 @@ export const Events = () => (
             {context.events
               .filter(filterByDate, context.state.filters.date)
               .filter(filterByFree, context.state.filters.free)
+              .filter(filterByCategory, context.state.filters.eventCategories)
               .map(event => (
                 <FlexColumn
                   width={[
