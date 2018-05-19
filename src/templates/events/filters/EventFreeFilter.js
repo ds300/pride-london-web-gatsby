@@ -33,28 +33,24 @@ const FilterHeader = styled.div`
   }
 `
 
-class EventFreeFilter extends Component {
-  render() {
-    return (
-      <Consumer>
-        {context => (
-          <div>
-            <FilterHeader>Price</FilterHeader>
-            <Wrapper>
-              <Checkbox
-                id="free"
-                value="free"
-                checked={context.state.filters.free}
-                label="Show only free events"
-                name="free"
-                handleChange={e => context.actions.getCheckboxBool(e, 'free')}
-              />
-            </Wrapper>
-          </div>
-        )}
-      </Consumer>
-    )
-  }
-}
+const EventFreeFilter = () => (
+  <Consumer>
+    {context => (
+      <div>
+        <FilterHeader>Price</FilterHeader>
+        <Wrapper>
+          <Checkbox
+            id="free"
+            value="free"
+            checked={context.state.filters.free}
+            label="Show only free events"
+            name="free"
+            handleChange={e => context.actions.getCheckboxBool(e, 'free')}
+          />
+        </Wrapper>
+      </div>
+    )}
+  </Consumer>
+)
 
 export default EventFreeFilter

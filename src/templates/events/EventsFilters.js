@@ -3,6 +3,7 @@ import styled from 'styled-components'
 import { Consumer } from '../../components/AppContext'
 import { Column } from '../../components/grid/grid'
 import { Flex } from 'grid-styled'
+import { Column } from '../../components/grid/grid'
 import EventDateFilter from './filters/EventDateFilter'
 import EventFreeFilter from './filters/EventFreeFilter'
 import EventDropdownFilter from './filters/EventDropdownFilter'
@@ -100,70 +101,65 @@ const CloseButton = styled.button`
   }
 `
 
-const EventsFilters = props => {
-  return (
-    <Consumer>
-      {context => (
-        <FilterWrapper
-          mx={[
-            -1, // btwn 0 and first breakpoint (375px)
-            -2, // btwn 1st breakpoint(375px) and 2nd breakpoint (768px)
-            25, // btwn 2nd breakpoint(768px) and 3rd breakpoint (1280px)
-            60, // btwn 3rd breakpoint(1280px) and 4th breakpoint (1440px)
-          ]}
-          px={[0, 0, 15, 15]}
-          py={4}
-          flexWrap="wrap"
-        >
-          <FilterHeader width={1} mb={[-2, -2, 0]}>
-            <FilterHeaderInner>
-              <Label>Filter events by</Label>
-              <ClearButton
-                type="button"
-                onClick={context.actions.clearFilters}
-              >
-                Clear filters
-              </ClearButton>
-              <CloseButton aria-label="Close filters"/>
-            </FilterHeaderInner>
-          </FilterHeader>
-          <FlexColumn width={[1, 1, 0.5, 0.25]}>
-            <EventDropdownFilter
-              heading="Category"
-              filterName="eventCategories"
-            />
-          </FlexColumn>
-          <FlexColumn width={[1, 1, 0.5, 0.25]}>
-            <EventDateFilter />
-          </FlexColumn>
-          <FlexColumn width={[1, 1, 0.5, 0.25]}>
-            <EventDropdownFilter heading="Area of London" filterName="area" />
-          </FlexColumn>
-          <FlexColumn width={[1, 1, 0.5, 0.25]}>
-            <EventDropdownFilter heading="Time of day" filterName="timeOfDay" />
-          </FlexColumn>
-          <FlexColumn width={[1, 1, 0.5, 0.25]}>
-            <EventDropdownFilter heading="Age group" filterName="audience" />
-          </FlexColumn>
-          <FlexColumn width={[1, 1, 0.5, 0.25]}>
-            <EventDropdownFilter
-              heading="Venue options"
-              filterName="venueDetails"
-            />
-          </FlexColumn>
-          <FlexColumn width={[1, 1, 0.5, 0.25]}>
-            <EventDropdownFilter
-              heading="Accessibility"
-              filterName="accessibilityOptions"
-            />
-          </FlexColumn>
-          <FlexColumn width={[1, 1, 0.5, 0.25]}>
-            <EventFreeFilter />
-          </FlexColumn>
-        </FilterWrapper>
-      )}
-    </Consumer>
-  )
-}
+const EventsFilters = () => (
+  <Consumer>
+    {context => (
+      <FilterWrapper
+        mx={[
+          -1, // btwn 0 and first breakpoint (375px)
+          -2, // btwn 1st breakpoint(375px) and 2nd breakpoint (768px)
+          25, // btwn 2nd breakpoint(768px) and 3rd breakpoint (1280px)
+          60, // btwn 3rd breakpoint(1280px) and 4th breakpoint (1440px)
+        ]}
+        px={[0, 0, 15, 15]}
+        py={4}
+        flexWrap="wrap"
+      >
+        <FilterHeader width={1} mb={[-2, -2, 0]}>
+          <FilterHeaderInner>
+            <Label>Filter events by</Label>
+            <ClearButton type="button" onClick={context.actions.clearFilters}>
+              Clear filters
+            </ClearButton>
+            <CloseButton aria-label="Close filters" />
+          </FilterHeaderInner>
+        </FilterHeader>
+        <FlexColumn width={[1, 1, 0.5, 0.25]}>
+          <EventDropdownFilter
+            heading="Category"
+            filterName="eventCategories"
+          />
+        </FlexColumn>
+        <FlexColumn width={[1, 1, 0.5, 0.25]}>
+          <EventDateFilter />
+        </FlexColumn>
+        <FlexColumn width={[1, 1, 0.5, 0.25]}>
+          <EventDropdownFilter heading="Area of London" filterName="area" />
+        </FlexColumn>
+        <FlexColumn width={[1, 1, 0.5, 0.25]}>
+          <EventDropdownFilter heading="Time of day" filterName="timeOfDay" />
+        </FlexColumn>
+        <FlexColumn width={[1, 1, 0.5, 0.25]}>
+          <EventDropdownFilter heading="Age group" filterName="audience" />
+        </FlexColumn>
+        <FlexColumn width={[1, 1, 0.5, 0.25]}>
+          <EventDropdownFilter
+            heading="Venue options"
+            filterName="venueDetails"
+          />
+        </FlexColumn>
+        <FlexColumn width={[1, 1, 0.5, 0.25]}>
+          <EventDropdownFilter
+            heading="Accessibility"
+            filterName="accessibilityOptions"
+          />
+        </FlexColumn>
+        <FlexColumn width={[1, 1, 0.5, 0.25]}>
+          <EventFreeFilter />
+        </FlexColumn>
+      </FilterWrapper>
+    )}
+  </Consumer>
+)
 
 export default EventsFilters

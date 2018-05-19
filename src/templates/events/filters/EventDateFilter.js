@@ -1,12 +1,10 @@
-import React, { Component, Fragment } from 'react'
+import React from 'react'
 import DatePicker from 'react-datepicker'
-import { Consumer } from '../../../components/AppContext'
-import moment from 'moment'
+import 'react-datepicker/dist/react-datepicker.css'
 import styled from 'styled-components'
 import theme from '../../../theme/theme'
+import { Consumer } from '../../../components/AppContext'
 import iconCalendar from '../../../theme/assets/images/icon-calendar.svg'
-
-import 'react-datepicker/dist/react-datepicker.css'
 
 const DatePickerWrapper = styled.div`
   display: block
@@ -75,27 +73,22 @@ const DatePickerHeader = styled.div`
     display: none;
   }
 `
-
-class EventDateFilter extends Component {
-  render() {
-    return (
-      <Consumer>
-        {context => (
-          <DatePickerWrapper>
-            <DatePickerHeader>Date</DatePickerHeader>
-            <DatePicker
-              selected={
-                context.state.filters.date ? context.state.filters.date : null
-              }
-              onChange={context.actions.getDatepickerValue}
-              placeholderText="Date"
-              locale="en-GB"
-            />
-          </DatePickerWrapper>
-        )}
-      </Consumer>
-    )
-  }
-}
+const EventDateFilter = () => (
+  <Consumer>
+    {context => (
+      <DatePickerWrapper>
+        <DatePickerHeader>Date</DatePickerHeader>
+        <DatePicker
+          selected={
+            context.state.filters.date ? context.state.filters.date : null
+          }
+          onChange={context.actions.getDatepickerValue}
+          placeholderText="Date"
+          locale="en-GB"
+        />
+      </DatePickerWrapper>
+    )}
+  </Consumer>
+)
 
 export default EventDateFilter

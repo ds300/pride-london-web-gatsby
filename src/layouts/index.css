@@ -1,9 +1,10 @@
 :root {
-  font-size: 16px;
+  font-size: 62.5%;
 }
 
 html {
   font-family: sans-serif;
+  text-size-adjust: 100%;
   -ms-text-size-adjust: 100%;
   -webkit-text-size-adjust: 100%;
   -webkit-font-smoothing: antialiased;
@@ -11,30 +12,34 @@ html {
   overflow-x: hidden;
 }
 
+* {
+  box-sizing: border-box;
+}
+
 body {
   margin: 0;
   font-family: 'Roboto', sans-serif;
   color: #000000; 
-  font-size: 1rem;
+  font-size: 1.8rem;
   line-height: 1.25;
   background-color: #EFEFEF;
   overflow-x: hidden;
 }
 
 h1 {
-  font-size: 1.25rem;
+  font-size: 3.2rem;
   line-height: 1.2;
   font-family: 'Poppins', sans-serif;
   text-rendering: optimizeLegibility;
-  margin: 0 0 0.5em 0;
+  margin: 0 0 3rem 0;
 }
 
 h2 {
-  font-size: 1.125rem;
+  font-size: 2.4rem;
   line-height: 1.2222;
   font-family: 'Poppins', sans-serif;
   text-rendering: optimizeLegibility;
-  margin: 0 0 0.5em 0;
+  margin: 0 0 3rem 0;
 }
 
 h3 {
@@ -42,13 +47,13 @@ h3 {
   line-height: 1.25;
   font-family: 'Poppins', sans-serif;
   text-rendering: optimizeLegibility;
-  margin: 0 0 0.5em 0;
+  margin: 0 0 2rem 0;
 }
 
 p {
-  font-size: 1rem;
+  font-size: 1.8rem;
   line-height: 1.25;
-  margin: 0 0 0.9375rem 0;
+  margin: 0 0 2rem 0;
 }
 
 img {
@@ -59,12 +64,12 @@ img {
 /*Desktop Styles*/
 @media (min-width: 768px) {
   h1 {
-    font-size: 2rem;
+    font-size: 3.2rem;
     line-height: 1.1875;
   }
 
   h2 {
-    font-size: 1.5rem;
+    font-size: 2.4rem;
     line-height: 1.2083;
   }
 }

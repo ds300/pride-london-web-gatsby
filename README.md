@@ -17,8 +17,10 @@ npm install --global gatsby-cli
 ```
 
 2.  Pull the repo.
-3.  Ensure you have [yarn](https://yarnpkg.com/en/docs/install) installed.
-4.  Run yarn in the root directory to pull in dependencies.
+3.  Install nvm from [here](https://github.com/creationix/nvm)
+4.  Make sure you're using the correct version of node `nvm use`
+5.  Ensure you have [yarn](https://yarnpkg.com/en/docs/install) installed. 
+6.  Run yarn in the root directory to pull in dependencies.
 
 ## ENVIRONMENT VARIABLES
 

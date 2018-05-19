@@ -10,15 +10,20 @@ const StyledContainer = styled(Container)`
   height: 100px;
 `
 
-const Header = props => {
-  console.log(props)
-  return (
-    <StyledContainer>
-      <Row alignItems="center" justifyContent="center">
-        <NavItems items={props.items}>{props.children}</NavItems>
-      </Row>
-    </StyledContainer>
-  )
+const Header = props => (
+  <StyledContainer>
+    <Row alignItems="center" justifyContent="center">
+      <NavItems items={props.items}>{props.children}</NavItems>
+    </Row>
+  </StyledContainer>
+)
+
+Header.propTypes = {
+  items: PropTypes.array,
+  children: PropTypes.oneOfType([
+    PropTypes.arrayOf(PropTypes.node),
+    PropTypes.node,
+  ]),
 }
 
 export default Header
