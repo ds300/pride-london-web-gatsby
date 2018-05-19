@@ -64,6 +64,11 @@ export const query = graphql`
           endTime
           isFree
           eventPriceLow
+          eventCategories
+          venueDetails
+          audience
+          accessibilityOptions
+          postcode
           eventsListPicture {
             title
             file {

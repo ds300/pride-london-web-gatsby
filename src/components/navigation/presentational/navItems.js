@@ -34,13 +34,13 @@ const NavItems = props => {
       <Column flex={3} alignItems="center" justifyContent="center">
         <img src={logo} alt="" />
       </Column>
-      {listItems.map(items => (
-        <Column key={items.id}>
+      {listItems.map((items, index) => (
+        <Column key={index}>
           <StyledLink to="#"> {items}</StyledLink>
         </Column>
       ))}
       <Column>
-        <StyledButton>Donate</StyledButton>
+        <StyledButton to="/">Donate</StyledButton>
       </Column>
     </Fragment>
   )

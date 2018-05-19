@@ -9,6 +9,7 @@ html {
   -webkit-text-size-adjust: 100%;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
 }
 
 * {
@@ -22,6 +23,7 @@ body {
   font-size: 1.125rem;
   line-height: 1.25;
   background-color: #EFEFEF;
+  overflow-x: hidden;
 }
 
 h1 {

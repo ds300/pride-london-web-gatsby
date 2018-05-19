@@ -19,7 +19,7 @@ const Header = props => (
 )
 
 Header.propTypes = {
-  items: PropTypes.array,
+  items: PropTypes.object,
   children: PropTypes.oneOfType([
     PropTypes.arrayOf(PropTypes.node),
     PropTypes.node,

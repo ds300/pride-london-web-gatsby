@@ -7,6 +7,7 @@ const Wrapper = styled.div`
   display: flex;
   align-items: center;
   justify-content: space-between;
+  flex-basis: 100%;
 `
 
 const Input = styled.input`
@@ -17,6 +18,7 @@ const Input = styled.input`
   border: solid 2.5px ${props => props.theme.colors.eucalyptusGreen};
   order: 1;
   flex-shrink: 0;
+  cursor: pointer;
 
   &:checked {
     background-image: url(${checkmark});
@@ -57,14 +59,13 @@ class Checkbox extends Component {
           value={this.props.value}
           name={this.props.name}
           onChange={this.toggleCheckbox}
+          checked={this.state.checked}
         />
         <Label htmlFor={this.props.id}>{this.props.label}</Label>
       </Wrapper>
     )
   }
 }
-
-export default Checkbox
 
 Checkbox.propTypes = {
   checked: PropTypes.bool,
@@ -74,3 +75,5 @@ Checkbox.propTypes = {
   value: PropTypes.string,
   name: PropTypes.string,
 }
+
+export default Checkbox

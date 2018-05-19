@@ -5,7 +5,14 @@ import { EventListingCard } from '../templates/events'
 import EventsFilters from '../templates/events/EventsFilters'
 import { Container, Row, Column } from '../components/grid/grid'
 import { Consumer } from '../components/AppContext'
-import { filterByDate, filterByFree } from '../templates/events/helpers/index'
+import {
+  filterByDate,
+  filterByFree,
+  filterByCategory,
+  filterByArea,
+  filterByTime,
+} from '../templates/events/helpers/index.js'
+import moment from 'moment'
 
 const FlexColumn = styled(Column)`
   display: flex;
@@ -28,6 +35,24 @@ export const Events = () => (
             {context.events
               .filter(filterByDate, context.state.filters.date)
               .filter(filterByFree, context.state.filters.free)
+              .filter(filterByCategory, {
+                array: context.state.filters.eventCategories,
+                key: 'eventCategories',
+              })
+              .filter(filterByCategory, {
+                array: context.state.filters.venueDetails,
+                key: 'venueDetails',
+              })
+              .filter(filterByCategory, {
+                array: context.state.filters.accessibilityOptions,
+                key: 'accessibilityOptions',
+              })
+              .filter(filterByCategory, {
+                array: context.state.filters.audience,
+                key: 'audience',
+              })
+              .filter(filterByArea, context.state.filters.area)
+              .filter(filterByTime, context.state.filters.timeOfDay)
               .map(event => (
                 <FlexColumn
                   width={[
