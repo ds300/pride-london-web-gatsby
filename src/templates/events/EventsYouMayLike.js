@@ -6,16 +6,15 @@ import EventListingCard from './EventListingCard'
 import { ChevronRight } from '../../components/ChevronRight'
 import { Consumer } from '../../components/AppContext'
 import { Container, Row, Column } from '../../components/grid/grid'
+import { media } from '../../theme/media'
 
 const ViewAll = styled.a`
   color: ${props => props.theme.colors.indigo};
-  display: block;
   font-family: ${props => props.theme.fonts.title};
   font-size: 1rem;
   padding-top: 5px;
   text-align: right;
   text-decoration: none;
-  width: 100%;
 `
 
 const FlexColumn = styled(Column)`
@@ -33,8 +32,37 @@ const filterEventsYouMayLike = (events, eventId) => {
 }
 
 const StyledContainer = styled(Container)`
-  padding-top: 60px;
+  padding: 30px 0px;
+  ${media.desktop`
+    padding: 60px 0px;
+  `}
   background-color: ${props => props.theme.colors.lightGrey};
+`
+
+const Heading = styled.h1`
+  font-size: 1.25rem;
+  margin: 0;
+  ${media.desktop`
+    font-size: 2rem;
+  `};
+`
+
+const DesktopOnly = styled.span`
+  display: none;
+  ${media.desktop`
+    display: inline;
+  `};
+`
+
+const HeadingRow = styled(Row)`
+  margin-bottom: 20px;
+  /* add padding to match column padding */
+  padding: 0px 10px;
+  ${media.desktop`
+    padding: 0px 15px;
+  `};
+  align-items: center;
+  justify-content: space-between;
 `
 
 const EventsYouMayLike = ({ eventId }) => (
@@ -46,16 +74,12 @@ const EventsYouMayLike = ({ eventId }) => (
 
       return (
         <StyledContainer>
-          <Row>
-            <Column width={0.7}>
-              <h1>You may also like</h1>
-            </Column>
-            <Column width={0.3}>
-              <ViewAll href="/events">
-                View all events <ChevronRight />
-              </ViewAll>
-            </Column>
-          </Row>
+          <HeadingRow>
+            <Heading>You may also like</Heading>
+            <ViewAll href="/events">
+              View all<DesktopOnly>&nbsp;events</DesktopOnly>&nbsp;<ChevronRight />
+            </ViewAll>
+          </HeadingRow>
           <Row>
             {eventsYouMayLike.map(event => (
               <FlexColumn width={[1, 1 / 2, 1 / 3, 1 / 3]} key={event.node.id}>
