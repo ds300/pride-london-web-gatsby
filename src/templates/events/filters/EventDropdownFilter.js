@@ -89,16 +89,26 @@ const Badge = styled.span`
 class EventDropdownFilter extends Component {
   state = {
     isOpen: false,
+    filterOpen: null
   }
 
-  handleClickOutside = evt => {
+  static getDerivedStateFromProps(nextProps, prevState) {  
+    if (nextProps.filterOpen != nextProps.filterName) {
+      return {isOpen: false}
+    }
+    else {
+      return {isOpen: true}
+    }
+  }
+
+  handleClickOutside = e => {
     this.setState({ isOpen: false })
   }
 
-  toggleMenu = e => {
+  toggleMenu = (closeSiblingFilters) => {
     let isOpen = this.state.isOpen
     isOpen = !isOpen
-    this.setState({ isOpen })
+    this.setState({ isOpen }, () => closeSiblingFilters(this.props.filterName, this.state.isOpen))
   }
 
   render() {
@@ -111,7 +121,7 @@ class EventDropdownFilter extends Component {
               aria-expanded={this.state.isOpen}
               type="button"
               id={`button_${this.props.filterName}`}
-              onClick={this.toggleMenu}
+              onClick={(e) => this.toggleMenu(context.actions.closeSiblingFilters)}
               isOpen={this.state.isOpen}
             >
               {this.props.heading}

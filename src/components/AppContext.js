@@ -5,6 +5,7 @@ const AppContext = React.createContext()
 const { Consumer } = AppContext
 
 const initialState = {
+  filterOpen: null,
   filters: {
     date: null,
     free: false,
@@ -54,6 +55,14 @@ class Provider extends Component {
     this.setState(initialState)
   }
 
+  closeSiblingFilters = (filterName, isOpen) => {
+    if (isOpen && filterName != this.state.openFilter) {
+      let state = this.state
+      this.state.filterOpen = filterName
+      this.setState(state)
+    }
+  }
+
   render() {
     return (
       <AppContext.Provider
@@ -65,6 +74,7 @@ class Provider extends Component {
             getDatepickerValue: this.getDatepickerValue,
             getCheckboxSetValues: this.getCheckboxSetValues,
             clearFilters: this.clearFilters,
+            closeSiblingFilters: this.closeSiblingFilters
           },
         }}
       >
