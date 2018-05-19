@@ -32,6 +32,7 @@ const FilterHeader = styled(Column)`
   @media (min-width: ${props => props.theme.breakpoints[1]}) {
     background-color: transparent;
     height: auto;
+    min-height: 0;
   }
 `
 
@@ -66,7 +67,7 @@ const ClearButton = styled.button`
   color: ${props => props.theme.colors.indigo};
   background-image: url(${iconClear});
   background-repeat: no-repeat;
-  position: left center;
+  background-position: left center;
   padding: 0 0 0 25px;
   position: absolute;
   right: 20px;
