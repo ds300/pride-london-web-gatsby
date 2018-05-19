@@ -73,6 +73,7 @@ const InfoPlaceholder = styled.div`
 export default class Event extends Component {
   render() {
     const {
+      id,
       individualEventPicture,
       eventDescription,
       name,
@@ -97,7 +98,7 @@ export default class Event extends Component {
         <ContentWrapper>
           <ReactMarkdown source={eventDescription.eventDescription} />
           <EventSchedule schedule={performances} />
-          <EventsYouMayLike eventId={this.state.event.id} />
+          <EventsYouMayLike eventId={id} />
         </ContentWrapper>
       </PageWrapper>
     )
