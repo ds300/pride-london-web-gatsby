@@ -118,7 +118,7 @@ const EventsFilters = props => {
           <FilterHeader width={1} mb={[-2, -2, 0]}>
             <FilterHeaderInner>
               <Label>Filter events by</Label>
-              <ClearButton type="button" aria-label="Close Filters">
+              <ClearButton type="button" aria-label="Close Filters" onClick={context.actions.clearFilters}>
                 Clear filters
               </ClearButton>
               <CloseButton />

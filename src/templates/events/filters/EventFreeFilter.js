@@ -20,8 +20,6 @@ const Wrapper = styled.div`
       border-color: ${props => props.theme.colors.eucalyptusGreen};
     }
   }
-
-
 `
 const FilterHeader = styled.div`
   padding: 16px 20px;
@@ -30,9 +28,9 @@ const FilterHeader = styled.div`
   font-weight: 600;
   color: ${props => props.theme.colors.indigo};
 
-@media (min-width: ${props => props.theme.breakpoints[1]}) {
-  display: none;
-}
+  @media (min-width: ${props => props.theme.breakpoints[1]}) {
+    display: none;
+  }
 `
 
 class EventFreeFilter extends Component {
@@ -41,8 +39,8 @@ class EventFreeFilter extends Component {
       <Consumer>
         {context => (
           <div>
-          <FilterHeader>Price</FilterHeader>
-          <Wrapper>
+            <FilterHeader>Price</FilterHeader>
+            <Wrapper>
               <Checkbox
                 id="free"
                 value="free"
@@ -51,7 +49,7 @@ class EventFreeFilter extends Component {
                 name="free"
                 handleChange={e => context.actions.getCheckboxBool(e, 'free')}
               />
-          </Wrapper>
+            </Wrapper>
           </div>
         )}
       </Consumer>

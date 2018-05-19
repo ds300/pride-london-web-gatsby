@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import styled from 'styled-components'
-import onClickOutside from "react-onclickoutside";
+import onClickOutside from 'react-onclickoutside'
 import { Consumer } from '../../../components/AppContext'
 import CheckboxSet from '../../../components/CheckboxSet'
 import theme from '../../../theme/theme'
@@ -92,8 +92,8 @@ class EventDropdownFilter extends Component {
   }
 
   handleClickOutside = evt => {
-    this.setState({isOpen: false})
-  };
+    this.setState({ isOpen: false })
+  }
 
   toggleMenu = e => {
     let isOpen = this.state.isOpen

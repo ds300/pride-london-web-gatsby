@@ -80,18 +80,18 @@ class EventDateFilter extends Component {
   render() {
     return (
       <Consumer>
-        {context => (            
-            <DatePickerWrapper>
-              <DatePickerHeader>Date</DatePickerHeader>
-              <DatePicker
-                selected={
-                  context.state.filters.date ? context.state.filters.date : null
-                }
-                onChange={context.actions.getDatepickerValue}
-                placeholderText="Date"
-                locale="en-GB"
-              />
-            </DatePickerWrapper>
+        {context => (
+          <DatePickerWrapper>
+            <DatePickerHeader>Date</DatePickerHeader>
+            <DatePicker
+              selected={
+                context.state.filters.date ? context.state.filters.date : null
+              }
+              onChange={context.actions.getDatepickerValue}
+              placeholderText="Date"
+              locale="en-GB"
+            />
+          </DatePickerWrapper>
         )}
       </Consumer>
     )

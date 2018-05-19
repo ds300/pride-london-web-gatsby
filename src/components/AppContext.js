@@ -4,19 +4,21 @@ import PropTypes from 'prop-types'
 const AppContext = React.createContext()
 const { Consumer } = AppContext
 
+const initialState = {
+  filters: {
+    date: null,
+    free: false,
+    eventCategories: [],
+    venueDetails: [],
+    audience: [],
+    accessibilityOptions: [],
+    area: [],
+    timeOfDay: [],
+  },
+}
+
 class Provider extends Component {
-  state = {
-    filters: {
-      date: null,
-      free: false,
-      eventCategories: [],
-      venueDetails: [],
-      audience: [],
-      accessibilityOptions: [],
-      area: [],
-      timeOfDay: [],
-    },
-  }
+  state = initialState
 
   getDatepickerValue = date => {
     let state = this.state
@@ -48,6 +50,10 @@ class Provider extends Component {
     this.setState(state)
   }
 
+  clearFilters = () => {
+    this.setState(initialState)
+  }
+
   render() {
     return (
       <AppContext.Provider
@@ -58,6 +64,7 @@ class Provider extends Component {
             getCheckboxBool: this.getCheckboxBool,
             getDatepickerValue: this.getDatepickerValue,
             getCheckboxSetValues: this.getCheckboxSetValues,
+            clearFilters: this.clearFilters
           },
         }}
       >
