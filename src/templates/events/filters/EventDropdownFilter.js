@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import styled from 'styled-components'
+import onClickOutside from "react-onclickoutside";
 import { Consumer } from '../../../components/AppContext'
 import CheckboxSet from '../../../components/CheckboxSet'
 import theme from '../../../theme/theme'
@@ -13,10 +14,13 @@ const Wrapper = styled.div`
 `
 
 const Button = styled.button`
-  font-size: 0.875rem;
+  font-family: ${props => props.theme.fonts.title};
+  font-weight: 600;
+  font-size: 1rem;
   width: 100%;
   background-color: ${props => props.theme.colors.lightGrey};
   border-color: ${props => props.theme.colors.lightGrey};
+  color: ${props => props.theme.colors.indigo};
   padding: 11px 10px;
   display: flex;
   align-items: center;
@@ -28,6 +32,10 @@ const Button = styled.button`
   }
 
   @media (min-width: ${props => props.theme.breakpoints[1]}) {
+    color: ${props => props.theme.colors.black};
+    font-family: ${props => props.theme.fonts.body};
+    font-weight: 400;
+    font-size: 0.875rem;
     background-image: url(${props => (props.isOpen ? iconUp : iconDown)});
     background-repeat: no-repeat;
     background-position: right 20px center;
@@ -83,6 +91,10 @@ class EventDropdownFilter extends Component {
     isOpen: false,
   }
 
+  handleClickOutside = evt => {
+    this.setState({isOpen: false})
+  };
+
   toggleMenu = e => {
     let isOpen = this.state.isOpen
     isOpen = !isOpen
@@ -129,4 +141,4 @@ EventDropdownFilter.propTypes = {
   filterName: PropTypes.string.isRequired,
 }
 
-export default EventDropdownFilter
+export default onClickOutside(EventDropdownFilter)

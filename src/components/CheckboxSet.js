@@ -50,11 +50,7 @@ class CheckboxSet extends Component {
                 <ListItem key={index}>
                   <Checkbox
                     checked={
-                      context.state.filters[this.props.filterName].indexOf(
-                        option
-                      ) != -1
-                        ? true
-                        : false
+                      context.state.filters[this.props.filterName].indexOf(option) != -1 ? true : false
                     }
                     label={option}
                     value={option}

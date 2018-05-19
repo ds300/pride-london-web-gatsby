@@ -73,6 +73,7 @@ const ClearButton = styled.button`
   top: 104px;
   z-index: 1;
   background-color: transparent;
+  cursor: pointer;
 
   @media (min-width: ${props => props.theme.breakpoints[0]}) {
     right: 30px;
@@ -84,18 +85,19 @@ const ClearButton = styled.button`
 `
 
 const CloseButton = styled.button`
-display: inline-block;
-height: 20px;
-width: 20px;
-background-image: url(${iconClose});
-background-repeat: no-repeat;
-background-position: center center;
-background-color: transparent;
-border: none;
+  display: inline-block;
+  height: 20px;
+  width: 20px;
+  background-image: url(${iconClose});
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
 
-@media (min-width: ${props => props.theme.breakpoints[1]}) {
-  display: none;
-}
+  @media (min-width: ${props => props.theme.breakpoints[1]}) {
+    display: none;
+  }
 `
 
 const EventsFilters = props => {
@@ -116,8 +118,10 @@ const EventsFilters = props => {
           <FilterHeader width={1} mb={[-2, -2, 0]}>
             <FilterHeaderInner>
               <Label>Filter events by</Label>
-              <ClearButton type="button" aria-label="Close Filters">Clear filters</ClearButton>
-              <CloseButton/>
+              <ClearButton type="button" aria-label="Close Filters">
+                Clear filters
+              </ClearButton>
+              <CloseButton />
             </FilterHeaderInner>
           </FilterHeader>
           <FlexColumn width={[1, 1, 0.5, 0.25]}>
