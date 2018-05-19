@@ -23,6 +23,23 @@ describe('ImageBanner', () => {
     expect(wrapper.find(BannerSubtitle)).toHaveLength(1)
   })
 
+  it('should render an <img>', () => {
+    const wrapper = shallow(<ImageBanner />)
+    expect(wrapper.find('img')).toHaveLength(1)
+  })
+
+  it('should render an img with imgSrc from props', () => {
+    const imageSrc = 'http://www.image.com'
+    const wrapper = shallow(<ImageBanner imageSrc={imageSrc} />)
+    expect(wrapper.find('img').props().src).toBe(imageSrc)
+  })
+
+  it('should render an img with altText from props', () => {
+    const altText = 'background image'
+    const wrapper = shallow(<ImageBanner altText={altText} />)
+    expect(wrapper.find('img').props().alt).toBe(altText)
+  })
+
   it('should render the titleText from props to BannerTitle ', () => {
     const titleText = 'Here is a test title!'
     const wrapper = shallow(<ImageBanner titleText={titleText} />)
@@ -45,11 +62,5 @@ describe('ImageBanner', () => {
         .find('span')
         .text()
     ).toBe(subtitleText)
-  })
-
-  it('should pass the imageSrc prop to the BackgroundImage component', () => {
-    const imageSrc = 'http://www.pics.com/coolpic'
-    const wrapper = shallow(<ImageBanner imageSrc={imageSrc} />)
-    expect(wrapper.find(BackgroundImage).props().imageSrc).toBe(imageSrc)
   })
 })

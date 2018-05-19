@@ -5,15 +5,13 @@ import styled from 'styled-components'
 import BannerTitle from '../BannerTitle/BannerTitle'
 import BannerSubtitle from '../BannerSubtitle/BannerSubtitle'
 
-const BackgroundImage = styled.div`
-  justify-content: center;
-  background-image: url(${props => props.imageSrc});
-  background-size: cover;
-  background-repeat: no-repeat;
+const Container = styled.div`
   display: flex;
   flex-direction: column;
-  padding-left: 10px;
   height: 210px;
+  justify-content: center;
+  line-height: 0;
+  padding-left: 10px;
 
   @media (min-width: 768px) {
     height: 250px;
@@ -21,31 +19,26 @@ const BackgroundImage = styled.div`
   }
 `
 
-const Container = styled.div`
-  line-height: 0;
-`
-
-const ImageBanner = ({ titleText, subtitleText, imageSrc }) => (
-  <BackgroundImage imageSrc={imageSrc}>
-    <Container>
-      <BannerTitle>{titleText}</BannerTitle>
-      <BannerSubtitle>{subtitleText}</BannerSubtitle>
-    </Container>
-  </BackgroundImage>
+const ImageBanner = ({ titleText, subtitleText, imageSrc, altText }) => (
+  <Container>
+    <img src={imageSrc} alt={altText} />
+    <BannerTitle>{titleText}</BannerTitle>
+    <BannerSubtitle>{subtitleText}</BannerSubtitle>
+  </Container>
 )
 
 ImageBanner.propTypes = {
   imageSrc: PropTypes.string,
+  altText: PropTypes.string,
   subtitleText: PropTypes.string,
   titleText: PropTypes.string,
 }
 
 ImageBanner.defaultProps = {
   imageSrc: '',
+  altText: '',
   subtitleText: '',
   titleText: '',
 }
 
 export default ImageBanner
-
-export { BackgroundImage }
