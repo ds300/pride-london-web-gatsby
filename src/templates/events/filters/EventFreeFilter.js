@@ -24,6 +24,7 @@ const Wrapper = styled.div`
 const FilterHeader = styled.div`
   padding: 16px 20px;
   background-color: ${props => props.theme.colors.lightGrey};
+  font-size: 1rem;
   font-family: ${props => props.theme.fonts.title};
   font-weight: 600;
   color: ${props => props.theme.colors.indigo};

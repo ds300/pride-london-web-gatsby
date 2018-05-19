@@ -30,7 +30,7 @@ const ContentWrapper = styled.div`
   width: 100vw;
   ${media.desktop`
     padding: 0;
-    margin-left: 80px;
+    margin-left: 90px;
     max-width: 45vw;
   `};
   ${media.desktopHD`
@@ -70,9 +70,14 @@ const InfoPlaceholder = styled.div`
  `};
 `
 
+const Section = styled.div`
+  margin-bottom: 60px;
+`
+
 export default class Event extends Component {
   render() {
     const {
+      id,
       individualEventPicture,
       eventDescription,
       name,
@@ -95,10 +100,14 @@ export default class Event extends Component {
         </HeroImageAndTitle>
         <InfoPlaceholder>put things inside me plz</InfoPlaceholder>
         <ContentWrapper>
-          <ReactMarkdown source={eventDescription.eventDescription} />
-          <EventSchedule schedule={performances} />
-          <EventsYouMayLike eventId={this.state.event.id} />
+          <Section>
+            <ReactMarkdown source={eventDescription.eventDescription} />
+          </Section>
+          <Section>
+            <EventSchedule schedule={performances} />
+          </Section>
         </ContentWrapper>
+        <EventsYouMayLike eventId={id} />
       </PageWrapper>
     )
   }

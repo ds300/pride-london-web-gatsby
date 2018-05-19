@@ -34,9 +34,11 @@ const CardBody = styled.div`
 const CardDate = styled.span`
   display: block;
   color: ${props => props.theme.colors.darkGrey};
-  font-size: 1.4rem;
-  font-weight: bold;
-  margin-bottom: 0.625rem;
+  font-size: 0.875rem;
+  line-height: 1.43;
+  font-weight: 600;
+  margin-bottom: 0.65rem;
+  font-family: Poppins, sans-serif;
 `
 
 const CardPrice = styled.div`
@@ -49,6 +51,13 @@ const CardPrice = styled.div`
   font-weight: 600;
   padding: 5px 10px;
   border-radius: 5px;
+  font-size: 1rem;
+`
+
+const CardHeading = styled.h2`
+  margin-bottom: 0;
+  line-height: 1.21;
+  color: black;
 `
 
 export const EventListingCard = props => {
@@ -64,7 +73,7 @@ export const EventListingCard = props => {
       />
       <CardBody>
         <CardDate>{formatDate(event)}</CardDate>
-        <h2>{event.name}</h2>
+        <CardHeading>{event.name}</CardHeading>
       </CardBody>
       <CardPrice>from £{event.eventPriceLow}</CardPrice>
     </Card>

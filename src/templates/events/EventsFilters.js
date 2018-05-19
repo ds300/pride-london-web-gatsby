@@ -62,7 +62,7 @@ const Label = styled.span`
 
 const ClearButton = styled.button`
   border: none;
-  font-size: 1.4rem;
+  font-size: 0.875rem;
   color: ${props => props.theme.colors.indigo};
   background-image: url(${iconClear});
   background-repeat: no-repeat;

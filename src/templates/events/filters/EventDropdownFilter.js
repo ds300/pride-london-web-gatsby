@@ -16,7 +16,7 @@ const Wrapper = styled.div`
 const Button = styled.button`
   font-family: ${props => props.theme.fonts.title};
   font-weight: 600;
-  font-size: 1.6rem;
+  font-size: 1rem;
   width: 100%;
   background-color: ${props => props.theme.colors.lightGrey};
   border-color: ${props => props.theme.colors.lightGrey};
@@ -35,7 +35,7 @@ const Button = styled.button`
     color: ${props => props.theme.colors.black};
     font-family: ${props => props.theme.fonts.body};
     font-weight: 400;
-    font-size: 1.4rem;
+    font-size: 0.875rem;
     background-image: url(${props => (props.isOpen ? iconUp : iconDown)});
     background-repeat: no-repeat;
     background-position: right 20px center;
