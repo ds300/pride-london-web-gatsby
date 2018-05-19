@@ -64,7 +64,7 @@ class Provider extends Component {
             getCheckboxBool: this.getCheckboxBool,
             getDatepickerValue: this.getDatepickerValue,
             getCheckboxSetValues: this.getCheckboxSetValues,
-            clearFilters: this.clearFilters
+            clearFilters: this.clearFilters,
           },
         }}
       >

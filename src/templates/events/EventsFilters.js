@@ -118,10 +118,13 @@ const EventsFilters = props => {
           <FilterHeader width={1} mb={[-2, -2, 0]}>
             <FilterHeaderInner>
               <Label>Filter events by</Label>
-              <ClearButton type="button" aria-label="Close Filters" onClick={context.actions.clearFilters}>
+              <ClearButton
+                type="button"
+                onClick={context.actions.clearFilters}
+              >
                 Clear filters
               </ClearButton>
-              <CloseButton />
+              <CloseButton aria-label="Close filters"/>
             </FilterHeaderInner>
           </FilterHeader>
           <FlexColumn width={[1, 1, 0.5, 0.25]}>
