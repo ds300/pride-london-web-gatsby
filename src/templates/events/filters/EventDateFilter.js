@@ -29,7 +29,7 @@ const DatePickerWrapper = styled.div`
       appearance: none;
       border: none;
       padding: 20px;
-      font-size: 0.875em;
+      font-size: 1.4rem;
       line-height: 1.214;
       box-sizing: border-box;
       display: block;
@@ -63,7 +63,7 @@ const DatePickerWrapper = styled.div`
 
 const DatePickerHeader = styled.div`
   background-color: ${props => props.theme.colors.lightGrey};
-  font-size: 1rem;
+  font-size: 1.6rem;
   font-family: ${props => props.theme.fonts.title};
   font-weight: 600;
   padding: 16px 20px;

@@ -3,7 +3,6 @@ import styled from 'styled-components'
 import { Consumer } from '../../components/AppContext'
 import { Column } from '../../components/grid/grid'
 import { Flex } from 'grid-styled'
-import { Column } from '../../components/grid/grid'
 import EventDateFilter from './filters/EventDateFilter'
 import EventFreeFilter from './filters/EventFreeFilter'
 import EventDropdownFilter from './filters/EventDropdownFilter'
@@ -63,7 +62,7 @@ const Label = styled.span`
 
 const ClearButton = styled.button`
   border: none;
-  font-size: 0.875rem;
+  font-size: 1.4rem;
   color: ${props => props.theme.colors.indigo};
   background-image: url(${iconClear});
   background-repeat: no-repeat;

@@ -32,7 +32,7 @@ const Input = styled.input`
 `
 
 const Label = styled.label`
-  font-size: 0.875rem;
+  font-size: 1.4rem;
   line-height: 1.43;
 `
 

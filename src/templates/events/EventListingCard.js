@@ -34,7 +34,7 @@ const CardBody = styled.div`
 const CardDate = styled.span`
   display: block;
   color: ${props => props.theme.colors.darkGrey};
-  font-size: 0.875rem;
+  font-size: 1.4rem;
   font-weight: bold;
   margin-bottom: 0.625rem;
 `
