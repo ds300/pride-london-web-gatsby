@@ -32,8 +32,8 @@ const SingleDatePickerWrapper = styled.div`
     border: none;
     padding: 14px 50px 14px 20px;
     font-size: 0.875rem;
-    font-weight: ${props => (props.dateSelected ? '700' : '400')};
     font-family: ${props => props.theme.fonts.body};
+    font-weight: 500;
     line-height: 1.214;
     box-sizing: border-box;
     display: block;
@@ -88,9 +88,7 @@ class EventDateFilter extends Component {
           <div>
             <DatePickerWrapper>
               <DatePickerHeader>Date</DatePickerHeader>
-              <SingleDatePickerWrapper
-                dateSelected={context.state.filters.date ? true : false}
-              >
+              <SingleDatePickerWrapper>
                 <SingleDatePicker
                   date={
                     context.state.filters.date

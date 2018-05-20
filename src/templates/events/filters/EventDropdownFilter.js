@@ -34,7 +34,7 @@ const Button = styled.button`
   @media (min-width: ${props => props.theme.breakpoints[1]}) {
     color: ${props => props.theme.colors.black};
     font-family: ${props => props.theme.fonts.body};
-    font-weight: 400;
+    font-weight: 500;
     font-size: 0.875rem;
     background-image: url(${props => (props.isOpen ? iconUp : iconDown)});
     background-repeat: no-repeat;
