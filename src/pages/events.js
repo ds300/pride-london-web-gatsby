@@ -3,7 +3,7 @@ import Link from 'gatsby-link'
 import styled from 'styled-components'
 import { EventListingCard } from '../templates/events'
 import EventsFilters from '../templates/events/EventsFilters'
-import { Container, Row, Column } from '../components/grid/grid'
+import { Container, Row, Column } from '../components/grid'
 import { Consumer } from '../components/AppContext'
 import {
   filterByDate,

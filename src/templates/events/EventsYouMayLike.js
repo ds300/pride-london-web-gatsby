@@ -5,7 +5,7 @@ import moment from 'moment'
 import EventListingCard from './EventListingCard'
 import { ChevronRight } from '../../components/ChevronRight'
 import { Consumer } from '../../components/AppContext'
-import { Container, Row, Column } from '../../components/grid/grid'
+import { Container, Row, Column } from '../../components/grid'
 import { media } from '../../theme/media'
 
 const ViewAll = styled.a`

@@ -1,7 +1,7 @@
 import React from 'react'
 import styled from 'styled-components'
 import { Consumer } from '../../components/AppContext'
-import { Column } from '../../components/grid/grid'
+import { Column } from '../../components/grid'
 import { Flex } from 'grid-styled'
 import EventDateFilter from './filters/EventDateFilter'
 import EventFreeFilter from './filters/EventFreeFilter'
