@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
-import 'react-dates/initialize';
-import { SingleDatePicker } from 'react-dates';
-import 'react-dates/lib/css/_datepicker.css';
+import 'react-dates/initialize'
+import { SingleDatePicker } from 'react-dates'
+import 'react-dates/lib/css/_datepicker.css'
 import 'react-datepicker/dist/react-datepicker.css'
 import styled from 'styled-components'
 import theme from '../../../theme/theme'
@@ -21,18 +21,18 @@ const DatePickerWrapper = styled.div`
   }
 `
 const SingleDatePickerWrapper = styled.div`
-    .SingleDatePicker,
-    .SingleDatePickerInput,
-    .DateInput {
-      width: 100%;
-    }
+  .SingleDatePicker,
+  .SingleDatePickerInput,
+  .DateInput {
+    width: 100%;
+  }
 
-    input.DateInput_input {
+  input.DateInput_input {
     appearance: none;
     border: none;
     padding: 14px 50px 14px 20px;
     font-size: 0.875rem;
-    font-weight: ${props => props.dateSelected ? '700' : '400'};
+    font-weight: ${props => (props.dateSelected ? '700' : '400')};
     line-height: 1.214;
     box-sizing: border-box;
     display: block;
@@ -77,7 +77,7 @@ const DatePickerHeader = styled.div`
 `
 class EventDateFilter extends Component {
   state = {
-    date: moment()
+    date: moment(),
   }
 
   render() {
@@ -85,20 +85,29 @@ class EventDateFilter extends Component {
       <Consumer>
         {context => (
           <div>
-          <DatePickerWrapper>
-            <DatePickerHeader>Date</DatePickerHeader>
-            <SingleDatePickerWrapper dateSelected={context.state.filters.date ? true : false}>
-              <SingleDatePicker
-                date={context.state.filters.date ? context.state.filters.date : null} // momentPropTypes.momentObj or null
-                onDateChange={context.actions.getDatepickerValue} // PropTypes.func.isRequired
-                focused={this.state.focused} // PropTypes.bool
-                onFocusChange={({ focused }) => {this.setState({ focused }); context.actions.closeSiblingFilters('date', focused) }} // PropTypes.func.isRequired
-                numberOfMonths={1}
-                displayFormat="DD/MM/YYYY"
-                noBorder={true}
-              />
-            </SingleDatePickerWrapper>
-          </DatePickerWrapper>
+            <DatePickerWrapper>
+              <DatePickerHeader>Date</DatePickerHeader>
+              <SingleDatePickerWrapper
+                dateSelected={context.state.filters.date ? true : false}
+              >
+                <SingleDatePicker
+                  date={
+                    context.state.filters.date
+                      ? context.state.filters.date
+                      : null
+                  } // momentPropTypes.momentObj or null
+                  onDateChange={context.actions.getDatepickerValue} // PropTypes.func.isRequired
+                  focused={this.state.focused} // PropTypes.bool
+                  onFocusChange={({ focused }) => {
+                    this.setState({ focused })
+                    context.actions.closeSiblingFilters('date', focused)
+                  }} // PropTypes.func.isRequired
+                  numberOfMonths={1}
+                  displayFormat="DD/MM/YYYY"
+                  noBorder={true}
+                />
+              </SingleDatePickerWrapper>
+            </DatePickerWrapper>
           </div>
         )}
       </Consumer>

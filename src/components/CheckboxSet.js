@@ -52,7 +52,7 @@ class CheckboxSet extends Component {
                     checked={
                       context.state.filters[this.props.filterName].indexOf(
                         option
-                      ) != -1
+                      ) >= 0
                         ? true
                         : false
                     }

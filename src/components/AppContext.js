@@ -19,10 +19,10 @@ const initialState = {
 }
 
 class Provider extends Component {
-  state = initialState
+  state = { ...initialState }
 
   getDatepickerValue = date => {
-    const { state } = this
+    let { state } = this
     state.filters.date = date
     this.setState(state)
   }
@@ -34,7 +34,7 @@ class Provider extends Component {
   }
 
   getCheckboxSetValues = (e, name) => {
-    let state = this.state
+    const { state } = this
 
     if (
       e.target.checked &&
@@ -52,7 +52,18 @@ class Provider extends Component {
   }
 
   clearFilters = () => {
-    let state = {...initialState}
+    const { state } = this
+    state.filterOpen = null
+    state.filters = {
+      date: null,
+      free: false,
+      eventCategories: [],
+      venueDetails: [],
+      audience: [],
+      accessibilityOptions: [],
+      area: [],
+      timeOfDay: [],
+    }
     this.setState(state)
   }
 
