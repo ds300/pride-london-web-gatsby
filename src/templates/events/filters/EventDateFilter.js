@@ -33,6 +33,7 @@ const SingleDatePickerWrapper = styled.div`
     padding: 14px 50px 14px 20px;
     font-size: 0.875rem;
     font-weight: ${props => (props.dateSelected ? '700' : '400')};
+    font-family: ${props => props.theme.fonts.body};
     line-height: 1.214;
     box-sizing: border-box;
     display: block;

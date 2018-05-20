@@ -6,7 +6,7 @@ import {
   filterByCategory,
   filterByArea,
   filterByTime,
-  filterPastEvents
+  filterPastEvents,
 } from '../templates/events/helpers/index.js'
 
 const AppContext = React.createContext()
@@ -124,7 +124,7 @@ class Provider extends Component {
             getCheckboxSetValues: this.getCheckboxSetValues,
             clearFilters: this.clearFilters,
             closeSiblingFilters: this.closeSiblingFilters,
-            getFilteredEventsCount: this.getFilteredEventsCount
+            getFilteredEventsCount: this.getFilteredEventsCount,
           },
         }}
       >
