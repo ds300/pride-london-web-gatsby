@@ -16,7 +16,7 @@ const Wrapper = styled.div`
     & + label {
       font-weight: 500;
     }
-    
+
     &:checked {
       & + label {
         font-weight: 500;
