@@ -116,8 +116,8 @@ function filterByTime(event) {
 }
 
 function filterPastEvents(event) {
-  const today = moment();
-  return moment(event.node.startTime).isSameOrAfter(today);
+  const today = moment()
+  return moment(event.node.startTime).isSameOrAfter(today)
 }
 
 module.exports = {
@@ -127,5 +127,5 @@ module.exports = {
   filterByCategory,
   filterByArea,
   filterByTime,
-  filterPastEvents
+  filterPastEvents,
 }
