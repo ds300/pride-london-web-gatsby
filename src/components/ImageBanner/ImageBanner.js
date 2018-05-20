@@ -11,7 +11,16 @@ const Container = styled.div`
   height: 210px;
   justify-content: center;
   line-height: 0;
+  overflow: hidden;
   padding-left: 10px;
+  position: relative;
+
+  & img {
+    position: absolute;
+    left: 0;
+    top: 0;
+    z-index: -1;
+  }
 
   @media (min-width: 768px) {
     height: 250px;

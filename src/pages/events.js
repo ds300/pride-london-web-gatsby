@@ -32,9 +32,10 @@ export const Events = () => (
                 titleText="Celebrate Pride"
                 subtitleText="Events, shows, talks"
                 imageSrc=""
+                altText="Celebrate Pride banner"
               />
-              <h1> Hi from the events page </h1>{' '}
-              <Link to="/"> Go back to the homepage </Link>{' '}
+              <h1> Hi from the events page </h1>
+              <Link to="/"> Go back to the homepage </Link>
             </Column>
           </Row>
           <Row>
