@@ -55,7 +55,10 @@ export const query = graphql`
       }
     }
 
-    allContentfulEvent(filter: {}) {
+    allContentfulEvent(
+      filter: {}
+      sort: {fields: [startTime], order: ASC}
+      ) {
       edges {
         node {
           id
