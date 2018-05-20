@@ -2,7 +2,7 @@ import React, { Fragment } from 'react'
 import Link from 'gatsby-link'
 import styled from 'styled-components'
 import { EventListingCard } from '../templates/events'
-import EventsFilters from '../templates/events/EventsFilters'
+import EventsFilters from '../templates/events/eventsFilters'
 import { Container, Row, Column } from '../components/grid'
 import { Consumer } from '../components/AppContext'
 import {

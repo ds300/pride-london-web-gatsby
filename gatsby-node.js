@@ -19,7 +19,7 @@ exports.createPages = ({ graphql, boundActionCreators }) => {
         reject(result.errors);
       }
 
-      const eventTemplate = path.resolve('./src/templates/Event.js');
+      const eventTemplate = path.resolve('./src/templates/event.js');
 
       result.data.allContentfulEvent.edges.forEach((edge) => {
         createPage({
