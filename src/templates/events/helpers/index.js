@@ -115,6 +115,11 @@ function filterByTime(event) {
   return this.indexOf(timeOfDay) !== -1
 }
 
+function filterPastEvents(event) {
+  const today = moment();
+  return moment(event.node.startTime).isSameOrAfter(today);
+}
+
 module.exports = {
   formatDate,
   filterByDate,
@@ -122,4 +127,5 @@ module.exports = {
   filterByCategory,
   filterByArea,
   filterByTime,
+  filterPastEvents
 }

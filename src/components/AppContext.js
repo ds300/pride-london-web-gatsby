@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
+import { filterPastEvents } from '../templates/events/helpers/index'
 
 const AppContext = React.createContext()
 const { Consumer } = AppContext
@@ -80,7 +81,7 @@ class Provider extends Component {
       <AppContext.Provider
         value={{
           state: this.state,
-          events: this.props.events,
+          events: this.props.events.filter(filterPastEvents),
           actions: {
             getCheckboxBool: this.getCheckboxBool,
             getDatepickerValue: this.getDatepickerValue,
