@@ -4,7 +4,7 @@ import styled from 'styled-components'
 import moment from 'moment'
 import EventListingCard from './eventListingCard'
 import { ChevronRight } from '../../components/chevronRight'
-import { Consumer } from '../../components/AppContext'
+import { Consumer } from '../../components/appContext'
 import { Container, Row, Column } from '../../components/grid'
 import { media } from '../../theme/media'
 

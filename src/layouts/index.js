@@ -2,7 +2,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import Helmet from 'react-helmet'
 import { ThemeProvider } from 'styled-components'
-import { Provider } from '../components/AppContext'
+import { Provider } from '../components/appContext'
 import Navigation from '../components/navigation'
 import theme from '../theme/theme'
 

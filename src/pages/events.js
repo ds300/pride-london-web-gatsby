@@ -4,7 +4,7 @@ import styled from 'styled-components'
 import { EventListingCard } from '../templates/events'
 import EventsFilters from '../templates/events/eventsFilters'
 import { Container, Row, Column } from '../components/grid'
-import { Consumer } from '../components/AppContext'
+import { Consumer } from '../components/appContext'
 import {
   filterByDate,
   filterByFree,
