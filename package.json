@@ -12,6 +12,7 @@
     "moment": "^2.22.1",
     "polished": "^1.9.2",
     "react-datepicker": "^1.4.1",
+    "react-dates": "^16.7.0",
     "react-helmet": "^5.2.0",
     "react-markdown": "^3.3.2",
     "react-onclickoutside": "^6.7.1",

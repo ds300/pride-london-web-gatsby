@@ -28,7 +28,7 @@ const Button = styled.button`
   box-sizing: border-box;
 
   @media (min-width: ${props => props.theme.breakpoints[0]}) {
-    padding: 11px 20px;
+    padding: 11px 45px 11px 20px;
   }
 
   @media (min-width: ${props => props.theme.breakpoints[1]}) {
@@ -89,15 +89,14 @@ const Badge = styled.span`
 class EventDropdownFilter extends Component {
   state = {
     isOpen: false,
-    filterOpen: null
+    filterOpen: null,
   }
 
-  static getDerivedStateFromProps(nextProps, prevState) {  
+  static getDerivedStateFromProps(nextProps, prevState) {
     if (nextProps.filterOpen != nextProps.filterName) {
-      return {isOpen: false}
-    }
-    else {
-      return {isOpen: true}
+      return { isOpen: false }
+    } else {
+      return { isOpen: true }
     }
   }
 
@@ -105,10 +104,12 @@ class EventDropdownFilter extends Component {
     this.setState({ isOpen: false })
   }
 
-  toggleMenu = (closeSiblingFilters) => {
+  toggleMenu = closeSiblingFilters => {
     let isOpen = this.state.isOpen
     isOpen = !isOpen
-    this.setState({ isOpen }, () => closeSiblingFilters(this.props.filterName, this.state.isOpen))
+    this.setState({ isOpen }, () =>
+      closeSiblingFilters(this.props.filterName, this.state.isOpen)
+    )
   }
 
   render() {
@@ -121,7 +122,9 @@ class EventDropdownFilter extends Component {
               aria-expanded={this.state.isOpen}
               type="button"
               id={`button_${this.props.filterName}`}
-              onClick={(e) => this.toggleMenu(context.actions.closeSiblingFilters)}
+              onClick={e =>
+                this.toggleMenu(context.actions.closeSiblingFilters)
+              }
               isOpen={this.state.isOpen}
             >
               {this.props.heading}

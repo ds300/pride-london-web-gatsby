@@ -52,7 +52,8 @@ class Provider extends Component {
   }
 
   clearFilters = () => {
-    this.setState(initialState)
+    let state = {...initialState}
+    this.setState(state)
   }
 
   closeSiblingFilters = (filterName, isOpen) => {
@@ -74,7 +75,7 @@ class Provider extends Component {
             getDatepickerValue: this.getDatepickerValue,
             getCheckboxSetValues: this.getCheckboxSetValues,
             clearFilters: this.clearFilters,
-            closeSiblingFilters: this.closeSiblingFilters
+            closeSiblingFilters: this.closeSiblingFilters,
           },
         }}
       >
