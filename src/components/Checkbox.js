@@ -38,7 +38,11 @@ const Label = styled.label`
 
 class Checkbox extends Component {
   state = {
-    checked: this.props.checked,
+    checked: false,
+  }
+
+  static getDerivedStateFromProps(nextProps) {
+    return { checked: nextProps.checked }
   }
 
   toggleCheckbox = e => {
@@ -68,12 +72,20 @@ class Checkbox extends Component {
 }
 
 Checkbox.propTypes = {
-  checked: PropTypes.bool,
   handleChange: PropTypes.func,
   label: PropTypes.string,
   id: PropTypes.string,
   value: PropTypes.string,
   name: PropTypes.string,
+}
+
+Checkbox.defaultProps = {
+  checked: false,
+  handleChange: null,
+  label: '',
+  id: '',
+  value: '',
+  name: '',
 }
 
 export default Checkbox

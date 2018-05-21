@@ -11,6 +11,18 @@ const Wrapper = styled.div`
   min-height: 48px;
   box-sizing: border-box;
 
+  input {
+    & + label {
+      font-weight: 500;
+    }
+
+    &:checked {
+      & + label {
+        font-weight: 500;
+      }
+    }
+  }
+
   @media (min-width: ${props => props.theme.breakpoints[1]}) {
     border: 2px solid ${props => props.theme.colors.mediumGrey};
     border-radius: 4px;
@@ -45,7 +57,10 @@ const EventFreeFilter = () => (
             checked={context.state.filters.free}
             label="Show only free events"
             name="free"
-            handleChange={e => context.actions.getCheckboxBool(e, 'free')}
+            handleChange={e => {
+              context.actions.getCheckboxBool(e, 'free')
+              context.actions.closeSiblingFilters('free', e.target.checked)
+            }}
           />
         </Wrapper>
       </div>

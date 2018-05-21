@@ -54,4 +54,9 @@ EventScheduleItem.propTypes = {
   title: PropTypes.string,
 }
 
+EventScheduleItem.defaultProps = {
+  data: [],
+  title: '',
+}
+
 export default EventScheduleItem

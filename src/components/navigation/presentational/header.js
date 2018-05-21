@@ -26,4 +26,9 @@ Header.propTypes = {
   ]),
 }
 
+Header.defaultProps = {
+  children: null,
+  items: {},
+}
+
 export default Header

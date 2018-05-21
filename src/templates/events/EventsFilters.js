@@ -127,30 +127,45 @@ const EventsFilters = () => (
           <EventDropdownFilter
             heading="Category"
             filterName="eventCategories"
+            filterOpen={context.state.filterOpen}
           />
         </FlexColumn>
         <FlexColumn width={[1, 1, 0.5, 0.25]}>
           <EventDateFilter />
         </FlexColumn>
         <FlexColumn width={[1, 1, 0.5, 0.25]}>
-          <EventDropdownFilter heading="Area of London" filterName="area" />
+          <EventDropdownFilter
+            heading="Area of London"
+            filterName="area"
+            filterOpen={context.state.filterOpen}
+          />
         </FlexColumn>
         <FlexColumn width={[1, 1, 0.5, 0.25]}>
-          <EventDropdownFilter heading="Time of day" filterName="timeOfDay" />
+          <EventDropdownFilter
+            heading="Time of day"
+            filterName="timeOfDay"
+            filterOpen={context.state.filterOpen}
+          />
         </FlexColumn>
         <FlexColumn width={[1, 1, 0.5, 0.25]}>
-          <EventDropdownFilter heading="Age group" filterName="audience" />
+          <EventDropdownFilter
+            heading="Age group"
+            filterName="audience"
+            filterOpen={context.state.filterOpen}
+          />
         </FlexColumn>
         <FlexColumn width={[1, 1, 0.5, 0.25]}>
           <EventDropdownFilter
             heading="Venue options"
             filterName="venueDetails"
+            filterOpen={context.state.filterOpen}
           />
         </FlexColumn>
         <FlexColumn width={[1, 1, 0.5, 0.25]}>
           <EventDropdownFilter
             heading="Accessibility"
             filterName="accessibilityOptions"
+            filterOpen={context.state.filterOpen}
           />
         </FlexColumn>
         <FlexColumn width={[1, 1, 0.5, 0.25]}>

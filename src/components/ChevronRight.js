@@ -3,7 +3,7 @@ import React from 'react'
 export const ChevronRight = props => (
   <svg
     style={{
-      display: 'intline-block',
+      display: 'inline-block',
       marginBottom: '-4px',
       marginLeft: '6px',
     }}

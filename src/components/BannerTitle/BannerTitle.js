@@ -1,4 +1,5 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 import styled from 'styled-components'
 
 const BannerTitle = styled.h1`
@@ -19,5 +20,12 @@ const StyledBannerTitle = ({ children }) => (
     <span>{children}</span>
   </BannerTitle>
 )
+
+StyledBannerTitle.propTypes = {
+  children: PropTypes.oneOfType([
+    PropTypes.node,
+    PropTypes.arrayOf(PropTypes.node),
+  ]).isRequired,
+}
 
 export default StyledBannerTitle
