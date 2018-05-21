@@ -1,0 +1,22 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`BannerTitle should render 1`] = `
+.c0 {
+  display: block;
+  color: #2d2f7f;
+  font-size: 28px;
+  margin-bottom: 0;
+}
+
+.c0 span {
+  background-color: #ffffff;
+  display: inline-block;
+  padding: 0 10px;
+}
+
+<h1
+  className="c0"
+>
+  <span />
+</h1>
+`;

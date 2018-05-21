@@ -2,6 +2,7 @@ import React, { Fragment } from 'react'
 import Link from 'gatsby-link'
 import styled from 'styled-components'
 import { EventListingCard } from '../templates/events'
+import ImageBanner from '../components/ImageBanner/ImageBanner'
 import EventsFilters from '../templates/events/EventsFilters'
 import { Container, Row, Column } from '../components/grid/grid'
 import { Consumer } from '../components/AppContext'
@@ -26,8 +27,14 @@ export const Events = () => (
         <Container>
           <Row>
             <Column width={1}>
-              <h1>Hi from the events page</h1>
-              <Link to="/">Go back to the homepage</Link>
+              <ImageBanner
+                titleText="Celebrate Pride"
+                subtitleText="Events, shows, talks"
+                imageSrc=""
+                altText="Celebrate Pride banner"
+              />
+              <h1> Hi from the events page </h1>
+              <Link to="/"> Go back to the homepage </Link>
             </Column>
           </Row>
           <Row>
