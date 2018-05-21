@@ -17,13 +17,26 @@
   },
   "rules": {
     "arrow-parens": "off",
+    "comma-dangle": "off",
+    "function-paren-newline": "off",
+    "import/first": "errors",
     "import/no-extraneous-dependencies": "off",
     "import/no-named-as-default": "off",
+    "import/prefer-default-export": "off",
+    "indent": "off", // in conflict with prettier
     "jsx-a11y/anchor-is-valid": "off",
+    "eqeqeq": "off",
+    "no-confusing-arrow": "off",
     "no-undef": "off", // throw error on graphql queries
+    "no-unused-vars": "error",
     "prettier/prettier": "error",
+    "prefer-const": "error",
+    "prefer-destructuring": "error",
+    "prefer-rest-params": "off",
+    "react/prefer-stateless-function": "error",
     "react/forbid-prop-types": "off",
     "react/jsx-filename-extension": "off",
+    "react/no-array-index-key": "true",
     "react/require-default-props": "true",
     "react/no-unused-state": "off",
     "semi": "off"
