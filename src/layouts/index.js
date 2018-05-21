@@ -41,7 +41,7 @@ const Layout = props => (
 )
 
 Layout.propTypes = {
-  children: PropTypes.func,
+  children: PropTypes.func.isRequired,
   data: PropTypes.objectOf(PropTypes.object).isRequired,
 }
 

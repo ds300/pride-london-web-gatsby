@@ -41,7 +41,7 @@ class Checkbox extends Component {
     checked: false,
   }
 
-  static getDerivedStateFromProps(nextProps, prevState) {
+  static getDerivedStateFromProps(nextProps) {
     return { checked: nextProps.checked }
   }
 
@@ -78,6 +78,15 @@ Checkbox.propTypes = {
   id: PropTypes.string,
   value: PropTypes.string,
   name: PropTypes.string,
+}
+
+Checkbox.defaultProps = {
+  checked: false,
+  handleChange: null,
+  label: '',
+  id: '',
+  value: '',
+  name: '',
 }
 
 export default Checkbox

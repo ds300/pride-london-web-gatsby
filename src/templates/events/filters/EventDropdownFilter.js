@@ -4,7 +4,6 @@ import styled from 'styled-components'
 import onClickOutside from 'react-onclickoutside'
 import { Consumer } from '../../../components/AppContext'
 import CheckboxSet from '../../../components/CheckboxSet'
-import theme from '../../../theme/theme'
 import iconDown from '../../../theme/assets/images/icon-chevron-down.svg'
 import iconUp from '../../../theme/assets/images/icon-chevron-up.svg'
 
@@ -92,7 +91,7 @@ class EventDropdownFilter extends Component {
     filterOpen: null,
   }
 
-  static getDerivedStateFromProps(nextProps, prevState) {
+  static getDerivedStateFromProps(nextProps) {
     if (nextProps.filterOpen != nextProps.filterName) {
       return { isOpen: false }
     } else {
@@ -100,14 +99,10 @@ class EventDropdownFilter extends Component {
     }
   }
 
-  handleClickOutside = e => {
-    this.setState({ isOpen: false })
-  }
+  handleClickOutside = () => this.setState({ isOpen: false })
 
   toggleMenu = closeSiblingFilters => {
-    let isOpen = this.state.isOpen
-    isOpen = !isOpen
-    this.setState({ isOpen }, () =>
+    this.setState({ isOpen: !this.state.isOpen }, () =>
       closeSiblingFilters(this.props.filterName, this.state.isOpen)
     )
   }
@@ -122,7 +117,7 @@ class EventDropdownFilter extends Component {
               aria-expanded={this.state.isOpen}
               type="button"
               id={`button_${this.props.filterName}`}
-              onClick={e =>
+              onClick={() =>
                 this.toggleMenu(context.actions.closeSiblingFilters)
               }
               isOpen={this.state.isOpen}

@@ -27,8 +27,10 @@ const TableItemTime = styled(TableItem)`
   width: 60px;
 `
 
-const EventScheduleItem = props =>
-  props.data.length ? (
+const EventScheduleItem = props => {
+  if (!props.data.length) return null
+
+  return (
     <div>
       <Table>
         <tbody>
@@ -44,11 +46,17 @@ const EventScheduleItem = props =>
         </tbody>
       </Table>
     </div>
-  ) : null
+  )
+}
 
 EventScheduleItem.propTypes = {
   data: PropTypes.array,
   title: PropTypes.string,
+}
+
+EventScheduleItem.defaultProps = {
+  data: [],
+  title: '',
 }
 
 export default EventScheduleItem

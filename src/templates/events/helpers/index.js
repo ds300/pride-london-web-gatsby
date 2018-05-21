@@ -49,12 +49,11 @@ function filterByCategory(event) {
   const { key } = this
   if (this.array.length === 0) return true
 
-  return this.array.some(function(category) {
+  return this.array.some(category => {
     if (Array.isArray(event.node[key])) {
       return event.node[key].indexOf(category) >= 0
-    } else {
-      return false
     }
+    return false
   })
 }
 
@@ -85,9 +84,8 @@ function filterByArea(event) {
         return false
     }
     return this.indexOf(area) !== -1
-  } else {
-    return false
   }
+  return false
 }
 
 function filterByTime(event) {

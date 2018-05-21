@@ -31,7 +31,7 @@ class Provider extends Component {
   state = { ...initialState }
 
   getDatepickerValue = date => {
-    let { state } = this
+    const { state } = this
     state.filters.date = date
     this.setState(state)
   }
@@ -78,7 +78,7 @@ class Provider extends Component {
 
   closeSiblingFilters = (filterName, isOpen) => {
     if (isOpen && filterName != this.state.openFilter) {
-      let state = this.state
+      const { state } = this
       this.state.filterOpen = filterName
       this.setState(state)
     }
@@ -138,8 +138,12 @@ Provider.propTypes = {
   children: PropTypes.oneOfType([
     PropTypes.arrayOf(PropTypes.node),
     PropTypes.node,
-  ]),
+  ]).isRequired,
   events: PropTypes.array,
+}
+
+Provider.defaultProps = {
+  events: [],
 }
 
 module.exports = {

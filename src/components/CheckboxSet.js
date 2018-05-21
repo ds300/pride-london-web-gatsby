@@ -1,11 +1,11 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import styled from 'styled-components'
+import shortid from 'shortid'
 import { rgba } from 'polished'
 import { Consumer } from './AppContext'
 import Checkbox from './Checkbox'
 import constants from '../constants/constants'
-import theme from '../theme/theme'
 
 const List = styled.ul`
   list-style: none;
@@ -45,16 +45,14 @@ class CheckboxSet extends Component {
       <Consumer>
         {context => (
           <List>
-            {constants[this.props.filterName].map((option, index) => {
+            {constants[this.props.filterName].map(option => {
               return (
-                <ListItem key={index}>
+                <ListItem key={shortid.generate()}>
                   <Checkbox
                     checked={
                       context.state.filters[this.props.filterName].indexOf(
                         option
                       ) >= 0
-                        ? true
-                        : false
                     }
                     label={option}
                     value={option}
