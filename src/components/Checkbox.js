@@ -72,7 +72,6 @@ class Checkbox extends Component {
 }
 
 Checkbox.propTypes = {
-  checked: PropTypes.bool,
   handleChange: PropTypes.func,
   label: PropTypes.string,
   id: PropTypes.string,

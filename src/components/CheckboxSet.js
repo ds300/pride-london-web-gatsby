@@ -45,29 +45,27 @@ class CheckboxSet extends Component {
       <Consumer>
         {context => (
           <List>
-            {constants[this.props.filterName].map(option => {
-              return (
-                <ListItem key={shortid.generate()}>
-                  <Checkbox
-                    checked={
-                      context.state.filters[this.props.filterName].indexOf(
-                        option
-                      ) >= 0
-                    }
-                    label={option}
-                    value={option}
-                    id={`${this.makeId(option)}`}
-                    name={`${this.makeId(option)}`}
-                    handleChange={e =>
-                      context.actions.getCheckboxSetValues(
-                        e,
-                        this.props.filterName
-                      )
-                    }
-                  />
-                </ListItem>
-              )
-            })}
+            {constants[this.props.filterName].map(option => (
+              <ListItem key={shortid.generate()}>
+                <Checkbox
+                  checked={
+                    context.state.filters[this.props.filterName].indexOf(
+                      option
+                    ) >= 0
+                  }
+                  label={option}
+                  value={option}
+                  id={`${this.makeId(option)}`}
+                  name={`${this.makeId(option)}`}
+                  handleChange={e =>
+                    context.actions.getCheckboxSetValues(
+                      e,
+                      this.props.filterName
+                    )
+                  }
+                />
+              </ListItem>
+            ))}
           </List>
         )}
       </Consumer>

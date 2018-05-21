@@ -100,7 +100,7 @@ class EventDateFilter extends Component {
                   }} // PropTypes.func.isRequired
                   numberOfMonths={1}
                   displayFormat="DD/MM/YYYY"
-                  noBorder={true}
+                  noBorder
                 />
               </SingleDatePickerWrapper>
             </DatePickerWrapper>

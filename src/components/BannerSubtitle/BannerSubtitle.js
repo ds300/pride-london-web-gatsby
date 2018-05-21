@@ -1,4 +1,5 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 import styled from 'styled-components'
 
 const BannerSubtitle = styled.h3`
@@ -16,5 +17,12 @@ const StyledBannerSubtitle = ({ children }) => (
     <span>{children}</span>
   </BannerSubtitle>
 )
+
+StyledBannerSubtitle.propTypes = {
+  children: PropTypes.oneOfType([
+    PropTypes.node,
+    PropTypes.arrayOf(PropTypes.node),
+  ]).isRequired,
+}
 
 export default StyledBannerSubtitle

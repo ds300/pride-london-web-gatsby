@@ -94,9 +94,9 @@ class EventDropdownFilter extends Component {
   static getDerivedStateFromProps(nextProps) {
     if (nextProps.filterOpen != nextProps.filterName) {
       return { isOpen: false }
-    } else {
-      return { isOpen: true }
     }
+
+    return { isOpen: true }
   }
 
   handleClickOutside = () => this.setState({ isOpen: false })
