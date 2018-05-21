@@ -32,6 +32,7 @@
     "no-else-return": "error",
     "no-undef": "off", // throw error on graphql queries
     "no-unused-vars": "error",
+    "no-use-before-define": "error",
     "object-curly-newline": "off",
     "prettier/prettier": "error",
     "prefer-const": "error",

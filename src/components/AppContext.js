@@ -12,10 +12,8 @@ import {
 const AppContext = React.createContext()
 const { Consumer } = AppContext
 
-const initialState = {
-  filterOpen: null,
-  filteredEventsCount: 0,
-  filters: {
+function getInitialFilterState() {
+  return {
     date: null,
     free: false,
     eventCategories: [],
@@ -24,26 +22,36 @@ const initialState = {
     accessibilityOptions: [],
     area: [],
     timeOfDay: [],
-  },
+  }
+}
+
+const initialState = {
+  filterOpen: null,
+  filteredEventsCount: 0,
+  filters: getInitialFilterState(),
 }
 
 class Provider extends Component {
   state = { ...initialState }
 
   getDatepickerValue = date => {
-    const { state } = this
-    state.filters.date = date
-    this.setState(state)
+    this.setState(prevState => ({
+      ...prevState,
+      filters: {
+        ...prevState.filters,
+        date,
+      },
+    }))
   }
 
   getCheckboxBool = (e, name) => {
-    const { state } = this
+    const state = { ...this.state }
     state.filters[name] = e.target.checked
     this.setState(state)
   }
 
   getCheckboxSetValues = (e, name) => {
-    const { state } = this
+    const state = { ...this.state }
 
     if (
       e.target.checked &&
@@ -61,24 +69,16 @@ class Provider extends Component {
   }
 
   clearFilters = () => {
-    const { state } = this
-    state.filterOpen = null
-    state.filters = {
-      date: null,
-      free: false,
-      eventCategories: [],
-      venueDetails: [],
-      audience: [],
-      accessibilityOptions: [],
-      area: [],
-      timeOfDay: [],
-    }
-    this.setState(state)
+    this.setState({
+      ...this.state,
+      filterOpen: null,
+      filters: getInitialFilterState(),
+    })
   }
 
   closeSiblingFilters = (filterName, isOpen) => {
     if (isOpen && filterName != this.state.openFilter) {
-      const { state } = this
+      const state = { ...this.state }
       state.filterOpen = filterName
       this.setState(state)
     }
