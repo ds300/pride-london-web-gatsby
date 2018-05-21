@@ -1,7 +1,6 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import styled from 'styled-components'
-import shortid from 'shortid'
 import { rgba } from 'polished'
 import { Consumer } from './AppContext'
 import Checkbox from './Checkbox'
@@ -47,7 +46,7 @@ class CheckboxSet extends Component {
           <List>
             {constants[this.props.filterName].map(option => {
               return (
-                <ListItem key={shortid.generate()}>
+                <ListItem key={this.makeId(option)}>
                   <Checkbox
                     checked={
                       context.state.filters[this.props.filterName].indexOf(
@@ -56,8 +55,8 @@ class CheckboxSet extends Component {
                     }
                     label={option}
                     value={option}
-                    id={`${this.makeId(option)}`}
-                    name={`${this.makeId(option)}`}
+                    id={this.makeId(option)}
+                    name={this.makeId(option)}
                     handleChange={e =>
                       context.actions.getCheckboxSetValues(
                         e,
