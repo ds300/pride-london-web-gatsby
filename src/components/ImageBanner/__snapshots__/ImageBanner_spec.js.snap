@@ -39,7 +39,16 @@ exports[`ImageBanner should render 1`] = `
   -ms-flex-pack: center;
   justify-content: center;
   line-height: 0;
+  overflow: hidden;
   padding-left: 10px;
+  position: relative;
+}
+
+.c0 img {
+  position: absolute;
+  left: 0;
+  top: 0;
+  z-index: -1;
 }
 
 @media (min-width:768px) {
