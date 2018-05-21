@@ -79,7 +79,7 @@ class Provider extends Component {
   closeSiblingFilters = (filterName, isOpen) => {
     if (isOpen && filterName != this.state.openFilter) {
       const { state } = this
-      this.state.filterOpen = filterName
+      state.filterOpen = filterName
       this.setState(state)
     }
   }

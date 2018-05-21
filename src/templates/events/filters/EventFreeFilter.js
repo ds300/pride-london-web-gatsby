@@ -57,7 +57,10 @@ const EventFreeFilter = () => (
             checked={context.state.filters.free}
             label="Show only free events"
             name="free"
-            handleChange={e => context.actions.getCheckboxBool(e, 'free')}
+            handleChange={e => {
+              context.actions.getCheckboxBool(e, 'free')
+              context.actions.closeSiblingFilters('free', e.target.checked)
+            }}
           />
         </Wrapper>
       </div>

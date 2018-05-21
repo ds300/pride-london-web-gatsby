@@ -5,7 +5,6 @@ import 'react-dates/lib/css/_datepicker.css'
 import styled from 'styled-components'
 import { Consumer } from '../../../components/AppContext'
 import iconCalendar from '../../../theme/assets/images/icon-calendar.svg'
-import moment from 'moment'
 
 const DatePickerWrapper = styled.div`
   display: block
@@ -76,7 +75,7 @@ const DatePickerHeader = styled.div`
 `
 class EventDateFilter extends Component {
   state = {
-    date: moment(),
+    focused: false,
   }
 
   render() {
