@@ -11,8 +11,7 @@ import {
   filterByCategory,
   filterByArea,
   filterByTime,
-} from '../templates/events/helpers/index.js'
-import moment from 'moment'
+} from '../templates/events/helpers'
 
 const FlexColumn = styled(Column)`
   display: flex;

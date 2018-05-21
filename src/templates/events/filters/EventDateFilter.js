@@ -2,7 +2,6 @@ import React from 'react'
 import DatePicker from 'react-datepicker'
 import 'react-datepicker/dist/react-datepicker.css'
 import styled from 'styled-components'
-import theme from '../../../theme/theme'
 import { Consumer } from '../../../components/AppContext'
 import iconCalendar from '../../../theme/assets/images/icon-calendar.svg'
 

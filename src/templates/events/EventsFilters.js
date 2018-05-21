@@ -1,12 +1,11 @@
 import React from 'react'
 import styled from 'styled-components'
+import { Flex } from 'grid-styled'
 import { Consumer } from '../../components/AppContext'
 import { Column } from '../../components/grid/grid'
-import { Flex } from 'grid-styled'
 import EventDateFilter from './filters/EventDateFilter'
 import EventFreeFilter from './filters/EventFreeFilter'
 import EventDropdownFilter from './filters/EventDropdownFilter'
-import theme from '../../theme/theme'
 import iconClear from '../../theme/assets/images/icon-clear.svg'
 import iconClose from '../../theme/assets/images/icon-close.svg'
 

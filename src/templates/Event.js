@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import styled, { css } from 'styled-components'
+import styled from 'styled-components'
 import PropTypes from 'prop-types'
 import ReactMarkdown from 'react-markdown'
 import Helmet from 'react-helmet'
@@ -74,6 +74,7 @@ const Section = styled.div`
   margin-bottom: 60px;
 `
 
+// eslint-disable-next-line react/prefer-stateless-function
 export default class Event extends Component {
   render() {
     const {

@@ -4,7 +4,6 @@ import styled from 'styled-components'
 import onClickOutside from 'react-onclickoutside'
 import { Consumer } from '../../../components/AppContext'
 import CheckboxSet from '../../../components/CheckboxSet'
-import theme from '../../../theme/theme'
 import iconDown from '../../../theme/assets/images/icon-chevron-down.svg'
 import iconUp from '../../../theme/assets/images/icon-chevron-up.svg'
 
@@ -91,21 +90,16 @@ class EventDropdownFilter extends Component {
     isOpen: false,
   }
 
-  handleClickOutside = evt => {
-    this.setState({ isOpen: false })
-  }
+  handleClickOutside = () => this.setState({ isOpen: false })
 
-  toggleMenu = e => {
-    let isOpen = this.state.isOpen
-    isOpen = !isOpen
-    this.setState({ isOpen })
-  }
+  toggleMenu = () => this.setState({ isOpen: !this.state.isOpen })
 
   render() {
     return (
       <Consumer>
         {context => (
           <Wrapper>
+            {' '}
             <Button
               aria-controls={this.props.filterName}
               aria-expanded={this.state.isOpen}
@@ -114,21 +108,22 @@ class EventDropdownFilter extends Component {
               onClick={this.toggleMenu}
               isOpen={this.state.isOpen}
             >
-              {this.props.heading}
+              {this.props.heading}{' '}
               {context.state.filters[this.props.filterName].length > 0 ? (
                 <Badge>
                   {context.state.filters[this.props.filterName].length}
                 </Badge>
               ) : null}
-            </Button>
+            </Button>{' '}
             <DropDown
               isOpen={this.state.isOpen}
               id={this.props.filterName}
               aria-hidden={!this.state.isOpen}
               aria-labelledby={`button_${this.props.filterName}`}
             >
-              <CheckboxSet filterName={this.props.filterName} />
-            </DropDown>
+              {' '}
+              <CheckboxSet filterName={this.props.filterName} />{' '}
+            </DropDown>{' '}
           </Wrapper>
         )}
       </Consumer>
