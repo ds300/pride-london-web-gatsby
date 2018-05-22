@@ -1,7 +1,8 @@
 {
   "plugins": [
     "prettier",
-    "react"
+    "react",
+    "import"
   ],
   "parser": "babel-eslint",
   "parserOptions": {
@@ -22,7 +23,7 @@
     "eqeqeq": "off",
     "function-paren-newline": "off",
     "import/extensions": "error",
-    "import/first": "errors",
+    "import/first": 2,
     "import/no-extraneous-dependencies": "off",
     "import/no-named-as-default": "off",
     "import/prefer-default-export": "off",
