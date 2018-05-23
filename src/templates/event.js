@@ -5,7 +5,7 @@ import ReactMarkdown from 'react-markdown'
 import Helmet from 'react-helmet'
 import { media } from '../theme/media'
 import { EventTagList, EventSchedule, EventsYouMayLike } from './events'
-import { EventDirectionSection } from './events/EventDirectionsSection'
+import { EventDirectionSection } from './events/eventDirectionsSection'
 
 const PageWrapper = styled.div`
   position: relative;
