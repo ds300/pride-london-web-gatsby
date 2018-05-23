@@ -2,13 +2,24 @@ import React, { Fragment } from 'react'
 import Link from 'gatsby-link'
 import styled from 'styled-components'
 import { EventListingCard } from '../templates/events'
-import ImageBanner from '../components/imageBanner'
 import EventsFilters from '../templates/events/eventsFilters'
+import ImageBanner from '../components/imageBanner'
+import Button from '../components/button'
 import { Container, Row, Column } from '../components/grid'
 import { Consumer } from '../components/appContext'
 
 const FlexColumn = styled(Column)`
   display: flex;
+`
+
+const ColumnTextCenter = styled(Column)`
+  text-align: center;
+`
+
+const EventCount = styled.p`
+  font-size: 0.875rem;
+  line-height: 1.214;
+  color: ${props => props.theme.colors.darkGrey}
 `
 
 const Events = () => (
@@ -45,6 +56,10 @@ const Events = () => (
                 <EventListingCard event={event.node} />
               </FlexColumn>
             ))}
+            <ColumnTextCenter width={1}>
+              <EventCount>You're viewing 9 of 120 events</EventCount>
+              <Button primary={true}>Test</Button>
+            </ColumnTextCenter>
           </Row>
         </Container>
       </Fragment>
