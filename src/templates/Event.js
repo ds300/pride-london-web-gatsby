@@ -3,6 +3,7 @@ import styled from 'styled-components'
 import PropTypes from 'prop-types'
 import ReactMarkdown from 'react-markdown'
 import Helmet from 'react-helmet'
+import NewsletterForm from '../components/NewsletterForm'
 import { media } from '../theme/media'
 import { EventTagList, EventSchedule, EventsYouMayLike } from './events'
 
@@ -109,6 +110,7 @@ export default class Event extends Component {
           </Section>
         </ContentWrapper>
         <EventsYouMayLike eventId={id} />
+        <NewsletterForm buttonText="Subscribe" />
       </PageWrapper>
     )
   }
