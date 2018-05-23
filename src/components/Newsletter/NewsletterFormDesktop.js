@@ -13,7 +13,9 @@ const NewsletterButton = props => (
           <Styles.StyledTitle>{props.newsletterTitle}</Styles.StyledTitle>
         </Styles.StyledRow>
         <Styles.StyledRow>
-          <Styles.StyledSubtitle>{props.newsletterSubtitle}</Styles.StyledSubtitle>
+          <Styles.StyledSubtitle>
+            {props.newsletterSubtitle}
+          </Styles.StyledSubtitle>
         </Styles.StyledRow>
       </Column>
       <Column width={1 / 3}>
