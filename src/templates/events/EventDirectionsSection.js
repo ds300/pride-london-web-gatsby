@@ -1,13 +1,9 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import styled, { css } from 'styled-components'
-import moment from 'moment'
+import styled from 'styled-components'
 import querystring from 'querystring'
 
-import EventListingCard from './EventListingCard'
-import { ChevronRight } from '../../components/ChevronRight'
-import { Consumer } from '../../components/AppContext'
-import { Container, Row, Column } from '../../components/grid/grid'
+import { Container, Row } from '../../components/grid/grid'
 import { media } from '../../theme/media'
 import theme from '../../theme/theme'
 
@@ -23,9 +19,10 @@ const StyledContainer = styled(Container)`
 const Heading = styled.h2`
   font-size: 1.125rem;
   font-weight: 300;
-  margin-bottom: 15px;
+  margin: 0px 10px 15px 10px;
   color: ${props => props.theme.colors.indigo};
   ${media.desktop`
+    margin: 0px 15px 15px 15px;
     font-size: 1.5rem;
     font-weight: 600;
     margin-bottom: 30px;
@@ -41,12 +38,12 @@ const MapWrapper = styled.a`
   margin: 0px;
   ${media.tablet`
     height: 350px;
-    margin: 0px 40px;
+    margin: 0px 50px;
   `};
   ${media.desktop`
     height: 450px;
     max-width: 830px;
-    margin: 0px 80px;
+    margin: 0px 90px;
   `};
 `
 
@@ -123,4 +120,11 @@ EventDirectionSection.propTypes = {
   addressLine2: PropTypes.string,
   postcode: PropTypes.string,
   city: PropTypes.string,
+}
+
+EventDirectionSection.defaultProps = {
+  addressLine1: null,
+  addressLine2: null,
+  postcode: null,
+  city: null,
 }

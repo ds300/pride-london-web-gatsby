@@ -29,6 +29,9 @@ const HeroImageAndTitle = styled.div`
 const ContentWrapper = styled.div`
   padding: 30px 20px;
   width: 100vw;
+  ${media.tablet`
+    padding: 30px 50px;
+  `};
   ${media.desktop`
     padding: 0;
     margin-left: 90px;
@@ -127,6 +130,7 @@ export default class Event extends Component {
           addressLine1={addressLine1}
           addressLine2={addressLine2}
           postcode={postcode}
+          city={city}
         />
         <EventsYouMayLike eventId={id} />
       </PageWrapper>
