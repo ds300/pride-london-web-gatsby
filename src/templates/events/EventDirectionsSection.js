@@ -30,7 +30,7 @@ const Heading = styled.h2`
   `};
 `
 
-const MapWrapper = styled.a`
+const MapLink = styled.a`
   display: block;
   height: 215px;
   background-size: cover;
@@ -81,7 +81,7 @@ export class EventDirectionSection extends React.Component {
         <Row>
           <Heading>Getting there</Heading>
         </Row>
-        <MapWrapper
+        <MapLink
           alt="Get directions to the venue"
           innerRef={ref => (this.wrapperRef = ref)}
           href={`https://www.google.com/maps/search/?api=1&${querystring.encode(
