@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 import styled from 'styled-components'
 import shortid from 'shortid'
 import Link from 'gatsby-link'
-import { Column } from '../../grid/grid'
+import { Column } from '../grid/'
 
 const StyledLink = styled(Link)`
   color: ${props => props.theme.colors.white};

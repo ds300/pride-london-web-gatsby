@@ -3,22 +3,22 @@ import renderer from 'react-test-renderer'
 import 'jest-styled-components'
 import { shallow } from 'enzyme'
 
-import BannerTitle from '../BannerTitle/BannerTitle'
+import BannerSubtitle from './'
 
-describe('BannerTitle', () => {
+describe('BannerSubtitle', () => {
   it('should render', () => {
-    const tree = renderer.create(<BannerTitle />)
+    const tree = renderer.create(<BannerSubtitle />)
     expect(tree).toMatchSnapshot()
   })
 
   it('should render a <span />', () => {
-    const wrapper = shallow(<BannerTitle />)
+    const wrapper = shallow(<BannerSubtitle />)
     expect(wrapper.find('span')).toHaveLength(1)
   })
 
   it('should render child text ', () => {
-    const text = 'Here is a test title!'
-    const wrapper = shallow(<BannerTitle>{text}</BannerTitle>)
+    const text = 'And here is a test subtitle!'
+    const wrapper = shallow(<BannerSubtitle>{text}</BannerSubtitle>)
     expect(wrapper.find('span').text()).toBe(text)
   })
 })

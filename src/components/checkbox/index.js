@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import styled from 'styled-components'
-import checkmark from '../theme/assets/images/icon-check.svg'
+import checkmark from '../../theme/assets/images/icon-check.svg'
 
 const Wrapper = styled.div`
   display: flex;

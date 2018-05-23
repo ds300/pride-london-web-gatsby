@@ -7,7 +7,7 @@ import {
   filterByArea,
   filterByTime,
   filterPastEvents,
-} from '../templates/events/helpers'
+} from '../../templates/events/helpers'
 
 const AppContext = React.createContext()
 const { Consumer } = AppContext
