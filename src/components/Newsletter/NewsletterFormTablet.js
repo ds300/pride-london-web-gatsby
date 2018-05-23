@@ -1,6 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import { Row } from '../grid/grid'
+import { Row } from '../grid'
 import * as Styles from './NewsletterFormStyles'
 
 // add mock api request to formmonkey

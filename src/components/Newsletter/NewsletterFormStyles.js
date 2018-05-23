@@ -1,5 +1,5 @@
 import styled from 'styled-components/'
-import { Row } from '../grid/grid'
+import { Row } from '../grid'
 import { media } from '../../theme/media'
 
 const localStyles = {
