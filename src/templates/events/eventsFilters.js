@@ -1,12 +1,11 @@
 import React from 'react'
 import styled from 'styled-components'
+import { Flex } from 'grid-styled'
 import { Consumer } from '../../components/appContext'
 import { Column } from '../../components/grid'
-import { Flex } from 'grid-styled'
 import EventDateFilter from './filters/eventDateFilter'
 import EventFreeFilter from './filters/eventFreeFilter'
 import EventDropdownFilter from './filters/eventDropdownFilter'
-import theme from '../../theme/theme'
 import iconClear from '../../theme/assets/images/icon-clear.svg'
 import iconClose from '../../theme/assets/images/icon-close.svg'
 
@@ -128,30 +127,45 @@ const EventsFilters = () => (
           <EventDropdownFilter
             heading="Category"
             filterName="eventCategories"
+            filterOpen={context.state.filterOpen}
           />
         </FlexColumn>
         <FlexColumn width={[1, 1, 0.5, 0.25]}>
           <EventDateFilter />
         </FlexColumn>
         <FlexColumn width={[1, 1, 0.5, 0.25]}>
-          <EventDropdownFilter heading="Area of London" filterName="area" />
+          <EventDropdownFilter
+            heading="Area of London"
+            filterName="area"
+            filterOpen={context.state.filterOpen}
+          />
         </FlexColumn>
         <FlexColumn width={[1, 1, 0.5, 0.25]}>
-          <EventDropdownFilter heading="Time of day" filterName="timeOfDay" />
+          <EventDropdownFilter
+            heading="Time of day"
+            filterName="timeOfDay"
+            filterOpen={context.state.filterOpen}
+          />
         </FlexColumn>
         <FlexColumn width={[1, 1, 0.5, 0.25]}>
-          <EventDropdownFilter heading="Age group" filterName="audience" />
+          <EventDropdownFilter
+            heading="Age group"
+            filterName="audience"
+            filterOpen={context.state.filterOpen}
+          />
         </FlexColumn>
         <FlexColumn width={[1, 1, 0.5, 0.25]}>
           <EventDropdownFilter
             heading="Venue options"
             filterName="venueDetails"
+            filterOpen={context.state.filterOpen}
           />
         </FlexColumn>
         <FlexColumn width={[1, 1, 0.5, 0.25]}>
           <EventDropdownFilter
             heading="Accessibility"
             filterName="accessibilityOptions"
+            filterOpen={context.state.filterOpen}
           />
         </FlexColumn>
         <FlexColumn width={[1, 1, 0.5, 0.25]}>

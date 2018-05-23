@@ -30,4 +30,9 @@ Navigation.propTypes = {
   }).isRequired,
 }
 
+Navigation.defaultProps = {
+  children: null,
+  items: {},
+}
+
 export default Navigation

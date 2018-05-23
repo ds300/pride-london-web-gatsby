@@ -64,4 +64,8 @@ EventTagList.propTypes = {
   className: PropTypes.string,
 }
 
+EventTagList.defaultProps = {
+  className: null,
+}
+
 export default EventTagList

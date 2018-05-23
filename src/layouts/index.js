@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { Fragment } from 'react'
 import PropTypes from 'prop-types'
 import Helmet from 'react-helmet'
 import { ThemeProvider } from 'styled-components'
@@ -12,7 +12,7 @@ import './fonts.css'
 const Layout = props => (
   <Provider events={props.data.allContentfulEvent.edges}>
     <ThemeProvider theme={theme}>
-      <div>
+      <Fragment>
         <Helmet
           title={props.data.site.siteMetadata.title}
           meta={[
@@ -34,14 +34,14 @@ const Layout = props => (
             cta: 'donate',
           }}
         />
-        <div>{props.children()}</div>
-      </div>
+        <main>{props.children()}</main>
+      </Fragment>
     </ThemeProvider>
   </Provider>
 )
 
 Layout.propTypes = {
-  children: PropTypes.func,
+  children: PropTypes.func.isRequired,
   data: PropTypes.objectOf(PropTypes.object).isRequired,
 }
 
@@ -55,7 +55,7 @@ export const query = graphql`
       }
     }
 
-    allContentfulEvent(filter: {}) {
+    allContentfulEvent(filter: {}, sort: { fields: [startTime], order: ASC }) {
       edges {
         node {
           id

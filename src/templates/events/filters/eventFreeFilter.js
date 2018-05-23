@@ -1,8 +1,7 @@
-import React, { Component } from 'react'
+import React from 'react'
 import styled from 'styled-components'
 import { Consumer } from '../../../components/appContext'
 import Checkbox from '../../../components/checkbox'
-import theme from '../../../theme/theme'
 
 const Wrapper = styled.div`
   background-color: transparent;
@@ -11,6 +10,18 @@ const Wrapper = styled.div`
   align-items: center;
   min-height: 48px;
   box-sizing: border-box;
+
+  input {
+    & + label {
+      font-weight: 500;
+    }
+
+    &:checked {
+      & + label {
+        font-weight: 500;
+      }
+    }
+  }
 
   @media (min-width: ${props => props.theme.breakpoints[1]}) {
     border: 2px solid ${props => props.theme.colors.mediumGrey};
@@ -46,7 +57,10 @@ const EventFreeFilter = () => (
             checked={context.state.filters.free}
             label="Show only free events"
             name="free"
-            handleChange={e => context.actions.getCheckboxBool(e, 'free')}
+            handleChange={e => {
+              context.actions.getCheckboxBool(e, 'free')
+              context.actions.closeSiblingFilters('free', e.target.checked)
+            }}
           />
         </Wrapper>
       </div>

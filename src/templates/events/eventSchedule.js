@@ -47,6 +47,10 @@ EventSchedule.propTypes = {
   schedule: PropTypes.array,
 }
 
+EventSchedule.defaultProps = {
+  schedule: [],
+}
+
 export default EventSchedule
 
 export const query = graphql`

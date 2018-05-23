@@ -26,6 +26,19 @@ body {
   overflow-x: hidden;
 }
 
+div#___gatsby {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+main {
+  width: 100%;
+  flex-grow: 1;
+  flex-shrink: 0;
+  flex-basis: auto;
+}
+
 h1 {
   font-size: 2rem;
   line-height: 1.2;

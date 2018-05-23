@@ -81,7 +81,7 @@ export const EventListingCard = props => {
 }
 
 EventListingCard.propTypes = {
-  event: PropTypes.object,
+  event: PropTypes.object.isRequired,
 }
 
 export default EventListingCard

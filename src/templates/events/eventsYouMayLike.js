@@ -94,7 +94,7 @@ const EventsYouMayLike = ({ eventId }) => (
 )
 
 EventsYouMayLike.propTypes = {
-  eventId: PropTypes.string,
+  eventId: PropTypes.string.isRequired,
 }
 
 export default EventsYouMayLike

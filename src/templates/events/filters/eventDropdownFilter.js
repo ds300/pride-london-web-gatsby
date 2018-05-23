@@ -4,7 +4,6 @@ import styled from 'styled-components'
 import onClickOutside from 'react-onclickoutside'
 import { Consumer } from '../../../components/appContext'
 import CheckboxSet from '../../../components/checkboxSet'
-import theme from '../../../theme/theme'
 import iconDown from '../../../theme/assets/images/icon-chevron-down.svg'
 import iconUp from '../../../theme/assets/images/icon-chevron-up.svg'
 
@@ -28,13 +27,13 @@ const Button = styled.button`
   box-sizing: border-box;
 
   @media (min-width: ${props => props.theme.breakpoints[0]}) {
-    padding: 11px 20px;
+    padding: 11px 45px 11px 20px;
   }
 
   @media (min-width: ${props => props.theme.breakpoints[1]}) {
     color: ${props => props.theme.colors.black};
     font-family: ${props => props.theme.fonts.body};
-    font-weight: 400;
+    font-weight: 500;
     font-size: 0.875rem;
     background-image: url(${props => (props.isOpen ? iconUp : iconDown)});
     background-repeat: no-repeat;
@@ -89,16 +88,23 @@ const Badge = styled.span`
 class EventDropdownFilter extends Component {
   state = {
     isOpen: false,
+    filterOpen: null,
   }
 
-  handleClickOutside = evt => {
-    this.setState({ isOpen: false })
+  static getDerivedStateFromProps(nextProps) {
+    if (nextProps.filterOpen != nextProps.filterName) {
+      return { isOpen: false }
+    }
+
+    return { isOpen: true }
   }
 
-  toggleMenu = e => {
-    let isOpen = this.state.isOpen
-    isOpen = !isOpen
-    this.setState({ isOpen })
+  handleClickOutside = () => this.setState({ isOpen: false })
+
+  toggleMenu = closeSiblingFilters => {
+    this.setState({ isOpen: !this.state.isOpen }, () =>
+      closeSiblingFilters(this.props.filterName, this.state.isOpen)
+    )
   }
 
   render() {
@@ -111,7 +117,9 @@ class EventDropdownFilter extends Component {
               aria-expanded={this.state.isOpen}
               type="button"
               id={`button_${this.props.filterName}`}
-              onClick={this.toggleMenu}
+              onClick={() =>
+                this.toggleMenu(context.actions.closeSiblingFilters)
+              }
               isOpen={this.state.isOpen}
             >
               {this.props.heading}

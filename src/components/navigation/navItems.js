@@ -1,6 +1,7 @@
 import React, { Fragment } from 'react'
 import PropTypes from 'prop-types'
 import styled from 'styled-components'
+import shortid from 'shortid'
 import Link from 'gatsby-link'
 import { Column } from '../grid/'
 
@@ -34,8 +35,8 @@ const NavItems = props => {
       <Column flex={3} alignItems="center" justifyContent="center">
         <img src={logo} alt="" />
       </Column>
-      {listItems.map((items, index) => (
-        <Column key={index}>
+      {listItems.map(items => (
+        <Column key={shortid.generate()}>
           <StyledLink to="#"> {items}</StyledLink>
         </Column>
       ))}
@@ -48,6 +49,10 @@ const NavItems = props => {
 
 NavItems.propTypes = {
   items: PropTypes.object,
+}
+
+NavItems.defaultProps = {
+  items: {},
 }
 
 export default NavItems

@@ -4,8 +4,7 @@ import styled from 'styled-components'
 import { rgba } from 'polished'
 import { Consumer } from '../appContext'
 import Checkbox from '../checkbox'
-import constants from '../../constants/constants'
-import theme from '../../theme/theme'
+import constants from '../../constants'
 
 const List = styled.ul`
   list-style: none;
@@ -45,31 +44,27 @@ class CheckboxSet extends Component {
       <Consumer>
         {context => (
           <List>
-            {constants[this.props.filterName].map((option, index) => {
-              return (
-                <ListItem key={index}>
-                  <Checkbox
-                    checked={
-                      context.state.filters[this.props.filterName].indexOf(
-                        option
-                      ) != -1
-                        ? true
-                        : false
-                    }
-                    label={option}
-                    value={option}
-                    id={`${this.makeId(option)}`}
-                    name={`${this.makeId(option)}`}
-                    handleChange={e =>
-                      context.actions.getCheckboxSetValues(
-                        e,
-                        this.props.filterName
-                      )
-                    }
-                  />
-                </ListItem>
-              )
-            })}
+            {constants[this.props.filterName].map(option => (
+              <ListItem key={this.makeId(option)}>
+                <Checkbox
+                  checked={
+                    context.state.filters[this.props.filterName].indexOf(
+                      option
+                    ) >= 0
+                  }
+                  label={option}
+                  value={option}
+                  id={this.makeId(option)}
+                  name={this.makeId(option)}
+                  handleChange={e =>
+                    context.actions.getCheckboxSetValues(
+                      e,
+                      this.props.filterName
+                    )
+                  }
+                />
+              </ListItem>
+            ))}
           </List>
         )}
       </Consumer>
