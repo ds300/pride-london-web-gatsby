@@ -1,5 +1,4 @@
 import React, { Component } from 'react'
-import PropTypes from 'prop-types'
 import styled from 'styled-components'
 import {
   Accordion,
@@ -12,11 +11,11 @@ import 'react-accessible-accordion/dist/fancy-example.css'
 
 const AccordionWrapper = styled.div`
   .accordion__body {
-    padding-top: 0!important;
+    padding-top: 0 !important;
   }
 
   .accordion__title {
-    padding: 20px!important;
+    padding: 20px !important;
     border-radius: 4px;
     outline: none;
     background-color: #efefef !important;
@@ -71,7 +70,6 @@ class HelpFaq extends Component {
   }
 
   render() {
-
     const { isOpen } = this.state
 
     return (
@@ -90,11 +88,5 @@ class HelpFaq extends Component {
     )
   }
 }
-
-
-HelpFaq.propTypes = {
-  updateAccordionState: PropTypes.func
-}
-
 
 export default HelpFaq

@@ -1,5 +1,6 @@
 import React, { Fragment } from 'react'
 import styled from 'styled-components'
+import PropTypes from 'prop-types'
 import { Container, Row, Column } from '../components/grid/grid'
 
 import HelpFaq from '../templates/help/HelpFaq'
@@ -29,5 +30,10 @@ export const Help = () => (
     </PageWrapper>
   </Fragment>
 )
+
+HelpFaq.propTypes = {
+  title: PropTypes.string,
+  body: PropTypes.string,
+}
 
 export default Help
