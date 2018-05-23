@@ -7,6 +7,15 @@ import { Container, Row } from '../../components/grid'
 import { media } from '../../theme/media'
 import theme from '../../theme/theme'
 
+if (
+  process.env.NODE_ENV === 'development' &&
+  !process.env.GATSBY_GOOGLE_MAPS_API_KEY
+) {
+  console.warn(
+    '⚠️ You are missing the GATSBY_GOOGLE_MAPS_API_KEY environment variable'
+  )
+}
+
 const StyledContainer = styled(Container)`
   padding: 0px 0px 30px;
   background-color: white;
@@ -102,7 +111,7 @@ export class EventDirectionSection extends React.Component {
                   scale: 2,
                   maptype: 'roadmap',
                   markers: `color:red|label:${description}|${lat},${lon}`,
-                  key: process.env.GOOGLE_MAPS_API_KEY,
+                  key: process.env.GATSBY_GOOGLE_MAPS_API_KEY,
                 }
               )})`,
           }}
