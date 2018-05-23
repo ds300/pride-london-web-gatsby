@@ -45,32 +45,29 @@ const StyledButton = styled.button`
   width: 138px;
 `
 
-const NewsletterButton = props => {
-  const handleClick = () => {
-    console.log('clicked')
-  }
+// add mock api request to formmonkey
+// make mobile responsive
 
-  return (
-    <StyledContainer>
-      <Row>
-        <Column width={1 / 3}>
-          <StyledRow>
-            <StyledTitle>{props.newsletterTitle}</StyledTitle>
-          </StyledRow>
-          <StyledRow>
-            <StyledSubtitle>{props.newsletterSubtitle}</StyledSubtitle>
-          </StyledRow>
-        </Column>
-        <Column width={1 / 3}>
-          <StyledInput placeholder={props.placeholder} type="text" />
-        </Column>
-        <Column width={1 / 3}>
-          <StyledButton onClick={handleClick}>{props.buttonText}</StyledButton>
-        </Column>
-      </Row>
-    </StyledContainer>
-  )
-}
+const NewsletterButton = props => (
+  <StyledContainer>
+    <Row>
+      <Column width={1 / 3}>
+        <StyledRow>
+          <StyledTitle>{props.newsletterTitle}</StyledTitle>
+        </StyledRow>
+        <StyledRow>
+          <StyledSubtitle>{props.newsletterSubtitle}</StyledSubtitle>
+        </StyledRow>
+      </Column>
+      <Column width={1 / 3}>
+        <StyledInput placeholder={props.placeholder} type="text" />
+      </Column>
+      <Column width={1 / 3}>
+        <StyledButton>{props.buttonText}</StyledButton>
+      </Column>
+    </Row>
+  </StyledContainer>
+)
 
 NewsletterButton.propTypes = {
   buttonText: PropTypes.string.isRequired,
