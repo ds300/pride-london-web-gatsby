@@ -15,6 +15,7 @@
     "react-helmet": "^5.2.0",
     "react-markdown": "^3.3.2",
     "react-onclickoutside": "^6.7.1",
+    "react-sizes": "^1.0.3",
     "react-test-renderer": "^16.3.2",
     "shortid": "^2.2.8",
     "string-hash": "^1.1.3",
