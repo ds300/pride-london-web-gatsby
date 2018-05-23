@@ -1,7 +1,7 @@
 import React from 'react'
 import styled from 'styled-components'
-import { Consumer } from '../../../components/AppContext'
-import Checkbox from '../../../components/Checkbox'
+import { Consumer } from '../../../components/appContext'
+import Checkbox from '../../../components/checkbox'
 
 const Wrapper = styled.div`
   background-color: transparent;

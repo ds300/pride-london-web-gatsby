@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
-import Header from './presentational/header'
+import Header from './header'
 
 class Navigation extends Component {
   constructor(props) {

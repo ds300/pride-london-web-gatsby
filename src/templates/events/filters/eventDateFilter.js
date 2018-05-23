@@ -3,7 +3,7 @@ import 'react-dates/initialize'
 import { SingleDatePicker } from 'react-dates'
 import 'react-dates/lib/css/_datepicker.css'
 import styled from 'styled-components'
-import { Consumer } from '../../../components/AppContext'
+import { Consumer } from '../../../components/appContext'
 import iconCalendar from '../../../theme/assets/images/icon-calendar.svg'
 
 const DatePickerWrapper = styled.div`

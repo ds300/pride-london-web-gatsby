@@ -3,9 +3,9 @@ import renderer from 'react-test-renderer'
 import 'jest-styled-components'
 import { shallow } from 'enzyme'
 
-import ImageBanner, { BackgroundImage } from './ImageBanner'
-import BannerTitle from '../BannerTitle/BannerTitle'
-import BannerSubtitle from '../BannerSubtitle/BannerSubtitle'
+import ImageBanner, { BackgroundImage } from './'
+import BannerTitle from '../bannerTitle'
+import BannerSubtitle from '../bannerSubtitle'
 
 describe('ImageBanner', () => {
   it('should render', () => {
