@@ -1,4 +1,5 @@
-import React, { Component }  from 'react'
+import React, { Component } from 'react'
+import PropTypes from 'prop-types'
 import styled from 'styled-components'
 import {
   Accordion,
@@ -11,11 +12,11 @@ import 'react-accessible-accordion/dist/fancy-example.css'
 
 const AccordionWrapper = styled.div`
   .accordion__body {
-    padding-top: 0 !important;
+    padding-top: 0!important;
   }
 
   .accordion__title {
-    height: 64px;
+    padding: 20px!important;
     border-radius: 4px;
     outline: none;
     background-color: #efefef !important;
@@ -51,42 +52,37 @@ const AccordionWrapper = styled.div`
 `
 
 const withBorder = {
-  style: '1px solid #2cda9d'
-};
-
+  style: '2px solid #2cda9d',
+}
 
 const withoutBorder = {
-  style: 'none'
+  style: 'none',
 }
 
 class HelpFaq extends Component {
-
   state = {
-    isOpen: false
+    isOpen: false,
   }
 
-  toggleAccordion = () => {
-
+  updateAccordionState = () => {
     this.setState({
-      isOpen: !this.state.isOpen
+      isOpen: !this.state.isOpen,
     })
-    
-    
   }
 
   render() {
 
-    const { isOpen } = this.state;
+    const { isOpen } = this.state
 
     return (
       <AccordionWrapper border={isOpen == true ? withBorder : withoutBorder}>
-        <Accordion onChange={this.toggleAccordion}>
+        <Accordion onChange={this.updateAccordionState}>
           <AccordionItem>
             <AccordionItemTitle>
-              <h3>{ this.props.title }</h3>
+              <h3>{this.props.title}</h3>
             </AccordionItemTitle>
             <AccordionItemBody>
-              <p>{ this.props.body }</p>
+              <p>{this.props.body}</p>
             </AccordionItemBody>
           </AccordionItem>
         </Accordion>
@@ -94,5 +90,11 @@ class HelpFaq extends Component {
     )
   }
 }
+
+
+HelpFaq.propTypes = {
+  updateAccordionState: PropTypes.func
+}
+
 
 export default HelpFaq
