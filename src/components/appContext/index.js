@@ -27,7 +27,7 @@ function getInitialFilterState() {
 
 const initialState = {
   filterOpen: null,
-  filteredEventsCount: 0,
+  eventsToShow: 9,
   filters: getInitialFilterState(),
 }
 
@@ -111,20 +111,30 @@ class Provider extends Component {
     return filteredEvents
   }
 
+  showMore = filteredCount => {
+    if (this.state.eventsToShow < filteredCount) {
+      const limit = (this.state.eventsToShow += 9)
+      this.setState({ eventsToShow: limit })
+    }
+  }
+
   render() {
+    const filteredEvents = this.filterEvents()
+    const filteredCount = filteredEvents.length
     return (
       <AppContext.Provider
         value={{
           state: this.state,
           events: this.props.events.filter(filterPastEvents),
-          filteredEvents: this.filterEvents(),
+          filteredEvents,
+          filteredCount,
           actions: {
             getCheckboxBool: this.getCheckboxBool,
             getDatepickerValue: this.getDatepickerValue,
             getCheckboxSetValues: this.getCheckboxSetValues,
             clearFilters: this.clearFilters,
             closeSiblingFilters: this.closeSiblingFilters,
-            getFilteredEventsCount: this.getFilteredEventsCount,
+            showMore: this.showMore,
           },
         }}
       >

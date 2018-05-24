@@ -77,10 +77,11 @@ Checkbox.propTypes = {
   id: PropTypes.string,
   value: PropTypes.string,
   name: PropTypes.string,
+  checked: PropTypes.bool.isRequired,
 }
 
 Checkbox.defaultProps = {
-  checked: false,
+  // checked: false,
   handleChange: null,
   label: '',
   id: '',
