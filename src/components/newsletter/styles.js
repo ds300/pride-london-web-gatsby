@@ -17,13 +17,12 @@ export const StyledContainer = styled.div`
 
 export const StyledTitle = styled.h3`
   font-size: 1rem;
-  margin: 10px 0 0 0;
+  margin: 0;
   padding: 3px 0;
   text-align: center;
   width: 100%;
   ${media.tablet`
     font-size: 0.8em;
-    margin: 0;
     text-align: left;
   `};
 `
@@ -39,7 +38,7 @@ export const StyledButtonColumn = styled(Column)`
 export const StyledSubtitle = styled.p`
   font-size: 0.9rem;
   font-weight: 300;
-  margin: 10px 0;
+  margin: 0 0 10px 0;
   text-align: center;
   width: 100%;
   ${media.tablet`
