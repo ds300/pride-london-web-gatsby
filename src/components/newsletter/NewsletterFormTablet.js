@@ -5,7 +5,7 @@ import * as Styles from './styles'
 
 // add mock api request to formmonkey
 
-const NewsletterButton = props => (
+const NewsletterFormTablet = props => (
   <Styles.StyledContainer>
     <Row>
       <Styles.StyledTitle>{props.newsletterTitle}</Styles.StyledTitle>
@@ -20,17 +20,17 @@ const NewsletterButton = props => (
   </Styles.StyledContainer>
 )
 
-NewsletterButton.propTypes = {
+NewsletterFormTablet.propTypes = {
   buttonText: PropTypes.string.isRequired,
   placeholder: PropTypes.string,
   newsletterTitle: PropTypes.string,
   newsletterSubtitle: PropTypes.string,
 }
 
-NewsletterButton.defaultProps = {
+NewsletterFormTablet.defaultProps = {
   placeholder: 'email address',
   newsletterTitle: 'Stay on top of Pride events',
   newsletterSubtitle: 'Sign up to receive occasional updates',
 }
 
-export default NewsletterButton
+export default NewsletterFormTablet

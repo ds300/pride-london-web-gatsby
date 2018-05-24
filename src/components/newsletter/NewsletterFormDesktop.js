@@ -4,7 +4,7 @@ import { Column, Row } from '../grid'
 import { sendRequestToSurveyMonkey } from './helpers'
 import * as Styles from './styles'
 
-class NewsletterButton extends React.Component {
+class NewsletterFormDesktop extends React.Component {
   state = {
     inputContent: '',
   }
@@ -43,28 +43,28 @@ class NewsletterButton extends React.Component {
               type="text"
             />
           </Column>
-          <Column width={1 / 3}>
+          <Styles.StyledButtonColumn width={1 / 3}>
             <Styles.StyledButton onClick={this.handleSubmit}>
               {this.props.buttonText}
             </Styles.StyledButton>
-          </Column>
+          </Styles.StyledButtonColumn>
         </Row>
       </Styles.StyledContainer>
     )
   }
 }
 
-NewsletterButton.propTypes = {
+NewsletterFormDesktop.propTypes = {
   buttonText: PropTypes.string.isRequired,
   placeholder: PropTypes.string,
   newsletterTitle: PropTypes.string,
   newsletterSubtitle: PropTypes.string,
 }
 
-NewsletterButton.defaultProps = {
+NewsletterFormDesktop.defaultProps = {
   placeholder: 'email address',
   newsletterTitle: 'Stay on top of Pride events',
   newsletterSubtitle: 'Sign up to receive occasional updates',
 }
 
-export default NewsletterButton
+export default NewsletterFormDesktop

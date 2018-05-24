@@ -1,5 +1,5 @@
 import styled from 'styled-components/'
-import { Row } from '../grid'
+import { Column, Row } from '../grid'
 import { media } from '../../theme/media'
 
 const localStyles = {
@@ -8,7 +8,11 @@ const localStyles = {
 
 export const StyledContainer = styled.div`
   margin: 0 auto;
+  padding: 30px 0;
   width: 90%;
+  ${media.desktop`
+    padding: 60px auto;
+  `};
 `
 
 export const StyledTitle = styled.h3`
@@ -28,6 +32,10 @@ export const StyledRow = styled(Row)`
   margin: 0;
 `
 
+export const StyledButtonColumn = styled(Column)`
+  text-align: center;
+`
+
 export const StyledSubtitle = styled.p`
   font-size: 0.9rem;
   font-weight: 300;
@@ -42,6 +50,7 @@ export const StyledSubtitle = styled.p`
 `
 
 export const StyledInput = styled.input`
+  font-size: 1.25em;
   height: ${localStyles.height};
   margin-bottom: 10px;
   padding-left: 10px;
@@ -53,11 +62,12 @@ export const StyledInput = styled.input`
 
 export const StyledButton = styled.button`
   background-color: ${props => props.theme.colors.eucalyptusGreen};
+  border: none;
   border-radius: 4px;
   color: ${props => props.theme.colors.indigo};
   height: ${localStyles.height};
-  font-size: 20px;
-  font-weight: 600;
+  font-size: 1rem;
+  font-weight: 700;
   margin-bottom: 20px;
   outline: none;
   text-decoration: none;
