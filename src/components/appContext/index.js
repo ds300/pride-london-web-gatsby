@@ -44,10 +44,19 @@ class Provider extends Component {
     }))
   }
 
-  getCheckboxBool = (e, name) => {
-    const state = { ...this.state }
-    state.filters[name] = e.target.checked
-    this.setState(state)
+  getCheckboxBool = (name, checked) => {
+    console.log("getCheckboxBool", checked)
+    // let state = { ...this.state }
+    // state.filters.free = checked
+    // this.setState(state)
+
+    this.setState(prevState => ({
+      ...prevState,
+      filters: {
+        ...prevState.filters,
+        free: checked
+      },
+    }))
   }
 
   getCheckboxSetValues = (e, name) => {
