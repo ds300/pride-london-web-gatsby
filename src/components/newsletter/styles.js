@@ -64,6 +64,7 @@ export const StyledButton = styled.button`
   border: none;
   border-radius: 4px;
   color: ${props => props.theme.colors.indigo};
+  cursor: pointer;
   height: ${localStyles.height};
   font-size: 1rem;
   font-weight: 700;

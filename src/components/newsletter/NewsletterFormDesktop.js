@@ -5,17 +5,15 @@ import { sendRequestToSurveyMonkey } from './helpers'
 import * as Styles from './styles'
 
 class NewsletterFormDesktop extends React.Component {
-  state = {
-    inputContent: '',
-  }
+  state = { value: '' }
 
-  handleChange = ({ target: { val } }) => this.setState({ inputContent: val })
+  handleChange = ({ target: { value } }) => this.setState({ value })
 
-  handleSubmit = () => {
-    sendRequestToSurveyMonkey(this.state.inputContent)
-
+  handleSubmit = e => {
+    e.preventDefault()
+    sendRequestToSurveyMonkey(this.state.value)
     this.setState({
-      inputContent: '',
+      value: '',
     })
   }
 
@@ -38,7 +36,7 @@ class NewsletterFormDesktop extends React.Component {
           <Column width={1 / 3}>
             <Styles.StyledInput
               onChange={this.handleChange}
-              value={this.state.inputContent}
+              value={this.state.value}
               placeholder={this.props.placeholder}
               type="text"
             />
