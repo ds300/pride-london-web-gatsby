@@ -75,27 +75,26 @@ export class EventDirectionSection extends React.Component {
 
   render() {
     const {
-      lat,
-      lon,
-      description,
+      location: { lat, lon },
+      locationName,
       addressLine1,
       addressLine2,
       postcode,
       city,
-    } = this.props
+    } = this.props.data
     const { width, height } = this.state
 
     return (
       <StyledContainer>
         <Row>
-          <Heading>Getting there</Heading>
+          <Heading>Getting to {locationName}</Heading>
         </Row>
         <MapLink
           alt="Get directions to the venue"
           innerRef={ref => (this.wrapperRef = ref)}
           href={`https://www.google.com/maps/search/?api=1&${querystring.encode(
             {
-              query: [description, addressLine1, addressLine2, city, postcode]
+              query: [locationName, addressLine1, addressLine2, city, postcode]
                 .filter(Boolean)
                 .join(', '),
             }
@@ -110,7 +109,7 @@ export class EventDirectionSection extends React.Component {
                   size: `${width}x${height}`,
                   scale: 2,
                   maptype: 'roadmap',
-                  markers: `color:red|label:${description}|${lat},${lon}`,
+                  markers: `color:red|label:${locationName}|${lat},${lon}`,
                   key: process.env.GATSBY_GOOGLE_MAPS_API_KEY,
                 }
               )})`,
@@ -122,18 +121,29 @@ export class EventDirectionSection extends React.Component {
 }
 
 EventDirectionSection.propTypes = {
-  lat: PropTypes.number.isRequired,
-  lon: PropTypes.number.isRequired,
-  description: PropTypes.string.isRequired,
-  addressLine1: PropTypes.string,
-  addressLine2: PropTypes.string,
-  postcode: PropTypes.string,
-  city: PropTypes.string,
+  data: PropTypes.shape({
+    location: PropTypes.shape({
+      lat: PropTypes.number.isRequired,
+      lon: PropTypes.number.isRequired,
+    }),
+    locationName: PropTypes.string.isRequired,
+    addressLine1: PropTypes.string,
+    addressLine2: PropTypes.string,
+    postcode: PropTypes.string,
+    city: PropTypes.string,
+  }).isRequired,
 }
 
-EventDirectionSection.defaultProps = {
-  addressLine1: null,
-  addressLine2: null,
-  postcode: null,
-  city: null,
-}
+export const query = graphql`
+  fragment eventDirectionsFragment on ContentfulEvent {
+    location {
+      lat
+      lon
+    }
+    locationName
+    addressLine1
+    addressLine2
+    city
+    postcode
+  }
+`

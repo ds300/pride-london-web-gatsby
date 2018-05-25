@@ -91,12 +91,6 @@ export default class Event extends Component {
       name,
       performances,
       eventCategories,
-      location: { lat, lon },
-      locationName,
-      addressLine1,
-      addressLine2,
-      city,
-      postcode,
     } = this.props.data.contentfulEvent
 
     return (
@@ -123,15 +117,7 @@ export default class Event extends Component {
             </Section>
           )}
         </ContentWrapper>
-        <EventDirectionSection
-          lat={lat}
-          lon={lon}
-          description={locationName}
-          addressLine1={addressLine1}
-          addressLine2={addressLine2}
-          postcode={postcode}
-          city={city}
-        />
+        <EventDirectionSection data={this.props.data.contentfulEvent} />
         <EventsYouMayLike eventId={id} />
       </PageWrapper>
     )
@@ -161,15 +147,7 @@ export const eventPageQuery = graphql`
       eventDescription {
         eventDescription
       }
-      location {
-        lat
-        lon
-      }
-      locationName
-      addressLine1
-      addressLine2
-      city
-      postcode
+      ...eventDirectionsFragment
     }
   }
 `
