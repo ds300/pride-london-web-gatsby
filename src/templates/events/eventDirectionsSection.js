@@ -31,10 +31,9 @@ const Heading = styled.h2`
   margin: 0px 10px 15px 10px;
   color: ${props => props.theme.colors.indigo};
   ${media.desktop`
-    margin: 0px 15px 15px 15px;
+    margin: 0px 15px 30px 15px;
     font-size: 1.5rem;
     font-weight: 600;
-    margin-bottom: 30px;
     color: white;
   `};
 `
