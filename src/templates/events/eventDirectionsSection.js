@@ -58,18 +58,27 @@ const MapLink = styled.a`
 export class EventDirectionSection extends React.Component {
   state = { width: null, height: null }
 
+  updateMapSize = () => {
+    if (this.wrapperRef) {
+      const rect = this.wrapperRef.getBoundingClientRect()
+      if (
+        rect.width !== this.state.width ||
+        rect.height !== this.state.height
+      ) {
+        this.setState({
+          width: rect.width,
+          height: rect.height,
+        })
+      }
+    }
+  }
+
   componentDidMount() {
-    this.componentDidUpdate()
+    this.updateMapSize()
   }
 
   componentDidUpdate() {
-    const rect = this.wrapperRef.getBoundingClientRect()
-    if (rect.width !== this.state.width && rect.height !== this.state.height) {
-      this.setState({
-        width: rect.width,
-        height: rect.height,
-      })
-    }
+    this.updateMapSize()
   }
 
   render() {
