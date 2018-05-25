@@ -8,7 +8,7 @@ const PageWrapper = styled.div`
   background-color: #ffffff;
 `
 
-export const Help = () => (
+const Help = () => (
   <Fragment>
     <PageWrapper>
       <Container>
