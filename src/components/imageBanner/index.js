@@ -2,8 +2,8 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import styled from 'styled-components'
 
-import BannerTitle from '../BannerTitle'
-import BannerSubtitle from '../BannerSubtitle'
+import BannerTitle from '../bannerTitle'
+import BannerSubtitle from '../bannerSubtitle'
 
 const Container = styled.div`
   display: flex;
