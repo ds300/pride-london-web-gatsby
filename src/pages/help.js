@@ -5,7 +5,7 @@ import { Container, Row, Column } from '../components/grid'
 import FaqsAccordion from '../templates/help/FaqsAccordion'
 
 const PageWrapper = styled.div`
-  background-color: #ffffff;
+  background-color: ${props => props.theme.white};
 `
 
 const Help = () => (
