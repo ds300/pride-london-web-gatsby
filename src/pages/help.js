@@ -1,6 +1,6 @@
 import React, { Fragment } from 'react'
 import styled from 'styled-components'
-import { Container, Row, Column } from '../components/grid/grid'
+import { Container, Row, Column } from '../components/grid'
 
 import FaqsAccordion from '../templates/help/FaqsAccordion'
 

@@ -3,8 +3,10 @@ import styled from 'styled-components'
 import PropTypes from 'prop-types'
 import ReactMarkdown from 'react-markdown'
 import Helmet from 'react-helmet'
+import NewsletterForm from '../components/newsletter'
 import { media } from '../theme/media'
 import { EventTagList, EventSchedule, EventsYouMayLike } from './events'
+import { EventDirectionSection } from './events/eventDirectionsSection'
 
 const PageWrapper = styled.div`
   position: relative;
@@ -28,6 +30,9 @@ const HeroImageAndTitle = styled.div`
 const ContentWrapper = styled.div`
   padding: 30px 20px;
   width: 100vw;
+  ${media.tablet`
+    padding: 30px 50px;
+  `};
   ${media.desktop`
     padding: 0;
     margin-left: 90px;
@@ -71,7 +76,10 @@ const InfoPlaceholder = styled.div`
 `
 
 const Section = styled.div`
-  margin-bottom: 60px;
+  margin-bottom: 20px;
+  ${media.desktop`
+    margin-bottom: 60px;
+  `};
 `
 
 // eslint-disable-next-line react/prefer-stateless-function
@@ -104,11 +112,15 @@ export default class Event extends Component {
           <Section>
             <ReactMarkdown source={eventDescription.eventDescription} />
           </Section>
-          <Section>
-            <EventSchedule schedule={performances} />
-          </Section>
+          {performances && (
+            <Section>
+              <EventSchedule schedule={performances} />
+            </Section>
+          )}
         </ContentWrapper>
+        <EventDirectionSection data={this.props.data.contentfulEvent} />
         <EventsYouMayLike eventId={id} />
+        <NewsletterForm buttonText="Subscribe" />
       </PageWrapper>
     )
   }
@@ -137,6 +149,7 @@ export const eventPageQuery = graphql`
       eventDescription {
         eventDescription
       }
+      ...eventDirectionsFragment
     }
   }
 `

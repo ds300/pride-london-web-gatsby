@@ -2,9 +2,9 @@ import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import styled from 'styled-components'
 import { rgba } from 'polished'
-import { Consumer } from './AppContext'
-import Checkbox from './Checkbox'
-import constants from '../constants/constants'
+import { Consumer } from '../appContext'
+import Checkbox from '../checkbox'
+import constants from '../../constants'
 
 const List = styled.ul`
   list-style: none;

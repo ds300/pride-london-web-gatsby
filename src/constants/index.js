@@ -28,4 +28,6 @@ const constants = {
   timeOfDay: ['Morning', 'Afternoon', 'Evening'],
 }
 
+export const surveryMonkeyUrl = '123123'
+
 export default constants

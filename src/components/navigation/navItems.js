@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 import styled from 'styled-components'
 import shortid from 'shortid'
 import Link from 'gatsby-link'
-import { Column } from '../../grid/grid'
+import { Column } from '../grid/'
 
 const StyledLink = styled(Link)`
   color: ${props => props.theme.colors.white};
@@ -13,9 +13,7 @@ const StyledLink = styled(Link)`
   font-family: 'Poppins';
   text-decoration: none;
 `
-
 const StyledButton = styled(Link)`
-  color: ${props => props.theme.colors.white};
   width: 138px;
   height: 40px;
   padding: 10px 25px;

@@ -1,7 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import styled from 'styled-components'
-import { Container, Row } from '../../grid/grid'
+import { Container, Row } from '../grid'
 import NavItems from './navItems'
 
 const StyledContainer = styled(Container)`

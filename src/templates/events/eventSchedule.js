@@ -1,7 +1,7 @@
 /* eslint-disable prettier/prettier */
 import React from 'react'
 import PropTypes from 'prop-types'
-import EventScheduleItem from './EventScheduleItem'
+import EventScheduleItem from './eventScheduleItem'
 
 const splitIntoArray = schedule =>
   schedule.reduce(
