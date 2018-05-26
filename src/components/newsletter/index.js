@@ -3,7 +3,6 @@ import PropTypes from 'prop-types'
 import styled from 'styled-components'
 import { Row, Column } from '../grid'
 import { media } from '../../theme/media'
-import { sendRequestToSurveyMonkey } from './helpers'
 
 const StyledInput = styled.input`
   font-size: 1.25em;
@@ -16,7 +15,7 @@ const StyledInput = styled.input`
   `};
 `
 
-export const StyledButton = styled.button`
+export const StyledButton = styled.input`
   background-color: ${props => props.theme.colors.eucalyptusGreen};
   border: none;
   border-radius: 4px;
@@ -77,44 +76,49 @@ export const StyledSubtitle = styled.p`
   `};
 `
 
+const url =
+  '//prideinlondon.us6.list-manage.com/subscribe?u=8289d9ca2253b74574f849c73&id=a2423c3382&MERGE0='
+
 class NewsletterForm extends React.Component {
   state = { value: '' }
 
   handleChange = ({ target: { value } }) => this.setState({ value })
 
-  handleSubmit = e => {
-    e.preventDefault()
-    sendRequestToSurveyMonkey(this.state.value)
-    this.setState({
-      value: '',
-    })
-  }
-
   render() {
     return (
       <StyledContainer>
-        <Row>
-          <Column width={[1, 1, 1 / 3, 1 / 3]}>
-            <StyledRow>
-              <StyledTitle>{this.props.newsletterTitle}</StyledTitle>
-            </StyledRow>
-            <StyledRow>
-              <StyledSubtitle>{this.props.newsletterSubtitle}</StyledSubtitle>
-            </StyledRow>
-          </Column>
-          <Column width={[1, 1, 1 / 3, 1 / 3]}>
-            <StyledInput
-              onChange={this.handleChange}
-              placeholder={this.props.placeholder}
-              type="text"
-            />
-          </Column>
-          <StyledButtonColumn width={[1, 1, 1 / 3, 1 / 3]}>
-            <StyledButton onClick={this.handleSubmit}>
-              {this.props.buttonText}
-            </StyledButton>
-          </StyledButtonColumn>
-        </Row>
+        <form
+          action={`${url}${this.state.value}`}
+          method="post"
+          target="_blank"
+        >
+          <Row>
+            <Column width={[1, 1, 1 / 3, 1 / 3]}>
+              <StyledRow>
+                <StyledTitle>{this.props.newsletterTitle}</StyledTitle>
+              </StyledRow>
+              <StyledRow>
+                <StyledSubtitle>{this.props.newsletterSubtitle}</StyledSubtitle>
+              </StyledRow>
+            </Column>
+            <Column width={[1, 1, 1 / 3, 1 / 3]}>
+              <StyledInput
+                type="email"
+                onChange={this.handleChange}
+                value={this.state.value}
+                placeholder={this.props.placeholder}
+                required
+              />
+            </Column>
+            <StyledButtonColumn width={[1, 1, 1 / 3, 1 / 3]}>
+              <StyledButton
+                type="submit"
+                value={this.props.buttonText}
+                name="subscribe"
+              />
+            </StyledButtonColumn>
+          </Row>
+        </form>
       </StyledContainer>
     )
   }
