@@ -58,6 +58,14 @@ const MapLink = styled.a`
 export class EventDirectionSection extends React.Component {
   state = { width: null, height: null }
 
+  componentDidMount() {
+    this.updateMapSize()
+  }
+
+  componentDidUpdate() {
+    this.updateMapSize()
+  }
+
   updateMapSize = () => {
     if (this.wrapperRef) {
       const rect = this.wrapperRef.getBoundingClientRect()
@@ -71,14 +79,6 @@ export class EventDirectionSection extends React.Component {
         })
       }
     }
-  }
-
-  componentDidMount() {
-    this.updateMapSize()
-  }
-
-  componentDidUpdate() {
-    this.updateMapSize()
   }
 
   render() {
@@ -112,7 +112,7 @@ export class EventDirectionSection extends React.Component {
               Boolean(width && height) &&
               `url(https://maps.googleapis.com/maps/api/staticmap?${querystring.encode(
                 {
-                  center: `${lat},${lon}`,
+                  center: `${lat}, ${lon}`,
                   zoom: 16,
                   size: `${width}x${height}`,
                   scale: 2,
