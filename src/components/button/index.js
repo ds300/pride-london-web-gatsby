@@ -16,7 +16,7 @@ const StyledButton = styled.button`
       : props.theme.colors.indigo};
   font-family: ${props => props.theme.fonts.title};
   font-weight: 700;
-  font-size: 1.125rem;
+  font-size: ${props => (props.small ? '0.875rem' : '1.125rem')};
   line-height: 1.388;
   min-width: 250px;
   cursor: pointer;
@@ -46,6 +46,7 @@ Button.propTypes = {
   children: PropTypes.string,
   onClick: PropTypes.func.isRequired,
   disabled: PropTypes.bool,
+  small: PropTypes.bool,
 }
 
 Button.defaultProps = {
@@ -53,6 +54,7 @@ Button.defaultProps = {
   primary: false,
   children: 'Button',
   disabled: false,
+  small: false,
 }
 
 export default Button

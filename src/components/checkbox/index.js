@@ -46,7 +46,7 @@ class Checkbox extends Component {
   }
 
   componentDidMount() {
-    this.setState({checked: this.props.checked})
+    this.setState({ checked: this.props.checked })
   }
 
   toggleCheckbox = e => {

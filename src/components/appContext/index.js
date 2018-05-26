@@ -45,20 +45,20 @@ class Provider extends Component {
   }
 
   getCheckboxBool = (name, checked) => {
-    console.log("getCheckboxBool", checked)
+    console.log('getCheckboxBool', checked)
     this.setState(prevState => ({
       ...prevState,
       filters: {
         ...prevState.filters,
-        free: checked
+        free: checked,
       },
     }))
   }
 
   getCheckboxSetValues = (e, name) => {
-    let state = { 
+    const state = {
       ...this.state,
-      filters: {...this.state.filters}
+      filters: { ...this.state.filters },
     }
 
     if (
@@ -85,12 +85,11 @@ class Provider extends Component {
   }
 
   closeSiblingFilters = (filterName, isOpen) => {
-    if (isOpen && filterName != this.state.openFilter) {    
-      this.setState(prevState => (
-        {...prevState,
-          filterOpen: filterName
-        }
-      ))
+    if (isOpen && filterName != this.state.openFilter) {
+      this.setState(prevState => ({
+        ...prevState,
+        filterOpen: filterName,
+      }))
     }
   }
 
