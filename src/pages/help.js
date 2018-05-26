@@ -2,7 +2,7 @@ import React, { Fragment } from 'react'
 import styled from 'styled-components'
 import { Container, Row, Column } from '../components/grid'
 
-import FaqsAccordion from '../templates/help/faqsAccordion'
+import { FaqsAccordion } from '../templates/help'
 
 const PageWrapper = styled.div`
   background-color: ${props => props.theme.colors.white};
