@@ -26,6 +26,7 @@
     "import/first": 2,
     "import/no-extraneous-dependencies": "off",
     "import/no-named-as-default": "off",
+    "import/no-unresolved": "error",
     "import/prefer-default-export": "off",
     "indent": "off", // in conflict with prettier
     "jsx-a11y/anchor-is-valid": "off",

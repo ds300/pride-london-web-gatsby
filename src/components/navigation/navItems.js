@@ -13,9 +13,7 @@ const StyledLink = styled(Link)`
   font-family: 'Poppins';
   text-decoration: none;
 `
-
 const StyledButton = styled(Link)`
-  color: ${props => props.theme.colors.white};
   width: 138px;
   height: 40px;
   padding: 10px 25px;
