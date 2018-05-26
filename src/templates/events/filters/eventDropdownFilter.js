@@ -99,6 +99,10 @@ class EventDropdownFilter extends Component {
     return { isOpen: true }
   }
 
+  shouldComponentUpdate(nextProps, nextState) {
+    return this.state.isOpen !== nextState.isOpen
+  }
+
   handleClickOutside = () => this.setState({ isOpen: false })
 
   toggleMenu = closeSiblingFilters => {

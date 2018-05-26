@@ -118,6 +118,10 @@ function filterPastEvents(event) {
   return moment(event.node.startTime).isSameOrAfter(today)
 }
 
+function filterByLimit(event, index) {
+  return index < this
+}
+
 module.exports = {
   formatDate,
   filterByDate,
@@ -126,4 +130,5 @@ module.exports = {
   filterByArea,
   filterByTime,
   filterPastEvents,
+  filterByLimit,
 }
