@@ -29,14 +29,14 @@
     "develop": "gatsby develop",
     "format": "prettier --write 'src/**/*.js'",
     "lint": "eslint 'src/**/*.js'",
-    "precommit": "lint-staged && yarn lint --fix && git add -A",
+    "precommit": "lint-staged",
     "test": "yarn run jest",
     "test:watch": "yarn run jest --watch",
     "deploy:ci":
       "gatsby build && now ./public -A ../now.json -e NODE_ENV=production --token $NOW_TOKEN --team=prideinlondon && now alias --token $NOW_TOKEN --team=prideinlondon"
   },
   "lint-staged": {
-    "*.{js,json,css,md}": ["yarn format"]
+    "src/**/*.{js,json,css,md}": ["yarn format", "yarn lint --fix", "git add -A"]
   },
   "devDependencies": {
     "babel-eslint": "^8.2.3",
