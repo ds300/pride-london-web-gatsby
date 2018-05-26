@@ -2,6 +2,8 @@ import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import Header from './header'
 
+Header.displayName = 'Header'
+
 class Navigation extends Component {
   constructor(props) {
     super(props)
