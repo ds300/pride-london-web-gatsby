@@ -6,7 +6,7 @@ import {
   AccordionItemBody,
 } from 'react-accessible-accordion'
 
-import AccordionWrapper from './AccordionWrapper'
+import AccordionWrapper from './accordionWrapper'
 import 'react-accessible-accordion/dist/fancy-example.css'
 
 const FaqsAccordion = () => (
