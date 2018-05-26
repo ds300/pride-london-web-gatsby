@@ -37,7 +37,7 @@ const AccordionWrapper = styled.div`
 
   .accordion__body[aria-hidden='false'] {
     border-bottom: 2px solid #2cda9d !important;
-    border-left: 2px solid #2cda9d !important;
+    border-left: 2px solid ${props => props.theme.eucalyptusGreen} !important;
     border-right: 2px solid #2cda9d !important;
     border-bottom-left-radius: 4px !important;
     border-bottom-right-radius: 4px !important;
