@@ -6,6 +6,10 @@ import FaqsAccordion from '../templates/help/FaqsAccordion'
 
 const PageWrapper = styled.div`
   background-color: ${props => props.theme.colors.white};
+
+  h1 {
+    margin-top: 60px;
+  }
 `
 
 const Help = () => (
