@@ -70,7 +70,6 @@ const Events = () => (
               <Button
                 onClick={() => context.actions.showMore(context.filteredCount)}
                 primary
-                small
                 disabled={context.state.eventsToShow >= context.filteredCount}
               >
                 Show more events
