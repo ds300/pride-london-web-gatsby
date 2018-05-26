@@ -9,17 +9,17 @@ export const Button = props => {
     padding: 12px;
     border-radius: 4px;
     display: inline-block;
-    color: ${props =>
-      props.primary
-        ? props.theme.colors.indigo
-        : props.theme.colors.eucalyptusGreen};
-    background-color: ${props =>
-      props.primary
-        ? props.theme.colors.eucalyptusGreen
-        : props.theme.colors.indigo};
-    font-family: ${props => props.theme.fonts.title};
+    color: ${styleProps =>
+      styleProps.primary
+        ? styleProps.theme.colors.indigo
+        : styleProps.theme.colors.eucalyptusGreen};
+    background-color: ${styleProps =>
+      styleProps.primary
+        ? styleProps.theme.colors.eucalyptusGreen
+        : styleProps.theme.colors.indigo};
+    font-family: ${styleProps => styleProps.theme.fonts.title};
     font-weight: 700;
-    font-size: ${props => (props.small ? '0.875rem' : '1.125rem')};
+    font-size: ${styleProps => (styleProps.small ? '0.875rem' : '1.125rem')};
     line-height: 1.388;
     min-width: 250px;
     cursor: pointer;
@@ -27,10 +27,10 @@ export const Button = props => {
     transition: background-color 0.15s linear;
 
     &:hover {
-      background-color: ${props =>
-        props.primary
-          ? darken(0.1, props.theme.colors.eucalyptusGreen)
-          : darken(0.1, props.theme.colors.indigo)};
+      background-color: ${styleProps =>
+        styleProps.primary
+          ? darken(0.1, styleProps.theme.colors.eucalyptusGreen)
+          : darken(0.1, styleProps.theme.colors.indigo)};
     }
 
     &:disabled {
@@ -46,6 +46,7 @@ export const Button = props => {
       onClick={props.onClick}
       disabled={props.disabled}
       href={props.link ? props.to : null}
+      small={props.small}
     >
       {props.children}
     </StyledButton>

@@ -8,6 +8,7 @@ import {
   filterByTime,
   filterPastEvents,
 } from '../../templates/events/helpers'
+import { itemsToLoad } from '../../constants'
 
 const AppContext = React.createContext()
 const { Consumer } = AppContext
@@ -27,7 +28,7 @@ function getInitialFilterState() {
 
 const initialState = {
   filterOpen: null,
-  eventsToShow: 9,
+  eventsToShow: itemsToLoad,
   filters: getInitialFilterState(),
 }
 
@@ -122,8 +123,7 @@ class Provider extends Component {
 
   showMore = filteredCount => {
     if (this.state.eventsToShow < filteredCount) {
-      const limit = (this.state.eventsToShow += 9)
-      this.setState({ eventsToShow: limit })
+      this.setState({ eventsToShow: this.state.eventsToShow + itemsToLoad })
     }
   }
 
