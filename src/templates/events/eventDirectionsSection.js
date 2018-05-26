@@ -113,7 +113,7 @@ export class EventDirectionSection extends React.Component {
               `url(https://maps.googleapis.com/maps/api/staticmap?${querystring.encode(
                 {
                   center: `${lat},${lon}`,
-                  zoom: 14,
+                  zoom: 16,
                   size: `${width}x${height}`,
                   scale: 2,
                   maptype: 'roadmap',
