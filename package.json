@@ -11,6 +11,7 @@
     "grid-styled": "^4.1.0",
     "moment": "^2.22.1",
     "polished": "^1.9.2",
+    "querystring": "^0.2.0",
     "react-dates": "^16.7.0",
     "react-helmet": "^5.2.0",
     "react-markdown": "^3.3.2",
@@ -32,7 +33,7 @@
     "develop": "gatsby develop",
     "format": "prettier --write 'src/**/*.js'",
     "lint": "eslint 'src/**/*.js'",
-    "precommit": "yarn format && yarn lint --fix",
+    "precommit": "yarn format && yarn lint --fix && git add -A",
     "test": "yarn run jest",
     "test:watch": "yarn run jest --watch",
     "deploy:ci": "gatsby build && now ./public -A ../now.json -e NODE_ENV=production --token $NOW_TOKEN --team=prideinlondon && now alias --token $NOW_TOKEN --team=prideinlondon"
