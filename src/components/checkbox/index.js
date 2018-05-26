@@ -41,12 +41,15 @@ class Checkbox extends Component {
     checked: false,
   }
 
+  shouldComponentUpdate(nextProps, nextState) {
+    return nextState.checked !== this.state.checked
+  }
+
   componentDidMount() {
     this.setState({checked: this.props.checked})
   }
 
   toggleCheckbox = e => {
-    console.log("toggleCheckbox", e.target.checked)
     this.setState({ checked: e.target.checked })
 
     if (this.props.handleChange) {
