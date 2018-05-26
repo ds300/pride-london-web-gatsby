@@ -1,6 +1,8 @@
 import React from 'react'
 import { shallow } from 'enzyme'
 import NavItems from '../navItems'
+import shortid from 'shortid' //eslint-disable-line no-unused-vars
+jest.mock('shortid', () => ({ generate: jest.fn().mockReturnValue('mockId') }))
 
 describe('header', () => {
   it('matches snapshot', () => {
