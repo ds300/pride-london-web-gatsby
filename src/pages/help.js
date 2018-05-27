@@ -10,6 +10,11 @@ const PageWrapper = styled.div`
 
   h1 {
     margin-top: 60px;
+
+    @media (max-width: ${props => props.theme.breakpoints[1]}) {
+      font-size: 20px;
+      margin-top: 30px;
+    }
   }
 `
 
