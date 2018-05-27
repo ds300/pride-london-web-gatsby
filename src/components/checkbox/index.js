@@ -37,17 +37,20 @@ const Label = styled.label`
 `
 
 class Checkbox extends Component {
-  state = {
-    checked: false,
+  constructor(props) {
+    super(props)
+
+    this.state = {
+      checked: this.props.checked,
+    }
   }
 
-  static getDerivedStateFromProps(nextProps) {
-    return { checked: nextProps.checked }
+  shouldComponentUpdate(nextProps, nextState) {
+    return nextState.checked !== this.state.checked
   }
 
   toggleCheckbox = e => {
-    const checked = !this.state.checked
-    this.setState({ checked })
+    this.setState({ checked: e.target.checked })
 
     if (this.props.handleChange) {
       this.props.handleChange(e)
@@ -77,10 +80,10 @@ Checkbox.propTypes = {
   id: PropTypes.string,
   value: PropTypes.string,
   name: PropTypes.string,
+  checked: PropTypes.bool.isRequired,
 }
 
 Checkbox.defaultProps = {
-  checked: false,
   handleChange: null,
   label: '',
   id: '',
