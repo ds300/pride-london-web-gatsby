@@ -1,0 +1,184 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Checkbox @renders should render 1`] = `
+ShallowWrapper {
+  "length": 1,
+  Symbol(enzyme.__root__): [Circular],
+  Symbol(enzyme.__unrendered__): <Checkbox
+    checked={false}
+    handleChange={null}
+    id="test"
+    label=""
+    name=""
+    value=""
+  />,
+  Symbol(enzyme.__renderer__): Object {
+    "batchedUpdates": [Function],
+    "getNode": [Function],
+    "render": [Function],
+    "simulateEvent": [Function],
+    "unmount": [Function],
+  },
+  Symbol(enzyme.__node__): Object {
+    "instance": null,
+    "key": undefined,
+    "nodeType": "class",
+    "props": Object {
+      "children": Array [
+        <styled.input
+          checked={false}
+          id="test"
+          name=""
+          onChange={[Function]}
+          type="checkbox"
+          value=""
+        />,
+        <styled.label
+          htmlFor="test"
+        >
+          
+        </styled.label>,
+      ],
+    },
+    "ref": null,
+    "rendered": Array [
+      Object {
+        "instance": null,
+        "key": undefined,
+        "nodeType": "class",
+        "props": Object {
+          "checked": false,
+          "id": "test",
+          "name": "",
+          "onChange": [Function],
+          "type": "checkbox",
+          "value": "",
+        },
+        "ref": null,
+        "rendered": null,
+        "type": [Function],
+      },
+      Object {
+        "instance": null,
+        "key": undefined,
+        "nodeType": "class",
+        "props": Object {
+          "children": "",
+          "htmlFor": "test",
+        },
+        "ref": null,
+        "rendered": "",
+        "type": [Function],
+      },
+    ],
+    "type": [Function],
+  },
+  Symbol(enzyme.__nodes__): Array [
+    Object {
+      "instance": null,
+      "key": undefined,
+      "nodeType": "class",
+      "props": Object {
+        "children": Array [
+          <styled.input
+            checked={false}
+            id="test"
+            name=""
+            onChange={[Function]}
+            type="checkbox"
+            value=""
+          />,
+          <styled.label
+            htmlFor="test"
+          >
+            
+          </styled.label>,
+        ],
+      },
+      "ref": null,
+      "rendered": Array [
+        Object {
+          "instance": null,
+          "key": undefined,
+          "nodeType": "class",
+          "props": Object {
+            "checked": false,
+            "id": "test",
+            "name": "",
+            "onChange": [Function],
+            "type": "checkbox",
+            "value": "",
+          },
+          "ref": null,
+          "rendered": null,
+          "type": [Function],
+        },
+        Object {
+          "instance": null,
+          "key": undefined,
+          "nodeType": "class",
+          "props": Object {
+            "children": "",
+            "htmlFor": "test",
+          },
+          "ref": null,
+          "rendered": "",
+          "type": [Function],
+        },
+      ],
+      "type": [Function],
+    },
+  ],
+  Symbol(enzyme.__options__): Object {
+    "adapter": ReactSixteenAdapter {
+      "options": Object {
+        "enableComponentDidUpdateOnSetState": true,
+      },
+    },
+    "context": Object {
+      "theme": Object {
+        "breakpoints": Array [
+          "375px",
+          "768px",
+          "1024px",
+          "1440px",
+        ],
+        "colors": Object {
+          "amber": "#FFCA00",
+          "beachBlue": "#2C77E5",
+          "black": "#000000",
+          "bondiBlue": "#00A3BD",
+          "darkGrey": "#5B5B5B",
+          "darkPurple": "#660C63",
+          "electricPurple": "#BC01FF",
+          "eucalyptusGreen": "#2CDA9D",
+          "fuscia": "#FF88F1",
+          "green": "#34C30A",
+          "greyBlue": "#5770D1",
+          "indigo": "#2D2F7F",
+          "lemonGreen": "#C3D30E",
+          "lightGrey": "#EFEFEF",
+          "mediumGrey": "#E1E1E1",
+          "pink": "#ED2C6E",
+          "red": "#D0021B",
+          "skyBlue": "#2ACFFF",
+          "tomato": "#FF5B44",
+          "white": "#FFFFFF",
+          "yellow": "#FFD95E",
+        },
+        "fonts": Object {
+          "body": "Roboto, sans-serif",
+          "title": "Poppins, sans-serif",
+        },
+        "space": Array [
+          0,
+          5,
+          10,
+          15,
+          20,
+        ],
+      },
+    },
+  },
+}
+`;
