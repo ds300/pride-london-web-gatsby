@@ -11,14 +11,37 @@ const Card = styled(Link)`
   color: ${props => props.theme.colors.black};
   overflow: hidden;
   display: flex;
-  flex-direction: column;
   position: relative;
   width: 100%;
+
+  @media (min-width: ${props => props.theme.breakpoints[1]}) {
+    flex-direction: column;
+  }
+`
+const CardImageWrapper = styled.div`
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: cover;
+  background-image: url(${props => props.src});
+  position: relative;
+  overflow: hidden;
+  flex-basis: 40%;
+  flex-shrink: 0;
+  height: 100%;
+
+  @media (min-width: ${props => props.theme.breakpoints[1]}) {
+    padding-top: 56.25%;
+  }
 `
 
 const CardImage = styled.img`
   display: block;
   width: 100%;
+  height: auto;
+  position: absolute;
+  top: 0;
+  left: 0;
+  opacity: 0;
 `
 
 const CardBody = styled.div`
@@ -51,13 +74,23 @@ const CardPrice = styled.div`
   font-weight: 600;
   padding: 5px 10px;
   border-radius: 5px;
-  font-size: 1rem;
+  font-size: 0.75rem;
+
+  @media (min-width: ${props => props.theme.breakpoints[1]}) {
+    font-size: 1rem;
+  }
 `
 
 const CardHeading = styled.h2`
   margin-bottom: 0;
-  line-height: 1.21;
+  line-height: 1.25;
+  font-size: 1rem;
   color: black;
+
+  @media (min-width: ${props => props.theme.breakpoints[1]}) {
+    line-height: 1.21;
+    font-size: 1.5rem;
+  }
 `
 
 export const EventListingCard = props => {
@@ -65,17 +98,25 @@ export const EventListingCard = props => {
 
   return (
     <Card to={`/events/${event.id}`}>
-      <CardImage
+      <CardImageWrapper
         src={`${event.eventsListPicture.file.url}?fit=fill&w=400&h=225&f=faces`}
-        alt={event.eventsListPicture.title}
-        width="400"
-        height="225"
-      />
+      >
+        <CardImage
+          src={`${
+            event.eventsListPicture.file.url
+          }?fit=fill&w=400&h=225&f=faces`}
+          alt={event.eventsListPicture.title}
+          width="400"
+          height="225"
+        />
+      </CardImageWrapper>
       <CardBody>
         <CardDate>{formatDate(event)}</CardDate>
         <CardHeading>{event.name}</CardHeading>
       </CardBody>
-      <CardPrice>from £{event.eventPriceLow}</CardPrice>
+      <CardPrice>
+        {event.isFree ? 'Free' : `from £${event.eventPriceLow}`}
+      </CardPrice>
     </Card>
   )
 }

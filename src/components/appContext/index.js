@@ -9,6 +9,8 @@ import {
   filterPastEvents,
 } from '../../templates/events/helpers'
 import { itemsToLoad } from '../../constants'
+import theme from '../../theme/theme'
+import debounce from '../../lib/debounce'
 
 const AppContext = React.createContext()
 const { Consumer } = AppContext
@@ -33,7 +35,50 @@ const initialState = {
 }
 
 class Provider extends Component {
-  state = { ...initialState }
+  constructor() {
+    super()
+    this.state = {
+      ...initialState,
+      breakpoint: this.getCurrentBreakpoint(),
+    }
+  }
+
+  componentDidMount() {
+    if (typeof window !== 'undefined') {
+      window.addEventListener('resize', this.setCurrentBreakpoint)
+    }
+  }
+  componentWillUnmount() {
+    if (typeof window !== 'undefined') {
+      window.removeEventListener('resize', this.setCurrentBreakpoint)
+    }
+  }
+
+  getCurrentBreakpoint = () => {
+    if (typeof window !== 'undefined') {
+      switch (true) {
+        case window.matchMedia(`(min-width: ${theme.breakpoints[3]})`).matches:
+          return 3
+          break
+        case window.matchMedia(`(min-width: ${theme.breakpoints[2]})`).matches:
+          return 2
+          break
+        case window.matchMedia(`(min-width: ${theme.breakpoints[1]})`).matches:
+          return 1
+          break
+        default:
+          return 0
+      }
+    }
+  }
+
+  setCurrentBreakpoint = debounce(() => {
+    console.log('DEBOUNCE')
+    const state = { ...this.state }
+    state.breakpoint = this.getCurrentBreakpoint()
+    console.log(this)
+    this.setState(state)
+  }, 50)
 
   getDatepickerValue = date => {
     this.setState(prevState => ({

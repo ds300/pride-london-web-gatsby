@@ -1,5 +1,4 @@
 import React, { Fragment } from 'react'
-import Link from 'gatsby-link'
 import styled from 'styled-components'
 import { EventListingCard } from '../templates/events'
 import EventsFilters from '../templates/events/eventsFilters'
@@ -28,9 +27,6 @@ const Events = () => (
     {context => (
       <Fragment>
         <Container>
-          <EventsFilters />
-        </Container>
-        <Container>
           <Row>
             <Column width={1}>
               <ImageBanner
@@ -39,11 +35,15 @@ const Events = () => (
                 imageSrc=""
                 altText="Celebrate Pride banner"
               />
-              <h1> Hi from the events page </h1>
-              <Link to="/"> Go back to the homepage </Link>
             </Column>
           </Row>
+        </Container>
+        <Container>
+          <EventsFilters />
+        </Container>
+        <Container>
           <Row>
+            <Column width={1}>Add Filters</Column>
             {context.filteredEvents
               .filter(filterByLimit, context.state.eventsToShow)
               .map(event => (

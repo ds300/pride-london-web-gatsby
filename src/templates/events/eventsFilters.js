@@ -110,6 +110,7 @@ const EventsFilters = () => (
           25, // btwn 2nd breakpoint(768px) and 3rd breakpoint (1280px)
           60, // btwn 3rd breakpoint(1280px) and 4th breakpoint (1440px)
         ]}
+        mb={[0, 0, 40]}
         px={[0, 0, 15, 15]}
         py={4}
         flexWrap="wrap"
