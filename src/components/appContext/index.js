@@ -73,10 +73,8 @@ class Provider extends Component {
   }
 
   setCurrentBreakpoint = debounce(() => {
-    console.log('DEBOUNCE')
     const state = { ...this.state }
     state.breakpoint = this.getCurrentBreakpoint()
-    console.log(this)
     this.setState(state)
   }, 50)
 
@@ -91,7 +89,6 @@ class Provider extends Component {
   }
 
   getCheckboxBool = (name, checked) => {
-    console.log('getCheckboxBool', checked)
     this.setState(prevState => ({
       ...prevState,
       filters: {
