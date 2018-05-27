@@ -5,6 +5,12 @@ const AccordionWrapper = styled.div`
     padding-top: 0 !important;
     background-color: ${props => props.theme.colors.lightGrey} !important;
     animation: none !important;
+
+    p {
+      @media (max-width: ${props => props.theme.breakpoints[1]}) {
+        font-size: 14px;
+      }
+    }
   }
 
   .accordion__title {
@@ -18,6 +24,10 @@ const AccordionWrapper = styled.div`
 
       &:hover {
         color: ${props => props.theme.colors.indigo};
+      }
+
+      @media (max-width: ${props => props.theme.breakpoints[1]}) {
+        font-size: 14px;
       }
     }
   }
