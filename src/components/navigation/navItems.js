@@ -13,6 +13,8 @@ const StyledLink = styled(Link)`
   font-family: 'Poppins';
   text-decoration: none;
 `
+
+StyledLink.displayName = 'LinkTest'
 const StyledButton = styled(Link)`
   width: 138px;
   height: 40px;
@@ -24,6 +26,7 @@ const StyledButton = styled(Link)`
   color: ${props => props.theme.colors.indigo};
   background-color: ${props => props.theme.colors.eucalyptusGreen};
 `
+StyledButton.displayName = 'ButtonTest'
 
 const NavItems = props => {
   const { listItems, logo } = props.items
