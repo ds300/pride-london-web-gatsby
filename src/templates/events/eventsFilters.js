@@ -19,8 +19,12 @@ const FilterWrapper = styled(Flex)`
   overflow: auto;
   transition: left 0.15s linear;
   top: 0;
-  left: ${props => (props.showFiltersMobile ? '0' : '100%')};
+  left: 100%;
   z-index: 1;
+
+  &.open {
+    left: 0;
+  }
 
   ${media.tablet`
     position: static;
@@ -144,7 +148,7 @@ const EventsFilters = props => (
   <Consumer>
     {context => (
       <FilterWrapper
-        showFiltersMobile={props.showFiltersMobile}
+        className={props.showFiltersMobile ? 'open' : null}
         mx={[
           0, // btwn 0 and first breakpoint (375px)
           0, // btwn 1st breakpoint(375px) and 2nd breakpoint (768px)
