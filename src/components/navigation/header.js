@@ -10,6 +10,8 @@ const StyledContainer = styled(Container)`
   height: 100px;
 `
 
+NavItems.displayName = 'TestNav'
+
 const Header = props => (
   <StyledContainer>
     <Row alignItems="center" justifyContent="center">
