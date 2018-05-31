@@ -3,6 +3,7 @@ import PropTypes from 'prop-types'
 import Link from 'gatsby-link'
 import styled from 'styled-components'
 import { formatDate } from './helpers'
+import { media } from '../../theme/media'
 
 const Card = styled(Link)`
   display: block;
@@ -13,10 +14,12 @@ const Card = styled(Link)`
   display: flex;
   position: relative;
   width: 100%;
+  min-height: 130px;
 
-  @media (min-width: ${props => props.theme.breakpoints[1]}) {
+  ${media.tablet`
     flex-direction: column;
-  }
+    min-height: auto;
+  `};
 `
 const CardImageWrapper = styled.div`
   background-repeat: no-repeat;
@@ -29,9 +32,9 @@ const CardImageWrapper = styled.div`
   flex-shrink: 0;
   height: 100%;
 
-  @media (min-width: ${props => props.theme.breakpoints[1]}) {
+  ${media.tablet`
     padding-top: 56.25%;
-  }
+  `};
 `
 
 const CardImage = styled.img`
@@ -49,9 +52,9 @@ const CardBody = styled.div`
   background-color: ${props => props.theme.colors.white};
   flex-grow: 1;
 
-  @media (min-width: ${props => props.theme.breakpoints[0]}) {
+  ${media.mobile`
     padding: 30px;
-  }
+  `};
 `
 
 const CardDate = styled.span`
@@ -76,9 +79,9 @@ const CardPrice = styled.div`
   border-radius: 5px;
   font-size: 0.75rem;
 
-  @media (min-width: ${props => props.theme.breakpoints[1]}) {
+  ${media.tablet`
     font-size: 1rem;
-  }
+  `};
 `
 
 const CardHeading = styled.h2`
@@ -87,10 +90,10 @@ const CardHeading = styled.h2`
   font-size: 1rem;
   color: black;
 
-  @media (min-width: ${props => props.theme.breakpoints[1]}) {
+  ${media.tablet`
     line-height: 1.21;
     font-size: 1.5rem;
-  }
+  `};
 `
 
 export const EventListingCard = props => {

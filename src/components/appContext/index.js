@@ -76,7 +76,7 @@ class Provider extends Component {
     const state = { ...this.state }
     state.breakpoint = this.getCurrentBreakpoint()
     this.setState(state)
-  }, 50)
+  }, 25)
 
   getDatepickerValue = date => {
     this.setState(prevState => ({
