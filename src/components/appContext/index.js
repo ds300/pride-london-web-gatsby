@@ -7,7 +7,7 @@ import {
   filterByArea,
   filterByTime,
   filterPastEvents,
-} from '../../templates/events/helpers'
+} from '../events/helpers'
 import { itemsToLoad } from '../../constants'
 import theme from '../../theme/theme'
 import debounce from '../../lib/debounce'
