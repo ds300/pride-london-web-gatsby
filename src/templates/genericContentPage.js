@@ -29,15 +29,56 @@ const Content = styled.div`
   ${horizontalPagePadding};
   padding-top: 30px;
   padding-bottom: 50px;
+  p {
+    font-size: 1rem;
+    line-height: 1.5;
+    ${media.desktop`
+      font-size: 1.125rem;
+    `};
+  }
+  hr {
+    margin: 20px 0px;
+    border: none;
+    border-top: 1px solid #e0e0e0;
+  }
+  h2 {
+    margin-top: 50px;
+    font-size: 1.25rem;
+    font-weight: 900;
+  }
+  h3 {
+    margin-top: 30px;
+    font-size: 1.125rem;
+    font-weight: 600;
+  }
+  h4 {
+    font-size: 1em;
+    margin-bottom: 5px;
+  }
+  img {
+    margin-left: -20px;
+    margin-right: -20px;
+    width: 100vw;
+    max-width: 100vw;
+  }
   ${media.tablet`
     padding-top: 40px;
     padding-bottom: 60px;
+    img {
+      margin-left: -50px;
+      margin-right: -50px;
+    }
   `};
   ${media.desktop`
     padding-top: 60px;
     padding-bottom: 90px;
     > div {
       max-width: 830px;
+      img {
+        margin: 0;
+        width: auto;
+        max-width: 830px;
+      }
     }
   `};
   display: flex;
@@ -80,7 +121,7 @@ const Subtitle = styled.h2`
   background-color: ${props => props.theme.colors.indigo};
   font-size: 1rem;
   padding: 5px;
-  max-width: 200px;
+  max-width: 255px;
   ${media.desktop`
     font-size: 1.5rem;
     padding: 10px;
@@ -145,9 +186,6 @@ export const query = graphql`
         id
         file {
           url
-        }
-        sizes(maxWidth: 500) {
-          src
         }
       }
       content {
