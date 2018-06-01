@@ -39,10 +39,13 @@ class Events extends Component {
   }
 
   toggleFiltersMobile = () => {
-    const state = { ...this.state }
-    state.showFiltersMobile = !state.showFiltersMobile
-    this.setState(state)
-    noScroll.toggle()
+    this.setState(
+      prevState => ({
+        ...prevState,
+        showFiltersMobile: !prevState.showFiltersMobile,
+      }),
+      () => noScroll.toggle()
+    )
   }
 
   render() {

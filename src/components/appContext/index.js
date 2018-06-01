@@ -73,9 +73,10 @@ class Provider extends Component {
   }
 
   setCurrentBreakpoint = debounce(() => {
-    const state = { ...this.state }
-    state.breakpoint = this.getCurrentBreakpoint()
-    this.setState(state)
+    this.setState(prevState => ({
+      ...prevState,
+      breakpoint: this.getCurrentBreakpoint(),
+    }))
   }, 25)
 
   getDatepickerValue = date => {
