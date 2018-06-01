@@ -10,30 +10,36 @@ import theme from '../../theme/theme'
 jest.mock('../../theme/assets/images/icon-check.svg', () => 'foo')
 
 describe('Checkbox', () => {
-  let wrapper
-  beforeEach(() => {
-    wrapper = shallow(<Checkbox id="test" />, { context: { theme } })
-  })
+  const id = 'test'
+  const name = 'myInput'
+  const value = 'selected'
+  const label = 'hello'
+  const handleChange = jest.fn()
+
+  const props = {
+    id,
+    name,
+    value,
+    label,
+    handleChange,
+  }
+
+  const wrapper = shallow(<Checkbox {...props} />, { context: { theme } })
+
   describe('@renders', () => {
     it('should render', () => {
       expect(wrapper).toMatchSnapshot()
     })
     describe('input', () => {
       it('should have id from props', () => {
-        const id = 'myInput'
-        wrapper.setProps({ id })
         expect(wrapper.find('[type="checkbox"]').props().id).toBe(id)
       })
 
       it('should have name from props', () => {
-        const name = 'myInput'
-        wrapper.setProps({ name })
         expect(wrapper.find('[type="checkbox"]').props().name).toBe(name)
       })
 
       it('should have value from props', () => {
-        const value = 'selected'
-        wrapper.setProps({ value })
         expect(wrapper.find('[type="checkbox"]').props().value).toBe(value)
       })
     })
@@ -44,8 +50,6 @@ describe('Checkbox', () => {
       })
 
       it('should have text from props ', () => {
-        const label = 'hello'
-        wrapper.setProps({ label })
         expect(
           wrapper
             .find('[htmlFor="test"]')
@@ -57,16 +61,15 @@ describe('Checkbox', () => {
   })
 
   describe('@events', () => {
+    const event = { target: { checked: true } }
+
     it('should toggle its checked state when changed', () => {
       expect(wrapper.state().checked).toBeFalsy()
-      wrapper.find('#test').simulate('change')
+      wrapper.find('#test').simulate('change', event)
       expect(wrapper.state().checked).toBeTruthy()
     })
 
     it('should fire the handleChange prop with an event when changed', () => {
-      const handleChange = jest.fn()
-      const event = 'event'
-      wrapper.setProps({ handleChange })
       wrapper.find('#test').simulate('change', event)
       expect(handleChange).toHaveBeenCalledWith(event)
     })

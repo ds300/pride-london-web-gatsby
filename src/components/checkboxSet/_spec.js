@@ -10,12 +10,12 @@ import theme from '../../theme/theme'
 jest.mock('../../theme/assets/images/icon-check.svg', () => 'foo')
 
 describe('CheckboxSet', () => {
-  let wrapper
-  beforeEach(() => {
-    wrapper = shallow(<CheckboxSet filterName="test" />, { context: { theme } })
-  })
   describe('@renders', () => {
     it('should render', () => {
+      const wrapper = shallow(<CheckboxSet filterName="test" />, {
+        context: { theme },
+      })
+
       expect(wrapper).toMatchSnapshot()
     })
   })

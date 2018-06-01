@@ -5,12 +5,11 @@ ShallowWrapper {
   "length": 1,
   Symbol(enzyme.__root__): [Circular],
   Symbol(enzyme.__unrendered__): <Checkbox
-    checked={false}
-    handleChange={null}
+    handleChange={[MockFunction]}
     id="test"
-    label=""
-    name=""
-    value=""
+    label="hello"
+    name="myInput"
+    value="selected"
   />,
   Symbol(enzyme.__renderer__): Object {
     "batchedUpdates": [Function],
@@ -26,17 +25,17 @@ ShallowWrapper {
     "props": Object {
       "children": Array [
         <styled.input
-          checked={false}
+          checked={undefined}
           id="test"
-          name=""
+          name="myInput"
           onChange={[Function]}
           type="checkbox"
-          value=""
+          value="selected"
         />,
         <styled.label
           htmlFor="test"
         >
-          
+          hello
         </styled.label>,
       ],
     },
@@ -47,12 +46,12 @@ ShallowWrapper {
         "key": undefined,
         "nodeType": "class",
         "props": Object {
-          "checked": false,
+          "checked": undefined,
           "id": "test",
-          "name": "",
+          "name": "myInput",
           "onChange": [Function],
           "type": "checkbox",
-          "value": "",
+          "value": "selected",
         },
         "ref": null,
         "rendered": null,
@@ -63,11 +62,11 @@ ShallowWrapper {
         "key": undefined,
         "nodeType": "class",
         "props": Object {
-          "children": "",
+          "children": "hello",
           "htmlFor": "test",
         },
         "ref": null,
-        "rendered": "",
+        "rendered": "hello",
         "type": [Function],
       },
     ],
@@ -81,17 +80,17 @@ ShallowWrapper {
       "props": Object {
         "children": Array [
           <styled.input
-            checked={false}
+            checked={undefined}
             id="test"
-            name=""
+            name="myInput"
             onChange={[Function]}
             type="checkbox"
-            value=""
+            value="selected"
           />,
           <styled.label
             htmlFor="test"
           >
-            
+            hello
           </styled.label>,
         ],
       },
@@ -102,12 +101,12 @@ ShallowWrapper {
           "key": undefined,
           "nodeType": "class",
           "props": Object {
-            "checked": false,
+            "checked": undefined,
             "id": "test",
-            "name": "",
+            "name": "myInput",
             "onChange": [Function],
             "type": "checkbox",
-            "value": "",
+            "value": "selected",
           },
           "ref": null,
           "rendered": null,
@@ -118,11 +117,11 @@ ShallowWrapper {
           "key": undefined,
           "nodeType": "class",
           "props": Object {
-            "children": "",
+            "children": "hello",
             "htmlFor": "test",
           },
           "ref": null,
-          "rendered": "",
+          "rendered": "hello",
           "type": [Function],
         },
       ],
