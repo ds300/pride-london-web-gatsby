@@ -118,7 +118,7 @@ export const EventListingCard = props => {
         <CardHeading>{event.name}</CardHeading>
       </CardBody>
       <CardPrice>
-        {event.isFree ? 'Free' : `from £${event.eventPriceLow}`}
+        {event.eventPriceLow === 0 ? 'Free' : `from £${event.eventPriceLow}`}
       </CardPrice>
     </Card>
   )
