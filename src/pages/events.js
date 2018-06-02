@@ -34,7 +34,7 @@ const Events = () => (
             subtitleText="Events, shows, talks"
             imageSrc=""
             altText="Celebrate Pride banner"
-            color={theme.colors.eucalyptusGreen}
+            color={theme.colors.beachBlue}
           />
           <EventsFilters />
         </Container>

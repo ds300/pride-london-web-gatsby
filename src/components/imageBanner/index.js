@@ -2,18 +2,15 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import styled from 'styled-components'
 import { media } from '../../theme/media'
-
+import { Column, Row, Container } from '../grid'
 import BannerTitle from '../bannerTitle'
 import BannerSubtitle from '../bannerSubtitle'
 
-const Container = styled.div`
+const StyledContainer = styled(Container)`
   display: flex;
-  flex-direction: column;
+  align-items: center;
   min-height: 270px;
-  justify-content: center;
-  line-height: 0;
   overflow: hidden;
-  padding-left: 10px;
   position: relative;
   background-color: ${props => props.color};
 
@@ -26,18 +23,24 @@ const Container = styled.div`
 
   ${media.tablet`
     height: 400px;
-    padding-left: 90px;
   `};
 `
 
+const StyledRow = styled(Row)`
+  display: block;
+  flex-basis: 100%;
+`
+
 const ImageBanner = ({ titleText, subtitleText, imageSrc, altText, color }) => (
-  <Container color={color}>
+  <StyledContainer color={color}>
     {imageSrc && <img src={imageSrc} alt={altText} />}
-    <div>
-      <BannerTitle>{titleText}</BannerTitle>
-      <BannerSubtitle>{subtitleText}</BannerSubtitle>
-    </div>
-  </Container>
+    <StyledRow>
+      <Column width={1}>
+        <BannerTitle>{titleText}</BannerTitle>
+        <BannerSubtitle>{subtitleText}</BannerSubtitle>
+      </Column>
+    </StyledRow>
+  </StyledContainer>
 )
 
 ImageBanner.propTypes = {

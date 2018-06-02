@@ -1,34 +1,18 @@
 import React, { Component } from 'react'
-import styled, { css } from 'styled-components'
 import PropTypes from 'prop-types'
 import ReactMarkdown from 'react-markdown'
 import Helmet from 'react-helmet'
 import { media } from '../theme/media'
+import { Column, Row, Container } from '../components/grid'
 
 import ImageBanner from '../components/imageBanner'
 
-const horizontalPagePadding = css`
-  padding-left: 20px;
-  padding-right: 20px;
-  ${media.tablet`
-    padding-left: 50px;
-    padding-right: 50px;
-  `};
-  ${media.desktop`
-    padding-left: 90px;
-    padding-right: 90px;
-  `};
-`
-
-const PageWrapper = styled.div`
+const PageWrapper = styled(Container)`
   position: relative;
-  margin: 0 auto;
-  max-width: ${props => props.theme.breakpoints[3]};
   background-color: white;
 `
 
-const Content = styled.div`
-  ${horizontalPagePadding};
+const Content = styled(Column)`
   padding-top: 30px;
   padding-bottom: 50px;
   p {
@@ -87,50 +71,6 @@ const Content = styled.div`
   flex-flow: column;
 `
 
-const Hero = styled.div`
-  ${horizontalPagePadding};
-  background-color: ${props => props.theme.colors.bondiBlue};
-  background-size: cover;
-  background-position: center center;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-
-  height: 240px;
-  ${media.desktop`
-    height: 480px;
-  `};
-`
-
-const Title = styled.h1`
-  margin: 0;
-  display: inline-block;
-  background-color: white;
-  color: ${props => props.theme.colors.indigo};
-  font-size: 1.75rem;
-  padding: 0px 5px;
-  ${media.desktop`
-    font-size: 3.5rem;
-    padding: 0px 10px;
-    max-width: 740px;
-  `};
-`
-
-const Subtitle = styled.h2`
-  margin: 0;
-  display: inline-block;
-  color: white;
-  background-color: ${props => props.theme.colors.indigo};
-  font-size: 1rem;
-  padding: 5px;
-  max-width: 255px;
-  ${media.desktop`
-    font-size: 1.5rem;
-    padding: 10px;
-    max-width: 420px;
-  `};
-`
-
 const responsiveBannerUrl = url => {
   const width = Math.min(window.innerWidth, 1440)
 
@@ -144,37 +84,20 @@ export default class GenericContentPage extends Component {
 
     return (
       <PageWrapper>
-        <Helmet title={data.title} />
         <ImageBanner
-          titleText="Celebrate Pride"
-          subtitleText="Need a hand getting around? We have you covered."
-          imageSrc=""
-          altText="Celebrate Pride banner"
-        />
-        <Hero
-          style={
-            data.bannerImage
-              ? {
-                  backgroundImage: `url(${responsiveBannerUrl(
-                    data.bannerImage.file.url
-                  )})`,
-                }
-              : {}
+          titleText={data.title}
+          subtitleText={data.subtitle}
+          imageSrc={
+            data.bannerImage && responsiveBannerUrl(data.bannerImage.file.url)
           }
-        >
-          {/* need extra div wrapper to let titles shrink to fit their content */}
-          <div>
-            <Title>{data.title}</Title>
-          </div>
-          {data.subtitle && (
-            <div>
-              <Subtitle>{data.subtitle}</Subtitle>
-            </div>
-          )}
-        </Hero>
-        <Content>
-          <ReactMarkdown source={data.content.content} />
-        </Content>
+          altText=""
+        />
+        <Row>
+          <Content width={[1, 1, 0.8]}>
+            <ReactMarkdown source={data.content.content} />
+          </Content>
+        </Row>
+        <Helmet title={data.title} />
       </PageWrapper>
     )
   }
