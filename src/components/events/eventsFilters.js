@@ -43,10 +43,6 @@ const FlexColumn = styled(Box)`
     flex-basis: 100%;
   }
 
-  ${media.mobile`
-    padding: 0px;
-  `};
-
   ${media.tablet`
     padding: 10px;
   `};
