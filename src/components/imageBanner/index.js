@@ -8,11 +8,12 @@ import BannerSubtitle from '../bannerSubtitle'
 
 const StyledContainer = styled(Container)`
   display: flex;
-  align-items: center;
+  align-items: flex-end;
   min-height: 270px;
   overflow: hidden;
   position: relative;
   background-color: ${props => props.color};
+  padding-bottom: 35px;
 
   & img {
     position: absolute;
@@ -22,7 +23,9 @@ const StyledContainer = styled(Container)`
   }
 
   ${media.tablet`
+    align-items: center;
     height: 400px;
+    padding: 0;
   `};
 `
 

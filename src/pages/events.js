@@ -1,5 +1,4 @@
 import React, { Fragment } from 'react'
-import Link from 'gatsby-link'
 import styled from 'styled-components'
 import { EventListingCard } from '../templates/events'
 import EventsFilters from '../templates/events/eventsFilters'
@@ -39,12 +38,6 @@ const Events = () => (
           <EventsFilters />
         </Container>
         <Container>
-          <Row>
-            <Column width={1}>
-              <h1> Hi from the events page </h1>
-              <Link to="/"> Go back to the homepage </Link>
-            </Column>
-          </Row>
           <Row>
             {context.filteredEvents
               .filter(filterByLimit, context.state.eventsToShow)

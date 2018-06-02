@@ -17,38 +17,20 @@ const PageWrapper = styled(Container)`
 const Content = styled(Column)`
   padding-top: 30px;
   padding-bottom: 50px;
-  p {
-    font-size: 1rem;
-    line-height: 1.5;
-    ${media.desktop`
-      font-size: 1.125rem;
-    `};
-  }
+
   hr {
     margin: 20px 0px;
     border: none;
     border-top: 1px solid #e0e0e0;
   }
-  h2 {
-    margin-top: 50px;
-    font-size: 1.25rem;
-    font-weight: 900;
-  }
-  h3 {
-    margin-top: 30px;
-    font-size: 1.125rem;
-    font-weight: 600;
-  }
-  h4 {
-    font-size: 1em;
-    margin-bottom: 5px;
-  }
+
   img {
     margin-left: -20px;
     margin-right: -20px;
     width: 100vw;
     max-width: 100vw;
   }
+
   ${media.tablet`
     padding-top: 40px;
     padding-bottom: 60px;
@@ -69,8 +51,6 @@ const Content = styled(Column)`
       }
     }
   `};
-  display: flex;
-  flex-flow: column;
 `
 
 const responsiveBannerUrl = url => {

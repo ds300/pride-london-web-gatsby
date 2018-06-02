@@ -3,17 +3,22 @@ import PropTypes from 'prop-types'
 import styled from 'styled-components'
 import { media } from '../../theme/media'
 
+const BannerTitleWrapper = styled.div`
+  margin-left: 10px;
+`
+
 const BannerTitle = styled.h1`
   margin: 0;
-  display: inline-block;
+  display: inline;
+  box-shadow: 10px 0 0 ${props => props.theme.colors.white},
+    -10px 0 0 ${props => props.theme.colors.white};
   background-color: white;
   color: ${props => props.theme.colors.indigo};
   font-size: 1.75rem;
-  padding: 0px 5px;
+  line-height: 1.4;
 
   ${media.tablet`
     font-size: 3.5rem;
-    padding: 0px 10px;
     max-width: 740px;
   `};
 `
@@ -21,7 +26,9 @@ const BannerTitle = styled.h1`
 BannerTitle.displayName = 'TestBannerTitle'
 
 const StyledBannerTitle = ({ children }) => (
-  <BannerTitle>{children}</BannerTitle>
+  <BannerTitleWrapper>
+    <BannerTitle>{children}</BannerTitle>
+  </BannerTitleWrapper>
 )
 
 StyledBannerTitle.propTypes = {

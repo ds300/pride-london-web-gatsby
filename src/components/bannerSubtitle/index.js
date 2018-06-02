@@ -20,7 +20,8 @@ const BannerSubtitle = styled.h2`
 const BannerSubtitleWrapper = styled.div`
   max-width: 255px;
   margin-left: 10px;
-  ${media.desktop`  
+
+  ${media.tablet`  
     max-width: 420px;
   `};
 `
