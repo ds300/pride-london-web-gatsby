@@ -67,9 +67,8 @@ const HeadingRow = styled(Row)`
 
 export const EventsYouMayLike = ({ eventId }) => (
   <Consumer>
-    {context => {
-      console.log('sksks', context)
-      const eventsYouMayLike = filterEventsYouMayLike(context.events, eventId)
+    {({ events }) => {
+      const eventsYouMayLike = filterEventsYouMayLike(events, eventId)
 
       if (eventsYouMayLike.length === 0) return null
 
