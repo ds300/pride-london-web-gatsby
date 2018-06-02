@@ -53,6 +53,7 @@
     "dotenv": "^5.0.1",
     "enzyme": "^3.3.0",
     "enzyme-adapter-react-16": "^1.1.1",
+    "enzyme-to-json": "^3.3.4",
     "eslint": "^4.19.1",
     "eslint-config-airbnb": "^16.1.0",
     "eslint-plugin-import": "^2.11.0",
@@ -73,11 +74,8 @@
     "react-router-dom": "^4.2.2"
   },
   "jest": {
-    "testMatch": [
-      "**/?(*_)(spec|test).js"
-    ],
-    "setupFiles": [
-      "./src/configuration/jest.config.js"
-    ]
+    "testMatch": ["**/?(*_)(spec|test).js"],
+    "setupFiles": ["./src/configuration/jest.config.js"],
+    "snapshotSerializers": ["enzyme-to-json/serializer"]
   }
 }
