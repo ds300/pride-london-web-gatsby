@@ -65,10 +65,11 @@ const HeadingRow = styled(Row)`
   justify-content: space-between;
 `
 
-const EventsYouMayLike = ({ eventId }) => (
+export const EventsYouMayLike = ({ eventId }) => (
   <Consumer>
-    {({ events }) => {
-      const eventsYouMayLike = filterEventsYouMayLike(events, eventId)
+    {context => {
+      console.log('sksks', context)
+      const eventsYouMayLike = filterEventsYouMayLike(context.events, eventId)
 
       if (eventsYouMayLike.length === 0) return null
 
