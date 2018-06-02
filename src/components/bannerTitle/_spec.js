@@ -7,7 +7,7 @@ import BannerTitle from './'
 
 describe('BannerTitle', () => {
   it('should render', () => {
-    const tree = shallow(<BannerTitle />)
+    const tree = shallow(<BannerTitle>foo</BannerTitle>)
     expect(tree).toMatchSnapshot()
   })
 

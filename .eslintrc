@@ -48,6 +48,7 @@
     "react/jsx-uses-react": 2,
     "react/jsx-uses-vars": 2,
     "react/no-array-index-key": 2,
+    "react/no-unescaped-entities": "off",
     "react/no-unused-state": "off",
     "react/prefer-stateless-function": "error",
     "react/require-default-props": 2,

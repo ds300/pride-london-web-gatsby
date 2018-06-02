@@ -7,17 +7,29 @@ import StyledBannerSubtitle from './'
 
 describe('BannerSubtitle', () => {
   it('should render', () => {
-    const wrapper = shallow(<StyledBannerSubtitle />)
+    const wrapper = shallow(
+      <StyledBannerSubtitle>
+        <h1>Hey</h1>
+      </StyledBannerSubtitle>
+    )
     expect(wrapper).toMatchSnapshot()
   })
 
   it('should render a Wrapper', () => {
-    const wrapper = shallow(<StyledBannerSubtitle />)
+    const wrapper = shallow(
+      <StyledBannerSubtitle>
+        <h1>Hey</h1>
+      </StyledBannerSubtitle>
+    )
     expect(wrapper.find('SubtitleWrapper')).toHaveLength(1)
   })
 
   it('should render a Text', () => {
-    const wrapper = shallow(<StyledBannerSubtitle />)
+    const wrapper = shallow(
+      <StyledBannerSubtitle>
+        <h1>Hey</h1>
+      </StyledBannerSubtitle>
+    )
     expect(wrapper.find('SubtitleText')).toHaveLength(1)
   })
 
