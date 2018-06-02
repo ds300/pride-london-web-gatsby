@@ -25,14 +25,18 @@ ShallowWrapper {
     "props": Object {
       "children": Array [
         "",
-        <div>
-          <StyledBannerTitle>
-            
-          </StyledBannerTitle>
-          <StyledBannerSubtitle>
-            
-          </StyledBannerSubtitle>
-        </div>,
+        <Styled(Row)>
+          <Column
+            width={1}
+          >
+            <StyledBannerTitle>
+              
+            </StyledBannerTitle>
+            <StyledBannerSubtitle>
+              
+            </StyledBannerSubtitle>
+          </Column>
+        </Styled(Row)>,
       ],
       "color": "",
     },
@@ -42,73 +46,24 @@ ShallowWrapper {
       Object {
         "instance": null,
         "key": undefined,
-        "nodeType": "host",
+        "nodeType": "class",
         "props": Object {
-          "children": Array [
-            <StyledBannerTitle>
-              
-            </StyledBannerTitle>,
-            <StyledBannerSubtitle>
-              
-            </StyledBannerSubtitle>,
-          ],
-        },
-        "ref": null,
-        "rendered": Array [
-          Object {
-            "instance": null,
-            "key": undefined,
-            "nodeType": "function",
-            "props": Object {
-              "children": "",
-            },
-            "ref": null,
-            "rendered": "",
-            "type": [Function],
-          },
-          Object {
-            "instance": null,
-            "key": undefined,
-            "nodeType": "function",
-            "props": Object {
-              "children": "",
-            },
-            "ref": null,
-            "rendered": "",
-            "type": [Function],
-          },
-        ],
-        "type": "div",
-      },
-    ],
-    "type": [Function],
-  },
-  Symbol(enzyme.__nodes__): Array [
-    Object {
-      "instance": null,
-      "key": undefined,
-      "nodeType": "class",
-      "props": Object {
-        "children": Array [
-          "",
-          <div>
+          "children": <Column
+            width={1}
+          >
             <StyledBannerTitle>
               
             </StyledBannerTitle>
             <StyledBannerSubtitle>
               
             </StyledBannerSubtitle>
-          </div>,
-        ],
-        "color": "",
-      },
-      "ref": null,
-      "rendered": Array [
-        "",
-        Object {
+          </Column>,
+        },
+        "ref": null,
+        "rendered": Object {
           "instance": null,
           "key": undefined,
-          "nodeType": "host",
+          "nodeType": "function",
           "props": Object {
             "children": Array [
               <StyledBannerTitle>
@@ -118,6 +73,7 @@ ShallowWrapper {
                 
               </StyledBannerSubtitle>,
             ],
+            "width": 1,
           },
           "ref": null,
           "rendered": Array [
@@ -144,7 +100,99 @@ ShallowWrapper {
               "type": [Function],
             },
           ],
-          "type": "div",
+          "type": [Function],
+        },
+        "type": [Function],
+      },
+    ],
+    "type": [Function],
+  },
+  Symbol(enzyme.__nodes__): Array [
+    Object {
+      "instance": null,
+      "key": undefined,
+      "nodeType": "class",
+      "props": Object {
+        "children": Array [
+          "",
+          <Styled(Row)>
+            <Column
+              width={1}
+            >
+              <StyledBannerTitle>
+                
+              </StyledBannerTitle>
+              <StyledBannerSubtitle>
+                
+              </StyledBannerSubtitle>
+            </Column>
+          </Styled(Row)>,
+        ],
+        "color": "",
+      },
+      "ref": null,
+      "rendered": Array [
+        "",
+        Object {
+          "instance": null,
+          "key": undefined,
+          "nodeType": "class",
+          "props": Object {
+            "children": <Column
+              width={1}
+            >
+              <StyledBannerTitle>
+                
+              </StyledBannerTitle>
+              <StyledBannerSubtitle>
+                
+              </StyledBannerSubtitle>
+            </Column>,
+          },
+          "ref": null,
+          "rendered": Object {
+            "instance": null,
+            "key": undefined,
+            "nodeType": "function",
+            "props": Object {
+              "children": Array [
+                <StyledBannerTitle>
+                  
+                </StyledBannerTitle>,
+                <StyledBannerSubtitle>
+                  
+                </StyledBannerSubtitle>,
+              ],
+              "width": 1,
+            },
+            "ref": null,
+            "rendered": Array [
+              Object {
+                "instance": null,
+                "key": undefined,
+                "nodeType": "function",
+                "props": Object {
+                  "children": "",
+                },
+                "ref": null,
+                "rendered": "",
+                "type": [Function],
+              },
+              Object {
+                "instance": null,
+                "key": undefined,
+                "nodeType": "function",
+                "props": Object {
+                  "children": "",
+                },
+                "ref": null,
+                "rendered": "",
+                "type": [Function],
+              },
+            ],
+            "type": [Function],
+          },
+          "type": [Function],
         },
       ],
       "type": [Function],
@@ -185,14 +233,18 @@ ShallowWrapper {
     "props": Object {
       "children": Array [
         "",
-        <div>
-          <StyledBannerTitle>
-            
-          </StyledBannerTitle>
-          <StyledBannerSubtitle>
-            And here is a test subtitle!
-          </StyledBannerSubtitle>
-        </div>,
+        <Styled(Row)>
+          <Column
+            width={1}
+          >
+            <StyledBannerTitle>
+              
+            </StyledBannerTitle>
+            <StyledBannerSubtitle>
+              And here is a test subtitle!
+            </StyledBannerSubtitle>
+          </Column>
+        </Styled(Row)>,
       ],
       "color": "",
     },
@@ -202,73 +254,24 @@ ShallowWrapper {
       Object {
         "instance": null,
         "key": undefined,
-        "nodeType": "host",
+        "nodeType": "class",
         "props": Object {
-          "children": Array [
-            <StyledBannerTitle>
-              
-            </StyledBannerTitle>,
-            <StyledBannerSubtitle>
-              And here is a test subtitle!
-            </StyledBannerSubtitle>,
-          ],
-        },
-        "ref": null,
-        "rendered": Array [
-          Object {
-            "instance": null,
-            "key": undefined,
-            "nodeType": "function",
-            "props": Object {
-              "children": "",
-            },
-            "ref": null,
-            "rendered": "",
-            "type": [Function],
-          },
-          Object {
-            "instance": null,
-            "key": undefined,
-            "nodeType": "function",
-            "props": Object {
-              "children": "And here is a test subtitle!",
-            },
-            "ref": null,
-            "rendered": "And here is a test subtitle!",
-            "type": [Function],
-          },
-        ],
-        "type": "div",
-      },
-    ],
-    "type": [Function],
-  },
-  Symbol(enzyme.__nodes__): Array [
-    Object {
-      "instance": null,
-      "key": undefined,
-      "nodeType": "class",
-      "props": Object {
-        "children": Array [
-          "",
-          <div>
+          "children": <Column
+            width={1}
+          >
             <StyledBannerTitle>
               
             </StyledBannerTitle>
             <StyledBannerSubtitle>
               And here is a test subtitle!
             </StyledBannerSubtitle>
-          </div>,
-        ],
-        "color": "",
-      },
-      "ref": null,
-      "rendered": Array [
-        "",
-        Object {
+          </Column>,
+        },
+        "ref": null,
+        "rendered": Object {
           "instance": null,
           "key": undefined,
-          "nodeType": "host",
+          "nodeType": "function",
           "props": Object {
             "children": Array [
               <StyledBannerTitle>
@@ -278,6 +281,7 @@ ShallowWrapper {
                 And here is a test subtitle!
               </StyledBannerSubtitle>,
             ],
+            "width": 1,
           },
           "ref": null,
           "rendered": Array [
@@ -304,7 +308,99 @@ ShallowWrapper {
               "type": [Function],
             },
           ],
-          "type": "div",
+          "type": [Function],
+        },
+        "type": [Function],
+      },
+    ],
+    "type": [Function],
+  },
+  Symbol(enzyme.__nodes__): Array [
+    Object {
+      "instance": null,
+      "key": undefined,
+      "nodeType": "class",
+      "props": Object {
+        "children": Array [
+          "",
+          <Styled(Row)>
+            <Column
+              width={1}
+            >
+              <StyledBannerTitle>
+                
+              </StyledBannerTitle>
+              <StyledBannerSubtitle>
+                And here is a test subtitle!
+              </StyledBannerSubtitle>
+            </Column>
+          </Styled(Row)>,
+        ],
+        "color": "",
+      },
+      "ref": null,
+      "rendered": Array [
+        "",
+        Object {
+          "instance": null,
+          "key": undefined,
+          "nodeType": "class",
+          "props": Object {
+            "children": <Column
+              width={1}
+            >
+              <StyledBannerTitle>
+                
+              </StyledBannerTitle>
+              <StyledBannerSubtitle>
+                And here is a test subtitle!
+              </StyledBannerSubtitle>
+            </Column>,
+          },
+          "ref": null,
+          "rendered": Object {
+            "instance": null,
+            "key": undefined,
+            "nodeType": "function",
+            "props": Object {
+              "children": Array [
+                <StyledBannerTitle>
+                  
+                </StyledBannerTitle>,
+                <StyledBannerSubtitle>
+                  And here is a test subtitle!
+                </StyledBannerSubtitle>,
+              ],
+              "width": 1,
+            },
+            "ref": null,
+            "rendered": Array [
+              Object {
+                "instance": null,
+                "key": undefined,
+                "nodeType": "function",
+                "props": Object {
+                  "children": "",
+                },
+                "ref": null,
+                "rendered": "",
+                "type": [Function],
+              },
+              Object {
+                "instance": null,
+                "key": undefined,
+                "nodeType": "function",
+                "props": Object {
+                  "children": "And here is a test subtitle!",
+                },
+                "ref": null,
+                "rendered": "And here is a test subtitle!",
+                "type": [Function],
+              },
+            ],
+            "type": [Function],
+          },
+          "type": [Function],
         },
       ],
       "type": [Function],
@@ -345,14 +441,18 @@ ShallowWrapper {
     "props": Object {
       "children": Array [
         "",
-        <div>
-          <StyledBannerTitle>
-            Here is a test title!
-          </StyledBannerTitle>
-          <StyledBannerSubtitle>
-            
-          </StyledBannerSubtitle>
-        </div>,
+        <Styled(Row)>
+          <Column
+            width={1}
+          >
+            <StyledBannerTitle>
+              Here is a test title!
+            </StyledBannerTitle>
+            <StyledBannerSubtitle>
+              
+            </StyledBannerSubtitle>
+          </Column>
+        </Styled(Row)>,
       ],
       "color": "",
     },
@@ -362,73 +462,24 @@ ShallowWrapper {
       Object {
         "instance": null,
         "key": undefined,
-        "nodeType": "host",
+        "nodeType": "class",
         "props": Object {
-          "children": Array [
-            <StyledBannerTitle>
-              Here is a test title!
-            </StyledBannerTitle>,
-            <StyledBannerSubtitle>
-              
-            </StyledBannerSubtitle>,
-          ],
-        },
-        "ref": null,
-        "rendered": Array [
-          Object {
-            "instance": null,
-            "key": undefined,
-            "nodeType": "function",
-            "props": Object {
-              "children": "Here is a test title!",
-            },
-            "ref": null,
-            "rendered": "Here is a test title!",
-            "type": [Function],
-          },
-          Object {
-            "instance": null,
-            "key": undefined,
-            "nodeType": "function",
-            "props": Object {
-              "children": "",
-            },
-            "ref": null,
-            "rendered": "",
-            "type": [Function],
-          },
-        ],
-        "type": "div",
-      },
-    ],
-    "type": [Function],
-  },
-  Symbol(enzyme.__nodes__): Array [
-    Object {
-      "instance": null,
-      "key": undefined,
-      "nodeType": "class",
-      "props": Object {
-        "children": Array [
-          "",
-          <div>
+          "children": <Column
+            width={1}
+          >
             <StyledBannerTitle>
               Here is a test title!
             </StyledBannerTitle>
             <StyledBannerSubtitle>
               
             </StyledBannerSubtitle>
-          </div>,
-        ],
-        "color": "",
-      },
-      "ref": null,
-      "rendered": Array [
-        "",
-        Object {
+          </Column>,
+        },
+        "ref": null,
+        "rendered": Object {
           "instance": null,
           "key": undefined,
-          "nodeType": "host",
+          "nodeType": "function",
           "props": Object {
             "children": Array [
               <StyledBannerTitle>
@@ -438,6 +489,7 @@ ShallowWrapper {
                 
               </StyledBannerSubtitle>,
             ],
+            "width": 1,
           },
           "ref": null,
           "rendered": Array [
@@ -464,7 +516,99 @@ ShallowWrapper {
               "type": [Function],
             },
           ],
-          "type": "div",
+          "type": [Function],
+        },
+        "type": [Function],
+      },
+    ],
+    "type": [Function],
+  },
+  Symbol(enzyme.__nodes__): Array [
+    Object {
+      "instance": null,
+      "key": undefined,
+      "nodeType": "class",
+      "props": Object {
+        "children": Array [
+          "",
+          <Styled(Row)>
+            <Column
+              width={1}
+            >
+              <StyledBannerTitle>
+                Here is a test title!
+              </StyledBannerTitle>
+              <StyledBannerSubtitle>
+                
+              </StyledBannerSubtitle>
+            </Column>
+          </Styled(Row)>,
+        ],
+        "color": "",
+      },
+      "ref": null,
+      "rendered": Array [
+        "",
+        Object {
+          "instance": null,
+          "key": undefined,
+          "nodeType": "class",
+          "props": Object {
+            "children": <Column
+              width={1}
+            >
+              <StyledBannerTitle>
+                Here is a test title!
+              </StyledBannerTitle>
+              <StyledBannerSubtitle>
+                
+              </StyledBannerSubtitle>
+            </Column>,
+          },
+          "ref": null,
+          "rendered": Object {
+            "instance": null,
+            "key": undefined,
+            "nodeType": "function",
+            "props": Object {
+              "children": Array [
+                <StyledBannerTitle>
+                  Here is a test title!
+                </StyledBannerTitle>,
+                <StyledBannerSubtitle>
+                  
+                </StyledBannerSubtitle>,
+              ],
+              "width": 1,
+            },
+            "ref": null,
+            "rendered": Array [
+              Object {
+                "instance": null,
+                "key": undefined,
+                "nodeType": "function",
+                "props": Object {
+                  "children": "Here is a test title!",
+                },
+                "ref": null,
+                "rendered": "Here is a test title!",
+                "type": [Function],
+              },
+              Object {
+                "instance": null,
+                "key": undefined,
+                "nodeType": "function",
+                "props": Object {
+                  "children": "",
+                },
+                "ref": null,
+                "rendered": "",
+                "type": [Function],
+              },
+            ],
+            "type": [Function],
+          },
+          "type": [Function],
         },
       ],
       "type": [Function],

@@ -17,14 +17,10 @@ ShallowWrapper {
     "key": undefined,
     "nodeType": "class",
     "props": Object {
-      "children": undefined,
+      "children": <TestBannerTitle />,
     },
     "ref": null,
-    "rendered": null,
-    "type": [Function],
-  },
-  Symbol(enzyme.__nodes__): Array [
-    Object {
+    "rendered": Object {
       "instance": null,
       "key": undefined,
       "nodeType": "class",
@@ -33,6 +29,30 @@ ShallowWrapper {
       },
       "ref": null,
       "rendered": null,
+      "type": [Function],
+    },
+    "type": [Function],
+  },
+  Symbol(enzyme.__nodes__): Array [
+    Object {
+      "instance": null,
+      "key": undefined,
+      "nodeType": "class",
+      "props": Object {
+        "children": <TestBannerTitle />,
+      },
+      "ref": null,
+      "rendered": Object {
+        "instance": null,
+        "key": undefined,
+        "nodeType": "class",
+        "props": Object {
+          "children": undefined,
+        },
+        "ref": null,
+        "rendered": null,
+        "type": [Function],
+      },
       "type": [Function],
     },
   ],
@@ -65,14 +85,12 @@ ShallowWrapper {
     "key": undefined,
     "nodeType": "class",
     "props": Object {
-      "children": "Here is a test title!",
+      "children": <TestBannerTitle>
+        Here is a test title!
+      </TestBannerTitle>,
     },
     "ref": null,
-    "rendered": "Here is a test title!",
-    "type": [Function],
-  },
-  Symbol(enzyme.__nodes__): Array [
-    Object {
+    "rendered": Object {
       "instance": null,
       "key": undefined,
       "nodeType": "class",
@@ -81,6 +99,32 @@ ShallowWrapper {
       },
       "ref": null,
       "rendered": "Here is a test title!",
+      "type": [Function],
+    },
+    "type": [Function],
+  },
+  Symbol(enzyme.__nodes__): Array [
+    Object {
+      "instance": null,
+      "key": undefined,
+      "nodeType": "class",
+      "props": Object {
+        "children": <TestBannerTitle>
+          Here is a test title!
+        </TestBannerTitle>,
+      },
+      "ref": null,
+      "rendered": Object {
+        "instance": null,
+        "key": undefined,
+        "nodeType": "class",
+        "props": Object {
+          "children": "Here is a test title!",
+        },
+        "ref": null,
+        "rendered": "Here is a test title!",
+        "type": [Function],
+      },
       "type": [Function],
     },
   ],

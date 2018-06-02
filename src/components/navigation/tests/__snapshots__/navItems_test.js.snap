@@ -34,7 +34,6 @@ ShallowWrapper {
         >
           <img
             alt=""
-            src={undefined}
           />
         </Column>,
         Array [
@@ -74,7 +73,6 @@ ShallowWrapper {
           "alignItems": "center",
           "children": <img
             alt=""
-            src={undefined}
           />,
           "flex": 3,
           "justifyContent": "center",
@@ -203,7 +201,6 @@ ShallowWrapper {
           >
             <img
               alt=""
-              src={undefined}
             />
           </Column>,
           Array [
@@ -243,7 +240,6 @@ ShallowWrapper {
             "alignItems": "center",
             "children": <img
               alt=""
-              src={undefined}
             />,
             "flex": 3,
             "justifyContent": "center",
