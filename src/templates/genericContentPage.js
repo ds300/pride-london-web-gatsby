@@ -4,6 +4,7 @@ import PropTypes from 'prop-types'
 import ReactMarkdown from 'react-markdown'
 import Helmet from 'react-helmet'
 import { media } from '../theme/media'
+import theme from '../theme/theme'
 import { Column, Row, Container } from '../components/grid'
 
 import ImageBanner from '../components/imageBanner'
@@ -92,6 +93,7 @@ export default class GenericContentPage extends Component {
             data.bannerImage && responsiveBannerUrl(data.bannerImage.file.url)
           }
           altText=""
+          color={theme.colors.bondiBlue}
         />
         <Row>
           <Content width={[1, 1, 0.8]}>
