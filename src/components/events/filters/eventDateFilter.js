@@ -3,6 +3,7 @@ import 'react-dates/initialize'
 import { SingleDatePicker } from 'react-dates'
 import 'react-dates/lib/css/_datepicker.css'
 import styled from 'styled-components'
+import { media } from '../../../theme/media'
 import { Consumer } from '../../../components/appContext'
 import iconCalendar from '../../../theme/assets/images/icon-calendar.svg'
 
@@ -27,10 +28,9 @@ const SingleDatePickerWrapper = styled.div`
   input.DateInput_input {
     appearance: none;
     border: none;
-    padding: 14px 50px 14px 20px;
+    padding: 20px 50px 20px 10px;
     font-size: 0.875rem;
     font-family: ${props => props.theme.fonts.body};
-    font-weight: 500;
     line-height: 1.214;
     box-sizing: border-box;
     display: block;
@@ -45,20 +45,27 @@ const SingleDatePickerWrapper = styled.div`
     }
   }
 
-  @media (min-width: ${props => props.theme.breakpoints[1]}) {
+  ${media.mobile`
+    input.DateInput_input {
+      padding: 20px 50px 20px 20px;
+    }
+  `};
+
+  ${media.tablet`
     display: flex;
 
-    input[type='text'] {
+    input.DateInput_input {
       border: 2px solid ${props => props.theme.colors.mediumGrey};
       border-radius: 4px;
       padding: 14px 20px;
+      font-weight: 500;
 
       &:focus {
         border-color: ${props => props.theme.colors.eucalyptusGreen};
         outline: none;
       }
     }
-  }
+  `};
 `
 
 const DatePickerHeader = styled.div`
@@ -66,12 +73,16 @@ const DatePickerHeader = styled.div`
   font-size: 1rem;
   font-family: ${props => props.theme.fonts.title};
   font-weight: 600;
-  padding: 16px 20px;
+  padding: 16px 10px;
   color: ${props => props.theme.colors.indigo};
 
-  @media (min-width: ${props => props.theme.breakpoints[1]}) {
+  ${media.mobile`
+    padding: 16px 20px;
+  `};
+
+  ${media.tablet`
     display: none;
-  }
+  `};
 `
 class EventDateFilter extends Component {
   state = {

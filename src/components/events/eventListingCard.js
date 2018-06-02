@@ -3,6 +3,7 @@ import PropTypes from 'prop-types'
 import Link from 'gatsby-link'
 import styled from 'styled-components'
 import { formatDate } from './helpers'
+import { media } from '../../theme/media'
 
 const Card = styled(Link)`
   display: block;
@@ -11,14 +12,39 @@ const Card = styled(Link)`
   color: ${props => props.theme.colors.black};
   overflow: hidden;
   display: flex;
-  flex-direction: column;
   position: relative;
   width: 100%;
+  min-height: 130px;
+
+  ${media.tablet`
+    flex-direction: column;
+    min-height: auto;
+  `};
+`
+const CardImageWrapper = styled.div`
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: cover;
+  background-image: url(${props => props.src});
+  position: relative;
+  overflow: hidden;
+  flex-basis: 40%;
+  flex-shrink: 0;
+  height: 100%;
+
+  ${media.tablet`
+    padding-top: 56.25%;
+  `};
 `
 
 const CardImage = styled.img`
   display: block;
   width: 100%;
+  height: auto;
+  position: absolute;
+  top: 0;
+  left: 0;
+  opacity: 0;
 `
 
 const CardBody = styled.div`
@@ -26,9 +52,9 @@ const CardBody = styled.div`
   background-color: ${props => props.theme.colors.white};
   flex-grow: 1;
 
-  @media (min-width: ${props => props.theme.breakpoints[0]}) {
+  ${media.mobile`
     padding: 30px;
-  }
+  `};
 `
 
 const CardDate = styled.span`
@@ -51,13 +77,23 @@ const CardPrice = styled.div`
   font-weight: 600;
   padding: 5px 10px;
   border-radius: 5px;
-  font-size: 1rem;
+  font-size: 0.75rem;
+
+  ${media.tablet`
+    font-size: 1rem;
+  `};
 `
 
-const CardHeading = styled.h2`
-  margin-bottom: 0;
-  line-height: 1.21;
+const CardHeading = styled.h3`
+  margin: 0;
+  line-height: 1.25rem;
+  font-size: 1rem;
   color: black;
+
+  ${media.tablet`
+    font-size: 1.5rem;
+    line-height: 1.8125rem;
+  `};
 `
 
 export const EventListingCard = props => {
@@ -65,17 +101,25 @@ export const EventListingCard = props => {
 
   return (
     <Card to={`/events/${event.id}`}>
-      <CardImage
+      <CardImageWrapper
         src={`${event.eventsListPicture.file.url}?fit=fill&w=400&h=225&f=faces`}
-        alt={event.eventsListPicture.title}
-        width="400"
-        height="225"
-      />
+      >
+        <CardImage
+          src={`${
+            event.eventsListPicture.file.url
+          }?fit=fill&w=400&h=225&f=faces`}
+          alt={event.eventsListPicture.title}
+          width="400"
+          height="225"
+        />
+      </CardImageWrapper>
       <CardBody>
         <CardDate>{formatDate(event)}</CardDate>
         <CardHeading>{event.name}</CardHeading>
       </CardBody>
-      <CardPrice>from £{event.eventPriceLow}</CardPrice>
+      <CardPrice>
+        {event.eventPriceLow === 0 ? 'Free' : `from £${event.eventPriceLow}`}
+      </CardPrice>
     </Card>
   )
 }

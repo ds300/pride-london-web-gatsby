@@ -7,8 +7,10 @@ import {
   filterByArea,
   filterByTime,
   filterPastEvents,
-} from '../../templates/events/helpers'
+} from '../events/helpers'
 import { itemsToLoad } from '../../constants'
+import theme from '../../theme/theme'
+import debounce from 'lodash.debounce'
 
 const AppContext = React.createContext()
 const { Consumer } = AppContext
@@ -33,7 +35,49 @@ const initialState = {
 }
 
 class Provider extends Component {
-  state = { ...initialState }
+  constructor() {
+    super()
+    this.state = {
+      ...initialState,
+      breakpoint: this.getCurrentBreakpoint(),
+    }
+  }
+
+  componentDidMount() {
+    if (typeof window !== 'undefined') {
+      window.addEventListener('resize', this.setCurrentBreakpoint)
+    }
+  }
+  componentWillUnmount() {
+    if (typeof window !== 'undefined') {
+      window.removeEventListener('resize', this.setCurrentBreakpoint)
+    }
+  }
+
+  getCurrentBreakpoint = () => {
+    if (typeof window !== 'undefined') {
+      switch (true) {
+        case window.matchMedia(`(min-width: ${theme.breakpoints[3]})`).matches:
+          return 3
+          break
+        case window.matchMedia(`(min-width: ${theme.breakpoints[2]})`).matches:
+          return 2
+          break
+        case window.matchMedia(`(min-width: ${theme.breakpoints[1]})`).matches:
+          return 1
+          break
+        default:
+          return 0
+      }
+    }
+  }
+
+  setCurrentBreakpoint = debounce(() => {
+    this.setState(prevState => ({
+      ...prevState,
+      breakpoint: this.getCurrentBreakpoint(),
+    }))
+  }, 25)
 
   getDatepickerValue = date => {
     this.setState(prevState => ({
@@ -46,7 +90,6 @@ class Provider extends Component {
   }
 
   getCheckboxBool = (name, checked) => {
-    console.log('getCheckboxBool', checked)
     this.setState(prevState => ({
       ...prevState,
       filters: {
@@ -90,6 +133,11 @@ class Provider extends Component {
       this.setState(prevState => ({
         ...prevState,
         filterOpen: filterName,
+      }))
+    } else {
+      this.setState(prevState => ({
+        ...prevState,
+        filterOpen: null,
       }))
     }
   }
