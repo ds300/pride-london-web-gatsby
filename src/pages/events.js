@@ -1,5 +1,4 @@
 import React, { Fragment } from 'react'
-import Link from 'gatsby-link'
 import styled from 'styled-components'
 import { EventListingCard } from '../templates/events'
 import EventsFilters from '../templates/events/eventsFilters'
@@ -8,6 +7,7 @@ import Button from '../components/button'
 import { Container, Row, Column } from '../components/grid'
 import { Consumer } from '../components/appContext'
 import { filterByLimit } from '../templates/events/helpers'
+import theme from '../theme/theme'
 
 const FlexColumn = styled(Column)`
   display: flex;
@@ -28,21 +28,16 @@ const Events = () => (
     {context => (
       <Fragment>
         <Container>
+          <ImageBanner
+            titleText="Celebrate Pride"
+            subtitleText="Events, shows, talks"
+            imageSrc=""
+            altText="Celebrate Pride banner"
+            color={theme.colors.beachBlue}
+          />
           <EventsFilters />
         </Container>
         <Container>
-          <Row>
-            <Column width={1}>
-              <ImageBanner
-                titleText="Celebrate Pride"
-                subtitleText="Events, shows, talks"
-                imageSrc=""
-                altText="Celebrate Pride banner"
-              />
-              <h1> Hi from the events page </h1>
-              <Link to="/"> Go back to the homepage </Link>
-            </Column>
-          </Row>
           <Row>
             {context.filteredEvents
               .filter(filterByLimit, context.state.eventsToShow)

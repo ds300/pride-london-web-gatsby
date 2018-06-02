@@ -1,27 +1,27 @@
-const path = require('path');
+const path = require('path')
 
 exports.createPages = ({ graphql, boundActionCreators }) => {
-  const { createPage } = boundActionCreators;
+  const { createPage } = boundActionCreators
 
-  return new Promise((resolve, reject) => {
-    graphql(`
-      {
-        allContentfulEvent(filter: {}) {
-          edges {
-            node {
-              id
-            }
+  return graphql(`
+    {
+      allContentfulEvent(filter: {}) {
+        edges {
+          node {
+            id
           }
         }
       }
-    `).then(result => {
+    }
+  `)
+    .then(result => {
       if (result.errors) {
-        reject(result.errors);
+        throw result.errors
       }
 
-      const eventTemplate = path.resolve('./src/templates/event.js');
+      const eventTemplate = path.resolve('./src/templates/event.js')
 
-      result.data.allContentfulEvent.edges.forEach((edge) => {
+      result.data.allContentfulEvent.edges.forEach(edge => {
         createPage({
           // Each page is required to have a `path` as well
           // as a template component. The `context` is
@@ -34,7 +34,39 @@ exports.createPages = ({ graphql, boundActionCreators }) => {
           },
         })
       })
-      resolve();
     })
-  });
+    .then(() =>
+      graphql(`
+        {
+          allContentfulGenericContentPage(filter: {}) {
+            edges {
+              node {
+                id
+                slug
+              }
+            }
+          }
+        }
+      `)
+    )
+    .then(result => {
+      if (result.errors) {
+        throw result.errors
+      }
+
+      const genericContentPageTemplate = path.resolve(
+        './src/templates/genericContentPage.js'
+      )
+
+      result.data.allContentfulGenericContentPage.edges.forEach(edge => {
+        console.log(`creating /pages/${edge.node.slug}`)
+        createPage({
+          path: `/pages/${edge.node.slug}`,
+          component: genericContentPageTemplate,
+          context: {
+            id: edge.node.id,
+          },
+        })
+      })
+    })
 }
