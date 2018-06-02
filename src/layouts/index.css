@@ -1,3 +1,7 @@
+:root {
+  font-size: 16px;
+}
+
 html {
   font-family: sans-serif;
   text-size-adjust: 100%;
@@ -6,7 +10,6 @@ html {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   overflow-x: hidden;
-  font-size: 16px;
 }
 
 * {
