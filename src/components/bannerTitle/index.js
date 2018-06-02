@@ -18,6 +18,8 @@ const BannerTitle = styled.h1`
   `};
 `
 
+BannerTitle.displayName = 'TestBannerTitle'
+
 const StyledBannerTitle = ({ children }) => (
   <BannerTitle>{children}</BannerTitle>
 )

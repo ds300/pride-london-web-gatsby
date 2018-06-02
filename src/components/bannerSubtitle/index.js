@@ -24,6 +24,10 @@ const BannerSubtitleWrapper = styled.div`
     max-width: 420px;
   `};
 `
+
+BannerSubtitleWrapper.displayName = 'SubtitleWrapper'
+BannerSubtitle.displayName = 'SubtitleText'
+
 const StyledBannerSubtitle = ({ children }) => (
   <BannerSubtitleWrapper>
     <BannerSubtitle>{children}</BannerSubtitle>

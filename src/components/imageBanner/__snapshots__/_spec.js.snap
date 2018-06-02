@@ -1,83 +1,481 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`ImageBanner should render 1`] = `
-.c1 {
-  display: block;
-  color: #2d2f7f;
-  font-size: 28px;
-  margin-bottom: 0;
+ShallowWrapper {
+  "length": 1,
+  Symbol(enzyme.__root__): [Circular],
+  Symbol(enzyme.__unrendered__): <ImageBanner
+    altText=""
+    color=""
+    imageSrc=""
+    subtitleText=""
+    titleText=""
+  />,
+  Symbol(enzyme.__renderer__): Object {
+    "batchedUpdates": [Function],
+    "getNode": [Function],
+    "render": [Function],
+    "simulateEvent": [Function],
+    "unmount": [Function],
+  },
+  Symbol(enzyme.__node__): Object {
+    "instance": null,
+    "key": undefined,
+    "nodeType": "class",
+    "props": Object {
+      "children": Array [
+        "",
+        <div>
+          <StyledBannerTitle>
+            
+          </StyledBannerTitle>
+          <StyledBannerSubtitle>
+            
+          </StyledBannerSubtitle>
+        </div>,
+      ],
+      "color": "",
+    },
+    "ref": null,
+    "rendered": Array [
+      "",
+      Object {
+        "instance": null,
+        "key": undefined,
+        "nodeType": "host",
+        "props": Object {
+          "children": Array [
+            <StyledBannerTitle>
+              
+            </StyledBannerTitle>,
+            <StyledBannerSubtitle>
+              
+            </StyledBannerSubtitle>,
+          ],
+        },
+        "ref": null,
+        "rendered": Array [
+          Object {
+            "instance": null,
+            "key": undefined,
+            "nodeType": "function",
+            "props": Object {
+              "children": "",
+            },
+            "ref": null,
+            "rendered": "",
+            "type": [Function],
+          },
+          Object {
+            "instance": null,
+            "key": undefined,
+            "nodeType": "function",
+            "props": Object {
+              "children": "",
+            },
+            "ref": null,
+            "rendered": "",
+            "type": [Function],
+          },
+        ],
+        "type": "div",
+      },
+    ],
+    "type": [Function],
+  },
+  Symbol(enzyme.__nodes__): Array [
+    Object {
+      "instance": null,
+      "key": undefined,
+      "nodeType": "class",
+      "props": Object {
+        "children": Array [
+          "",
+          <div>
+            <StyledBannerTitle>
+              
+            </StyledBannerTitle>
+            <StyledBannerSubtitle>
+              
+            </StyledBannerSubtitle>
+          </div>,
+        ],
+        "color": "",
+      },
+      "ref": null,
+      "rendered": Array [
+        "",
+        Object {
+          "instance": null,
+          "key": undefined,
+          "nodeType": "host",
+          "props": Object {
+            "children": Array [
+              <StyledBannerTitle>
+                
+              </StyledBannerTitle>,
+              <StyledBannerSubtitle>
+                
+              </StyledBannerSubtitle>,
+            ],
+          },
+          "ref": null,
+          "rendered": Array [
+            Object {
+              "instance": null,
+              "key": undefined,
+              "nodeType": "function",
+              "props": Object {
+                "children": "",
+              },
+              "ref": null,
+              "rendered": "",
+              "type": [Function],
+            },
+            Object {
+              "instance": null,
+              "key": undefined,
+              "nodeType": "function",
+              "props": Object {
+                "children": "",
+              },
+              "ref": null,
+              "rendered": "",
+              "type": [Function],
+            },
+          ],
+          "type": "div",
+        },
+      ],
+      "type": [Function],
+    },
+  ],
+  Symbol(enzyme.__options__): Object {
+    "adapter": ReactSixteenAdapter {
+      "options": Object {
+        "enableComponentDidUpdateOnSetState": true,
+      },
+    },
+  },
 }
+`;
 
-.c1 span {
-  background-color: #ffffff;
-  display: inline-block;
-  padding: 0 10px;
+exports[`ImageBanner should render the subtitleText from props to BannerTitle  1`] = `
+ShallowWrapper {
+  "length": 1,
+  Symbol(enzyme.__root__): [Circular],
+  Symbol(enzyme.__unrendered__): <ImageBanner
+    altText=""
+    color=""
+    imageSrc=""
+    subtitleText="And here is a test subtitle!"
+    titleText=""
+  />,
+  Symbol(enzyme.__renderer__): Object {
+    "batchedUpdates": [Function],
+    "getNode": [Function],
+    "render": [Function],
+    "simulateEvent": [Function],
+    "unmount": [Function],
+  },
+  Symbol(enzyme.__node__): Object {
+    "instance": null,
+    "key": undefined,
+    "nodeType": "class",
+    "props": Object {
+      "children": Array [
+        "",
+        <div>
+          <StyledBannerTitle>
+            
+          </StyledBannerTitle>
+          <StyledBannerSubtitle>
+            And here is a test subtitle!
+          </StyledBannerSubtitle>
+        </div>,
+      ],
+      "color": "",
+    },
+    "ref": null,
+    "rendered": Array [
+      "",
+      Object {
+        "instance": null,
+        "key": undefined,
+        "nodeType": "host",
+        "props": Object {
+          "children": Array [
+            <StyledBannerTitle>
+              
+            </StyledBannerTitle>,
+            <StyledBannerSubtitle>
+              And here is a test subtitle!
+            </StyledBannerSubtitle>,
+          ],
+        },
+        "ref": null,
+        "rendered": Array [
+          Object {
+            "instance": null,
+            "key": undefined,
+            "nodeType": "function",
+            "props": Object {
+              "children": "",
+            },
+            "ref": null,
+            "rendered": "",
+            "type": [Function],
+          },
+          Object {
+            "instance": null,
+            "key": undefined,
+            "nodeType": "function",
+            "props": Object {
+              "children": "And here is a test subtitle!",
+            },
+            "ref": null,
+            "rendered": "And here is a test subtitle!",
+            "type": [Function],
+          },
+        ],
+        "type": "div",
+      },
+    ],
+    "type": [Function],
+  },
+  Symbol(enzyme.__nodes__): Array [
+    Object {
+      "instance": null,
+      "key": undefined,
+      "nodeType": "class",
+      "props": Object {
+        "children": Array [
+          "",
+          <div>
+            <StyledBannerTitle>
+              
+            </StyledBannerTitle>
+            <StyledBannerSubtitle>
+              And here is a test subtitle!
+            </StyledBannerSubtitle>
+          </div>,
+        ],
+        "color": "",
+      },
+      "ref": null,
+      "rendered": Array [
+        "",
+        Object {
+          "instance": null,
+          "key": undefined,
+          "nodeType": "host",
+          "props": Object {
+            "children": Array [
+              <StyledBannerTitle>
+                
+              </StyledBannerTitle>,
+              <StyledBannerSubtitle>
+                And here is a test subtitle!
+              </StyledBannerSubtitle>,
+            ],
+          },
+          "ref": null,
+          "rendered": Array [
+            Object {
+              "instance": null,
+              "key": undefined,
+              "nodeType": "function",
+              "props": Object {
+                "children": "",
+              },
+              "ref": null,
+              "rendered": "",
+              "type": [Function],
+            },
+            Object {
+              "instance": null,
+              "key": undefined,
+              "nodeType": "function",
+              "props": Object {
+                "children": "And here is a test subtitle!",
+              },
+              "ref": null,
+              "rendered": "And here is a test subtitle!",
+              "type": [Function],
+            },
+          ],
+          "type": "div",
+        },
+      ],
+      "type": [Function],
+    },
+  ],
+  Symbol(enzyme.__options__): Object {
+    "adapter": ReactSixteenAdapter {
+      "options": Object {
+        "enableComponentDidUpdateOnSetState": true,
+      },
+    },
+  },
 }
+`;
 
-.c2 {
-  color: #ffffff;
-  font-size: 16px;
+exports[`ImageBanner should render the titleText from props to BannerTitle  1`] = `
+ShallowWrapper {
+  "length": 1,
+  Symbol(enzyme.__root__): [Circular],
+  Symbol(enzyme.__unrendered__): <ImageBanner
+    altText=""
+    color=""
+    imageSrc=""
+    subtitleText=""
+    titleText="Here is a test title!"
+  />,
+  Symbol(enzyme.__renderer__): Object {
+    "batchedUpdates": [Function],
+    "getNode": [Function],
+    "render": [Function],
+    "simulateEvent": [Function],
+    "unmount": [Function],
+  },
+  Symbol(enzyme.__node__): Object {
+    "instance": null,
+    "key": undefined,
+    "nodeType": "class",
+    "props": Object {
+      "children": Array [
+        "",
+        <div>
+          <StyledBannerTitle>
+            Here is a test title!
+          </StyledBannerTitle>
+          <StyledBannerSubtitle>
+            
+          </StyledBannerSubtitle>
+        </div>,
+      ],
+      "color": "",
+    },
+    "ref": null,
+    "rendered": Array [
+      "",
+      Object {
+        "instance": null,
+        "key": undefined,
+        "nodeType": "host",
+        "props": Object {
+          "children": Array [
+            <StyledBannerTitle>
+              Here is a test title!
+            </StyledBannerTitle>,
+            <StyledBannerSubtitle>
+              
+            </StyledBannerSubtitle>,
+          ],
+        },
+        "ref": null,
+        "rendered": Array [
+          Object {
+            "instance": null,
+            "key": undefined,
+            "nodeType": "function",
+            "props": Object {
+              "children": "Here is a test title!",
+            },
+            "ref": null,
+            "rendered": "Here is a test title!",
+            "type": [Function],
+          },
+          Object {
+            "instance": null,
+            "key": undefined,
+            "nodeType": "function",
+            "props": Object {
+              "children": "",
+            },
+            "ref": null,
+            "rendered": "",
+            "type": [Function],
+          },
+        ],
+        "type": "div",
+      },
+    ],
+    "type": [Function],
+  },
+  Symbol(enzyme.__nodes__): Array [
+    Object {
+      "instance": null,
+      "key": undefined,
+      "nodeType": "class",
+      "props": Object {
+        "children": Array [
+          "",
+          <div>
+            <StyledBannerTitle>
+              Here is a test title!
+            </StyledBannerTitle>
+            <StyledBannerSubtitle>
+              
+            </StyledBannerSubtitle>
+          </div>,
+        ],
+        "color": "",
+      },
+      "ref": null,
+      "rendered": Array [
+        "",
+        Object {
+          "instance": null,
+          "key": undefined,
+          "nodeType": "host",
+          "props": Object {
+            "children": Array [
+              <StyledBannerTitle>
+                Here is a test title!
+              </StyledBannerTitle>,
+              <StyledBannerSubtitle>
+                
+              </StyledBannerSubtitle>,
+            ],
+          },
+          "ref": null,
+          "rendered": Array [
+            Object {
+              "instance": null,
+              "key": undefined,
+              "nodeType": "function",
+              "props": Object {
+                "children": "Here is a test title!",
+              },
+              "ref": null,
+              "rendered": "Here is a test title!",
+              "type": [Function],
+            },
+            Object {
+              "instance": null,
+              "key": undefined,
+              "nodeType": "function",
+              "props": Object {
+                "children": "",
+              },
+              "ref": null,
+              "rendered": "",
+              "type": [Function],
+            },
+          ],
+          "type": "div",
+        },
+      ],
+      "type": [Function],
+    },
+  ],
+  Symbol(enzyme.__options__): Object {
+    "adapter": ReactSixteenAdapter {
+      "options": Object {
+        "enableComponentDidUpdateOnSetState": true,
+      },
+    },
+  },
 }
-
-.c2 span {
-  background-color: #2d2f7f;
-  display: inline-block;
-  padding: 0 10px;
-}
-
-.c0 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-flex-direction: column;
-  -ms-flex-direction: column;
-  flex-direction: column;
-  height: 210px;
-  -webkit-box-pack: center;
-  -webkit-justify-content: center;
-  -ms-flex-pack: center;
-  justify-content: center;
-  line-height: 0;
-  overflow: hidden;
-  padding-left: 10px;
-  position: relative;
-}
-
-.c0 img {
-  position: absolute;
-  left: 0;
-  top: 0;
-  z-index: -1;
-}
-
-@media (min-width:768px) {
-  .c0 {
-    height: 250px;
-    padding-left: 90px;
-  }
-}
-
-<div
-  className="c0"
->
-  <img
-    alt=""
-    src=""
-  />
-  <h1
-    className="c1"
-  >
-    <span>
-      
-    </span>
-  </h1>
-  <h3
-    className="c2"
-  >
-    <span>
-      
-    </span>
-  </h3>
-</div>
 `;
