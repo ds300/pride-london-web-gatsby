@@ -2,7 +2,7 @@ import React from 'react'
 import { shallow, mount } from 'enzyme'
 import { ThemeProvider } from 'styled-components'
 import { Consumer } from '../../../components/appContext'
-import { EventsYouMayLike, StyledContainer } from '../eventsYouMayLike'
+import { EventsYouMayLike } from '../eventsYouMayLike'
 import EventListingCard from '../eventListingCard'
 import theme from '../../../theme/theme'
 

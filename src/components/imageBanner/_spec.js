@@ -1,9 +1,8 @@
 import React from 'react'
-import renderer from 'react-test-renderer'
 import 'jest-styled-components'
 import { shallow } from 'enzyme'
 
-import ImageBanner, { BackgroundImage } from './'
+import ImageBanner from './'
 import BannerTitle from '../bannerTitle'
 import BannerSubtitle from '../bannerSubtitle'
 
@@ -48,26 +47,29 @@ describe('ImageBanner', () => {
   it('should render the titleText from props to BannerTitle ', () => {
     const titleText = 'Here is a test title!'
     const wrapper = shallow(<ImageBanner titleText={titleText} />)
+
     expect(wrapper).toMatchSnapshot()
-    // expect(
-    //   wrapper
-    //     .find(BannerTitle)
-    //     .find('TestBannerTitle')
-    //     .dive()
-    //     .text()
-    // ).toBe(titleText)
+
+    expect(
+      wrapper
+        .dive()
+        .find(BannerTitle)
+        .props()
+        .children
+    ).toBe(titleText)
   })
 
   it('should render the subtitleText from props to BannerTitle ', () => {
     const subtitleText = 'And here is a test subtitle!'
     const wrapper = shallow(<ImageBanner subtitleText={subtitleText} />)
+
     expect(wrapper).toMatchSnapshot()
-    // expect(
-    //   wrapper
-    //     .find(BannerSubtitle)
-    //     .dive()
-    //     .find('span')
-    //     .text()
-    // ).toBe(subtitleText)
+    expect(
+      wrapper
+        .dive()
+        .find(BannerSubtitle)
+        .props()
+        .children
+    ).toBe(subtitleText)
   })
 })
