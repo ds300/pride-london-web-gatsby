@@ -73,7 +73,7 @@ export default class GenericContentPage extends Component {
             data.bannerImage && responsiveBannerUrl(data.bannerImage.file.url)
           }
           altText=""
-          color={theme.colors.bondiBlue}
+          color={data.bannerColor ? data.bannerColor : theme.colors.beachBlue}
         />
         <Row>
           <Content width={[1, 1, 0.8]}>
@@ -102,6 +102,7 @@ export const query = graphql`
           url
         }
       }
+      bannerColor
       content {
         content
       }
