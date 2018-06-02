@@ -1,7 +1,6 @@
 import React from 'react'
-import { shallow, mount } from 'enzyme'
+import { shallow } from 'enzyme'
 import { ThemeProvider } from 'styled-components'
-import { Consumer } from '../../../components/appContext'
 import { EventsYouMayLike } from '../eventsYouMayLike'
 import EventListingCard from '../eventListingCard'
 import theme from '../../../theme/theme'
@@ -10,46 +9,50 @@ beforeEach(() => {
   jest.resetModules()
 })
 
-jest.mock('../../../components/appContext', () => ({
-  Consumer: props =>
-    props.children({
-      events: [
-        {
-          node: {
-            id: '123',
-            startTime: '2035-06-02T13:30+01:00',
-            eventsListPicture: {
-              file: {
-                url: '123123',
-              },
-            },
-          },
+jest.mock('../../../components/appContext', () => {
+  const nodeOne = {
+    node: {
+      id: '123',
+      startTime: '2035-06-02T13:30+01:00',
+      eventsListPicture: {
+        file: {
+          url: '123123',
         },
-        {
-          node: {
-            id: '234',
-            startTime: '2009-06-02T13:30+01:00',
-            eventsListPicture: {
-              file: {
-                url: '123123',
-              },
-            },
-          },
+      },
+    },
+  }
+
+  const nodeTwo = {
+    node: {
+      id: '234',
+      startTime: '2006-06-02T13:30+01:00',
+      eventsListPicture: {
+        file: {
+          url: '123123',
         },
-        {
-          node: {
-            id: '1234',
-            startTime: '2035-06-02T13:30+01:00',
-            eventsListPicture: {
-              file: {
-                url: '123123',
-              },
-            },
-          },
+      },
+    },
+  }
+
+  const nodeThree = {
+    node: {
+      id: '1234',
+      startTime: '2035-06-02T13:30+01:00',
+      eventsListPicture: {
+        file: {
+          url: '123123',
         },
-      ],
-    }),
-}))
+      },
+    },
+  }
+
+  return {
+    Consumer: props =>
+      props.children({
+        events: [nodeOne, nodeTwo, nodeThree],
+      }),
+  }
+})
 
 const shallowWithTheme = tree => {
   const context = shallow(<ThemeProvider theme={theme} />)
@@ -75,21 +78,25 @@ describe('The Events You May Like component', () => {
     expect(wrapper.dive().find(EventListingCard).length).toBe(1)
   })
 
-  xit('should not render an item that started in the past', () => {
+  it('should not render an item that started in the past', () => {
     const wrapper = shallowWithTheme(<EventsYouMayLike {...mockProps} />)
 
-    expect(wrapper.dive().find(EventListingCard).length).toBe(0)
+    expect(
+      wrapper
+        .dive()
+        .find(EventListingCard)
+        .props().event.startTime
+    ).not.toBe('2006-06-02T13:30+01:00')
   })
 
-  xit('should not render more than 3 items', () => {
-    const wrapper = mount(<EventsYouMayLike {...mockProps} />)
+  it('should not render an item that has the same id as the current event', () => {
+    const wrapper = shallowWithTheme(<EventsYouMayLike {...mockProps} />)
 
-    expect(wrapper.find(EventListingCard).length).toBe(3)
-  })
-
-  xit('should render an item that has the same id as the current event', () => {
-    const wrapper = mount(<EventsYouMayLike {...mockProps} />)
-
-    expect(wrapper.find(EventListingCard).length).toBe(0)
+    expect(
+      wrapper
+        .dive()
+        .find(EventListingCard)
+        .props().event.id
+    ).not.toBe(mockProps.eventId)
   })
 })
