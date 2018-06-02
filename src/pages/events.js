@@ -22,6 +22,7 @@ const ColumnTextCenter = styled(Column)`
 
 const ContainerAddFilters = styled(Container)`
   padding: 20px 0;
+  margin-bottom: 30px;
   background-color: ${props => props.theme.colors.white};
 
   ${media.tablet`

@@ -134,6 +134,11 @@ class Provider extends Component {
         ...prevState,
         filterOpen: filterName,
       }))
+    } else {
+      this.setState(prevState => ({
+        ...prevState,
+        filterOpen: null,
+      }))
     }
   }
 

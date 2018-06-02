@@ -84,15 +84,15 @@ const CardPrice = styled.div`
   `};
 `
 
-const CardHeading = styled.h2`
-  margin-bottom: 0;
-  line-height: 1.25;
+const CardHeading = styled.h3`
+  margin: 0;
+  line-height: 1.25rem;
   font-size: 1rem;
   color: black;
 
   ${media.tablet`
-    line-height: 1.21;
     font-size: 1.5rem;
+    line-height: 1.8125rem;
   `};
 `
 
