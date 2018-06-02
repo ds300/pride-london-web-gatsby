@@ -42,7 +42,7 @@ function filterByDate(event) {
 
 function filterByFree(event) {
   if (!this) return true
-  return event.node.isFree
+  return event.node.eventPriceLow === 0
 }
 
 function filterByCategory(event) {

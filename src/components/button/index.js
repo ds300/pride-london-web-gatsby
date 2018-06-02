@@ -57,7 +57,7 @@ Button.propTypes = {
   link: PropTypes.bool,
   type: PropTypes.string,
   primary: PropTypes.bool,
-  children: PropTypes.string,
+  children: PropTypes.node,
   onClick: PropTypes.func.isRequired,
   disabled: PropTypes.bool,
   small: PropTypes.bool,

@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import styled from 'styled-components'
+import { media } from '../../../theme/media'
 import onClickOutside from 'react-onclickoutside'
 import { Consumer } from '../../../components/appContext'
 import CheckboxSet from '../../../components/checkboxSet'
@@ -26,11 +27,11 @@ const Button = styled.button`
   min-height: 48px;
   box-sizing: border-box;
 
-  @media (min-width: ${props => props.theme.breakpoints[0]}) {
+  ${media.mobile`
     padding: 11px 45px 11px 20px;
-  }
+  `};
 
-  @media (min-width: ${props => props.theme.breakpoints[1]}) {
+  ${media.tablet`
     color: ${props => props.theme.colors.black};
     font-family: ${props => props.theme.fonts.body};
     font-weight: 500;
@@ -50,7 +51,7 @@ const Button = styled.button`
       border-color: ${props => props.theme.colors.eucalyptusGreen};
       outline: none;
     }
-  }
+  `};
 `
 
 const DropDown = styled.fieldset`

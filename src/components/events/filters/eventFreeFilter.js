@@ -1,5 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
+import { media } from '../../../theme/media'
 import { Consumer } from '../../../components/appContext'
 import Checkbox from '../../../components/checkbox'
 
@@ -23,14 +24,14 @@ const Wrapper = styled.div`
     }
   }
 
-  @media (min-width: ${props => props.theme.breakpoints[1]}) {
+  ${media.tablet`
     border: 2px solid ${props => props.theme.colors.mediumGrey};
     border-radius: 4px;
 
     &:focus-within {
       border-color: ${props => props.theme.colors.eucalyptusGreen};
     }
-  }
+  `};
 `
 const FilterHeader = styled.div`
   padding: 16px 20px;
@@ -40,9 +41,9 @@ const FilterHeader = styled.div`
   font-weight: 600;
   color: ${props => props.theme.colors.indigo};
 
-  @media (min-width: ${props => props.theme.breakpoints[1]}) {
+  ${media.tablet`
     display: none;
-  }
+  `};
 `
 
 const EventFreeFilter = () => (

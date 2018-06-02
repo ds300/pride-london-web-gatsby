@@ -3,6 +3,7 @@
 exports[`Checkbox @renders should render 1`] = `
 <styled.div>
   <styled.input
+    checked={false}
     id="test"
     name="myInput"
     onChange={[Function]}

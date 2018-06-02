@@ -1,8 +1,9 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 import styled from 'styled-components'
-import { Flex } from 'grid-styled'
+import { media } from '../../theme/media'
+import { Flex, Box } from 'grid-styled'
 import { Consumer } from '../../components/appContext'
-import { Column } from '../../components/grid'
 import EventDateFilter from './filters/eventDateFilter'
 import EventFreeFilter from './filters/eventFreeFilter'
 import EventDropdownFilter from './filters/eventDropdownFilter'
@@ -11,28 +12,67 @@ import iconClose from '../../theme/assets/images/icon-close.svg'
 
 const FilterWrapper = styled(Flex)`
   background-color: ${props => props.theme.colors.white};
+  position: fixed;
+  padding-top: 0;
+  width: 100%;
+  height: 100vh;
+  overflow: auto;
+  transition: left 0.15s linear;
+  top: 0;
+  left: 100%;
+  z-index: 1;
+
+  &.open {
+    left: 0;
+  }
+
+  ${media.tablet`
+    position: static;
+    width: auto;
+    height: auto;
+    overflow: visible;
+    padding-top: 20px;
+  `};
 `
 
-const FlexColumn = styled(Column)`
+const FlexColumn = styled(Box)`
   display: flex;
+  padding: 0px;
 
   & > * {
     flex-basis: 100%;
   }
+
+  ${media.tablet`
+    padding: 10px;
+  `};
+
+  ${media.desktop`
+    padding: 10px 15px;
+  `};
 `
 
-const FilterHeader = styled(Column)`
+const FilterHeader = styled(Box)`
   background-color: ${props => props.theme.colors.indigo};
   min-height: 90px;
   display: flex;
   align-items: center;
   position: relative;
 
-  @media (min-width: ${props => props.theme.breakpoints[1]}) {
+  ${media.mobile`
+    padding: 0px;
+  `};
+
+  ${media.tablet`
     background-color: transparent;
     height: auto;
     min-height: 0;
-  }
+    padding: 10px;
+  `};
+
+  ${media.desktop`
+    padding: 10px 15px;
+  `};
 `
 
 const FilterHeaderInner = styled.div`
@@ -95,32 +135,37 @@ const CloseButton = styled.button`
   border: none;
   cursor: pointer;
 
-  @media (min-width: ${props => props.theme.breakpoints[1]}) {
+  ${media.tablet`
     display: none;
-  }
+  `};
 `
 
-const EventsFilters = () => (
+const EventsFilters = props => (
   <Consumer>
     {context => (
       <FilterWrapper
+        className={props.showFiltersMobile ? 'open' : null}
         mx={[
-          -1, // btwn 0 and first breakpoint (375px)
-          -2, // btwn 1st breakpoint(375px) and 2nd breakpoint (768px)
+          0, // btwn 0 and first breakpoint (375px)
+          0, // btwn 1st breakpoint(375px) and 2nd breakpoint (768px)
           25, // btwn 2nd breakpoint(768px) and 3rd breakpoint (1280px)
           60, // btwn 3rd breakpoint(1280px) and 4th breakpoint (1440px)
         ]}
+        mb={[0, 0, 40]}
         px={[0, 0, 15, 15]}
         py={4}
         flexWrap="wrap"
       >
-        <FilterHeader width={1} mb={[-2, -2, 0]}>
+        <FilterHeader width={1}>
           <FilterHeaderInner>
             <Label>Filter events by</Label>
             <ClearButton type="button" onClick={context.actions.clearFilters}>
               Clear filters
             </ClearButton>
-            <CloseButton aria-label="Close filters" />
+            <CloseButton
+              aria-label="Close filters"
+              onClick={props.toggleFiltersMobile}
+            />
           </FilterHeaderInner>
         </FilterHeader>
         <FlexColumn width={[1, 1, 0.5, 0.25]}>
@@ -175,5 +220,10 @@ const EventsFilters = () => (
     )}
   </Consumer>
 )
+
+EventsFilters.propTypes = {
+  showFiltersMobile: PropTypes.bool.isRequired,
+  toggleFiltersMobile: PropTypes.func.isRequired,
+}
 
 export default EventsFilters
