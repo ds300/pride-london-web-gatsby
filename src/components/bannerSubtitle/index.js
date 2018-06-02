@@ -1,21 +1,33 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import styled from 'styled-components'
+import { media } from '../../theme/media'
 
-const BannerSubtitle = styled.h3`
+const BannerSubtitle = styled.h2`
   color: #ffffff;
-  font-size: 16px;
+  font-size: 1rem;
+  display: inline;
+  background-color: ${props => props.theme.colors.indigo};
+  line-height: 1.4;
+  box-shadow: 10px 0 0 ${props => props.theme.colors.indigo},
+    -10px 0 0 ${props => props.theme.colors.indigo};
 
-  & span {
-    background-color: #2d2f7f;
-    display: inline-block;
-    padding: 0 10px;
-  }
+  ${media.tablet`  
+    font-size: 1.5rem;
+  `};
+`
+
+const BannerSubtitleWrapper = styled.div`
+  max-width: 255px;
+  margin-left: 10px;
+  ${media.desktop`  
+    max-width: 420px;
+  `};
 `
 const StyledBannerSubtitle = ({ children }) => (
-  <BannerSubtitle>
-    <span>{children}</span>
-  </BannerSubtitle>
+  <BannerSubtitleWrapper>
+    <BannerSubtitle>{children}</BannerSubtitle>
+  </BannerSubtitleWrapper>
 )
 
 StyledBannerSubtitle.propTypes = {

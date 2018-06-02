@@ -5,6 +5,8 @@ import ReactMarkdown from 'react-markdown'
 import Helmet from 'react-helmet'
 import { media } from '../theme/media'
 
+import ImageBanner from '../components/imageBanner'
+
 const horizontalPagePadding = css`
   padding-left: 20px;
   padding-right: 20px;
@@ -143,6 +145,12 @@ export default class GenericContentPage extends Component {
     return (
       <PageWrapper>
         <Helmet title={data.title} />
+        <ImageBanner
+          titleText="Celebrate Pride"
+          subtitleText="Need a hand getting around? We have you covered."
+          imageSrc=""
+          altText="Celebrate Pride banner"
+        />
         <Hero
           style={
             data.bannerImage
