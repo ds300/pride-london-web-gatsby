@@ -54,8 +54,7 @@ describe('ImageBanner', () => {
       wrapper
         .dive()
         .find(BannerTitle)
-        .props()
-        .children
+        .props().children
     ).toBe(titleText)
   })
 
@@ -68,8 +67,7 @@ describe('ImageBanner', () => {
       wrapper
         .dive()
         .find(BannerSubtitle)
-        .props()
-        .children
+        .props().children
     ).toBe(subtitleText)
   })
 })

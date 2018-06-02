@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
+import debounce from 'lodash.debounce'
 import {
   filterByDate,
   filterByFree,
@@ -10,7 +11,6 @@ import {
 } from '../events/helpers'
 import { itemsToLoad } from '../../constants'
 import theme from '../../theme/theme'
-import debounce from 'lodash.debounce'
 
 const AppContext = React.createContext()
 const { Consumer } = AppContext
@@ -59,13 +59,10 @@ class Provider extends Component {
       switch (true) {
         case window.matchMedia(`(min-width: ${theme.breakpoints[3]})`).matches:
           return 3
-          break
         case window.matchMedia(`(min-width: ${theme.breakpoints[2]})`).matches:
           return 2
-          break
         case window.matchMedia(`(min-width: ${theme.breakpoints[1]})`).matches:
           return 1
-          break
         default:
           return 0
       }
