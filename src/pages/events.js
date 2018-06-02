@@ -1,6 +1,7 @@
 import React, { Fragment, Component } from 'react'
 import styled from 'styled-components'
 import { media } from '../theme/media'
+import theme from '../theme/theme'
 import { EventListingCard } from '../components/events'
 import EventsFilters from '../components/events/eventsFilters'
 import ImageBanner from '../components/imageBanner'
@@ -19,11 +20,19 @@ const ColumnTextCenter = styled(Column)`
   text-align: center;
 `
 
-const ColumnAddFilters = styled(Column)`
-  text-align: center;
+const ContainerAddFilters = styled(Container)`
+  padding: 20px 0 10px;
 
   ${media.tablet`
     display: none;
+  `};
+`
+
+const OffsetContainer = styled(Container)`
+  ${media.tablet`
+    margin-top: -50px;
+    position: relative;
+    z-index: 1;
   `};
 `
 
@@ -53,27 +62,22 @@ class Events extends Component {
       <Consumer>
         {context => (
           <Fragment>
-            <Container>
-              <Row>
-                <Column width={1}>
-                  <ImageBanner
-                    titleText="Celebrate Pride"
-                    subtitleText="Events, shows, talks"
-                    imageSrc=""
-                    altText="Celebrate Pride banner"
-                  />
-                </Column>
-              </Row>
-            </Container>
-            <Container>
+            <ImageBanner
+              titleText="Celebrate Pride"
+              subtitleText="Events, shows, talks"
+              imageSrc=""
+              altText="Celebrate Pride banner"
+              color={theme.colors.beachBlue}
+            />
+            <OffsetContainer>
               <EventsFilters
                 showFiltersMobile={this.state.showFiltersMobile}
                 toggleFiltersMobile={this.toggleFiltersMobile}
               />
-            </Container>
-            <Container>
+            </OffsetContainer>
+            <ContainerAddFilters>
               <Row>
-                <ColumnAddFilters width={1}>
+                <ColumnTextCenter width={1}>
                   <Button onClick={this.toggleFiltersMobile} primary>
                     <img
                       src={filterIcon}
@@ -84,8 +88,11 @@ class Events extends Component {
                     />{' '}
                     Add Filters
                   </Button>
-                </ColumnAddFilters>
-
+                </ColumnTextCenter>
+              </Row>
+            </ContainerAddFilters>
+            <Container>
+              <Row>
                 {context.filteredEvents
                   .filter(filterByLimit, context.state.eventsToShow)
                   .map(event => (
