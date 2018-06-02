@@ -10,7 +10,7 @@ import {
 } from '../events/helpers'
 import { itemsToLoad } from '../../constants'
 import theme from '../../theme/theme'
-import debounce from '../../lib/debounce'
+import debounce from 'lodash.debounce'
 
 const AppContext = React.createContext()
 const { Consumer } = AppContext

@@ -80,6 +80,7 @@ class Events extends Component {
                       width="22"
                       height="18"
                       alt="Filters Icon"
+                      role="presentation"
                     />{' '}
                     Add Filters
                   </Button>
