@@ -47,6 +47,10 @@ const FlexColumn = styled(Box)`
     padding: 10px;
   `};
 
+  @media (min-width: 1300px) {
+    width: 25%;
+  }
+
   ${media.desktop`
     padding: 10px 15px;
   `};
@@ -168,52 +172,52 @@ const EventsFilters = props => (
             />
           </FilterHeaderInner>
         </FilterHeader>
-        <FlexColumn width={[1, 1, 0.5, 0.25]}>
+        <FlexColumn width={[1, 1, 0.5, 0.3333]}>
           <EventDropdownFilter
             heading="Category"
             filterName="eventCategories"
             filterOpen={context.state.filterOpen}
           />
         </FlexColumn>
-        <FlexColumn width={[1, 1, 0.5, 0.25]}>
+        <FlexColumn width={[1, 1, 0.5, 0.3333]}>
           <EventDateFilter />
         </FlexColumn>
-        <FlexColumn width={[1, 1, 0.5, 0.25]}>
+        <FlexColumn width={[1, 1, 0.5, 0.3333]}>
           <EventDropdownFilter
             heading="Area of London"
             filterName="area"
             filterOpen={context.state.filterOpen}
           />
         </FlexColumn>
-        <FlexColumn width={[1, 1, 0.5, 0.25]}>
+        <FlexColumn width={[1, 1, 0.5, 0.3333]}>
           <EventDropdownFilter
             heading="Time of day"
             filterName="timeOfDay"
             filterOpen={context.state.filterOpen}
           />
         </FlexColumn>
-        <FlexColumn width={[1, 1, 0.5, 0.25]}>
+        <FlexColumn width={[1, 1, 0.5, 0.3333]}>
           <EventDropdownFilter
             heading="Age group"
             filterName="audience"
             filterOpen={context.state.filterOpen}
           />
         </FlexColumn>
-        <FlexColumn width={[1, 1, 0.5, 0.25]}>
+        <FlexColumn width={[1, 1, 0.5, 0.3333]}>
           <EventDropdownFilter
             heading="Venue options"
             filterName="venueDetails"
             filterOpen={context.state.filterOpen}
           />
         </FlexColumn>
-        <FlexColumn width={[1, 1, 0.5, 0.25]}>
+        <FlexColumn width={[1, 1, 0.5, 0.3333]}>
           <EventDropdownFilter
             heading="Accessibility"
             filterName="accessibilityOptions"
             filterOpen={context.state.filterOpen}
           />
         </FlexColumn>
-        <FlexColumn width={[1, 1, 0.5, 0.25]}>
+        <FlexColumn width={[1, 1, 0.5, 0.3333]}>
           <EventFreeFilter />
         </FlexColumn>
       </FilterWrapper>
