@@ -1,5 +1,6 @@
 import React, { Fragment, Component } from 'react'
 import styled from 'styled-components'
+import noScroll from 'no-scroll' // eslint-disable-line
 import { media } from '../theme/media'
 import theme from '../theme/theme'
 import { EventListingCard } from '../components/events'
@@ -10,7 +11,6 @@ import { Container, Row, Column } from '../components/grid'
 import { Consumer } from '../components/appContext'
 import { filterByLimit } from '../components/events/helpers'
 import filterIcon from '../theme/assets/images/icon-filters.svg'
-import noScroll from 'no-scroll'
 
 const FlexColumn = styled(Column)`
   display: flex;
@@ -103,7 +103,7 @@ class Events extends Component {
                         1, // 100% between 0px screen width and first breakpoint (375px)
                         1, // 100% between first breakpoint(375px) and second breakpoint (768px)
                         1 / 2, // 50% between second breakpoint(768px) and third breakpoint (1280px)
-                        1 / 3, // 33% between third breakpoint(1280px) and fourth breakpoint (1440px)
+                        1 / 3, // 33% btwn third breakpoint(1280px) and fourth breakpoint (1440px)
                       ]}
                       key={event.node.id}
                     >
