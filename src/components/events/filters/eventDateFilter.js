@@ -23,6 +23,11 @@ const SingleDatePickerWrapper = styled.div`
   border-radius: 4px;
   position: relative;
 
+  .DayPicker_weekHeader_li {
+    line-height: 1;
+    font-size: 0.875rem;
+  }
+
   .DateRangePickerInput {
     display: flex;
     align-items: center;
@@ -126,11 +131,6 @@ class EventDateFilter extends Component {
     endDate: null,
   }
 
-  testFunction = ({ startDate, endDate }) => {
-    console.log(startDate, endDate)
-    this.setState({ startDate, endDate })
-  }
-
   render() {
     return (
       <Consumer>
@@ -149,10 +149,11 @@ class EventDateFilter extends Component {
                   onFocusChange={focusedInput => {
                     console.log(focusedInput)
                     this.setState({ focusedInput })
-                    // context.actions.closeSiblingFilters('date', focused)
+                    context.actions.closeSiblingFilters(focusedInput, true)
                   }} // PropTypes.func.isRequired
                   numberOfMonths={1}
                   displayFormat="DD/MM/YYYY"
+                  minimumNights={0}
                   noBorder
                 />
                 <Label htmlFor="start_date" aria-label="Select start date">

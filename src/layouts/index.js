@@ -62,6 +62,7 @@ export const query = graphql`
           name
           startTime
           endTime
+          recurrenceDates
           isFree
           eventPriceLow
           eventCategories

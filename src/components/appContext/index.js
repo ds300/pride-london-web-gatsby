@@ -147,7 +147,10 @@ class Provider extends Component {
   filterEvents = () => {
     const filteredEvents = this.props.events
       .filter(filterPastEvents)
-      .filter(filterByDate, this.state.filters.date)
+      .filter(filterByDate, {
+        startDate: this.state.filters.startDate,
+        endDate: this.state.filters.endDate,
+      })
       .filter(filterByFree, this.state.filters.free)
       .filter(filterByCategory, {
         array: this.state.filters.eventCategories,

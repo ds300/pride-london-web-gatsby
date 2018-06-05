@@ -31,13 +31,36 @@ const formatDate = event => {
 }
 
 function filterByDate(event) {
-  const dateFormat = 'YYYY-MM-DD'
+  if (!(this.startDate && this.endDate)) return true
 
-  if (!this) return true
+  const dateFormat = 'DD/MM/YYYY'
   const startDate = moment(event.node.startTime).format(dateFormat)
   const endDate = moment(event.node.endTime).format(dateFormat)
-  const filterDate = moment(this).format(dateFormat)
-  return moment(filterDate).isBetween(startDate, endDate, null, '[]')
+  const recurrenceDates = []
+
+  // Normalize date formatting
+  if (event.node.recurrenceDates) {
+    event.node.recurrenceDates.map(date => {
+      const dateSplit = date.split('/')
+      const [day, month, year] = dateSplit
+      const formattedDate = moment(`${year}-${month}-${day}`).format(dateFormat)
+
+      // Create array of valid dates
+      if (moment(formattedDate).isValid()) {
+        recurrenceDates.push(formattedDate)
+      }
+    })
+  }
+
+  // Strip any duplicates
+  const eventDates = Array.from(
+    new Set([startDate, ...recurrenceDates, endDate])
+  )
+
+  // Check if at least one of the dates is in the range
+  return eventDates.some(date => {
+    return moment(date).isBetween(this.startDate, this.endDate, null, '[]')
+  })
 }
 
 function filterByFree(event) {
