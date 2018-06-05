@@ -3,6 +3,7 @@ node_js:
 - '8'
 cache: yarn
 script:
+- yarn lint 
 - yarn test
 after_success:
 - test $TRAVIS_BRANCH = "master" && yarn global add gatsby && yarn deploy:ci
