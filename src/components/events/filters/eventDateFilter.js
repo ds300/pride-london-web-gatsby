@@ -140,11 +140,11 @@ class EventDateFilter extends Component {
               <DatePickerHeader>Date</DatePickerHeader>
               <SingleDatePickerWrapper>
                 <DateRangePicker
-                  startDate={this.state.startDate}
+                  startDate={context.state.filters.startDate}
                   startDateId="start_date"
-                  endDate={this.state.endDate}
+                  endDate={context.state.filters.endDate}
                   endDateId="end_date"
-                  onDatesChange={this.testFunction} // PropTypes.func.isRequired
+                  onDatesChange={context.actions.getDatepickerValues} // PropTypes.func.isRequired
                   focusedInput={this.state.focusedInput} // PropTypes.bool
                   onFocusChange={focusedInput => {
                     console.log(focusedInput)

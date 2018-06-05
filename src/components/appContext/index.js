@@ -17,7 +17,8 @@ const { Consumer } = AppContext
 
 function getInitialFilterState() {
   return {
-    date: null,
+    startDate: null,
+    endDate: null,
     free: false,
     eventCategories: [],
     venueDetails: [],
@@ -79,12 +80,13 @@ class Provider extends Component {
     }))
   }, 25)
 
-  getDatepickerValue = date => {
+  getDatepickerValues = ({ startDate, endDate }) => {
     this.setState(prevState => ({
       ...prevState,
       filters: {
         ...prevState.filters,
-        date,
+        startDate,
+        endDate,
       },
     }))
   }
@@ -187,7 +189,7 @@ class Provider extends Component {
           filteredCount,
           actions: {
             getCheckboxBool: this.getCheckboxBool,
-            getDatepickerValue: this.getDatepickerValue,
+            getDatepickerValues: this.getDatepickerValues,
             getCheckboxSetValues: this.getCheckboxSetValues,
             clearFilters: this.clearFilters,
             closeSiblingFilters: this.closeSiblingFilters,
