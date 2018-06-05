@@ -3,6 +3,7 @@ import 'react-dates/initialize'
 import { DateRangePicker } from 'react-dates'
 import 'react-dates/lib/css/_datepicker.css'
 import styled from 'styled-components'
+import { darken, lighten } from 'polished'
 import { media } from '../../../theme/media'
 import { Consumer } from '../../../components/appContext'
 import iconCalendar from '../../../theme/assets/images/icon-calendar.svg'
@@ -26,6 +27,37 @@ const SingleDatePickerWrapper = styled.div`
   .DayPicker_weekHeader_li {
     line-height: 1;
     font-size: 0.875rem;
+  }
+
+  .CalendarDay__selected {
+    background-color: ${props =>
+      darken(0.1, props.theme.colors.eucalyptusGreen)};
+    border: 1px solid #e4e7e7;
+
+    &:hover {
+      background-color: ${props =>
+        darken(0.1, props.theme.colors.eucalyptusGreen)};
+      border: 1px solid #e4e7e7;
+    }
+  }
+
+  .CalendarDay__selected_span {
+    background-color: ${props => props.theme.colors.eucalyptusGreen};
+    border: 1px solid #e4e7e7;
+    &:active,
+    &:hover {
+      background-color: ${props =>
+        lighten(0.1, props.theme.colors.eucalyptusGreen)};
+      border: 1px solid #e4e7e7;
+    }
+  }
+
+  .CalendarDay__hovered_span,
+  .CalendarDay__hovered_span:hover {
+    background-color: ${props =>
+      lighten(0.1, props.theme.colors.eucalyptusGreen)};
+    border: 1px solid #e4e7e7;
+    color: ${props => props.theme.colors.white};
   }
 
   .DateRangePickerInput {
@@ -76,11 +108,9 @@ const SingleDatePickerWrapper = styled.div`
     }
   }
 
-  ${media.mobile`
-    input.DateInput_input {
-
-    }
-  `};
+  .DayPickerKeyboardShortcuts_show__bottomRight {
+    border-right-color: ${props => props.theme.colors.eucalyptusGreen};
+  }
 
   ${media.tablet`
     display: flex;
@@ -147,7 +177,6 @@ class EventDateFilter extends Component {
                   onDatesChange={context.actions.getDatepickerValues} // PropTypes.func.isRequired
                   focusedInput={this.state.focusedInput} // PropTypes.bool
                   onFocusChange={focusedInput => {
-                    console.log(focusedInput)
                     this.setState({ focusedInput })
                     context.actions.closeSiblingFilters(focusedInput, true)
                   }} // PropTypes.func.isRequired
