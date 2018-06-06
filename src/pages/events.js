@@ -1,4 +1,5 @@
 import React, { Fragment, Component } from 'react'
+import FlipMove from 'react-flip-move'
 import styled from 'styled-components'
 import { media } from '../theme/media'
 import theme from '../theme/theme'
@@ -18,6 +19,11 @@ const FlexColumn = styled(Column)`
 
 const ColumnTextCenter = styled(Column)`
   text-align: center;
+`
+const StyledFlipMove = styled(FlipMove)`
+  display: flex;
+  flex-wrap: wrap;
+  flex-basis: 100%;
 `
 
 const ContainerAddFilters = styled(Container)`
@@ -95,21 +101,23 @@ class Events extends Component {
             </ContainerAddFilters>
             <Container>
               <Row>
-                {context.filteredEvents
-                  .filter(filterByLimit, context.state.eventsToShow)
-                  .map(event => (
-                    <FlexColumn
-                      width={[
-                        1, // 100% between 0px screen width and first breakpoint (375px)
-                        1, // 100% between first breakpoint(375px) and second breakpoint (768px)
-                        1 / 2, // 50% between second breakpoint(768px) and third breakpoint (1280px)
-                        1 / 3, // 33% between third breakpoint(1280px) and fourth breakpoint (1440px)
-                      ]}
-                      key={event.node.id}
-                    >
-                      <EventListingCard event={event.node} />
-                    </FlexColumn>
-                  ))}
+                <StyledFlipMove>
+                  {context.filteredEvents
+                    .filter(filterByLimit, context.state.eventsToShow)
+                    .map(event => (
+                      <FlexColumn
+                        width={[
+                          1, // 100% between 0px screen width and first breakpoint (375px)
+                          1, // 100% between first breakpoint(375px) and second breakpoint (768px)
+                          1 / 2, // 50% between second breakpoint(768px) and third breakpoint (1280px)
+                          1 / 3, // 33% between third breakpoint(1280px) and fourth breakpoint (1440px)
+                        ]}
+                        key={event.node.id}
+                      >
+                        <EventListingCard event={event.node} />
+                      </FlexColumn>
+                    ))}
+                </StyledFlipMove>
                 <ColumnTextCenter width={1}>
                   <EventCount>
                     You're viewing{' '}
