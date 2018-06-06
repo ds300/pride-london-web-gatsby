@@ -47,7 +47,7 @@ exports.createPages = ({ graphql, boundActionCreators }) => {
             },
           })
         } else {
-          const recurrenceDates = [moment(edge.node.startTime).format(dateFormat), ...sanitizeDates(edge.node.recurrenceDates)]
+          const recurrenceDates = sanitizeDates([moment(edge.node.startTime).format(dateFormat), ...edge.node.recurrenceDates])
           
           recurrenceDates.forEach(date => {
             const customId = `${edge.node.id}-${date.split('/').join('')}`
@@ -56,8 +56,8 @@ exports.createPages = ({ graphql, boundActionCreators }) => {
               component: eventTemplate,
               context: {
                 id: edge.node.id,
-                startDate: moment(date).format(prettyDate),
-                endDate: moment(date).add(getDuration(edge.node.startTime, edge.node.endTime), 'milliseconds').format(prettyDate),
+                startDate: moment(date, dateFormat).format(prettyDate),
+                endDate: moment(date, dateFormat).add(getDuration(edge.node.startTime, edge.node.endTime), 'milliseconds').format(prettyDate),
                 startTime: formatTime(edge.node.startTime),
                 endTime: formatTime(edge.node.endTime),
               },

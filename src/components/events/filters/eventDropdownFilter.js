@@ -89,11 +89,10 @@ const Badge = styled.span`
 class EventDropdownFilter extends Component {
   state = {
     isOpen: false,
-    filterOpen: null,
   }
 
   static getDerivedStateFromProps(nextProps) {
-    if (nextProps.filterOpen != nextProps.filterName) {
+    if (nextProps.filterOpen !== nextProps.filterName) {
       return { isOpen: false }
     }
 
@@ -105,9 +104,11 @@ class EventDropdownFilter extends Component {
   }
 
   handleClickOutside = () => {
-    this.setState({ isOpen: false }, () => {
-      this.props.closeSiblingFilters(this.props.filterName, this.state.isOpen)
-    })
+    if (this.props.filterName === this.props.filterOpen) {
+      this.setState({ isOpen: false }, () => {
+        this.props.closeSiblingFilters(this.props.filterName, this.state.isOpen)
+      })
+    }
   }
 
   toggleMenu = () => {
