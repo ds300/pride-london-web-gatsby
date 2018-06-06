@@ -1,4 +1,5 @@
 const path = require('path')
+const moment = require('moment')
 
 exports.createPages = ({ graphql, boundActionCreators }) => {
   const { createPage } = boundActionCreators
@@ -9,7 +10,10 @@ exports.createPages = ({ graphql, boundActionCreators }) => {
         edges {
           node {
             id
+            name
             recurrenceDates
+            startTime
+            endTime
           }
         }
       }
@@ -34,11 +38,54 @@ exports.createPages = ({ graphql, boundActionCreators }) => {
             component: eventTemplate,
             context: {
               id: edge.node.id,
+              startTime: edge.node.startTime,
+              endTime: edge.node.endTime,
             },
           })
         } else {
 
           // extract this logic into a helper function as it will be required again in the appContext
+
+          const dateFormat = 'DD/MM/YYYY'
+          const startDate = moment(edge.node.startTime).format(dateFormat)
+          const endDate = moment(edge.node.endTime).format(dateFormat)
+
+          startDateTime = moment(edge.node.startTime)
+          endDateTime = moment(edge.node.endTime)
+          const duration = moment.duration(startDateTime.diff(endDateTime))
+          const recurrenceDates = []
+
+          console.log(edge.node.name, startDateTime, endDateTime);
+
+          // const startDate = moment("2018-07-21T18:00:00.000")
+          // const endDate = moment("2018-07-21T20:00:00.000")
+
+          // const anotherDate = moment("2018-07-22T20:00:00.000")
+
+          // const duration =endDate.diff(startDate)
+
+          // const anotherEnd =  moment("2018-07-22T20:00:00.000").add(7200000, 'milliseconds')
+
+          // console.log(anotherDate.format("DD-MM-YYYY HH:mm") ,anotherEnd.format("DD-MM-YYYY HH:mm"))
+
+          // Normalize date formatting
+          // if (event.node.recurrenceDates) {
+          //   event.node.recurrenceDates.map(date => {
+          //     const dateSplit = date.split('/')
+          //     const [day, month, year] = dateSplit
+          //     const formattedDate = moment(`${year}-${month}-${day}`).format(dateFormat)
+
+          //     // Create array of valid dates
+          //     if (moment(formattedDate).isValid()) {
+          //       recurrenceDates.push(formattedDate)
+          //     }
+          //   })
+          // }
+
+          // Strip any duplicates
+          // const eventDates = Array.from(
+          //   new Set([startDate, ...recurrenceDates, endDate])
+          // )
 
           // if recurring dates
           // get event start and end datetime calculate duration of event
