@@ -54,8 +54,11 @@ const Content = styled(Column)`
 `
 
 const responsiveBannerUrl = url => {
-  const width = Math.min(window.innerWidth, 1440)
+  if (typeof window === 'undefined') {
+    return null
+  }
 
+  const width = Math.min(window.innerWidth, 1440)
   return `${url}?w=${width}`
 }
 

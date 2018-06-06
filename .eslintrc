@@ -31,7 +31,7 @@
     "import/prefer-default-export": "off",
     "indent": "off", // in conflict with prettier
     "jsx-a11y/anchor-is-valid": "off",
-    "max-len": 2,
+    "max-len": 0, // in conflict with prettier
     "no-confusing-arrow": "off",
     "no-else-return": "error",
     "no-return-assign": "off",
