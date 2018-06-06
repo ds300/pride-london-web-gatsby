@@ -35,6 +35,15 @@ const ContainerAddFilters = styled(Container)`
     display: none;
   `};
 `
+const ColumnPagination = styled(Column)`
+  text-align: center;
+  padding-bottom: 20px;
+
+  ${media.tablet`
+    padding-top: 50px;
+    padding-bottom: 60px;
+  `};
+`
 
 const OffsetContainer = styled(Container)`
   ${media.tablet`
@@ -118,7 +127,7 @@ class Events extends Component {
                       </FlexColumn>
                     ))}
                 </StyledFlipMove>
-                <ColumnTextCenter width={1}>
+                <ColumnPagination width={1}>
                   <EventCount>
                     You're viewing{' '}
                     {context.state.eventsToShow <= context.filteredCount
@@ -137,7 +146,7 @@ class Events extends Component {
                   >
                     Show more events
                   </Button>
-                </ColumnTextCenter>
+                </ColumnPagination>
               </Row>
             </Container>
           </Fragment>

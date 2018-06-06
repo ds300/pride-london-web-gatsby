@@ -59,7 +59,6 @@ const EventFreeFilter = () => (
             label="Show only free events"
             name="free"
             handleChange={e => {
-              console.log('handleChange', e.target)
               context.actions.getCheckboxBool('free', e.target.checked)
               context.actions.closeSiblingFilters('free', e.target.checked)
             }}
