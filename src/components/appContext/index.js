@@ -223,7 +223,6 @@ class Provider extends Component {
       <AppContext.Provider
         value={{
           state: this.state,
-          events: this.props.events.filter(filterPastEvents),
           filteredEvents,
           filteredCount,
           actions: {

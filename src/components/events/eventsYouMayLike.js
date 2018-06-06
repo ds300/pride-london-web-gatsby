@@ -67,8 +67,11 @@ const HeadingRow = styled(Row)`
 
 const EventsYouMayLike = ({ eventId }) => (
   <Consumer>
-    {({ events }) => {
-      const eventsYouMayLike = filterEventsYouMayLike(events, eventId)
+    {context => {
+      const eventsYouMayLike = filterEventsYouMayLike(
+        context.state.events,
+        eventId
+      )
 
       if (eventsYouMayLike.length === 0) return null
 
