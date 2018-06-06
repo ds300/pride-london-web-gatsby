@@ -48,6 +48,17 @@ class Provider extends Component {
     if (typeof window !== 'undefined') {
       window.addEventListener('resize', this.setCurrentBreakpoint)
     }
+
+    // Map over events
+    // this.props.events.map(event => {
+    // if no recurrence dates, push into array
+    // else forEach recurrence date
+    // Check the date is valid. If valid:
+    // Deep clone the event object
+    // find the time difference between the start date/end date
+    // Update cloned object to have new start date(recurrence date) and end date (recurrence date + time difference)
+    // Push into events array
+    // })
   }
   componentWillUnmount() {
     if (typeof window !== 'undefined') {
