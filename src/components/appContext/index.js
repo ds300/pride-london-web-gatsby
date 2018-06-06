@@ -7,10 +7,13 @@ import {
   filterByArea,
   filterByTime,
   filterPastEvents,
+  getDuration,
+  sanitizeDates,
 } from '../events/helpers'
 import { itemsToLoad } from '../../constants'
 import theme from '../../theme/theme'
 import debounce from 'lodash.debounce'
+import moment from 'moment'
 
 const AppContext = React.createContext()
 const { Consumer } = AppContext
@@ -30,6 +33,7 @@ function getInitialFilterState() {
 }
 
 const initialState = {
+  events: [],
   filterOpen: null,
   eventsToShow: itemsToLoad,
   filters: getInitialFilterState(),
@@ -49,16 +53,38 @@ class Provider extends Component {
       window.addEventListener('resize', this.setCurrentBreakpoint)
     }
 
+    // Generate all recurrences of events
+    const allEventOccurences = []
     // Map over events
-    // this.props.events.map(event => {
-    // if no recurrence dates, push into array
-    // else forEach recurrence date
-    // Check the date is valid. If valid:
-    // Deep clone the event object
-    // find the time difference between the start date/end date
-    // Update cloned object to have new start date(recurrence date) and end date (recurrence date + time difference)
-    // Push into events array
-    // })
+    this.props.events.map(event => {
+      // console.log(event.node.startTime, moment(new Date()).format())
+      if (!event.node.recurrenceDates) {
+        allEventOccurences.push(event)
+      } else {
+        const recurrenceDates = sanitizeDates(event.node.recurrenceDates)
+        const time = moment(event.node.startTime).format('HH:mm')
+        const duration = getDuration(event.node.startTime, event.node.endTime)
+
+        recurrenceDates.forEach(date => {
+          // Deep clone event
+          const copy = JSON.parse(JSON.stringify(event))
+
+          // Modify start time and end time
+          copy.node.startTime = moment(
+            `${date} ${time}`,
+            'DD/MM/YYYY hh:mm'
+          ).format()
+          copy.node.endTime = moment(copy.node.startTime)
+            .add(duration, 'milliseconds')
+            .format()
+          copy.node.id = `${event.node.id}-${date.split('/').join('')}`
+
+          allEventOccurences.push(copy)
+        })
+      }
+    })
+
+    this.setState({ events: allEventOccurences })
   }
   componentWillUnmount() {
     if (typeof window !== 'undefined') {
@@ -156,7 +182,7 @@ class Provider extends Component {
   }
 
   filterEvents = () => {
-    const filteredEvents = this.props.events
+    const filteredEvents = this.state.events
       .filter(filterPastEvents)
       .filter(filterByDate, {
         startDate: this.state.filters.startDate,

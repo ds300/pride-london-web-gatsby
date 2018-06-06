@@ -1,4 +1,5 @@
-import moment from 'moment'
+const moment = require('moment')
+const { dateFormat } = require('../../../constants')
 
 const formatTime = time => {
   if (moment(time).format('mm') === '00') {
@@ -32,35 +33,12 @@ const formatDate = event => {
 
 function filterByDate(event) {
   if (!(this.startDate && this.endDate)) return true
-
-  const dateFormat = 'DD/MM/YYYY'
-  const startDate = moment(event.node.startTime).format(dateFormat)
-  const endDate = moment(event.node.endTime).format(dateFormat)
-  const recurrenceDates = []
-
-  // Normalize date formatting
-  if (event.node.recurrenceDates) {
-    event.node.recurrenceDates.map(date => {
-      const dateSplit = date.split('/')
-      const [day, month, year] = dateSplit
-      const formattedDate = moment(`${year}-${month}-${day}`).format(dateFormat)
-
-      // Create array of valid dates
-      if (moment(formattedDate).isValid()) {
-        recurrenceDates.push(formattedDate)
-      }
-    })
-  }
-
-  // Strip any duplicates
-  const eventDates = Array.from(
-    new Set([startDate, ...recurrenceDates, endDate])
+  return moment(event.node.startTime).isBetween(
+    this.startDate,
+    this.endDate,
+    null,
+    '[]'
   )
-
-  // Check if at least one of the dates is in the range
-  return eventDates.some(date => {
-    return moment(date).isBetween(this.startDate, this.endDate, null, '[]')
-  })
 }
 
 function filterByFree(event) {
@@ -113,7 +91,7 @@ function filterByArea(event) {
 
 function filterByTime(event) {
   if (this.length === 0) return true
-  const format = 'HH:MM'
+  const format = 'HH:mm'
   const startTime = moment(event.node.startTime).format(format)
   const afternoonStart = '12:00'
   const afternoonEnd = '17:59'
@@ -145,8 +123,30 @@ function filterByLimit(event, index) {
   return index < this
 }
 
+function sanitizeDates(dates) {
+  const formattedDates = []
+  dates.map(date => {
+    const [day, month, year] = date.split('/')
+    // if 2 digit year, convert to 4 digit year so moment can process date correctly
+    const formattedDate = moment(
+      `${year.length === 2 ? `20${year}` : year}-${month}-${day}`
+    ).format(dateFormat)
+    // Create array of valid dates
+    if (moment(formattedDate, dateFormat).isValid()) {
+      formattedDates.push(formattedDate)
+    }
+  })
+  // Strip duplicates and return
+  return Array.from(new Set([...formattedDates]))
+}
+
+function getDuration(start, end) {
+  return moment(end).diff(moment(start))
+}
+
 module.exports = {
   formatDate,
+  formatTime,
   filterByDate,
   filterByFree,
   filterByCategory,
@@ -154,4 +154,6 @@ module.exports = {
   filterByTime,
   filterPastEvents,
   filterByLimit,
+  sanitizeDates,
+  getDuration,
 }

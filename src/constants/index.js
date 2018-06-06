@@ -26,8 +26,8 @@ const constants = {
   area: ['Central', 'North', 'East', 'South', 'West'],
   audience: ['Youth', '16+', '18+', 'Families'],
   timeOfDay: ['Morning', 'Afternoon', 'Evening'],
+  itemsToLoad: 24,
+  dateFormat: 'DD/MM/YYYY',
 }
 
-export const itemsToLoad = 24
-
-export default constants
+module.exports = constants
