@@ -177,6 +177,7 @@ const EventsFilters = props => (
             heading="Category"
             filterName="eventCategories"
             filterOpen={context.state.filterOpen}
+            closeSiblingFilters={context.actions.closeSiblingFilters}
           />
         </FlexColumn>
         <FlexColumn width={[1, 1, 0.5, 0.3333]}>
@@ -187,6 +188,7 @@ const EventsFilters = props => (
             heading="Area of London"
             filterName="area"
             filterOpen={context.state.filterOpen}
+            closeSiblingFilters={context.actions.closeSiblingFilters}
           />
         </FlexColumn>
         <FlexColumn width={[1, 1, 0.5, 0.3333]}>
@@ -194,6 +196,7 @@ const EventsFilters = props => (
             heading="Time of day"
             filterName="timeOfDay"
             filterOpen={context.state.filterOpen}
+            closeSiblingFilters={context.actions.closeSiblingFilters}
           />
         </FlexColumn>
         <FlexColumn width={[1, 1, 0.5, 0.3333]}>
@@ -201,6 +204,7 @@ const EventsFilters = props => (
             heading="Age group"
             filterName="audience"
             filterOpen={context.state.filterOpen}
+            closeSiblingFilters={context.actions.closeSiblingFilters}
           />
         </FlexColumn>
         <FlexColumn width={[1, 1, 0.5, 0.3333]}>
@@ -208,6 +212,7 @@ const EventsFilters = props => (
             heading="Venue options"
             filterName="venueDetails"
             filterOpen={context.state.filterOpen}
+            closeSiblingFilters={context.actions.closeSiblingFilters}
           />
         </FlexColumn>
         <FlexColumn width={[1, 1, 0.5, 0.3333]}>
@@ -215,6 +220,7 @@ const EventsFilters = props => (
             heading="Accessibility"
             filterName="accessibilityOptions"
             filterOpen={context.state.filterOpen}
+            closeSiblingFilters={context.actions.closeSiblingFilters}
           />
         </FlexColumn>
         <FlexColumn width={[1, 1, 0.5, 0.3333]}>

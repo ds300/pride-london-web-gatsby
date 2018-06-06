@@ -1,6 +1,6 @@
 const path = require('path')
 const moment = require('moment')
-const { sanitizeDates, removeDuplicates, formatTime, getDuration } = require('./src/components/events/helpers')
+const { sanitizeDates, removeDuplicates, formatTime, getDuration, filterPastEvents } = require('./src/components/events/helpers')
 const { dateFormat } = require('./src/constants')
 
 exports.createPages = ({ graphql, boundActionCreators }) => {
@@ -28,7 +28,8 @@ exports.createPages = ({ graphql, boundActionCreators }) => {
 
       const eventTemplate = path.resolve('./src/templates/event.js')
       const prettyDate = 'D MMM YYYY'
-      result.data.allContentfulEvent.edges.forEach(edge => {
+      // Don't create pages for past events
+      result.data.allContentfulEvent.edges.filter(filterPastEvents).forEach(edge => {
         if(!edge.node.recurrenceDates) {
           createPage({
             // Each page is required to have a `path` as well

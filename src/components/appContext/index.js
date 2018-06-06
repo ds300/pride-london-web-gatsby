@@ -84,7 +84,7 @@ class Provider extends Component {
       }
     })
 
-    this.setState({ events: allEventOccurences })
+    this.setState({ events: allEventOccurences.filter(filterPastEvents) })
   }
   componentWillUnmount() {
     if (typeof window !== 'undefined') {
@@ -183,7 +183,6 @@ class Provider extends Component {
 
   filterEvents = () => {
     const filteredEvents = this.state.events
-      .filter(filterPastEvents)
       .filter(filterByDate, {
         startDate: this.state.filters.startDate,
         endDate: this.state.filters.endDate,

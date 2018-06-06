@@ -104,11 +104,15 @@ class EventDropdownFilter extends Component {
     return this.state.isOpen !== nextState.isOpen
   }
 
-  handleClickOutside = () => this.setState({ isOpen: false })
+  handleClickOutside = () => {
+    this.setState({ isOpen: false }, () => {
+      this.props.closeSiblingFilters(this.props.filterName, this.state.isOpen)
+    })
+  }
 
-  toggleMenu = closeSiblingFilters => {
+  toggleMenu = () => {
     this.setState({ isOpen: !this.state.isOpen }, () =>
-      closeSiblingFilters(this.props.filterName, this.state.isOpen)
+      this.props.closeSiblingFilters(this.props.filterName, this.state.isOpen)
     )
   }
 
@@ -122,9 +126,7 @@ class EventDropdownFilter extends Component {
               aria-expanded={this.state.isOpen}
               type="button"
               id={`button_${this.props.filterName}`}
-              onClick={() =>
-                this.toggleMenu(context.actions.closeSiblingFilters)
-              }
+              onClick={this.toggleMenu}
               isOpen={this.state.isOpen}
             >
               {this.props.heading}
@@ -152,6 +154,7 @@ class EventDropdownFilter extends Component {
 EventDropdownFilter.propTypes = {
   heading: PropTypes.string.isRequired,
   filterName: PropTypes.string.isRequired,
+  closeSiblingFilters: PropTypes.func.isRequired,
 }
 
 export default onClickOutside(EventDropdownFilter)
