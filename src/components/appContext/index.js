@@ -11,6 +11,7 @@ import {
   sanitizeDates,
 } from '../events/helpers'
 import { itemsToLoad } from '../../constants'
+import { dateFormat } from '../../constants'
 import moment from 'moment'
 
 const AppContext = React.createContext()
@@ -54,7 +55,10 @@ class Provider extends Component {
       if (!event.node.recurrenceDates) {
         allEventOccurences.push(event)
       } else {
-        const recurrenceDates = sanitizeDates(event.node.recurrenceDates)
+        const recurrenceDates = sanitizeDates([
+          moment(event.node.startTime).format(dateFormat),
+          ...event.node.recurrenceDates,
+        ])
         const time = moment(event.node.startTime).format('HH:mm')
         const duration = getDuration(event.node.startTime, event.node.endTime)
 
