@@ -23,12 +23,20 @@ const formatDate = event => {
   const startTime = formatTime(event.startTime)
   const endTime = formatTime(event.endTime)
 
-  if (startDate === endDate) {
-    return `${startDay} ${startMonth} ${year} • ${startTime} - ${endTime}`
-  } else if (startMonth === endMonth) {
-    return `${startDay} - ${endDay} ${startMonth} ${year} • ${startTime} - ${endTime}`
+  const dateTime = {
+    time: `${startTime} - ${endTime}`,
   }
-  return `${startDay} ${startMonth} - ${endDay} ${endMonth} ${year} • ${startTime} - ${endTime}`
+
+  if (startDate === endDate) {
+    dateTime.date = `${startDay} ${startMonth} ${year}`
+    return dateTime
+  } else if (startMonth === endMonth) {
+    dateTime.date = `${startDay} - ${endDay} ${startMonth} ${year}`
+    return dateTime
+  }
+
+  dateTime.date = `${startDay} ${startMonth} - ${endDay} ${endMonth} ${year}`
+  return dateTime
 }
 
 function filterByDate(event) {
