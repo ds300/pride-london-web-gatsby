@@ -85,7 +85,7 @@ const EventsYouMayLike = ({ eventId }) => (
           </HeadingRow>
           <Row>
             {eventsYouMayLike.map(event => (
-              <FlexColumn width={[1, 1 / 2, 1 / 3, 1 / 3]} key={event.node.id}>
+              <FlexColumn width={[1, 1, 1 / 2, 1 / 3]} key={event.node.id}>
                 <EventListingCard event={event.node} />
               </FlexColumn>
             ))}
