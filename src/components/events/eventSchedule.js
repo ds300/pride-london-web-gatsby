@@ -57,6 +57,6 @@ export const query = graphql`
   fragment eventScheduleFragment on ContentfulPerformance {
     id
     title
-    startTime(formatString: "HH:MM")
+    startTime(formatString: "HH:mm")
   }
 `
