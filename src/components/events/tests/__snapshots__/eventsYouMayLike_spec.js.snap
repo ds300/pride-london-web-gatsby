@@ -23,8 +23,8 @@ exports[`The Events You May Like component should matchsnapshot 1`] = `
       width={
         Array [
           1,
+          1,
           0.5,
-          0.3333333333333333,
           0.3333333333333333,
         ]
       }
