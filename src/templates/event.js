@@ -111,7 +111,22 @@ export default class Event extends Component {
             <EventTagList values={eventCategories} />
           </TitleWrapper>
         </HeroImageAndTitle>
-        <InfoPlaceholder>put things inside me plz</InfoPlaceholder>
+        <InfoPlaceholder>
+          <div>
+            <p>
+              {this.props.pathContext.startDate ===
+              this.props.pathContext.endDate
+                ? this.props.pathContext.startDate
+                : `${this.props.pathContext.startDate} - ${
+                    this.props.pathContext.endDate
+                  }`}
+            </p>
+            <p>
+              {this.props.pathContext.startTime} to{' '}
+              {this.props.pathContext.endTime}
+            </p>
+          </div>
+        </InfoPlaceholder>
         <ContentWrapper>
           <Section>
             <ReactMarkdown source={eventDescription.eventDescription} />
