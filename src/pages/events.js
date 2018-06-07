@@ -179,19 +179,22 @@ class Events extends Component {
                       : context.filteredEvents.length}{' '}
                     of {context.filteredEvents.length} events
                   </EventCount>
-                  <Button
-                    onClick={() =>
-                      context.actions.showMore(context.filteredEvents.length)
-                    }
-                    primary
-                    disabled={
-                      context.state.eventsToShow >=
-                      context.filteredEvents.length
-                    }
-                    fullmobile
-                  >
-                    Show more events
-                  </Button>
+                  {context.state.eventsToShow <
+                    context.filteredEvents.length && (
+                    <Button
+                      onClick={() =>
+                        context.actions.showMore(context.filteredEvents.length)
+                      }
+                      primary
+                      disabled={
+                        context.state.eventsToShow >=
+                        context.filteredEvents.length
+                      }
+                      fullmobile
+                    >
+                      Show more events
+                    </Button>
+                  )}
                 </ColumnPagination>
               </Row>
             </Container>
