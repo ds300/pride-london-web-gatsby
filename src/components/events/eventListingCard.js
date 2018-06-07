@@ -30,7 +30,7 @@ const CardImageWrapper = styled.div`
   overflow: hidden;
   flex-basis: 40%;
   flex-shrink: 0;
-  height: 100%;
+  height: auto;
 
   ${media.tablet`
     padding-top: 56.25%;

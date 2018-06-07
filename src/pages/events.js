@@ -10,11 +10,17 @@ import Button from '../components/button'
 import { Container, Row, Column } from '../components/grid'
 import { Consumer } from '../components/appContext'
 import { filterByLimit } from '../components/events/helpers'
+import { dateFormat } from '../constants'
 import filterIcon from '../theme/assets/images/icon-filters.svg'
 import noScroll from 'no-scroll'
+import moment from 'moment'
 
 const FlexColumn = styled(Column)`
-  display: flex;
+  display: block;
+
+  ${media.tablet`
+    display: flex;
+  `};
 `
 
 const ColumnTextCenter = styled(Column)`
@@ -28,13 +34,14 @@ const StyledFlipMove = styled(FlipMove)`
 
 const ContainerAddFilters = styled(Container)`
   padding: 20px 0;
-  margin-bottom: 30px;
+  margin-bottom: 20px;
   background-color: ${props => props.theme.colors.white};
 
   ${media.tablet`
     display: none;
   `};
 `
+
 const ColumnPagination = styled(Column)`
   text-align: center;
   padding-bottom: 20px;
@@ -59,6 +66,14 @@ const EventCount = styled.p`
   color: ${props => props.theme.colors.darkGrey};
 `
 
+const DateGroupHeading = styled.h2`
+  margin: 1rem 0;
+
+  ${media.tablet`
+    display: none;
+  `};
+`
+
 class Events extends Component {
   state = {
     showFiltersMobile: false,
@@ -71,6 +86,39 @@ class Events extends Component {
         showFiltersMobile: !prevState.showFiltersMobile,
       }),
       () => noScroll.toggle()
+    )
+  }
+
+  renderCard = (event, index, events) => {
+    let header
+    const longDayOfMonth = 'dddd D MMM'
+
+    if (index === 0) {
+      header = moment(event.node.startTime).format(longDayOfMonth)
+    } else {
+      const startDate = moment(event.node.startTime).format(dateFormat)
+      const prevStartDate = moment(events[index - 1].node.startTime).format(
+        dateFormat
+      )
+
+      if (startDate !== prevStartDate) {
+        header = moment(event.node.startTime).format(longDayOfMonth)
+      }
+    }
+
+    return (
+      <FlexColumn
+        width={[
+          1, // 100% between 0px screen width and first breakpoint (375px)
+          1, // 100% between first breakpoint(375px) and second breakpoint (768px)
+          1 / 2, // 50% between second breakpoint(768px) and third breakpoint (1024px)
+          1 / 3, // 33% between third breakpoint(1280px) and fourth breakpoint (1440px)
+        ]}
+        key={event.node.id}
+      >
+        {header && <DateGroupHeading>{header}</DateGroupHeading>}
+        <EventListingCard event={event.node} />
+      </FlexColumn>
     )
   }
 
@@ -95,7 +143,7 @@ class Events extends Component {
             <ContainerAddFilters>
               <Row>
                 <ColumnTextCenter width={1}>
-                  <Button onClick={this.toggleFiltersMobile} primary>
+                  <Button onClick={this.toggleFiltersMobile} primary fullmobile>
                     <img
                       src={filterIcon}
                       width="22"
@@ -113,19 +161,9 @@ class Events extends Component {
                 <StyledFlipMove>
                   {context.filteredEvents
                     .filter(filterByLimit, context.state.eventsToShow)
-                    .map(event => (
-                      <FlexColumn
-                        width={[
-                          1, // 100% between 0px screen width and first breakpoint (375px)
-                          1, // 100% between first breakpoint(375px) and second breakpoint (768px)
-                          1 / 2, // 50% between second breakpoint(768px) and third breakpoint (1280px)
-                          1 / 3, // 33% between third breakpoint(1280px) and fourth breakpoint (1440px)
-                        ]}
-                        key={event.node.id}
-                      >
-                        <EventListingCard event={event.node} />
-                      </FlexColumn>
-                    ))}
+                    .map((event, index, events) =>
+                      this.renderCard(event, index, events)
+                    )}
                 </StyledFlipMove>
                 <ColumnPagination width={1}>
                   <EventCount>
@@ -143,6 +181,7 @@ class Events extends Component {
                     disabled={
                       context.state.eventsToShow >= context.filteredCount
                     }
+                    fullmobile
                   >
                     Show more events
                   </Button>

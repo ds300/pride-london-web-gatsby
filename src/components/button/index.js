@@ -2,6 +2,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import styled from 'styled-components'
 import { darken } from 'polished'
+import { media } from '../../theme/media'
 
 export const Button = props => {
   const StyledButton = styled[props.link ? 'a' : 'button']`
@@ -22,6 +23,7 @@ export const Button = props => {
     font-size: ${styleProps => (styleProps.small ? '0.875rem' : '1.125rem')};
     line-height: 1.388;
     min-width: 250px;
+    width: ${styleProps => (styleProps.fullmobile ? '100%' : 'auto')};
     cursor: pointer;
     text-decoration: none;
     transition: background-color 0.15s linear;
@@ -37,6 +39,10 @@ export const Button = props => {
       opacity: 0.5;
       cursor: not-allowed;
     }
+
+    ${media.tablet`
+      width: auto;
+    `};
   `
 
   return (
@@ -47,6 +53,7 @@ export const Button = props => {
       disabled={props.disabled}
       href={props.link ? props.to : null}
       small={props.small}
+      fullmobile={props.fullmobile}
     >
       {props.children}
     </StyledButton>
@@ -62,6 +69,7 @@ Button.propTypes = {
   disabled: PropTypes.bool,
   small: PropTypes.bool,
   to: PropTypes.string,
+  fullmobile: PropTypes.bool,
 }
 
 Button.defaultProps = {
@@ -72,6 +80,7 @@ Button.defaultProps = {
   disabled: false,
   small: false,
   to: null,
+  fullmobile: false,
 }
 
 export default Button

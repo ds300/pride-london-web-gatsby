@@ -51,7 +51,6 @@ class Provider extends Component {
     const allEventOccurences = []
     // Map over events
     this.props.events.map(event => {
-      // console.log(event.node.startTime, moment(new Date()).format())
       if (!event.node.recurrenceDates) {
         allEventOccurences.push(event)
       } else {
@@ -186,6 +185,7 @@ class Provider extends Component {
   render() {
     const filteredEvents = this.filterEvents()
     const filteredCount = filteredEvents.length
+
     return (
       <AppContext.Provider
         value={{
