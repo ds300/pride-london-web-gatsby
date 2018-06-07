@@ -33,12 +33,11 @@ const formatDate = event => {
 
 function filterByDate(event) {
   if (!(this.startDate && this.endDate)) return true
-  return moment(event.node.startTime).isBetween(
-    this.startDate,
-    this.endDate,
-    null,
-    '[]'
-  )
+
+  // Set time to 12:00 for pure date comparison
+  return moment(event.node.startTime)
+    .set({ hour: 12, minutes: 0 })
+    .isBetween(this.startDate, this.endDate, null, '[]')
 }
 
 function filterByFree(event) {
@@ -127,10 +126,12 @@ function sanitizeDates(dates) {
   const formattedDates = []
   dates.map(date => {
     const [day, month, year] = date.split('/')
-    // if 2 digit year, convert to 4 digit year so moment can process date correctly
-    const formattedDate = moment(
-      `${year.length === 2 ? `20${year}` : year}-${month}-${day}`
-    ).format(dateFormat)
+
+    // Format date to be DD/MM/YYYY
+    const formattedDate = `${day.length === 1 ? `0${day}` : day}/${
+      month.length === 1 ? `0${month}` : month
+    }/${year.length === 2 ? `20${year}` : year}`
+
     // Create array of valid dates
     if (moment(formattedDate, dateFormat).isValid()) {
       formattedDates.push(formattedDate)
