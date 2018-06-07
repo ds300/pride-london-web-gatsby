@@ -3,7 +3,7 @@ require('dotenv').config({path: `./.env.${env}`});
 
 module.exports = {
   siteMetadata: {
-    title: 'Gatsby Default Starter',
+    title: 'Pride in London Event Listing',
   },
   plugins: [
     'gatsby-plugin-react-helmet',
