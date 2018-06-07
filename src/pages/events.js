@@ -128,10 +128,10 @@ class Events extends Component {
         {context => (
           <Fragment>
             <ImageBanner
-              titleText="Celebrate Pride"
-              subtitleText="Events, shows, talks"
+              titleText="What's on"
+              subtitleText="Checkout the huge array of events that Pride are running during the festival"
               imageSrc=""
-              altText="Celebrate Pride banner"
+              altText=""
               color={theme.colors.beachBlue}
             />
             <OffsetContainer>
