@@ -66,10 +66,6 @@ const CardDate = styled.span`
   font-weight: 400;
   margin-bottom: 0.65rem;
 
-  span {
-    display: block;
-  }
-
   ${media.tablet`
     font-family: ${props => props.theme.fonts.title};
     font-weight: 600;
@@ -80,7 +76,13 @@ const CardDate = styled.span`
 `
 
 const CardBullet = styled.span`
-  display: none !important;
+  display: none ${media.tablet`
+    display: inline;
+  `};
+`
+
+const CardDateSpan = styled.span`
+  display: block;
 
   ${media.tablet`
     display: inline;
@@ -135,8 +137,8 @@ export const EventListingCard = props => {
       </CardImageWrapper>
       <CardBody>
         <CardDate>
-          <span>{date}</span>
-          <CardBullet> • </CardBullet> <span>{time}</span>
+          <CardDateSpan>{date}</CardDateSpan>
+          <CardBullet> • </CardBullet> <CardDateSpan>{time}</CardDateSpan>
         </CardDate>
         <CardHeading>{event.name}</CardHeading>
       </CardBody>
