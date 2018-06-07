@@ -46,10 +46,6 @@ class Provider extends Component {
   }
 
   componentDidMount() {
-    if (typeof window !== 'undefined') {
-      window.addEventListener('resize', this.setCurrentBreakpoint)
-    }
-
     // Generate all recurrences of events
     const allEventOccurences = []
     // Map over events
@@ -82,11 +78,6 @@ class Provider extends Component {
     })
 
     this.setState({ events: allEventOccurences.filter(filterPastEvents) })
-  }
-  componentWillUnmount() {
-    if (typeof window !== 'undefined') {
-      window.removeEventListener('resize', this.setCurrentBreakpoint)
-    }
   }
 
   getDatepickerValues = ({ startDate, endDate }) => {
