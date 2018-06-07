@@ -74,6 +74,10 @@ const DateGroupHeading = styled.h2`
   `};
 `
 
+const FilterIcon = styled.img`
+  margin: 0 6px -2px 0;
+`
+
 class Events extends Component {
   state = {
     showFiltersMobile: false,
@@ -144,14 +148,16 @@ class Events extends Component {
               <Row>
                 <ColumnTextCenter width={1}>
                   <Button onClick={this.toggleFiltersMobile} primary fullmobile>
-                    <img
+                    <FilterIcon
                       src={filterIcon}
                       width="22"
                       height="18"
                       alt="Filters Icon"
                       role="presentation"
                     />{' '}
-                    Add Filters
+                    {context.filteredEvents.length < context.state.events.length
+                      ? 'Edit Filters'
+                      : 'Add Filters'}
                   </Button>
                 </ColumnTextCenter>
               </Row>
@@ -168,18 +174,19 @@ class Events extends Component {
                 <ColumnPagination width={1}>
                   <EventCount>
                     You're viewing{' '}
-                    {context.state.eventsToShow <= context.filteredCount
+                    {context.state.eventsToShow <= context.filteredEvents.length
                       ? context.state.eventsToShow
-                      : context.filteredCount}{' '}
-                    of {context.filteredCount} events
+                      : context.filteredEvents.length}{' '}
+                    of {context.filteredEvents.length} events
                   </EventCount>
                   <Button
                     onClick={() =>
-                      context.actions.showMore(context.filteredCount)
+                      context.actions.showMore(context.filteredEvents.length)
                     }
                     primary
                     disabled={
-                      context.state.eventsToShow >= context.filteredCount
+                      context.state.eventsToShow >=
+                      context.filteredEvents.length
                     }
                     fullmobile
                   >

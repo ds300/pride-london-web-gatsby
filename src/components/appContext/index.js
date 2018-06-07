@@ -183,15 +183,11 @@ class Provider extends Component {
   }
 
   render() {
-    const filteredEvents = this.filterEvents()
-    const filteredCount = filteredEvents.length
-
     return (
       <AppContext.Provider
         value={{
           state: this.state,
-          filteredEvents,
-          filteredCount,
+          filteredEvents: this.filterEvents(),
           actions: {
             getCheckboxBool: this.getCheckboxBool,
             getDatepickerValues: this.getDatepickerValues,

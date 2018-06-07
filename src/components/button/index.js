@@ -9,6 +9,7 @@ export const Button = props => {
     box-sizing: border-box;
     padding: 12px;
     border-radius: 4px;
+    border: none;
     display: inline-block;
     color: ${styleProps =>
       styleProps.primary

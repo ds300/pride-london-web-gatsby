@@ -49,6 +49,7 @@ class Checkbox extends Component {
     if (nextProps.checked !== prevState.checked) {
       return { checked: nextProps.checked }
     }
+    return null
   }
 
   shouldComponentUpdate(nextProps, nextState) {
