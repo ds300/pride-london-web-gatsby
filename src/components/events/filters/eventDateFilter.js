@@ -8,19 +8,8 @@ import { media } from '../../../theme/media'
 import { Consumer } from '../../../components/appContext'
 import iconCalendar from '../../../theme/assets/images/icon-calendar.svg'
 
-const DatePickerWrapper = styled.div`
-  display: block
-  align-items: center;
-  flex-grow: 1;
-  min-height: 48px;
-  box-sizing: border-box;
-
-  & > div {
-    flex-basis: 100%;
-  }
-`
 const SingleDatePickerWrapper = styled.div`
-  border: 2px solid ${props => props.theme.colors.mediumGrey};
+  border: none;
   border-radius: 4px;
   position: relative;
 
@@ -64,7 +53,7 @@ const SingleDatePickerWrapper = styled.div`
     display: flex;
     align-items: center;
     padding-right: 45px;
-    padding-left: 20px;
+    padding-left: 10px;
   }
 
   .DateRangePickerInput_arrow {
@@ -101,7 +90,7 @@ const SingleDatePickerWrapper = styled.div`
     display: block;
     background-color: transparent;
     width: 100%;
-    padding: 14px 0;
+    padding: 25px 0;
 
     &::placeholder {
       color: ${props => props.theme.colors.black};
@@ -114,14 +103,22 @@ const SingleDatePickerWrapper = styled.div`
 
   ${media.tablet`
     display: flex;
+    border: 2px solid ${props => props.theme.colors.mediumGrey};
 
     input.DateInput_input {
       font-weight: 500;
+      padding: 14px 0;
 
       &:focus {
         border-color: ${props => props.theme.colors.eucalyptusGreen};
         outline: none;
       }
+    }
+  `};
+
+  ${media.mobile`
+    .DateRangePickerInput {
+      padding-left: 20px;
     }
   `};
 `
@@ -166,30 +163,28 @@ class EventDateFilter extends Component {
       <Consumer>
         {context => (
           <div>
-            <DatePickerWrapper>
-              <DatePickerHeader>Date</DatePickerHeader>
-              <SingleDatePickerWrapper>
-                <DateRangePicker
-                  startDate={context.state.filters.startDate}
-                  startDateId="start_date"
-                  endDate={context.state.filters.endDate}
-                  endDateId="end_date"
-                  onDatesChange={context.actions.getDatepickerValues} // PropTypes.func.isRequired
-                  focusedInput={this.state.focusedInput} // PropTypes.bool
-                  onFocusChange={focusedInput => {
-                    this.setState({ focusedInput })
-                    context.actions.closeSiblingFilters(focusedInput, true)
-                  }} // PropTypes.func.isRequired
-                  numberOfMonths={1}
-                  displayFormat="DD/MM/YYYY"
-                  minimumNights={0}
-                  noBorder
-                />
-                <Label htmlFor="start_date" aria-label="Select start date">
-                  <img src={iconCalendar} alt="Calendar icon" />
-                </Label>
-              </SingleDatePickerWrapper>
-            </DatePickerWrapper>
+            <DatePickerHeader>Date</DatePickerHeader>
+            <SingleDatePickerWrapper>
+              <DateRangePicker
+                startDate={context.state.filters.startDate}
+                startDateId="start_date"
+                endDate={context.state.filters.endDate}
+                endDateId="end_date"
+                onDatesChange={context.actions.getDatepickerValues} // PropTypes.func.isRequired
+                focusedInput={this.state.focusedInput} // PropTypes.bool
+                onFocusChange={focusedInput => {
+                  this.setState({ focusedInput })
+                  context.actions.closeSiblingFilters(focusedInput, true)
+                }} // PropTypes.func.isRequired
+                numberOfMonths={1}
+                displayFormat="DD/MM/YYYY"
+                minimumNights={0}
+                noBorder
+              />
+              <Label htmlFor="start_date" aria-label="Select start date">
+                <img src={iconCalendar} alt="Calendar icon" />
+              </Label>
+            </SingleDatePickerWrapper>
           </div>
         )}
       </Consumer>

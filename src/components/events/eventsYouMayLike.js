@@ -21,17 +21,7 @@ const FlexColumn = styled(Column)`
   display: flex;
 `
 
-const filterEventsYouMayLike = (events, eventId) => {
-  const filteredEvents = events.filter(event => {
-    if (event.node.id === eventId) return false
-
-    return moment(event.node.startTime).diff(moment(), 'hours') > 0
-  })
-
-  return filteredEvents.splice(0, 3)
-}
-
-const StyledContainer = styled(Container)`
+export const StyledContainer = styled(Container)`
   padding: 30px 0px;
   ${media.desktop`
     padding: 60px 0px;
@@ -65,7 +55,17 @@ const HeadingRow = styled(Row)`
   justify-content: space-between;
 `
 
-const EventsYouMayLike = ({ eventId }) => (
+const filterEventsYouMayLike = (events, eventId) => {
+  const filteredEvents = events.filter(event => {
+    if (event.node.id === eventId) return false
+
+    return moment(event.node.startTime).diff(moment(), 'hours') > 0
+  })
+
+  return filteredEvents.splice(0, 3)
+}
+
+export const EventsYouMayLike = ({ eventId }) => (
   <Consumer>
     {context => {
       const eventsYouMayLike = filterEventsYouMayLike(

@@ -6,7 +6,7 @@ import Checkbox from '../../../components/checkbox'
 
 const Wrapper = styled.div`
   background-color: transparent;
-  padding: 9px 20px;
+  padding: 20px 10px 0 10px;
   display: flex;
   align-items: center;
   min-height: 48px;
@@ -14,12 +14,12 @@ const Wrapper = styled.div`
 
   input {
     & + label {
-      font-weight: 500;
+      font-weight: 400;
     }
 
     &:checked {
       & + label {
-        font-weight: 500;
+        font-weight: 400;
       }
     }
   }
@@ -27,6 +27,19 @@ const Wrapper = styled.div`
   ${media.tablet`
     border: 2px solid ${props => props.theme.colors.mediumGrey};
     border-radius: 4px;
+    padding: 9px 20px;
+
+    input {
+      & + label {
+        font-weight: 500;
+      }
+  
+      &:checked {
+        & + label {
+          font-weight: 500;
+        }
+      }
+    }
 
     &:focus-within {
       border-color: ${props => props.theme.colors.eucalyptusGreen};
