@@ -46,41 +46,42 @@ class Provider extends Component {
     }
   }
 
-  componentDidMount() {
-    // Generate all recurrences of events
-    const allEventOccurences = []
-    // Map over events
-    this.props.events.map(event => {
-      if (!event.node.recurrenceDates) {
-        allEventOccurences.push(event)
-      } else {
-        const recurrenceDates = sanitizeDates([
-          moment(event.node.startTime).format(dateFormat),
-          ...event.node.recurrenceDates,
-        ])
-        const time = moment(event.node.startTime).format('HH:mm')
-        const duration = getDuration(event.node.startTime, event.node.endTime)
+  static getDerivedStateFromProps(nextProps, prevState) {
+    if (nextProps.events !== prevState.events) {
+      // Generate all recurrences of events
+      const allEventOccurences = []
+      // Map over events
+      nextProps.events.map(event => {
+        if (!event.node.recurrenceDates) {
+          allEventOccurences.push(event)
+        } else {
+          const recurrenceDates = sanitizeDates([
+            moment(event.node.startTime).format(dateFormat),
+            ...event.node.recurrenceDates,
+          ])
+          const time = moment(event.node.startTime).format('HH:mm')
+          const duration = getDuration(event.node.startTime, event.node.endTime)
 
-        recurrenceDates.forEach(date => {
-          // Deep clone event
-          const copy = JSON.parse(JSON.stringify(event))
+          recurrenceDates.forEach(date => {
+            // Deep clone event
+            const copy = JSON.parse(JSON.stringify(event))
 
-          // Modify start time and end time
-          copy.node.startTime = moment(
-            `${date} ${time}`,
-            'DD/MM/YYYY hh:mm'
-          ).format()
-          copy.node.endTime = moment(copy.node.startTime)
-            .add(duration, 'milliseconds')
-            .format()
-          copy.node.id = `${event.node.id}-${date.split('/').join('')}`
+            // Modify start time and end time
+            copy.node.startTime = moment(
+              `${date} ${time}`,
+              'DD/MM/YYYY hh:mm'
+            ).format()
+            copy.node.endTime = moment(copy.node.startTime)
+              .add(duration, 'milliseconds')
+              .format()
+            copy.node.id = `${event.node.id}-${date.split('/').join('')}`
 
-          allEventOccurences.push(copy)
-        })
-      }
-    })
-
-    this.setState({ events: allEventOccurences.filter(filterPastEvents) })
+            allEventOccurences.push(copy)
+          })
+        }
+      })
+      return { events: allEventOccurences.filter(filterPastEvents) }
+    }
   }
 
   getDatepickerValues = ({ startDate, endDate }) => {
