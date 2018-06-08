@@ -17,13 +17,16 @@ const FilterWrapper = styled(Flex)`
   width: 100%;
   height: 100vh;
   overflow: auto;
-  transition: left 0.15s linear;
+  transition: left 0.15s linear, visibility 0s 0.15s linear;
+  visibility: hidden;
   top: 0;
   left: 100%;
   z-index: 1;
 
   &.open {
+    transition: left 0.15s linear, visibility 0s 0s linear;
     left: 0;
+    visibility: visible;
   }
 
   ${media.tablet`

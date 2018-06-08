@@ -27,6 +27,7 @@ export const Button = props => {
     width: ${styleProps => (styleProps.fullmobile ? '100%' : 'auto')};
     cursor: pointer;
     text-decoration: none;
+    text-align: center;
     transition: background-color 0.15s linear;
 
     &:hover {
@@ -48,6 +49,7 @@ export const Button = props => {
 
   return (
     <StyledButton
+      className={props.className}
       type={props.link ? null : props.type}
       primary={props.primary}
       onClick={props.onClick}
