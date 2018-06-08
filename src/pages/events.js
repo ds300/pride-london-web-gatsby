@@ -126,6 +126,20 @@ class Events extends Component {
     )
   }
 
+  renderEventCount = (filteredCount, eventsToShow) => {
+    let text
+
+    if (filteredCount) {
+      text = `You're viewing ${
+        eventsToShow <= filteredCount ? eventsToShow : filteredCount
+      } of ${filteredCount} events`
+    } else {
+      text = `There are no events matching your criteria. Please try changing your filter options.`
+    }
+
+    return <EventCount>{text}</EventCount>
+  }
+
   render() {
     return (
       <Consumer>
@@ -172,13 +186,10 @@ class Events extends Component {
                     )}
                 </StyledFlipMove>
                 <ColumnPagination width={1}>
-                  <EventCount>
-                    You're viewing{' '}
-                    {context.state.eventsToShow <= context.filteredEvents.length
-                      ? context.state.eventsToShow
-                      : context.filteredEvents.length}{' '}
-                    of {context.filteredEvents.length} events
-                  </EventCount>
+                  {this.renderEventCount(
+                    context.filteredEvents.length,
+                    context.state.eventsToShow
+                  )}
                   {context.state.eventsToShow <
                     context.filteredEvents.length && (
                     <Button
