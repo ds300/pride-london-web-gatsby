@@ -3,7 +3,8 @@ import PropTypes from 'prop-types'
 import Helmet from 'react-helmet'
 import { ThemeProvider } from 'styled-components'
 import { Provider } from '../components/appContext'
-import Navigation from '../components/navigation'
+// import Navigation from '../components/navigation'
+import SimpleNav from '../components/simpleNav'
 import theme from '../theme/theme'
 
 import './index.css'
@@ -20,25 +21,27 @@ const Layout = props => (
             { name: 'keywords', content: 'sample, something' },
           ]}
         />
-        <Navigation
-          items={{
-            logo: 'http://via.placeholder.com/164x64',
-            listItems: [
-              'Learn',
-              'Attend',
-              'Support us',
-              'Take part',
-              'Plan',
-              'Help',
-            ],
-            cta: 'donate',
-          }}
-        />
+        <SimpleNav />
         <main>{props.children()}</main>
       </Fragment>
     </ThemeProvider>
   </Provider>
 )
+
+// <Navigation
+// items={{
+//   logo: 'http://via.placeholder.com/164x64',
+//   listItems: [
+//     'Learn',
+//     'Attend',
+//     'Support us',
+//     'Take part',
+//     'Plan',
+//     'Help',
+//   ],
+//   cta: 'donate',
+// }}
+// />
 
 Layout.propTypes = {
   children: PropTypes.func.isRequired,
