@@ -167,8 +167,6 @@ class Events extends Component {
                     onClick={this.toggleFiltersMobile}
                     primary
                     fullmobile
-                    aria-controls="filters"
-                    id="buttons"
                   >
                     <FilterIcon
                       src={filterIcon}
