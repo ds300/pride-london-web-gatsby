@@ -53,8 +53,8 @@ const CardBody = styled.div`
   flex-grow: 1;
 
   ${media.tablet`
-  padding: 30px;
-`};
+    padding: 30px;
+  `};
 `
 
 const CardDate = styled.span`
@@ -69,14 +69,13 @@ const CardDate = styled.span`
   ${media.tablet`
     font-family: ${props => props.theme.fonts.title};
     font-weight: 600;
-    span {
-      display: inline;
-    }
   `};
 `
 
 const CardBullet = styled.span`
-  display: none ${media.tablet`
+  display: none;
+
+  ${media.tablet`
     display: inline;
   `};
 `

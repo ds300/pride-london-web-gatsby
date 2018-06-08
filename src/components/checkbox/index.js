@@ -45,11 +45,8 @@ class Checkbox extends Component {
     }
   }
 
-  static getDerivedStateFromProps(nextProps, prevState) {
-    if (nextProps.checked !== prevState.checked) {
-      return { checked: nextProps.checked }
-    }
-    return null
+  static getDerivedStateFromProps(nextProps) {
+    return { checked: nextProps.checked }
   }
 
   shouldComponentUpdate(nextProps, nextState) {
