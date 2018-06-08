@@ -24,10 +24,13 @@ const Wrapper = styled.div`
     }
   }
 
+  ${media.mobile`
+    padding: 9px 20px;
+  `};
+
   ${media.tablet`
     border: 2px solid ${props => props.theme.colors.mediumGrey};
     border-radius: 4px;
-    padding: 9px 20px;
 
     input {
       & + label {
@@ -47,12 +50,16 @@ const Wrapper = styled.div`
   `};
 `
 const FilterHeader = styled.div`
-  padding: 16px 20px;
+  padding: 16px 10px;
   background-color: ${props => props.theme.colors.lightGrey};
   font-size: 1rem;
   font-family: ${props => props.theme.fonts.title};
   font-weight: 600;
   color: ${props => props.theme.colors.indigo};
+
+  ${media.mobile`
+    padding: 16px 20px;
+  `};
 
   ${media.tablet`
     display: none;

@@ -13,7 +13,7 @@ const Wrapper = styled.div`
   line-height: 1.214;
 `
 
-const Button = styled.button`
+const FilterButton = styled.button`
   font-family: ${props => props.theme.fonts.title};
   font-weight: 600;
   font-size: 1rem;
@@ -39,13 +39,19 @@ const Button = styled.button`
     background-image: url(${props => (props.isOpen ? iconUp : iconDown)});
     background-repeat: no-repeat;
     background-position: right 20px center;
-    background-color: transparent;
+    background-color: ${props =>
+      props.isActive
+        ? props.theme.colors.eucalyptusGreen
+        : props.theme.colors.lightGrey};
     border-radius: 4px;
     border: 2px solid;
     border-color: ${props =>
       props.isOpen
         ? props.theme.colors.eucalyptusGreen
-        : props.theme.colors.mediumGrey};
+        : props.isActive
+          ? props.theme.colors.eucalyptusGreen
+          : props.theme.colors.lightGrey};
+    transition: border-color 0.15s linear, background-color 0.15s linear;
 
     &:focus {
       border-color: ${props => props.theme.colors.eucalyptusGreen};
@@ -122,13 +128,14 @@ class EventDropdownFilter extends Component {
       <Consumer>
         {context => (
           <Wrapper>
-            <Button
+            <FilterButton
               aria-controls={this.props.filterName}
               aria-expanded={this.state.isOpen}
               type="button"
               id={`button_${this.props.filterName}`}
               onClick={this.toggleMenu}
               isOpen={this.state.isOpen}
+              isActive={context.state.filters[this.props.filterName].length > 0}
             >
               {this.props.heading}
               {context.state.filters[this.props.filterName].length > 0 ? (
@@ -136,7 +143,7 @@ class EventDropdownFilter extends Component {
                   {context.state.filters[this.props.filterName].length}
                 </Badge>
               ) : null}
-            </Button>
+            </FilterButton>
             <DropDown
               isOpen={this.state.isOpen}
               id={this.props.filterName}
