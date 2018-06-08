@@ -8,7 +8,7 @@ import { media } from '../../../theme/media'
 import { Consumer } from '../../../components/appContext'
 import iconCalendar from '../../../theme/assets/images/icon-calendar.svg'
 
-const SingleDatePickerWrapper = styled.div`
+const DatePickerWrapper = styled.div`
   border: none;
   border-radius: 4px;
   position: relative;
@@ -50,6 +50,7 @@ const SingleDatePickerWrapper = styled.div`
   }
 
   .DateRangePickerInput {
+    background-color: transparent;
     display: flex;
     align-items: center;
     padding-right: 45px;
@@ -103,16 +104,23 @@ const SingleDatePickerWrapper = styled.div`
 
   ${media.tablet`
     display: flex;
-    border: 2px solid ${props => props.theme.colors.mediumGrey};
+    transition:  border-color 0.15s linear, background-color 0.15s linear;
+    border: 2px solid ${props =>
+      props.isFocused
+        ? props.theme.colors.eucalyptusGreen
+        : props.datesSelected
+          ? props.theme.colors.eucalyptusGreen
+          : props.theme.colors.lightGrey};
+    background-color: ${props =>
+      props.isFocused
+        ? props.theme.colors.white
+        : props.datesSelected
+          ? props.theme.colors.eucalyptusGreen
+          : props.theme.colors.lightGrey};
 
     input.DateInput_input {
       font-weight: 500;
       padding: 14px 0;
-
-      &:focus {
-        border-color: ${props => props.theme.colors.eucalyptusGreen};
-        outline: none;
-      }
     }
   `};
 
@@ -152,10 +160,23 @@ const DatePickerHeader = styled.div`
 `
 class EventDateFilter extends Component {
   state = {
-    focused: false,
     focusedInput: null,
     startDate: null,
     endDate: null,
+  }
+
+  handleFocusChange = (focusedInput, context) => {
+    this.setState({ focusedInput }, () => {
+      context.actions.closeSiblingFilters(focusedInput, true)
+    })
+
+    if (!focusedInput) {
+      if (context.state.filters.startDate) {
+        context.actions.setDate('endDate', 'startDate')
+      } else {
+        context.actions.setDate('startDate', 'endDate')
+      }
+    }
   }
 
   render() {
@@ -164,18 +185,22 @@ class EventDateFilter extends Component {
         {context => (
           <div>
             <DatePickerHeader>Date</DatePickerHeader>
-            <SingleDatePickerWrapper>
+            <DatePickerWrapper
+              datesSelected={
+                context.state.filters.startDate && context.state.filters.endDate
+              }
+              isFocused={this.state.focusedInput}
+            >
               <DateRangePicker
                 startDate={context.state.filters.startDate}
                 startDateId="start_date"
                 endDate={context.state.filters.endDate}
                 endDateId="end_date"
-                onDatesChange={context.actions.getDatepickerValues} // PropTypes.func.isRequired
-                focusedInput={this.state.focusedInput} // PropTypes.bool
-                onFocusChange={focusedInput => {
-                  this.setState({ focusedInput })
-                  context.actions.closeSiblingFilters(focusedInput, true)
-                }} // PropTypes.func.isRequired
+                onDatesChange={context.actions.getDatepickerValues}
+                focusedInput={this.state.focusedInput}
+                onFocusChange={focusedInput =>
+                  this.handleFocusChange(focusedInput, context)
+                }
                 numberOfMonths={1}
                 displayFormat="DD/MM/YYYY"
                 minimumNights={0}
@@ -184,7 +209,7 @@ class EventDateFilter extends Component {
               <Label htmlFor="start_date" aria-label="Select start date">
                 <img src={iconCalendar} alt="Calendar icon" />
               </Label>
-            </SingleDatePickerWrapper>
+            </DatePickerWrapper>
           </div>
         )}
       </Consumer>
@@ -192,20 +217,3 @@ class EventDateFilter extends Component {
   }
 }
 export default EventDateFilter
-
-// <SingleDatePicker
-// date={
-//   context.state.filters.date
-//     ? context.state.filters.date
-//     : null
-// } // momentPropTypes.momentObj or null
-// onDateChange={context.actions.getDatepickerValue} // PropTypes.func.isRequired
-// focused={this.state.focused} // PropTypes.bool
-// onFocusChange={({ focused }) => {
-//   this.setState({ focused })
-//   context.actions.closeSiblingFilters('date', focused)
-// }} // PropTypes.func.isRequired
-// numberOfMonths={1}
-// displayFormat="DD/MM/YYYY"
-// noBorder
-// />

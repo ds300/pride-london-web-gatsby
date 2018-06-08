@@ -40,9 +40,9 @@ const FilterButton = styled.button`
     background-repeat: no-repeat;
     background-position: right 20px center;
     background-color: ${props =>
-      props.isActive
-        ? props.theme.colors.eucalyptusGreen
-        : props.theme.colors.lightGrey};
+      props.isOpen
+        ? props.theme.colors.white
+        : props.isActive && props.theme.colors.eucalyptusGreen};
     border-radius: 4px;
     border: 2px solid;
     border-color: ${props =>

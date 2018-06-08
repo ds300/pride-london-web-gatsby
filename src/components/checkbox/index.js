@@ -16,9 +16,15 @@ const Input = styled.input`
   height: 20px;
   border-radius: 2px;
   border: solid 2.5px ${props => props.theme.colors.eucalyptusGreen};
+  background-color: ${props => props.theme.colors.white};
   order: 1;
   flex-shrink: 0;
   cursor: pointer;
+
+  &:focus {
+    border-color: ${props => props.theme.colors.indigo};
+    outline: none;
+  }
 
   &:checked {
     background-image: url(${checkmark});

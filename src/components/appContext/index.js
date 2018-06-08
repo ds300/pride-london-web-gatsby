@@ -94,6 +94,16 @@ class Provider extends Component {
     }))
   }
 
+  setDate = (dateToSet, dateToGet) => {
+    this.setState(prevState => ({
+      ...prevState,
+      filters: {
+        ...prevState.filters,
+        [dateToSet]: prevState.filters[dateToGet],
+      },
+    }))
+  }
+
   getCheckboxBool = (name, checked) => {
     this.setState(prevState => ({
       ...prevState,
@@ -195,6 +205,7 @@ class Provider extends Component {
             clearFilters: this.clearFilters,
             closeSiblingFilters: this.closeSiblingFilters,
             showMore: this.showMore,
+            setDate: this.setDate,
           },
         }}
       >

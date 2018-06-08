@@ -29,10 +29,24 @@ const Wrapper = styled.div`
   `};
 
   ${media.tablet`
-    border: 2px solid ${props => props.theme.colors.mediumGrey};
+    background-color: ${props =>
+      props.isChecked
+        ? props.theme.colors.eucalyptusGreen
+        : props.theme.colors.lightGrey};
+    border: 2px solid ${props =>
+      props.isChecked
+        ? props.theme.colors.eucalyptusGreen
+        : props.theme.colors.lightGrey};
     border-radius: 4px;
+    transition: background-color 0.15s linear;
+
+    &:focus-within {
+      border-color: ${props => props.theme.colors.eucalyptusGreen}
+    }
 
     input {
+      border-color: ${props => props.isChecked && props.theme.colors.white};
+      transition: border-color 0.15s linear;
       & + label {
         font-weight: 500;
       }
@@ -42,10 +56,6 @@ const Wrapper = styled.div`
           font-weight: 500;
         }
       }
-    }
-
-    &:focus-within {
-      border-color: ${props => props.theme.colors.eucalyptusGreen};
     }
   `};
 `
@@ -71,7 +81,7 @@ const EventFreeFilter = () => (
     {context => (
       <div>
         <FilterHeader>Price</FilterHeader>
-        <Wrapper>
+        <Wrapper isChecked={context.state.filters.free}>
           <Checkbox
             id="free"
             value="free"

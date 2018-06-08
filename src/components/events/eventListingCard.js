@@ -16,25 +16,42 @@ const Card = styled(Link)`
   width: 100%;
   min-height: 130px;
 
+  &:hover,
+  &:focus {
+    .card-img-wrapper {
+      transform: scale(1.2);
+    }
+  }
+
   ${media.tablet`
     flex-direction: column;
     min-height: auto;
   `};
 `
+
+const CardImageOverflow = styled.div`
+  overflow: hidden;
+  flex-basis: 40%;
+  flex-shrink: 0;
+  height: auto;
+  position: relative;
+
+  ${media.tablet`
+    padding-top: 56.25%;
+  `};
+`
+
 const CardImageWrapper = styled.div`
   background-repeat: no-repeat;
   background-position: center center;
   background-size: cover;
   background-image: url(${props => props.src});
-  position: relative;
-  overflow: hidden;
-  flex-basis: 40%;
-  flex-shrink: 0;
-  height: auto;
-
-  ${media.tablet`
-    padding-top: 56.25%;
-  `};
+  transition: transform 0.3s linear;
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
 `
 
 const CardImage = styled.img`
@@ -122,18 +139,24 @@ export const EventListingCard = props => {
   const { date, time } = formatDate(event)
   return (
     <Card to={`/events/${event.id}`}>
-      <CardImageWrapper
-        src={`${event.eventsListPicture.file.url}?fit=fill&w=400&h=225&f=faces`}
-      >
-        <CardImage
+      <CardImageOverflow>
+        <CardImageWrapper
+          className="card-img-wrapper"
           src={`${
             event.eventsListPicture.file.url
           }?fit=fill&w=400&h=225&f=faces`}
-          alt={event.eventsListPicture.title}
-          width="400"
-          height="225"
-        />
-      </CardImageWrapper>
+        >
+          <CardImage
+            src={`${
+              event.eventsListPicture.file.url
+            }?fit=fill&w=400&h=225&f=faces`}
+            alt={event.eventsListPicture.title}
+            width="400"
+            height="225"
+          />
+        </CardImageWrapper>
+      </CardImageOverflow>
+
       <CardBody>
         <CardDate>
           <CardDateSpan>{date}</CardDateSpan>
