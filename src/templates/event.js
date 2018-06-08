@@ -9,8 +9,9 @@ import {
   EventTagList,
   EventSchedule,
   EventsYouMayLike,
+  EventInfoCard,
+  EventDirectionsSection,
 } from '../components/events'
-import { EventDirectionSection } from '../components/events/eventDirectionsSection'
 
 const PageWrapper = styled.div`
   position: relative;
@@ -63,22 +64,6 @@ const HeroImage = styled.div`
   `};
 `
 
-const InfoPlaceholder = styled.div`
-  background-color: ${props => props.theme.colors.indigo};
-  height: 500px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: white;
-  ${media.desktop`
-    position: absolute;
-    width: 400px;
-    height: 565px;
-    right: 90px;
-    top: 270px;
- `};
-`
-
 const Section = styled.div`
   margin-bottom: 20px;
   ${media.desktop`
@@ -111,22 +96,7 @@ export default class Event extends Component {
             <EventTagList values={eventCategories} />
           </TitleWrapper>
         </HeroImageAndTitle>
-        <InfoPlaceholder>
-          <div>
-            <p>
-              {this.props.pathContext.startDate ===
-              this.props.pathContext.endDate
-                ? this.props.pathContext.startDate
-                : `${this.props.pathContext.startDate} - ${
-                    this.props.pathContext.endDate
-                  }`}
-            </p>
-            <p>
-              {this.props.pathContext.startTime} to{' '}
-              {this.props.pathContext.endTime}
-            </p>
-          </div>
-        </InfoPlaceholder>
+        <EventInfoCard data={this.props.data.contentfulEvent} />
         <ContentWrapper>
           <Section>
             <ReactMarkdown source={eventDescription.eventDescription} />
@@ -137,7 +107,7 @@ export default class Event extends Component {
             </Section>
           )}
         </ContentWrapper>
-        <EventDirectionSection data={this.props.data.contentfulEvent} />
+        <EventDirectionsSection data={this.props.data.contentfulEvent} />
         <EventsYouMayLike eventId={id} />
         <NewsletterForm buttonText="Subscribe" />
       </PageWrapper>
@@ -169,6 +139,7 @@ export const eventPageQuery = graphql`
         eventDescription
       }
       ...eventDirectionsFragment
+      ...eventInfoCardQuery
     }
   }
 `
