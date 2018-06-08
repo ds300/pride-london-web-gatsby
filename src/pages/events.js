@@ -163,7 +163,7 @@ class Events extends Component {
                 <ColumnTextCenter width={1}>
                   <Button
                     aria-controls="filters"
-                    aria-expanded={this.showFiltersMobile}
+                    aria-expanded={this.state.showFiltersMobile}
                     onClick={this.toggleFiltersMobile}
                     primary
                     fullmobile

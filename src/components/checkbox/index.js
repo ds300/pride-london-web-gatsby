@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import styled from 'styled-components'
+import { media } from '../../theme/media'
 import checkmark from '../../theme/assets/images/icon-check.svg'
 
 const Wrapper = styled.div`
@@ -40,6 +41,14 @@ const Input = styled.input`
 const Label = styled.label`
   font-size: 0.875rem;
   line-height: 1.43;
+  flex-grow: 1;
+  align-self: stretch;
+  display: flex;
+  align-items: center;
+
+  ${media.tablet`
+    cursor: pointer;
+  `};
 `
 
 class Checkbox extends Component {

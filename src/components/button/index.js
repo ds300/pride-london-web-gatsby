@@ -57,6 +57,8 @@ export const Button = props => {
       href={props.link ? props.to : null}
       small={props.small}
       fullmobile={props.fullmobile}
+      aria-controls={props['aria-controls']}
+      aria-expanded={props['aria-expanded']}
     >
       {props.children}
     </StyledButton>
@@ -73,6 +75,8 @@ Button.propTypes = {
   small: PropTypes.bool,
   to: PropTypes.string,
   fullmobile: PropTypes.bool,
+  ['aria-controls']: PropTypes.string,
+  ['aria-expanded']: PropTypes.bool,
 }
 
 Button.defaultProps = {
@@ -85,6 +89,8 @@ Button.defaultProps = {
   to: null,
   fullmobile: false,
   onClick: null,
+  ['aria-controls']: undefined,
+  ['aria-expanded']: undefined,
 }
 
 export default Button

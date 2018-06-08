@@ -19,7 +19,7 @@ const Card = styled(Link)`
   &:hover,
   &:focus {
     .card-img-wrapper {
-      transform: scale(1.15);
+      transform: scale(1.08);
     }
   }
 
@@ -46,7 +46,7 @@ const CardImageWrapper = styled.div`
   background-position: center center;
   background-size: cover;
   background-image: url(${props => props.src});
-  transition: transform 0.3s linear;
+  transition: transform 0.15s ease-out;
   position: absolute;
   top: 0;
   left: 0;

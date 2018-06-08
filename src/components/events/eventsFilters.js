@@ -227,6 +227,8 @@ class EventsFilters extends Component {
                   Clear filters
                 </ClearButton>
                 <CloseButton
+                  aria-controls="filters"
+                  aria-expanded={this.props.showFiltersMobile}
                   aria-label="Close filters"
                   onClick={this.props.toggleFiltersMobile}
                 />

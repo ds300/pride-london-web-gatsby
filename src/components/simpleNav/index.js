@@ -85,6 +85,7 @@ const Menu = styled.ul`
     display: flex;
     align-items: center;
     height: auto;
+    visibility: visible;
   `};
 `
 
