@@ -11,6 +11,7 @@ export const Button = props => {
     border-radius: 4px;
     border: none;
     display: inline-block;
+    text-align: center;
     color: ${styleProps =>
       styleProps.primary
         ? styleProps.theme.colors.indigo

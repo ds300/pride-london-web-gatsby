@@ -27,14 +27,6 @@ const Wrapper = styled.div`
     top: 270px;
     padding: 40px;
  `};
-
-  a {
-    color: white;
-    text-decoration: underline;
-    :hover {
-      text-decoration: none;
-    }
-  }
 `
 
 const Row = styled.div`
@@ -122,6 +114,14 @@ const formatAddress = (addressLine1, addressLine2, city, postcode) => {
     .join(', ')
 }
 
+const Link = styled.a`
+  color: white;
+  text-decoration: underline;
+  :hover {
+    text-decoration: none;
+  }
+`
+
 const VENUE_DETAILS = {
   genderNeutralToilets: 'Gender neutral toilets',
   outdoors: 'Outdoors',
@@ -183,9 +183,9 @@ export default function EventInfoCard({
         <Item
           icon={<MailIcon role="presentation" />}
           detail={
-            <a href={`mailto:${email}`} aria-label="email the venue">
+            <Link href={`mailto:${email}`} aria-label="email the venue">
               {email}
-            </a>
+            </Link>
           }
         />
       )}
@@ -193,14 +193,18 @@ export default function EventInfoCard({
         <Item
           icon={<PhoneIcon />}
           detail={
-            <a href={`tel:${phone}`} aria-label="call the venue">
+            <Link href={`tel:${phone}`} aria-label="call the venue">
               {phone}
-            </a>
+            </Link>
           }
         />
       )}
       {Boolean((phone || email) && ticketingUrl) && <VSpace />}
-      {ticketingUrl && <Button primary />}
+      {ticketingUrl && (
+        <Button primary link to={ticketingUrl}>
+          Get tickets
+        </Button>
+      )}
     </Wrapper>
   )
 }
