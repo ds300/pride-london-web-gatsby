@@ -68,7 +68,7 @@ Button.propTypes = {
   type: PropTypes.string,
   primary: PropTypes.bool,
   children: PropTypes.node,
-  onClick: PropTypes.func.isRequired,
+  onClick: PropTypes.func,
   disabled: PropTypes.bool,
   small: PropTypes.bool,
   to: PropTypes.string,
@@ -84,6 +84,7 @@ Button.defaultProps = {
   small: false,
   to: null,
   fullmobile: false,
+  onClick: null,
 }
 
 export default Button

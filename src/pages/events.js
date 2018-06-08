@@ -161,7 +161,15 @@ class Events extends Component {
             <ContainerAddFilters>
               <Row>
                 <ColumnTextCenter width={1}>
-                  <Button onClick={this.toggleFiltersMobile} primary fullmobile>
+                  <Button
+                    aria-controls="filters"
+                    aria-expanded={this.showFiltersMobile}
+                    onClick={this.toggleFiltersMobile}
+                    primary
+                    fullmobile
+                    aria-controls="filters"
+                    id="buttons"
+                  >
                     <FilterIcon
                       src={filterIcon}
                       width="22"

@@ -35,6 +35,7 @@ const FilterWrapper = styled(Flex)`
     height: auto;
     overflow: visible;
     padding-top: 20px;
+    visibility: visible;
   `};
 `
 
@@ -210,6 +211,7 @@ class EventsFilters extends Component {
             px={[0, 0, 15, 15]}
             py={4}
             flexWrap="wrap"
+            id="filters"
           >
             <FilterHeader width={1}>
               <FilterHeaderInner>
