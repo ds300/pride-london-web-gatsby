@@ -19,7 +19,7 @@ const Card = styled(Link)`
   &:hover,
   &:focus {
     .card-img-wrapper {
-      transform: scale(1.2);
+      transform: scale(1.15);
     }
   }
 
