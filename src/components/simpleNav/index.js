@@ -20,7 +20,7 @@ const Header = styled.header`
   z-index: 1;
   top: 0;
   left: 0;
-  position: ${props => (props.menuOpen ? 'fixed' : 'relative')};
+  position: relative;
 
   ${media.tablet`
     height: 100px;
@@ -175,7 +175,7 @@ class SimpleNav extends Component {
 
   render() {
     return (
-      <Header menuOpen={this.state.menuOpen}>
+      <Header>
         <FlexRow
           mx={[
             0, // Margin between 0px and 1st breakpoint (375px). 1 = 5px on spacing scale
