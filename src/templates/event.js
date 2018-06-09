@@ -121,6 +121,7 @@ Event.propTypes = {
   data: PropTypes.object.isRequired,
 }
 
+// prettier-ignore
 export const eventPageQuery = graphql`
   query eventQuery($id: String!, $showSchedule: Boolean!) {
     contentfulEvent(id: { eq: $id }) {
@@ -134,7 +135,7 @@ export const eventPageQuery = graphql`
         description
       }
       eventCategories
-      @skip(if: $showSchedule)
+      @include(if: $showSchedule)
       performances {
         ...eventScheduleFragment
       }
