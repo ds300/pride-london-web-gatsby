@@ -146,7 +146,6 @@ export default function EventInfoCard({
     accessibilityOptions,
   },
 }) {
-  console.log(accessibilityOptions)
   return (
     <Wrapper>
       {Boolean(startTime && endTime) && (
