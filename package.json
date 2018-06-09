@@ -40,7 +40,7 @@
     "deploy:ci": "gatsby build && now ./public -A ../now.json -e NODE_ENV=production --token $NOW_TOKEN --team=prideinlondon && now alias --token $NOW_TOKEN --team=prideinlondon"
   },
   "lint-staged": {
-    "src/**/*.{js,json,css,md}": [
+    "src/**/*.{js,json}": [
       "yarn format",
       "yarn lint --fix",
       "git add -A"
