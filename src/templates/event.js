@@ -102,13 +102,14 @@ export default class Event extends Component {
           <Section>
             <ReactMarkdown source={eventDescription.eventDescription} />
           </Section>
-          {performances && (
-            <Section>
-              <EventSchedule schedule={performances} />
-            </Section>
-          )}
+          {featureFlags.SCHEDULE &&
+            performances && (
+              <Section>
+                <EventSchedule schedule={performances} />
+              </Section>
+            )}
         </ContentWrapper>
-        <EventDirectionSection data={this.props.data.contentfulEvent} />
+        <EventDirectionsSection data={this.props.data.contentfulEvent} />
         {featureFlags.YOU_MAY_ALSO_LIKE && <EventsYouMayLike eventId={id} />}
         <NewsletterForm buttonText="Subscribe" />
       </PageWrapper>
@@ -133,8 +134,14 @@ export const eventPageQuery = graphql`
         description
       }
       eventCategories
-      performances {
-        ...eventScheduleFragment
+      ${
+        featureFlags.SCHEDULE
+          ? graphql`
+              performances {
+                ...eventScheduleFragment
+              }
+            `
+          : ``
       }
       eventDescription {
         eventDescription
