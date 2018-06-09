@@ -6,7 +6,7 @@ import Checkbox from '../../../components/checkbox'
 
 const Wrapper = styled.div`
   background-color: transparent;
-  padding: 9px 20px;
+  padding: 20px 10px 0 10px;
   display: flex;
   align-items: center;
   min-height: 48px;
@@ -14,32 +14,62 @@ const Wrapper = styled.div`
 
   input {
     & + label {
-      font-weight: 500;
+      font-weight: 400;
     }
 
     &:checked {
       & + label {
-        font-weight: 500;
+        font-weight: 400;
       }
     }
   }
 
+  ${media.mobile`
+    padding: 9px 20px;
+  `};
+
   ${media.tablet`
-    border: 2px solid ${props => props.theme.colors.mediumGrey};
+    background-color: ${props =>
+      props.isChecked
+        ? props.theme.colors.eucalyptusGreen
+        : props.theme.colors.lightGrey};
+    border: 2px solid ${props =>
+      props.isChecked
+        ? props.theme.colors.eucalyptusGreen
+        : props.theme.colors.lightGrey};
     border-radius: 4px;
+    transition: background-color 0.15s linear;
 
     &:focus-within {
-      border-color: ${props => props.theme.colors.eucalyptusGreen};
+      border-color: ${props => props.theme.colors.eucalyptusGreen}
+    }
+
+    input {
+      border-color: ${props => props.isChecked && props.theme.colors.white};
+      transition: border-color 0.15s linear;
+      & + label {
+        font-weight: 500;
+      }
+  
+      &:checked {
+        & + label {
+          font-weight: 500;
+        }
+      }
     }
   `};
 `
 const FilterHeader = styled.div`
-  padding: 16px 20px;
+  padding: 16px 10px;
   background-color: ${props => props.theme.colors.lightGrey};
   font-size: 1rem;
   font-family: ${props => props.theme.fonts.title};
   font-weight: 600;
   color: ${props => props.theme.colors.indigo};
+
+  ${media.mobile`
+    padding: 16px 20px;
+  `};
 
   ${media.tablet`
     display: none;
@@ -51,7 +81,7 @@ const EventFreeFilter = () => (
     {context => (
       <div>
         <FilterHeader>Price</FilterHeader>
-        <Wrapper>
+        <Wrapper isChecked={context.state.filters.free}>
           <Checkbox
             id="free"
             value="free"

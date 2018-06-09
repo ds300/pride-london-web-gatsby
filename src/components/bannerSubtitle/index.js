@@ -22,7 +22,7 @@ const BannerSubtitleWrapper = styled.div`
   margin-left: 10px;
 
   ${media.tablet`  
-    max-width: 420px;
+    max-width: 520px;
   `};
 `
 

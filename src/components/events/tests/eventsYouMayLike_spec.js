@@ -49,7 +49,9 @@ jest.mock('../../../components/appContext', () => {
   return {
     Consumer: props =>
       props.children({
-        events: [nodeOne, nodeTwo, nodeThree],
+        state: {
+          events: [nodeOne, nodeTwo, nodeThree],
+        },
       }),
   }
 })

@@ -16,25 +16,42 @@ const Card = styled(Link)`
   width: 100%;
   min-height: 130px;
 
+  &:hover,
+  &:focus {
+    .card-img-wrapper {
+      transform: scale(1.08);
+    }
+  }
+
   ${media.tablet`
     flex-direction: column;
     min-height: auto;
   `};
 `
+
+const CardImageOverflow = styled.div`
+  overflow: hidden;
+  flex-basis: 40%;
+  flex-shrink: 0;
+  height: auto;
+  position: relative;
+
+  ${media.tablet`
+    padding-top: 56.25%;
+  `};
+`
+
 const CardImageWrapper = styled.div`
   background-repeat: no-repeat;
   background-position: center center;
   background-size: cover;
   background-image: url(${props => props.src});
-  position: relative;
-  overflow: hidden;
-  flex-basis: 40%;
-  flex-shrink: 0;
-  height: 100%;
-
-  ${media.tablet`
-    padding-top: 56.25%;
-  `};
+  transition: transform 0.15s ease-out;
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
 `
 
 const CardImage = styled.img`
@@ -48,11 +65,11 @@ const CardImage = styled.img`
 `
 
 const CardBody = styled.div`
-  padding: 20px;
+  padding: 15px;
   background-color: ${props => props.theme.colors.white};
   flex-grow: 1;
 
-  ${media.mobile`
+  ${media.tablet`
     padding: 30px;
   `};
 `
@@ -61,10 +78,31 @@ const CardDate = styled.span`
   display: block;
   color: ${props => props.theme.colors.darkGrey};
   font-size: 0.875rem;
+  font-family: ${props => props.theme.fonts.body};
   line-height: 1.43;
-  font-weight: 600;
+  font-weight: 400;
   margin-bottom: 0.65rem;
-  font-family: Poppins, sans-serif;
+
+  ${media.tablet`
+    font-family: ${props => props.theme.fonts.title};
+    font-weight: 600;
+  `};
+`
+
+const CardBullet = styled.span`
+  display: none;
+
+  ${media.tablet`
+    display: inline;
+  `};
+`
+
+const CardDateSpan = styled.span`
+  display: block;
+
+  ${media.tablet`
+    display: inline;
+  `};
 `
 
 const CardPrice = styled.div`
@@ -98,23 +136,32 @@ const CardHeading = styled.h3`
 
 export const EventListingCard = props => {
   const { event } = props
-
+  const { date, time } = formatDate(event)
   return (
     <Card to={`/events/${event.id}`}>
-      <CardImageWrapper
-        src={`${event.eventsListPicture.file.url}?fit=fill&w=400&h=225&f=faces`}
-      >
-        <CardImage
+      <CardImageOverflow>
+        <CardImageWrapper
+          className="card-img-wrapper"
           src={`${
             event.eventsListPicture.file.url
           }?fit=fill&w=400&h=225&f=faces`}
-          alt={event.eventsListPicture.title}
-          width="400"
-          height="225"
-        />
-      </CardImageWrapper>
+        >
+          <CardImage
+            src={`${
+              event.eventsListPicture.file.url
+            }?fit=fill&w=400&h=225&f=faces`}
+            alt={event.eventsListPicture.title}
+            width="400"
+            height="225"
+          />
+        </CardImageWrapper>
+      </CardImageOverflow>
+
       <CardBody>
-        <CardDate>{formatDate(event)}</CardDate>
+        <CardDate>
+          <CardDateSpan>{date}</CardDateSpan>
+          <CardBullet> • </CardBullet> <CardDateSpan>{time}</CardDateSpan>
+        </CardDate>
         <CardHeading>{event.name}</CardHeading>
       </CardBody>
       <CardPrice>

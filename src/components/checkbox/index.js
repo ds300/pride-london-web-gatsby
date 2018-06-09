@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import styled from 'styled-components'
+import { media } from '../../theme/media'
 import checkmark from '../../theme/assets/images/icon-check.svg'
 
 const Wrapper = styled.div`
@@ -16,9 +17,15 @@ const Input = styled.input`
   height: 20px;
   border-radius: 2px;
   border: solid 2.5px ${props => props.theme.colors.eucalyptusGreen};
+  background-color: ${props => props.theme.colors.white};
   order: 1;
   flex-shrink: 0;
   cursor: pointer;
+
+  &:focus {
+    border-color: ${props => props.theme.colors.indigo};
+    outline: none;
+  }
 
   &:checked {
     background-image: url(${checkmark});
@@ -34,6 +41,14 @@ const Input = styled.input`
 const Label = styled.label`
   font-size: 0.875rem;
   line-height: 1.43;
+  flex-grow: 1;
+  align-self: stretch;
+  display: flex;
+  align-items: center;
+
+  ${media.tablet`
+    cursor: pointer;
+  `};
 `
 
 class Checkbox extends Component {
@@ -43,6 +58,10 @@ class Checkbox extends Component {
     this.state = {
       checked: this.props.checked,
     }
+  }
+
+  static getDerivedStateFromProps(nextProps) {
+    return { checked: nextProps.checked }
   }
 
   shouldComponentUpdate(nextProps, nextState) {

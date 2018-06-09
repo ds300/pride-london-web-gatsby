@@ -1,6 +1,5 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
-import debounce from 'lodash.debounce' // eslint-disable-line
 import {
   filterByDate,
   filterByFree,
@@ -8,16 +7,20 @@ import {
   filterByArea,
   filterByTime,
   filterPastEvents,
+  getDuration,
+  sanitizeDates,
 } from '../events/helpers'
 import { itemsToLoad } from '../../constants'
-import theme from '../../theme/theme'
+import { dateFormat } from '../../constants'
+import moment from 'moment'
 
 const AppContext = React.createContext()
 const { Consumer } = AppContext
 
 function getInitialFilterState() {
   return {
-    date: null,
+    startDate: null,
+    endDate: null,
     free: false,
     eventCategories: [],
     venueDetails: [],
@@ -29,6 +32,7 @@ function getInitialFilterState() {
 }
 
 const initialState = {
+  events: [],
   filterOpen: null,
   eventsToShow: itemsToLoad,
   filters: getInitialFilterState(),
@@ -39,49 +43,64 @@ class Provider extends Component {
     super()
     this.state = {
       ...initialState,
-      breakpoint: this.getCurrentBreakpoint(),
     }
   }
 
-  componentDidMount() {
-    if (typeof window !== 'undefined') {
-      window.addEventListener('resize', this.setCurrentBreakpoint)
-    }
-  }
-  componentWillUnmount() {
-    if (typeof window !== 'undefined') {
-      window.removeEventListener('resize', this.setCurrentBreakpoint)
+  static getDerivedStateFromProps(nextProps, prevState) {
+    if (nextProps.events !== prevState.events) {
+      // Generate all recurrences of events
+      const allEventOccurences = []
+      // Map over events
+      nextProps.events.map(event => {
+        if (!event.node.recurrenceDates) {
+          allEventOccurences.push(event)
+        } else {
+          const recurrenceDates = sanitizeDates([
+            moment(event.node.startTime).format(dateFormat),
+            ...event.node.recurrenceDates,
+          ])
+          const time = moment(event.node.startTime).format('HH:mm')
+          const duration = getDuration(event.node.startTime, event.node.endTime)
+
+          recurrenceDates.forEach(date => {
+            // Deep clone event
+            const copy = JSON.parse(JSON.stringify(event))
+
+            // Modify start time and end time
+            copy.node.startTime = moment(
+              `${date} ${time}`,
+              'DD/MM/YYYY hh:mm'
+            ).format()
+            copy.node.endTime = moment(copy.node.startTime)
+              .add(duration, 'milliseconds')
+              .format()
+            copy.node.id = `${event.node.id}-${date.split('/').join('')}`
+
+            allEventOccurences.push(copy)
+          })
+        }
+      })
+      return { events: allEventOccurences.filter(filterPastEvents) }
     }
   }
 
-  getCurrentBreakpoint = () => {
-    if (typeof window !== 'undefined') {
-      switch (true) {
-        case window.matchMedia(`(min-width: ${theme.breakpoints[3]})`).matches:
-          return 3
-        case window.matchMedia(`(min-width: ${theme.breakpoints[2]})`).matches:
-          return 2
-        case window.matchMedia(`(min-width: ${theme.breakpoints[1]})`).matches:
-          return 1
-        default:
-          return 0
-      }
-    }
-  }
-
-  setCurrentBreakpoint = debounce(() => {
-    this.setState(prevState => ({
-      ...prevState,
-      breakpoint: this.getCurrentBreakpoint(),
-    }))
-  }, 25)
-
-  getDatepickerValue = date => {
+  getDatepickerValues = ({ startDate, endDate }) => {
     this.setState(prevState => ({
       ...prevState,
       filters: {
         ...prevState.filters,
-        date,
+        startDate,
+        endDate,
+      },
+    }))
+  }
+
+  setDate = (dateToSet, dateToGet) => {
+    this.setState(prevState => ({
+      ...prevState,
+      filters: {
+        ...prevState.filters,
+        [dateToSet]: prevState.filters[dateToGet],
       },
     }))
   }
@@ -140,9 +159,11 @@ class Provider extends Component {
   }
 
   filterEvents = () => {
-    const filteredEvents = this.props.events
-      .filter(filterPastEvents)
-      .filter(filterByDate, this.state.filters.date)
+    const filteredEvents = this.state.events
+      .filter(filterByDate, {
+        startDate: this.state.filters.startDate,
+        endDate: this.state.filters.endDate,
+      })
       .filter(filterByFree, this.state.filters.free)
       .filter(filterByCategory, {
         array: this.state.filters.eventCategories,
@@ -173,22 +194,19 @@ class Provider extends Component {
   }
 
   render() {
-    const filteredEvents = this.filterEvents()
-    const filteredCount = filteredEvents.length
     return (
       <AppContext.Provider
         value={{
           state: this.state,
-          events: this.props.events.filter(filterPastEvents),
-          filteredEvents,
-          filteredCount,
+          filteredEvents: this.filterEvents(),
           actions: {
             getCheckboxBool: this.getCheckboxBool,
-            getDatepickerValue: this.getDatepickerValue,
+            getDatepickerValues: this.getDatepickerValues,
             getCheckboxSetValues: this.getCheckboxSetValues,
             clearFilters: this.clearFilters,
             closeSiblingFilters: this.closeSiblingFilters,
             showMore: this.showMore,
+            setDate: this.setDate,
           },
         }}
       >

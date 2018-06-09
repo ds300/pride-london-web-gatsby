@@ -1,4 +1,5 @@
-import moment from 'moment'
+const moment = require('moment')
+const { dateFormat } = require('../../../constants')
 
 const formatTime = time => {
   if (moment(time).format('mm') === '00') {
@@ -22,22 +23,29 @@ const formatDate = event => {
   const startTime = formatTime(event.startTime)
   const endTime = formatTime(event.endTime)
 
-  if (startDate === endDate) {
-    return `${startDay} ${startMonth} ${year} • ${startTime} - ${endTime}`
-  } else if (startMonth === endMonth) {
-    return `${startDay} - ${endDay} ${startMonth} ${year} • ${startTime} - ${endTime}`
+  const dateTime = {
+    time: `${startTime} - ${endTime}`,
   }
-  return `${startDay} ${startMonth} - ${endDay} ${endMonth} ${year} • ${startTime} - ${endTime}`
+
+  if (startDate === endDate) {
+    dateTime.date = `${startDay} ${startMonth} ${year}`
+    return dateTime
+  } else if (startMonth === endMonth) {
+    dateTime.date = `${startDay} - ${endDay} ${startMonth} ${year}`
+    return dateTime
+  }
+
+  dateTime.date = `${startDay} ${startMonth} - ${endDay} ${endMonth} ${year}`
+  return dateTime
 }
 
 function filterByDate(event) {
-  const dateFormat = 'YYYY-MM-DD'
+  if (!(this.startDate && this.endDate)) return true
 
-  if (!this) return true
-  const startDate = moment(event.node.startTime).format(dateFormat)
-  const endDate = moment(event.node.endTime).format(dateFormat)
-  const filterDate = moment(this).format(dateFormat)
-  return moment(filterDate).isBetween(startDate, endDate, null, '[]')
+  // Set time to 12:00 for pure date comparison
+  return moment(event.node.startTime)
+    .set({ hour: 12, minutes: 0 })
+    .isBetween(this.startDate, this.endDate, null, '[]')
 }
 
 function filterByFree(event) {
@@ -90,7 +98,7 @@ function filterByArea(event) {
 
 function filterByTime(event) {
   if (this.length === 0) return true
-  const format = 'HH:MM'
+  const format = 'HH:mm'
   const startTime = moment(event.node.startTime).format(format)
   const afternoonStart = '12:00'
   const afternoonEnd = '17:59'
@@ -122,8 +130,32 @@ function filterByLimit(event, index) {
   return index < this
 }
 
+function sanitizeDates(dates) {
+  const formattedDates = []
+  dates.map(date => {
+    const [day, month, year] = date.split('/')
+
+    // Format date to be DD/MM/YYYY
+    const formattedDate = `${day.length === 1 ? `0${day}` : day}/${
+      month.length === 1 ? `0${month}` : month
+    }/${year.length === 2 ? `20${year}` : year}`
+
+    // Create array of valid dates
+    if (moment(formattedDate, dateFormat).isValid()) {
+      formattedDates.push(formattedDate)
+    }
+  })
+  // Strip duplicates and return
+  return Array.from(new Set([...formattedDates]))
+}
+
+function getDuration(start, end) {
+  return moment(end).diff(moment(start))
+}
+
 module.exports = {
   formatDate,
+  formatTime,
   filterByDate,
   filterByFree,
   filterByCategory,
@@ -131,4 +163,6 @@ module.exports = {
   filterByTime,
   filterPastEvents,
   filterByLimit,
+  sanitizeDates,
+  getDuration,
 }
