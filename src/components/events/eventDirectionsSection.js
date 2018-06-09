@@ -55,7 +55,7 @@ const MapLink = styled.a`
   `};
 `
 
-export class EventDirectionSection extends React.Component {
+export default class EventDirectionsSection extends React.Component {
   state = { width: null, height: null }
 
   componentDidMount() {
@@ -128,7 +128,7 @@ export class EventDirectionSection extends React.Component {
   }
 }
 
-EventDirectionSection.propTypes = {
+EventDirectionsSection.propTypes = {
   data: PropTypes.shape({
     location: PropTypes.shape({
       lat: PropTypes.number.isRequired,
