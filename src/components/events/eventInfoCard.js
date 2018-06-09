@@ -148,13 +148,14 @@ export default function EventInfoCard({
 }) {
   return (
     <Wrapper>
-      {Boolean(startTime && endTime) && (
-        <Item
-          icon={<DateIcon />}
-          title={formatDayRange(moment(startTime), moment(endTime))}
-          detail={formatTimeRange(moment(startTime), moment(endTime))}
-        />
-      )}
+      {startTime &&
+        endTime && (
+          <Item
+            icon={<DateIcon />}
+            title={formatDayRange(moment(startTime), moment(endTime))}
+            detail={formatTimeRange(moment(startTime), moment(endTime))}
+          />
+        )}
       <Item
         icon={<TicketIcon />}
         title={formatPrice(eventPriceLow, eventPriceHigh)}
@@ -177,7 +178,7 @@ export default function EventInfoCard({
           <Item icon={<GenderIcon />} detail="Gender neutral toilets" />
         )}
 
-      {Boolean(email || phone || ticketingUrl) && <Hr />}
+      {(email || phone || ticketingUrl) && <Hr />}
       {email && (
         <Item
           icon={<MailIcon role="presentation" />}
@@ -198,7 +199,7 @@ export default function EventInfoCard({
           }
         />
       )}
-      {Boolean((phone || email) && ticketingUrl) && <VSpace />}
+      {(phone || email) && ticketingUrl && <VSpace />}
       {ticketingUrl && (
         <Button primary link to={ticketingUrl}>
           Get tickets
