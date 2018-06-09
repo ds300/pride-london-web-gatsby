@@ -50,6 +50,7 @@ exports.createPages = ({ graphql, boundActionCreators }) => {
             component: eventTemplate,
             context: {
               id: edge.node.id,
+              showSchedule: featureFlags.SCHEDULE,
               startDate: moment(edge.node.startTime).format(prettyDate),
               endDate: moment(edge.node.endTime).format(prettyDate),
               startTime: formatTime(edge.node.startTime),
@@ -69,6 +70,7 @@ exports.createPages = ({ graphql, boundActionCreators }) => {
               component: eventTemplate,
               context: {
                 id: edge.node.id,
+                showSchedule: featureFlags.SCHEDULE,
                 startDate: moment(date, dateFormat).format(prettyDate),
                 endDate: moment(date, dateFormat)
                   .add(

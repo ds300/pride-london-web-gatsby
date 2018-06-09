@@ -122,7 +122,7 @@ Event.propTypes = {
 }
 
 export const eventPageQuery = graphql`
-  query eventQuery($id: String!) {
+  query eventQuery($id: String!, $showSchedule: Boolean!) {
     contentfulEvent(id: { eq: $id }) {
       id
       name
@@ -134,14 +134,9 @@ export const eventPageQuery = graphql`
         description
       }
       eventCategories
-      ${
-        featureFlags.SCHEDULE
-          ? graphql`
-              performances {
-                ...eventScheduleFragment
-              }
-            `
-          : ``
+      @skip(if: $showSchedule)
+      performances {
+        ...eventScheduleFragment
       }
       eventDescription {
         eventDescription
