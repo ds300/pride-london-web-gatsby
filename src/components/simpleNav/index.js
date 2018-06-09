@@ -213,7 +213,7 @@ class SimpleNav extends Component {
                     link
                     primary
                     fullmobile
-                    to="https://prideinlondon.org/donate/"
+                    to="https://donate.prideinlondon.org/"
                   >
                     Donate
                   </DonateButton>

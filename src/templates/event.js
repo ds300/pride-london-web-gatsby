@@ -4,6 +4,7 @@ import PropTypes from 'prop-types'
 import ReactMarkdown from 'react-markdown'
 import Helmet from 'react-helmet'
 import NewsletterForm from '../components/newsletter'
+import * as featureFlags from '../featureFlags'
 import { media } from '../theme/media'
 import {
   EventTagList,
@@ -138,7 +139,7 @@ export default class Event extends Component {
           )}
         </ContentWrapper>
         <EventDirectionSection data={this.props.data.contentfulEvent} />
-        <EventsYouMayLike eventId={id} />
+        {featureFlags.YOU_MAY_ALSO_LIKE && <EventsYouMayLike eventId={id} />}
         <NewsletterForm buttonText="Subscribe" />
       </PageWrapper>
     )
