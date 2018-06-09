@@ -49,15 +49,16 @@ const EventTagUl = styled.ul`
   list-style-type: none;
 `
 
-const EventTagList = ({ values, className }) => (
-  <EventTagUl className={className}>
-    {values.map(value => (
-      <EventTagListItem tagStyle={selectTagStyle(value)} key={value}>
-        {value}
-      </EventTagListItem>
-    ))}
-  </EventTagUl>
-)
+const EventTagList = ({ values, className }) =>
+  values ? (
+    <EventTagUl className={className}>
+      {values.map(value => (
+        <EventTagListItem tagStyle={selectTagStyle(value)} key={value}>
+          {value}
+        </EventTagListItem>
+      ))}
+    </EventTagUl>
+  ) : null
 
 EventTagList.propTypes = {
   values: PropTypes.arrayOf(PropTypes.string).isRequired,
