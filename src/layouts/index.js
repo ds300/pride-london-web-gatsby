@@ -6,6 +6,7 @@ import { Provider } from '../components/appContext'
 // import Navigation from '../components/navigation'
 import SimpleNav from '../components/simpleNav'
 import theme from '../theme/theme'
+import favicon from '../favicon.ico'
 
 import './index.css'
 import './fonts.css'
@@ -20,6 +21,15 @@ const Layout = props => (
             { name: 'description', content: 'Sample' },
             { name: 'keywords', content: 'sample, something' },
           ]}
+          link={[
+            {
+              rel: 'icon',
+              href: favicon,
+            },
+          ]}
+          htmlAttributes={{
+            lang: 'en-gb',
+          }}
         />
         <SimpleNav />
         <main>{props.children()}</main>
