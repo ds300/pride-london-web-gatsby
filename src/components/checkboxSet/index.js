@@ -9,7 +9,7 @@ import constants from '../../constants'
 
 const List = styled.ul`
   list-style: none;
-  padding: 10px 10px;
+  padding: 10px;
   margin: 0;
   border-top: 2px solid transparent;
   box-sizing: border-box;
